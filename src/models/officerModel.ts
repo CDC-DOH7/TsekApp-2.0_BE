@@ -18,7 +18,9 @@ db.connect((err) => {
   if (err) {
     throw err;
   }
-  console.log(`Table ${TABLE_NAME} e-TsekApp Database is successfully connected.`);
+  console.log(
+    `Table ${TABLE_NAME} e-TsekApp Database is successfully connected.`
+  );
 });
 
 // create officer table function
@@ -31,10 +33,10 @@ CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
 	officer_fname VARCHAR(50) NOT NULL,
 	officer_mname VARCHAR(50),
 	officer_lname VARCHAR(50) NOT NULL,
-  officer_contact_no VARCHAR(50) NOT NULL,
+  officer_contact_no VARCHAR(11) NOT NULL,
 	officer_designation VARCHAR(50) NOT NULL,
   officer_is_verified BOOLEAN NOT NULL,
-  officer_facility_code VARCHAR(50) NOT NULL
+  hf_id VARCHAR(18) NOT NULL
 )`;
 
 db.query(createUserTable, (err, results) => {

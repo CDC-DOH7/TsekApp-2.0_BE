@@ -22,7 +22,7 @@ export const register = (req: Request, res: Response) => {
     supervisor_designation,
     supervisor_contact_no,
     supervisor_is_verified,
-    supervisor_facility_code,
+    hf_id,
   } = req.body;
 
   bcrypt.hash(supervisor_password, 10, (err, hash) => {
@@ -30,14 +30,14 @@ export const register = (req: Request, res: Response) => {
       return res.status(500).send(err);
     }
     // query to be called to the database
-    const query = `INSERT INTO supervisor_info (supervisor_id, supervisor_email, supervisor_username, supervisor_password, supervisor_fname, supervisor_mname, supervisor_lname, supervisor_contact_no, supervisor_designation, supervisor_is_verified, supervisor_facility_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); `;
+    const query = `INSERT INTO supervisor_info(supervisor_id, supervisor_email, supervisor_username, supervisor_password, supervisor_fname, supervisor_mname, supervisor_lname, supervisor_contact_no, supervisor_designation, supervisor_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); `;
 
     const supervisor_id = UniqueIDGenerator.generateCompactUniqueID(
       supervisor_fname,
       supervisor_mname,
       supervisor_lname,
       supervisor_designation,
-      supervisor_facility_code
+      hf_id
     );
 
     const procedureParams: SupervisorRegistrationProcedureParamsInterface[] = [
@@ -51,7 +51,7 @@ export const register = (req: Request, res: Response) => {
       supervisor_contact_no,
       supervisor_designation,
       supervisor_is_verified,
-      supervisor_facility_code,
+      hf_id,
     ];
 
     // execute the query
@@ -77,28 +77,32 @@ export const login = (req: Request, res: Response) => {
       return res.status(401).send("Invalid credentials");
     }
     const supervisor = results[0];
-    bcrypt.compare(supervisor_password, supervisor.supervisor_password, (err, isMatch) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-      if (!isMatch) {
-        return res.status(401).send("Invalid credentials");
-      }
+    bcrypt.compare(
+      supervisor_password,
+      supervisor.supervisor_password,
+      (err, isMatch) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
+        if (!isMatch) {
+          return res.status(401).send("Invalid credentials");
+        }
 
-      // substituted values because .env still doesn't work.
-      const JWT_SECRET = "d0hRegion7@eTs3kA99";
-      const JWT_EXPIRES_IN = "30d";
+        // substituted values because .env still doesn't work.
+        const JWT_SECRET = "d0hRegion7@eTs3kA99";
+        const JWT_EXPIRES_IN = "30d";
 
-      const token = jwt.sign(
-        { id: supervisor.supervisor_id },
-        //process.env.JWT_SECRET as string,
-        JWT_SECRET,
-        //{ expiresIn: process.env.JWT_EXPIRES_IN }
-        { expiresIn: JWT_EXPIRES_IN }
-      );
-      res.cookie("token", token, { maxAge: COOKIE_MAX_AGE, httpOnly: true });
-      res.status(200).send("Logged in");
-    });
+        const token = jwt.sign(
+          { id: supervisor.supervisor_id },
+          //process.env.JWT_SECRET as string,
+          JWT_SECRET,
+          //{ expiresIn: process.env.JWT_EXPIRES_IN }
+          { expiresIn: JWT_EXPIRES_IN }
+        );
+        res.cookie("token", token, { maxAge: COOKIE_MAX_AGE, httpOnly: true });
+        res.status(200).send("Logged in");
+      }
+    );
   });
 };
 

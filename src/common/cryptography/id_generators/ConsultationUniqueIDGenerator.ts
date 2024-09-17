@@ -1,8 +1,6 @@
-// class to generate unique IDs for supervisors and officers
-
 import crypto from "crypto";
 
-class UserUniqueIDGenerator {
+class ConsultationUniqueIDGenerator {
   private static base36encode(number: number): string {
     const alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let base36 = "";
@@ -12,6 +10,14 @@ class UserUniqueIDGenerator {
       base36 = alphabet[i] + base36;
     }
     return base36 || alphabet[0];
+  }
+
+  private static getCurrentDate(): string {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+    return `${year}${month}${day}`;
   }
 
   private static hashString(input: string): string {
@@ -30,37 +36,23 @@ class UserUniqueIDGenerator {
   }
 
   public static generateCompactUniqueID(
-    userFirstName: string,
-    userMiddleName: string,
-    userLastName: string,
-    designation: string,
-    facilityCode: string
+    patientId: string,
+    facilityId: string
   ): string {
-    // check if no middle name, if none, substitute it to last name, hence, repeating the initials
-    if (!userMiddleName || userMiddleName.trim() === "") {
-      userMiddleName = userLastName;
-    }
-
+    const currentDate = this.getCurrentDate();
     const randomBits = this.getRandomBits(32);
-    const name = userFirstName + userMiddleName + userLastName;
-    const combinedString = `${name}-${randomBits}`;
 
+    const combinedString = `${currentDate}-${randomBits}`;
     const hash = this.hashString(combinedString);
-    const uniqueSuffix = this.base36encode(parseInt(hash.slice(0, 8), 16));
+    const uniqueSuffix = this.base36encode(parseInt(hash.slice(0, 4), 16));
 
-    const combinedInitials = (
-      userFirstName.charAt(0) +
-      userMiddleName.charAt(0) +
-      userLastName.charAt(0)
-    ).toUpperCase();
-
-    let uniqueID = `${facilityCode.slice(13, 18).toUpperCase()}-${designation
-      .slice(0, 3)
-      .toUpperCase()}-${combinedInitials}-${uniqueSuffix.slice(0, 6)}`;
+    let uniqueID = `${currentDate}-CONS-${patientId.toUpperCase()}-${facilityId
+      .slice(13, 18)
+      .toUpperCase()}`;
 
     const suffix = this.calculateSuffix(uniqueID);
     return `${uniqueID}-${suffix}`;
   }
 }
 
-export default UserUniqueIDGenerator;
+export default ConsultationUniqueIDGenerator;
