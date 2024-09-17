@@ -17,11 +17,10 @@ export const addConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    const consultation_id =
-      ConsultationUniqueIDGenerator.generateCompactUniqueID(patient_id, hf_id);
-
-    const cl_id = consultation_id;
-    console.log(cl_id);
+    const cl_id = ConsultationUniqueIDGenerator.generateCompactUniqueID(
+      patient_id,
+      hf_id
+    );
 
     const newConsultation: ConsultationParamsInterface = {
       cl_id,

@@ -42,10 +42,10 @@ export const searchConsultationLog = (
   searchFilter: ConsultationLogSearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const { startDate, endDate, hf_id, patient_id, officer_id, ref_id } =
+  const { startDate, endDate, hf_id, cl_id, patient_id, officer_id, ref_id } =
     searchFilter;
 
-  let query = `SELECT * FROM ${TABLE_NAME} WHERE cl_id LIKE ?`;
+  let query = `SELECT * FROM ${TABLE_NAME} WHERE hf_id = ${hf_id}`;
   const queryParams: any[] = ["%"]; // Initial wildcard for cl_id
 
   // Add wildcard searches for each field
@@ -57,9 +57,9 @@ export const searchConsultationLog = (
     query += " AND cl_date <= ?";
     queryParams.push(endDate);
   }
-  if (hf_id) {
-    query += " AND hf_id LIKE ?";
-    queryParams.push(`%${hf_id}%`);
+  if (cl_id) {
+    query += " AND cl_id LIKE ?";
+    queryParams.push(`%${cl_id}%`);
   }
   if (patient_id) {
     query += " AND patient_id LIKE ?";
