@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";
 import { Officer } from "../types/officer";
-import officerRegistrationProcedureParamsInterface from "../interfaces/procedure_parameters/officerRegistrationProcedureParamsInterface";
+import OfficerRegistrationProcedureParamsInterface from "../interfaces/procedure_parameters/OfficerRegistrationProcedureParamsInterface";
 import UniqueIDGenerator from "../common/cryptography/id_generators/UserUniqueIDGenerator";
 
 // COOKIE MAX AGE
@@ -41,7 +41,7 @@ export const register = (req: Request, res: Response) => {
       officer_facility_code
     );
 
-    const procedureParams: officerRegistrationProcedureParamsInterface[] = [
+    const procedureParams: OfficerRegistrationProcedureParamsInterface[] = [
       officer_id,
       officer_email,
       officer_username,

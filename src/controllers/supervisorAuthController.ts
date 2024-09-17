@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";
 import { Supervisor } from "../types/supervisor.d ";
-import supervisorRegistrationProcedureParamsInterface from "../interfaces/procedure_parameters/supervisorRegistrationProcedureParamsInterface";
+import SupervisorRegistrationProcedureParamsInterface from "../interfaces/procedure_parameters/SupervisorRegistrationProcedureParamsInterface";
 import UniqueIDGenerator from "../common/cryptography/id_generators/UserUniqueIDGenerator";
 
 // COOKIE MAX AGE
@@ -40,7 +40,7 @@ export const register = (req: Request, res: Response) => {
       supervisor_facility_code
     );
 
-    const procedureParams: supervisorRegistrationProcedureParamsInterface[] = [
+    const procedureParams: SupervisorRegistrationProcedureParamsInterface[] = [
       supervisor_id,
       supervisor_email,
       supervisor_username,

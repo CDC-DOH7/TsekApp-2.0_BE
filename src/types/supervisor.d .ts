@@ -6,7 +6,7 @@ export interface Supervisor extends RowDataPacket {
   supervisor_username: string;
   supervisor_password: string;
   supervisor_fname: string;
-  supervisor_mname: string;
+  supervisor_mname: string | null;
   supervisor_lname: string;
   supervisor_contact_no: string;
   supervisor_designation: string;
