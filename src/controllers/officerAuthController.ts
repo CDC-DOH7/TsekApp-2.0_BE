@@ -22,50 +22,68 @@ export const register = (req: Request, res: Response) => {
     officer_designation,
     officer_contact_no,
     officer_is_verified,
-    officer_facility_code,
+    hf_id,
   } = req.body;
 
-  bcrypt.hash(officer_password, 10, (err, hash) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
-
-    // query to be called to the database
-    const query = `INSERT INTO officer_info(officer_id, officer_email, officer_username, officer_password, officer_fname, officer_mname, officer_lname, officer_designation, officer_contact_no, officer_is_verified, officer_facility_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-
-    const officer_id = UniqueIDGenerator.generateCompactUniqueID(
-      officer_fname,
-      officer_mname,
-      officer_lname,
-      officer_designation,
-      officer_facility_code
-    );
-
-    const procedureParams: OfficerRegistrationProcedureParamsInterface[] = [
-      officer_id,
-      officer_email,
-      officer_username,
-      hash,
-      officer_fname,
-      officer_mname,
-      officer_lname,
-      officer_contact_no,
-      officer_designation,
-      officer_is_verified,
-      officer_facility_code,
-    ];
-
-    // execute the query
-    db.query<ResultSetHeader>(query, procedureParams, (err, results) => {
+  // Check for duplicate email or username
+  const duplicateCheckQuery = `SELECT * FROM officer_info WHERE officer_email = ? OR officer_username = ?`;
+  db.query<Officer[]>(
+    duplicateCheckQuery,
+    [officer_email, officer_username],
+    (err, results) => {
       if (err) {
         return res.status(500).send(err);
       }
-      res.status(201).send("User registered");
-    });
-  });
-};
+      if (results.length > 0) {
+        return res.status(409).send("Email or Username already exists");
+      }
 
-// export const
+      // If no duplicates, proceed with registration
+      bcrypt.hash(officer_password, 10, (err, hash) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
+
+        // query to be called to the database
+        const query = `INSERT INTO officer_info(officer_id, officer_email, officer_username, officer_password, officer_fname, officer_mname, officer_lname, officer_designation, officer_contact_no, officer_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+
+        const officer_id = UniqueIDGenerator.generateCompactUniqueID(
+          officer_fname,
+          officer_mname,
+          officer_lname,
+          officer_designation,
+          hf_id
+        );
+
+        const procedureParams: OfficerRegistrationProcedureParamsInterface[] = [
+          officer_id,
+          officer_email,
+          officer_username,
+          hash,
+          officer_fname,
+          officer_mname,
+          officer_lname,
+          officer_contact_no,
+          officer_designation,
+          officer_is_verified,
+          hf_id,
+        ];
+
+        // execute the query
+        db.query<ResultSetHeader>(query, procedureParams, (err, results) => {
+          if (err) {
+            return res.status(500).send(err);
+          }
+          res
+            .status(200)
+            .send(
+              `Welcome to e-TsekApp ${officer_lname.toUpperCase()}, ${officer_fname}`
+            );
+        });
+      });
+    }
+  );
+};
 
 // function for login
 export const login = (req: Request, res: Response) => {
@@ -77,7 +95,7 @@ export const login = (req: Request, res: Response) => {
       return res.status(500).send(err);
     }
     if (results.length === 0) {
-      return res.status(401).send("Invalid credentials");
+      return res.status(401).send("User does not exist.");
     }
     const officer = results[0];
     bcrypt.compare(
@@ -103,7 +121,13 @@ export const login = (req: Request, res: Response) => {
           { expiresIn: JWT_EXPIRES_IN }
         );
         res.cookie("token", token, { maxAge: COOKIE_MAX_AGE, httpOnly: true });
-        res.status(200).send("Logged in");
+        res
+          .status(200)
+          .send(
+            `Logged in! Welcome ${officer.officer_lname.toUpperCase()}, ${
+              officer.officer_fname
+            }`
+          );
       }
     );
   });

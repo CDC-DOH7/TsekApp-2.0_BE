@@ -4,7 +4,7 @@ import "dotenv/config";
 
 dotenv.config();
 
-const TABLE_NAME = "supervisor_info"
+const TABLE_NAME = "supervisor_info";
 // please change the connection in production mode
 const db = mysql.createConnection({
   host: process.env.DATABASE_HOST || "localhost",
@@ -18,7 +18,9 @@ db.connect((err) => {
   if (err) {
     throw err;
   }
-  console.log(`Table ${TABLE_NAME} e-TsekApp Database is successfully connected.`);
+  console.log(
+    `Table ${TABLE_NAME} e-TsekApp Database is successfully connected.`
+  );
 });
 
 // create supervisor table function
@@ -31,10 +33,10 @@ CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (
 	supervisor_fname VARCHAR(50) NOT NULL,
 	supervisor_mname VARCHAR(50),
 	supervisor_lname VARCHAR(50) NOT NULL,
-  supervisor_contact_no VARCHAR(50) NOT NULL,
+  supervisor_contact_no VARCHAR(11) NOT NULL,
 	supervisor_designation VARCHAR(50) NOT NULL,
   supervisor_is_verified BOOLEAN NOT NULL,
-  supervisor_facility_code VARCHAR(50) NOT NULL
+  hf_id VARCHAR(18) NOT NULL
 )`;
 
 db.query(createSupervisorTable, (err, results) => {
