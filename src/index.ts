@@ -1,24 +1,31 @@
 import express, { Request, Response } from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import dotenv from "dotenv";
+
+// Network configuration
+import NetworkConfig from "./common/constants/NetworkConfig";
 
 // route imports
 import officerRouter from "./routes/officerRouter";
 import supervisorRouter from "./routes/supervisorRouter";
-
-dotenv.config();
+import superadminRouter from "./routes/superadminRouter";
 
 const eTsekApp: express.Application = express();
-const PORT = process.env.PORT || 3000;
+const PORT = NetworkConfig.DEFAULT_REACT_PORT || 3000;
+
+const corsOptions = {
+  origin: `http://localhost:${PORT}`, // Replace with your React app's URL
+  credentials: true, // Allow credentials (cookies)
+};
 
 eTsekApp.use(cookieParser());
-eTsekApp.use(cors());
+eTsekApp.use(cors(corsOptions));
 eTsekApp.use(express.json());
 
 // routes
-eTsekApp.use("/supervisor", supervisorRouter)
+eTsekApp.use("/supervisor", supervisorRouter);
 eTsekApp.use("/officer", officerRouter);
+eTsekApp.use("/superadmin", superadminRouter);
 
 eTsekApp.get("/", (req: Request, res: Response) => {
   res.send("Hello, world!");
