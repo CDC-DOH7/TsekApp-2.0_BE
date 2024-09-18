@@ -1,9 +1,9 @@
 // controllers/consultationController.ts
 import { Request, Response } from "express";
-import ConsultationModel from "../models/consultationModel";
-import ConsultationUniqueIDGenerator from "../common/cryptography/id_generators/ConsultationUniqueIDGenerator";
-import { authenticateOfficer } from "../middleware/authMiddleware";
-import ConsultationParamsInterface from "../interfaces/misc/ConsultationParamsInterface";
+import ConsultationModel from "../../models/record-based/consultationLogModel";
+import ConsultationUniqueIDGenerator from "../../common/cryptography/id_generators/ConsultationUniqueIDGenerator";
+import { authenticateOfficer } from "../../middleware/authMiddleware";
+import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
 
 // Add a new consultation
 export const addConsultation = [
@@ -32,11 +32,14 @@ export const addConsultation = [
       ref_id,
     };
 
-    ConsultationModel.createConsultationLog(newConsultation, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
+    ConsultationModel.officerCreateConsultationLog(
+      newConsultation,
+      (err, results) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
+        res.status(201).send("Consultation added successfully");
       }
-      res.status(201).send("Consultation added successfully");
-    });
+    );
   },
 ];

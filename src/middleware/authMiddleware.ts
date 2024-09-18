@@ -1,9 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import db from "../models/officerModel";
+import db from "../models/user-based/officerModel";
 import { Officer } from "../types/officer";
+import JwtConfig from "../common/constants/JwtConfig";
 
-const COOKIE_MAX_AGE = Number(process.env.COOKIE_MAX_AGE) || 604800000; // One week in milliseconds
+const COOKIE_MAX_AGE = Number(JwtConfig.JWT_EXPIRES_IN) || 604800000; // One week in milliseconds
 
 // middleware for universal checking
 export const authMiddleware = (
@@ -12,17 +13,14 @@ export const authMiddleware = (
   next: NextFunction
 ) => {
   // substituted values because .env still doesn't work.
-  const JWT_SECRET = "d0hRegion7@eTs3kA99";
-  const JWT_EXPIRES_IN = "30d";
 
   const token = req.cookies.token;
   if (!token) {
     return res.status(401).send("Access denied");
   }
   try {
-    // const verified = jwt.verify(token, process.env.JWT_SECRET as string);
     // substituted values because .env still doesn't work.
-    const verified = jwt.verify(token, JWT_SECRET);
+    const verified = jwt.verify(token, JwtConfig.JWT_SECRET);
     req.user = verified;
     // Refresh the cookie
     res.cookie("token", token, { maxAge: COOKIE_MAX_AGE, httpOnly: true });
@@ -46,8 +44,7 @@ export const authenticateOfficer = (
   }
 
   try {
-    const JWT_SECRET = "d0hRegion7@eTs3kA99"; // Substitute this with process.env.JWT_SECRET in production
-    const decoded = jwt.verify(token, JWT_SECRET) as { id: string };
+    const decoded = jwt.verify(token, JwtConfig.JWT_SECRET) as { id: string };
     req.body.officer_id = decoded.id;
 
     const query = `SELECT * FROM officer_info WHERE officer_id = ?`;
@@ -70,7 +67,6 @@ export const authenticateOfficer = (
 
       // Attach officer details to the request for further processing if needed
       req.body.officer = officer;
-
       next();
     });
   } catch (ex) {
