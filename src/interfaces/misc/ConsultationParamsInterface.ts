@@ -5,5 +5,5 @@ export default interface ConsultationParamsInterface {
   patient_id: string;
   officer_id: string;
   hf_id: string;
-  ref_id: string;
+  ref_id: string | null;
 }

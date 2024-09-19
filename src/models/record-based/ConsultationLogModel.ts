@@ -3,10 +3,10 @@ import ConsultationLogSearchFilterInterface from "../../interfaces/search_filter
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-based/officerModel";
-import supervisorDb from "../user-based/supervisorModel";
+import officerDb from "../user-based/OfficerModel";
+import supervisorDb from "../user-based/SupervisorModel";
 
-// # --- Begin Operations for Consultation Models --- #
+// # --- Begin Operations for Consultation Log Models --- #
 export const officerSearchConsultationLog = (
   searchFilter: ConsultationLogSearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
@@ -75,7 +75,8 @@ const officerCreateConsultationLog = (
   );
 };
 
-// ### ---- For Supervisors ---- ### //
+// # ---- Supervisor Functions ---- # //
+
 export const supervisorSearchConsultationLog = (
   searchFilter: ConsultationLogSearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
@@ -126,7 +127,9 @@ const supervisorUpdateConsultationLog = (
   consultation: ConsultationParamsInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `UPDATE ${TableNames.CONSULTATION_LOGS_TABLE} SET cl_description = ?, cl_date = ?, patient_id = ?, officer_id = ?, hf_id = ?, ref_id = ? WHERE cl_id = ?`;
+  const query = `UPDATE ${TableNames.CONSULTATION_LOGS_TABLE} 
+  SET cl_description = ?, cl_date = ?, officer_id = ?, 
+  ref_id = ? WHERE cl_id = ?`;
 
   // supervisor-specific
   supervisorDb.query(
@@ -134,9 +137,7 @@ const supervisorUpdateConsultationLog = (
     [
       consultation.cl_description,
       consultation.cl_date,
-      consultation.patient_id,
       consultation.officer_id,
-      consultation.hf_id,
       consultation.ref_id,
       consultation.cl_id,
     ],
@@ -149,7 +150,9 @@ const supervisorDeleteConsultationLog = (
   cl_id: string,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `DELETE FROM ${TableNames.CONSULTATION_LOGS_TABLE} WHERE cl_id = ?`;
+  const query = `DELETE FROM ${TableNames.CONSULTATION_LOGS_TABLE} 
+  WHERE cl_id = ?`;
+
   supervisorDb.query(query, [cl_id], callback);
 };
 

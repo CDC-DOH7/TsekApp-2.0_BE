@@ -1,6 +1,6 @@
 // controllers/consultationController.ts
 import { Request, Response } from "express";
-import ConsultationModel from "../../models/record-based/consultationLogModel";
+import ConsultationModel from "../../models/record-based/ConsultationLogModel";
 import ConsultationUniqueIDGenerator from "../../common/cryptography/id_generators/ConsultationUniqueIDGenerator";
 import { authenticateOfficer } from "../../middleware/authMiddleware";
 import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
@@ -38,7 +38,9 @@ export const addConsultation = [
         if (err) {
           return res.status(500).send(err);
         }
-        res.status(201).send("Consultation added successfully");
+        res
+          .status(201)
+          .json({ message: "Consultation added successfully", results });
       }
     );
   },

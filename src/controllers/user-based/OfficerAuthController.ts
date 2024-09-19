@@ -1,15 +1,23 @@
 import { Request, Response } from "express";
-import db from "../../models/user-based/officerModel";
+import db from "../../models/user-based/OfficerModel";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";
-import { Officer } from "../../types/officer";
+import { Officer } from "../../types/user-based/officer";
 import OfficerRegistrationProcedureParamsInterface from "../../interfaces/procedure_parameters/OfficerRegistrationProcedureParamsInterface";
 import UniqueIDGenerator from "../../common/cryptography/id_generators/UserUniqueIDGenerator";
-import JwtConfig from "../../common/constants/JwtConfig";
+import dotenv from "dotenv";
 
-// COOKIE MAX AGE
-const COOKIE_MAX_AGE = Number(JwtConfig.JWT_EXPIRES_IN) || 604800000; // One week in milliseconds
+dotenv.config();
+const JWT_SECRET = process.env.JWT_SECRET_ENCODED
+  ? Buffer.from(process.env.JWT_SECRET_ENCODED, "base64").toString("utf-8")
+  : "";
+
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN_ENCODED
+  ? Buffer.from(process.env.JWT_EXPIRES_IN_ENCODED, "base64").toString("utf-8")
+  : "";
+
+const COOKIE_MAX_AGE = Number(process.env.JWT_EXPIRES_IN);
 
 // function for registration
 export const register = (req: Request, res: Response) => {
@@ -90,6 +98,7 @@ export const register = (req: Request, res: Response) => {
 export const login = (req: Request, res: Response) => {
   const { officer_username, officer_password } = req.body;
   const query = `SELECT * FROM a_officer_info WHERE officer_username = ?`;
+
   db.query<Officer[]>(query, [officer_username], (err, results) => {
     if (err) {
       return res.status(500).send(err);
@@ -97,6 +106,7 @@ export const login = (req: Request, res: Response) => {
     if (results.length === 0) {
       return res.status(401).send("User does not exist.");
     }
+
     const officer = results[0];
     bcrypt.compare(
       officer_password,
@@ -109,21 +119,19 @@ export const login = (req: Request, res: Response) => {
           return res.status(401).send("Invalid credentials");
         }
 
-        const token = jwt.sign(
-          { id: officer.officer_id },
-          //process.env.JWT_SECRET as string,
-          JwtConfig.JWT_SECRET,
-          //{ expiresIn: process.env.JWT_EXPIRES_IN }
-          { expiresIn: JwtConfig.JWT_EXPIRES_IN }
-        );
+        const token = jwt.sign({ id: officer.officer_id }, JWT_SECRET, {
+          expiresIn: JWT_EXPIRES_IN,
+        });
+
+        const messageString = `Logged in! Welcome ${officer.officer_lname.toUpperCase()}, ${
+          officer.officer_fname
+        }`;
+
+        // Exclude the password field from the officer info
+        const { officer_password, ...officer_info } = officer;
+
         res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
-        res
-          .status(200)
-          .send(
-            `Logged in! Welcome ${officer.officer_lname.toUpperCase()}, ${
-              officer.officer_fname
-            }`
-          );
+        res.status(200).json({ message: messageString, officer_info });
       }
     );
   });

@@ -1,13 +1,15 @@
 import mysql from "mysql2";
 import TableNames from "../../common/constants/TableNames";
-import DatabaseConfig from "../../common/constants/DatabaseConfig";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // please change the connection in production mode
 const db = mysql.createConnection({
-  host: DatabaseConfig.SuperAdminConfig.HOSTNAME,
-  user: DatabaseConfig.SuperAdminConfig.USER,
-  password: DatabaseConfig.SuperAdminConfig.PASS,
-  database: DatabaseConfig.DatabaseConnectionInfo.DATABASE_NAME,
+  host: process.env.SUPERADMIN_HOSTNAME,
+  user: process.env.SUPERADMIN_USER,
+  password: process.env.SUPERADMIN_PASS,
+  database: process.env.DATABASE_NAME,
 });
 
 const disableForeignKeyChecks = `SET FOREIGN_KEY_CHECKS=0`;

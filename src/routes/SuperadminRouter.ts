@@ -3,7 +3,7 @@ import {
   register,
   login,
   logout,
-} from "../controllers/user-based/superadminAuthController";
+} from "../controllers/user-based/SuperadminAuthController";
 import { authMiddleware } from "../middleware/authMiddleware";
 
 const superadminRouter: Router = Router();

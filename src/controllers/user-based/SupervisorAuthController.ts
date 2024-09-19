@@ -1,15 +1,23 @@
 import { Request, Response } from "express";
-import db from "../../models/user-based/supervisorModel";
+import db from "../../models/user-based/SupervisorModel";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";
-import { Supervisor } from "../../types/supervisor.d ";
+import { Supervisor } from "../../types/user-based/supervisor.d ";
 import SupervisorRegistrationProcedureParamsInterface from "../../interfaces/procedure_parameters/SupervisorRegistrationProcedureParamsInterface";
 import UniqueIDGenerator from "../../common/cryptography/id_generators/UserUniqueIDGenerator";
-import JwtConfig from "../../common/constants/JwtConfig";
+import dotenv from "dotenv";
 
-// COOKIE MAX AGE
-const COOKIE_MAX_AGE = Number(JwtConfig.JWT_EXPIRES_IN) || 604800000; // One week in milliseconds
+dotenv.config();
+const JWT_SECRET = process.env.JWT_SECRET_ENCODED
+  ? Buffer.from(process.env.JWT_SECRET_ENCODED, "base64").toString("utf-8")
+  : "";
+
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN_ENCODED
+  ? Buffer.from(process.env.JWT_EXPIRES_IN_ENCODED, "base64").toString("utf-8")
+  : "";
+
+const COOKIE_MAX_AGE = Number(process.env.JWT_EXPIRES_IN) || 604800000; // One week in milliseconds
 
 // function for registration
 export const register = (req: Request, res: Response) => {
@@ -89,15 +97,19 @@ export const login = (req: Request, res: Response) => {
           return res.status(401).send("Invalid credentials");
         }
 
-        const token = jwt.sign(
-          { id: supervisor.supervisor_id },
-          //process.env.JWT_SECRET as string,
-          JwtConfig.JWT_SECRET,
-          //{ expiresIn: process.env.JWT_EXPIRES_IN }
-          { expiresIn: JwtConfig.JWT_EXPIRES_IN }
-        );
+        const token = jwt.sign({ id: supervisor.supervisor_id }, JWT_SECRET, {
+          expiresIn: JWT_EXPIRES_IN,
+        });
+
+        const messageString = `Logged in! Welcome ${supervisor.supervisor_lname.toUpperCase()}, ${
+          supervisor.supervisor_fname
+        }`;
+
+        // Exclude the password field from the supervisor info
+        const { supervisor_password, ...supervisor_info } = supervisor;
+
         res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
-        res.status(200).send("Logged in");
+        res.status(200).json({ message: messageString, supervisor_info });
       }
     );
   });
