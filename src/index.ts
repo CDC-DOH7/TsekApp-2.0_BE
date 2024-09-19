@@ -2,19 +2,21 @@ import express, { Request, Response } from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-// Network configuration
-import NetworkConfig from "./common/constants/NetworkConfig";
-
 // route imports
-import officerRouter from "./routes/officerRouter";
-import supervisorRouter from "./routes/supervisorRouter";
-import superadminRouter from "./routes/superadminRouter";
+import officerRouter from "./routes/OfficerRouter";
+import supervisorRouter from "./routes/SupervisorRouter";
+import superadminRouter from "./routes/SuperadminRouter";
 
+// dotenv
+import dotenv from "dotenv";
+
+dotenv.config();
 const eTsekApp: express.Application = express();
-const PORT = NetworkConfig.DEFAULT_REACT_PORT || 3000;
+const PORT = process.env.DEFAULT_PORT || 3000;
+const REACT_PORT = process.env.DEFAULT_REACT_PORT || 5173;
 
 const corsOptions = {
-  origin: `http://localhost:${PORT}`, // Replace with your React app's URL
+  origin: `http://localhost:${REACT_PORT}`, // Replace with your React app's URL
   credentials: true, // Allow credentials (cookies)
 };
 

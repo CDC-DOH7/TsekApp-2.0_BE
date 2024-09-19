@@ -3,7 +3,7 @@ import {
   register,
   login,
   logout,
-} from "../controllers/user-based/supervisorAuthController";
+} from "../controllers/user-based/SupervisorAuthController";
 import { authMiddleware } from "../middleware/authMiddleware";
 
 const supervisorRouter: Router = Router();

@@ -1,12 +1,13 @@
 import mysql from "mysql2";
-import DatabaseConfig from "../../common/constants/DatabaseConfig";
+import dotenv from "dotenv";
 
+dotenv.config();
 // please change the connection in production mode
 const db = mysql.createConnection({
-  host: DatabaseConfig.OfficerConfig.HOSTNAME,
-  user: DatabaseConfig.OfficerConfig.USER,
-  password: DatabaseConfig.OfficerConfig.PASS,
-  database: DatabaseConfig.DatabaseConnectionInfo.DATABASE_NAME,
+  host: process.env.OFFICER_HOSTNAME,
+  user: process.env.OFFICER_USER,
+  password: process.env.OFFICER_PASS,
+  database: process.env.DATABASE_NAME,
 });
 
 // connect function

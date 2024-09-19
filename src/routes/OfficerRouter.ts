@@ -3,9 +3,9 @@ import {
   register,
   login,
   logout,
-} from "../controllers/user-based/officerAuthController";
+} from "../controllers/user-based/OfficerAuthController";
 import { authMiddleware } from "../middleware/authMiddleware";
-import { addConsultation } from "../controllers/record-based/consultationLogController";
+import { addConsultation } from "../controllers/record-based/ConsultationLogController";
 
 const officerRouter: Router = Router();
 
