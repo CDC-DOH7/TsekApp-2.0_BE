@@ -1,4 +1,4 @@
-export default interface FamilyHistoryParamsInterface {
+export default interface RiskScreeningParamsInterface {
   rs_id: string | null;
   patient_id: string | null;
   rs_blood_sugar_fbs: number | null;

@@ -3,16 +3,22 @@ import ManagementSearchFilterInterface from "../../interfaces/search_filters/Man
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-based/OfficerModel";
-import supervisorDb from "../user-based/SupervisorModel";
+import officerDb from "../user-specific/OfficerModel";
+import supervisorDb from "../user-specific/SupervisorModel";
 
 // # --- Begin Operations for Management Models --- #
 const officerSearchManagement = (
   searchFilter: ManagementSearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const { mgm_id, patient_id, mngm_diagnosis_date, mngm_followup_date } =
-    searchFilter;
+  const {
+    mgm_id,
+    patient_id,
+    mngm_diagnosis_date_startDate,
+    mngm_diagnosis_date_endDate,
+    mngm_followup_date_startDate,
+    mngm_followup_date_endDate,
+  } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.MANAGEMENT_TABLE} WHERE mgm_id = ?`;
   const queryParams: any[] = [mgm_id]; // Initial wildcard for cl_id
@@ -22,13 +28,21 @@ const officerSearchManagement = (
     query += " AND patient_id LIKE ?";
     queryParams.push(patient_id);
   }
-  if (mngm_diagnosis_date) {
-    query += " AND mngm_diagnosis_date LIKE ?";
-    queryParams.push(mngm_diagnosis_date);
+  if (mngm_diagnosis_date_startDate) {
+    query += " AND mngm_diagnosis_date >= ?";
+    queryParams.push(mngm_diagnosis_date_startDate);
   }
-  if (mngm_followup_date) {
-    query += " AND mngm_followup_date LIKE ?";
-    queryParams.push(mngm_followup_date);
+  if (mngm_diagnosis_date_endDate) {
+    query += " AND mngm_diagnosis_date <= ?";
+    queryParams.push(mngm_diagnosis_date_endDate);
+  }
+  if (mngm_followup_date_startDate) {
+    query += " AND mngm_followup_date >= ?";
+    queryParams.push(mngm_followup_date_startDate);
+  }
+  if (mngm_followup_date_endDate) {
+    query += " AND mngm_followup_date <= ?";
+    queryParams.push(mngm_followup_date_endDate);
   }
 
   // officer-specific
@@ -69,13 +83,18 @@ const officerCreateManagement = (
 };
 
 // # ---- Supervisor Functions ---- #
-
-export const supervisorSearchManagement = (
+const supervisorSearchManagement = (
   searchFilter: ManagementSearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const { mgm_id, patient_id, mngm_diagnosis_date, mngm_followup_date } =
-    searchFilter;
+  const {
+    mgm_id,
+    patient_id,
+    mngm_diagnosis_date_startDate,
+    mngm_diagnosis_date_endDate,
+    mngm_followup_date_startDate,
+    mngm_followup_date_endDate,
+  } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.MANAGEMENT_TABLE} WHERE mgm_id = ?`;
   const queryParams: any[] = [mgm_id]; // Initial wildcard for cl_id
@@ -85,13 +104,21 @@ export const supervisorSearchManagement = (
     query += " AND patient_id LIKE ?";
     queryParams.push(patient_id);
   }
-  if (mngm_diagnosis_date) {
-    query += " AND mngm_diagnosis_date LIKE ?";
-    queryParams.push(mngm_diagnosis_date);
+  if (mngm_diagnosis_date_startDate) {
+    query += " AND mngm_diagnosis_date >= ?";
+    queryParams.push(mngm_diagnosis_date_startDate);
   }
-  if (mngm_followup_date) {
-    query += " AND mngm_followup_date LIKE ?";
-    queryParams.push(mngm_followup_date);
+  if (mngm_diagnosis_date_endDate) {
+    query += " AND mngm_diagnosis_date <= ?";
+    queryParams.push(mngm_diagnosis_date_endDate);
+  }
+  if (mngm_followup_date_startDate) {
+    query += " AND mngm_followup_date >= ?";
+    queryParams.push(mngm_followup_date_startDate);
+  }
+  if (mngm_followup_date_endDate) {
+    query += " AND mngm_followup_date <= ?";
+    queryParams.push(mngm_followup_date_endDate);
   }
 
   // officer-specific

@@ -3,28 +3,35 @@ import ConsultationLogSearchFilterInterface from "../../interfaces/search_filter
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-based/OfficerModel";
-import supervisorDb from "../user-based/SupervisorModel";
+import officerDb from "../user-specific/OfficerModel";
+import supervisorDb from "../user-specific/SupervisorModel";
 
 // # --- Begin Operations for Consultation Log Models --- #
-export const officerSearchConsultationLog = (
+const officerSearchConsultationLog = (
   searchFilter: ConsultationLogSearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const { startDate, endDate, hf_id, cl_id, patient_id, officer_id, ref_id } =
-    searchFilter;
+  const {
+    cl_date_startDate,
+    cl_date_endDate,
+    hf_id,
+    cl_id,
+    patient_id,
+    officer_id,
+    ref_id,
+  } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.CONSULTATION_LOGS_TABLE} WHERE hf_id = ?`;
   const queryParams: any[] = [hf_id]; // Initial wildcard for cl_id
 
   // Add wildcard searches for each field
-  if (startDate) {
+  if (cl_date_startDate) {
     query += " AND cl_date >= ?";
-    queryParams.push(startDate);
+    queryParams.push(cl_date_startDate);
   }
-  if (endDate) {
+  if (cl_date_endDate) {
     query += " AND cl_date <= ?";
-    queryParams.push(endDate);
+    queryParams.push(cl_date_endDate);
   }
   if (cl_id) {
     query += " AND cl_id LIKE ?";
@@ -76,25 +83,31 @@ const officerCreateConsultationLog = (
 };
 
 // # ---- Supervisor Functions ---- # //
-
-export const supervisorSearchConsultationLog = (
+const supervisorSearchConsultationLog = (
   searchFilter: ConsultationLogSearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const { startDate, endDate, hf_id, cl_id, patient_id, officer_id, ref_id } =
-    searchFilter;
+  const {
+    cl_date_startDate,
+    cl_date_endDate,
+    hf_id,
+    cl_id,
+    patient_id,
+    officer_id,
+    ref_id,
+  } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.CONSULTATION_LOGS_TABLE} WHERE hf_id = ?`;
   const queryParams: any[] = [hf_id]; // Initial wildcard for cl_id
 
   // Add wildcard searches for each field
-  if (startDate) {
+  if (cl_date_startDate) {
     query += " AND cl_date >= ?";
-    queryParams.push(startDate);
+    queryParams.push(cl_date_startDate);
   }
-  if (endDate) {
+  if (cl_date_endDate) {
     query += " AND cl_date <= ?";
-    queryParams.push(endDate);
+    queryParams.push(cl_date_endDate);
   }
   if (cl_id) {
     query += " AND cl_id LIKE ?";

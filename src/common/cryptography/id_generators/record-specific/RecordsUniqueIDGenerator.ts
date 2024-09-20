@@ -1,6 +1,6 @@
 import crypto from "crypto";
 
-class ConsultationUniqueIDGenerator {
+class RecordsUniqueIDGenerator {
   private static base36encode(number: number): string {
     const alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let base36 = "";
@@ -46,13 +46,13 @@ class ConsultationUniqueIDGenerator {
     const hash = this.hashString(combinedString);
     const uniqueSuffix = this.base36encode(parseInt(hash.slice(0, 4), 16));
 
-    let uniqueID = `${currentDate}-CONS-${patientId.toUpperCase()}-${facilityId
+    let uniqueID = `${currentDate}-CON-${patientId.toUpperCase()}-${facilityId
       .slice(13, 18)
-      .toUpperCase()}`;
+      .toUpperCase()}-${uniqueSuffix}`;
 
     const suffix = this.calculateSuffix(uniqueID);
     return `${uniqueID}-${suffix}`;
   }
 }
 
-export default ConsultationUniqueIDGenerator;
+export default RecordsUniqueIDGenerator;

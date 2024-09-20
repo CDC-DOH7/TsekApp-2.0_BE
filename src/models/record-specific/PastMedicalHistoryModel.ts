@@ -3,8 +3,8 @@ import PastMedicalHistorySearchFilterInterface from "../../interfaces/search_fil
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-based/OfficerModel";
-import supervisorDb from "../user-based/SupervisorModel";
+import officerDb from "../user-specific/OfficerModel";
+import supervisorDb from "../user-specific/SupervisorModel";
 
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchPastMedicalHistory = (
@@ -21,6 +21,9 @@ const officerSearchPastMedicalHistory = (
     query += " AND patient_id LIKE ?";
     queryParams.push(patient_id);
   }
+
+  // sort the results from latest
+  query += " ORDER BY patient_id DESC";
 
   // officer-specific
   officerDb.query(query, queryParams, (err, results) => {
@@ -74,21 +77,23 @@ const officerCreatePastMedicalHistory = (
 };
 
 // # ---- Supervisor Functions ---- #
-
-export const supervisorSearchPastMedicalHistory = (
+const supervisorSearchPastMedicalHistory = (
   searchFilter: PastMedicalHistorySearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
   const { pmh_id, patient_id } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.PAST_MEDICAL_HISTORY_TABLE} WHERE pmh_id = ?`;
-  const queryParams: any[] = [pmh_id]; // Initial wildcard for cl_id
+  const queryParams: any[] = [pmh_id]; // Initial wildcard for pmh_id
 
   // Add wildcard searches for each field
   if (patient_id) {
     query += " AND patient_id LIKE ?";
     queryParams.push(patient_id);
   }
+
+  // sort the results from latest
+  query += " ORDER BY patient_id DESC";
 
   // officer-specific
   supervisorDb.query(query, queryParams, (err, results) => {

@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import db from "../../models/user-based/OfficerModel";
+import db from "../../models/user-specific/OfficerModel";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";
 import { Officer } from "../../types/user-based/officer";
-import OfficerRegistrationProcedureParamsInterface from "../../interfaces/procedure_parameters/OfficerRegistrationProcedureParamsInterface";
-import UniqueIDGenerator from "../../common/cryptography/id_generators/UserUniqueIDGenerator";
+import OfficerRegistrationProcedureParamsInterface from "../../interfaces/user_specific_parameters/OfficerRegistrationProcedureParamsInterface";
+import UniqueIDGenerator from "../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -86,7 +86,7 @@ export const register = (req: Request, res: Response) => {
           res
             .status(200)
             .send(
-              `Welcome to e-TsekApp ${officer_lname.toUpperCase()}, ${officer_fname}`
+              `Welcome to e-tsekapp ${officer_lname.toUpperCase()}, ${officer_fname}`
             );
         });
       });
