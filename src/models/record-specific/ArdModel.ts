@@ -3,8 +3,8 @@ import ArdSearchFilterInterface from "../../interfaces/search_filters/ArdSearchF
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-based/OfficerModel";
-import supervisorDb from "../user-based/SupervisorModel";
+import officerDb from "../user-specific/OfficerModel";
+import supervisorDb from "../user-specific/SupervisorModel";
 
 // # --- Begin Operations for ARD Models --- #
 const officerSearchArd = (

@@ -11,7 +11,7 @@ enum TableNames {
   NCD_RISK_FACTORS_TABLE = "a_ncd_risk_factors",
   RISK_SCREENING_TABLE = "a_risk_screening",
   MANAGEMENT_TABLE = "a_management",
-  REFERRAL = "a_referral",
+  REFERRAL_TABLE = "a_referral",
 }
 
 export default TableNames;

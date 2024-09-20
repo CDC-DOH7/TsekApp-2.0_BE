@@ -3,8 +3,8 @@ import FamilyHistorySearchFilterInterface from "../../interfaces/search_filters/
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-based/OfficerModel";
-import supervisorDb from "../user-based/SupervisorModel";
+import officerDb from "../user-specific/OfficerModel";
+import supervisorDb from "../user-specific/SupervisorModel";
 
 // # --- Begin Operations for Family History Models --- #
 const officerSearchFamilyHistory = (
@@ -30,8 +30,6 @@ const officerSearchFamilyHistory = (
     callback(null, results);
   });
 };
-
-// # ---- Supervisor Functions ---- # //
 
 // Create consultation record
 const officerCreateFamilyHistory = (
@@ -62,7 +60,7 @@ const officerCreateFamilyHistory = (
   );
 };
 
-// Update consultation record
+// # ---- Supervisor Functions ---- #
 const supervisorUpdateFamilyHistory = (
   familyHistory: FamilyHistoryParamsInterface,
   callback: (err: Error | null, results?: any) => void

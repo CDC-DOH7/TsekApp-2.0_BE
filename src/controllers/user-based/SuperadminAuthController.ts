@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import db from "../../models/user-based/SuperadminModel";
+import db from "../../models/user-specific/SuperadminModel";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";
 import { Superadmin } from "../../types/user-based/superadmin";
-import SuperadminRegistrationProcedureParamsInterface from "../../interfaces/procedure_parameters/SuperadminRegistrationProcedureParamsInterface";
-import UniqueIDGenerator from "../../common/cryptography/id_generators/UserUniqueIDGenerator";
+import SuperadminRegistrationProcedureParamsInterface from "../../interfaces/user_specific_parameters/SuperadminRegistrationProcedureParamsInterface";
+import UniqueIDGenerator from "../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
 import dotenv from "dotenv";
 
 dotenv.config();

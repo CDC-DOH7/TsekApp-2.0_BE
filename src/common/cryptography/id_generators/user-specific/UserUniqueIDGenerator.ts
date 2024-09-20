@@ -59,7 +59,11 @@ class UserUniqueIDGenerator {
       .toUpperCase()}-${combinedInitials}-${uniqueSuffix.slice(0, 6)}`;
 
     const suffix = this.calculateSuffix(uniqueID);
-    return `${uniqueID}-${suffix}`;
+    const generatedId = `${uniqueID}-${suffix}`;
+    console.table(
+      `Generated length: ${generatedId.length}\nGenerated ID: ${generatedId}\n`
+    );
+    return generatedId;
   }
 }
 

@@ -3,8 +3,8 @@ import NcdRiskFactorsSearchFilterInterface from "../../interfaces/search_filters
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-based/OfficerModel";
-import supervisorDb from "../user-based/SupervisorModel";
+import officerDb from "../user-specific/OfficerModel";
+import supervisorDb from "../user-specific/SupervisorModel";
 
 // # --- Begin Operations for NCD Risk Factors Models --- #
 const officerSearchNcdRiskFactors = (
@@ -64,15 +64,14 @@ const officerCreateNcdRiskFactors = (
 };
 
 // # ---- Supervisor Functions ---- #
-
-export const supervisorSearchNcdRiskFactors = (
+const supervisorSearchNcdRiskFactors = (
   searchFilter: NcdRiskFactorsSearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
   const { rf_id, patient_id } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.NCD_RISK_FACTORS_TABLE} WHERE rf_id = ?`;
-  const queryParams: any[] = [rf_id]; // Initial wildcard for cl_id
+  const queryParams: any[] = [rf_id]; // Initial wildcard for rf_id
 
   // Add wildcard searches for each field
   if (patient_id) {

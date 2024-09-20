@@ -5,7 +5,10 @@ import {
   logout,
 } from "../controllers/user-based/OfficerAuthController";
 import { authMiddleware } from "../middleware/authMiddleware";
-import { addConsultation } from "../controllers/record-based/ConsultationLogController";
+import {
+  officerCreateConsultation,
+  officerSearchConsultation,
+} from "../controllers/record-based/ConsultationLogController";
 
 const officerRouter: Router = Router();
 
@@ -14,7 +17,7 @@ officerRouter.post("/login", login);
 officerRouter.post("/logout", authMiddleware, logout);
 
 // roles
-officerRouter.post("/add-consultation", addConsultation);
-officerRouter.post("/search-consultation");
+officerRouter.post("/add-consultation", officerCreateConsultation);
+officerRouter.post("/search-consultation", officerSearchConsultation);
 
 export default officerRouter;

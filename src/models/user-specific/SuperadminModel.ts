@@ -195,7 +195,7 @@ const createTables = [
     mngm_notes TEXT,
     FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id)
   )`,
-  `CREATE TABLE IF NOT EXISTS ${TableNames.REFERRAL} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.REFERRAL_TABLE} (
     ref_id VARCHAR(50) NOT NULL PRIMARY KEY,
     patient_id VARCHAR(50),
     officer_id VARCHAR(50),

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import db from "../models/user-based/OfficerModel";
+import db from "../models/user-specific/OfficerModel";
 import { Officer } from "../types/user-based/officer";
 import dotenv from "dotenv";
 
