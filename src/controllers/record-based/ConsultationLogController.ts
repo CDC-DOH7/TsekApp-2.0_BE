@@ -7,6 +7,8 @@ import {
   authMiddleware,
 } from "../../middleware/authMiddleware";
 import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
+import * as lodash from "lodash";
+import ConsultationLogSearchFilterInterface from "../../interfaces/search_filters/ConsultationLogSearchFilterInterface";
 
 // Add/create a new consultation
 export const officerCreateConsultation = [
@@ -22,7 +24,8 @@ export const officerCreateConsultation = [
 
     const cl_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
       patient_id,
-      hf_id
+      hf_id,
+      1
     );
 
     const newConsultation: ConsultationParamsInterface = {
@@ -53,39 +56,27 @@ export const officerCreateConsultation = [
 export const officerSearchConsultation = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
-      req.body;
+    const {
+      cl_date_startDate,
+      cl_date_endDate,
+      hf_id,
+      cl_id,
+      patient_id,
+      officer_id,
+      ref_id,
+    } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
-    }
+    } 
 
-    const cl_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
-      patient_id,
-      hf_id
-    );
-
-    const newConsultation: ConsultationParamsInterface = {
-      cl_id,
-      cl_description,
-      cl_date,
-      patient_id,
-      officer_id,
-      hf_id,
-      ref_id,
-    };
-
-    ConsultationModel.officerCreateConsultationLog(
-      newConsultation,
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        res
-          .status(201)
-          .json({ message: "Consultation added successfully", results });
+    ConsultationModel.officerSearchConsultationLog({cl_date_startDate, cl_date_endDate, hf_id, cl_id, patient_id, officer_id, ref_id}, (err, results) => {
+      if(err){
+        return res.status(500).send(err);
       }
-    );
-  },
+
+      res.status(201).json({message: "Found!", results})
+    });
+  }
 ];

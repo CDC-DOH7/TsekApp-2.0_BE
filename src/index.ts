@@ -35,7 +35,7 @@ eTsekApp.get("/", (req: Request, res: Response) => {
 
 eTsekApp.listen(PORT, () => {
   try {
-    console.log(`eTsekApp Server is running at: http://localhost/${PORT}`);
+    console.log(`eTsekApp Server is running at: http://localhost:${PORT}`);
   } catch (Exception) {
     console.error(Exception);
   }

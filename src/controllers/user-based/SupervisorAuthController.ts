@@ -30,7 +30,6 @@ export const register = (req: Request, res: Response) => {
     supervisor_lname,
     supervisor_designation,
     supervisor_contact_no,
-    supervisor_is_verified,
     hf_id,
   } = req.body;
 
@@ -39,7 +38,10 @@ export const register = (req: Request, res: Response) => {
       return res.status(500).send(err);
     }
     // query to be called to the database
-    const query = `INSERT INTO a_supervisor_info(supervisor_id, supervisor_email, supervisor_username, supervisor_password, supervisor_fname, supervisor_mname, supervisor_lname, supervisor_contact_no, supervisor_designation, supervisor_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); `;
+    const query = `INSERT INTO a_supervisor_info(supervisor_id, supervisor_email,
+    supervisor_username, supervisor_password, supervisor_fname, supervisor_mname,
+    supervisor_lname, supervisor_contact_no, supervisor_designation, 
+    supervisor_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); `;
 
     const supervisor_id = UniqueIDGenerator.generateCompactUniqueID(
       supervisor_fname,
@@ -59,7 +61,8 @@ export const register = (req: Request, res: Response) => {
       supervisor_lname,
       supervisor_contact_no,
       supervisor_designation,
-      supervisor_is_verified,
+      true, // set true as default
+      //supervisor_is_verified, 
       hf_id,
     ];
 
@@ -120,3 +123,7 @@ export const logout = (req: Request, res: Response) => {
   res.clearCookie("token");
   res.status(200).send("Logged out");
 };
+
+
+// function for deletion of officer accounts
+export const deleteAccount = (req: Request, res: Response)

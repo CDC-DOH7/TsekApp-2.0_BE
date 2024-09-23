@@ -54,7 +54,7 @@ export const register = (req: Request, res: Response) => {
         }
 
         // query to be called to the database
-        const query = `INSERT INTO officer_info(officer_id, officer_email, officer_username, officer_password, officer_fname, officer_mname, officer_lname, officer_designation, officer_contact_no, officer_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+        const query = `INSERT INTO a_officer_info(officer_id, officer_email, officer_username, officer_password, officer_fname, officer_mname, officer_lname, officer_designation, officer_contact_no, officer_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
         const officer_id = UniqueIDGenerator.generateCompactUniqueID(
           officer_fname,
@@ -72,8 +72,8 @@ export const register = (req: Request, res: Response) => {
           officer_fname,
           officer_mname,
           officer_lname,
-          officer_contact_no,
           officer_designation,
+          officer_contact_no,
           officer_is_verified,
           hf_id,
         ];

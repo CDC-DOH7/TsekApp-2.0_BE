@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import db from "../models/user-specific/OfficerModel";
 import { Officer } from "../types/user-based/officer";
 import dotenv from "dotenv";
+import { Supervisor } from "../types/user-based/supervisor.d ";
 
 dotenv.config();
 
@@ -71,6 +72,50 @@ export const authenticateOfficer = (
 
       // Attach officer details to the request for further processing if needed
       req.body.officer = officer;
+      next();
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(400).send("Invalid token.");
+  }
+};
+
+// Middleware to check if the supervisor is authenticated
+export const authenticateSupervisor = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(401).send("Access denied. No token provided.");
+  }
+
+  try {
+    const decoded = jwt.verify(token, JWT_SECRET) as { id: string };
+    req.body.supervisor_id = decoded.id;
+
+    const query = `SELECT * FROM a_supervisor_info WHERE supervisor_id = ?`;
+    db.query<Supervisor[]>(query, [req.body.supervisor_id], (err, results) => {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      if (results.length === 0) {
+        return res.status(401).send("Invalid login.");
+      }
+
+      const supervisor = results[0];
+
+      // Check if the provided hf_id matches the officer's hf_id
+      if (req.body.hf_id !== supervisor.hf_id) {
+        return res
+          .status(403)
+          .send("Access denied. Invalid health facility ID.");
+      }
+
+      // Attach officer details to the request for further processing if needed
+      req.body.supervisor = supervisor;
       next();
     });
   } catch (err) {

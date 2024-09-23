@@ -12,6 +12,12 @@ supervisorRouter.post("/register", register);
 supervisorRouter.post("/login", login);
 supervisorRouter.post("/logout", authMiddleware, logout);
 
-// roles
+// officer account-related roles
+supervisorRouter.post("/management/officer/update");
+supervisorRouter.post("/management/officer/delete");
+
+// record-related roles
+supervisorRouter.post("/management/records/update");
+supervisorRouter.post("/management/records/delete");
 
 export default supervisorRouter;

@@ -35,7 +35,9 @@ export const register = (req: Request, res: Response) => {
       return res.status(500).send(err);
     }
     // query to be called to the database
-    const query = `INSERT INTO a_superadmin_info(superadmin_id, superadmin_email, superadmin_username, superadmin_password, superadmin_fname, superadmin_mname, superadmin_lname, superadmin_contact_no, superadmin_designation, superadmin_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); `;
+    const query = `INSERT INTO a_superadmin_info(superadmin_id, superadmin_email, 
+    superadmin_username, superadmin_password, superadmin_fname, superadmin_mname, 
+    superadmin_lname) VALUES (?, ?, ?, ?, ?, ?, ?); `;
 
     const superadmin_id = UniqueIDGenerator.generateCompactUniqueID(
       superadmin_fname,
