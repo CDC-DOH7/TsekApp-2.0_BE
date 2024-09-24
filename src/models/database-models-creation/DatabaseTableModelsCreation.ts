@@ -167,7 +167,7 @@ export const createTablesScripts = [
       rs_urine_protein_date_taken DATE,
       rs_urine_ketones FLOAT,
       rs_urine_ketones_date_taken DATE,
-      rs_respiratory CHAR(3),
+      rs_respiratory VARCHAR(50),
       FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id)
     )`,
     `CREATE TABLE IF NOT EXISTS ${TableNames.MANAGEMENT_TABLE}(
