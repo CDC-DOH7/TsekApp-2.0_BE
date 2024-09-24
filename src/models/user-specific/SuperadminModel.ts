@@ -20,14 +20,15 @@ const enableForeignKeyChecks = `SET FOREIGN_KEY_CHECKS=1`;
 const createTables = [
   `CREATE TABLE IF NOT EXISTS ${TableNames.HEALTH_FACILITY_INFO_TABLE} (
     hf_id VARCHAR(50) NOT NULL PRIMARY KEY,
-    hf_name TEXT NOT NULL,
+    hf_name VARCHAR(64) NOT NULL,
+    hf_phic_accreditation VARCHAR(50),
     hf_brgy VARCHAR(50) NOT NULL,
-    brgy_id INT(11) NOT NULL, 
+    brgy_id INT(11) NOT NULL,
     hf_muncity VARCHAR(50) NOT NULL, 
     muncity_id VARCHAR(50) NOT NULL,
     hf_province VARCHAR(50) NOT NULL,
     province_id INT NOT NULL,
-    hf_region VARCHAR(50) NOT NULL
+    hf_region VARCHAR(50) NOT NULL,
   )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.SUPERADMIN_INFO_TABLE} (
     superadmin_id VARCHAR(50) PRIMARY KEY,
@@ -215,6 +216,32 @@ const createTables = [
     officer_id VARCHAR(50),
     hf_id VARCHAR(50),
     ref_id VARCHAR(50)
+  )`,
+
+  // generate default tables for the previous data records
+  `CREATE TABLE IF NOT EXISTS ${TableNames.AGE_BRACKET} (
+    id int(10) unsigned AUTO_INCREMENT PRIMARY KEY,
+    description VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+  )`,
+  `CREATE TABLE IF NOT EXISTS ${TableNames.AVAILABLE_SERVICES} (
+    id int(10) unsigned AUTO_INCREMENT PRIMARY KEY,
+    facility_code VARCHAR(255) NOT NULL,
+    service VARCHAR(255),
+    costing VARCHAR(255),
+    type VARCHAR(30),
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
+  )`,
+  `CREATE TABLE IF NOT EXISTS ${TableNames.BRACKET_SERVICES} (
+    id int(10) unsigned AUTO_INCREMENT PRIMARY KEY,
+    bracket_id VARCHAR(255) NOT NULL,
+    service VARCHAR(255),
+    costing VARCHAR(255),
+    type VARCHAR(30),
+    created_at TIMESTAMP,
+    updated_at TIMESTAMP
   )`,
 ];
 

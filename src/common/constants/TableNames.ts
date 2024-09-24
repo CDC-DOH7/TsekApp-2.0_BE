@@ -12,6 +12,18 @@ enum TableNames {
   RISK_SCREENING_TABLE = "a_risk_screening",
   MANAGEMENT_TABLE = "a_management",
   REFERRAL_TABLE = "a_referral",
+
+  // Default tables
+  AGE_BRACKET = "age_bracket",
+  AVAILABLE_SERVICES = "available_services",
+  BRACKET_SERVICES = "bracket_services",
+  CASES = "cases",
+  FEEDBACK = "feedback",
+  GENERAL_INFORMATION = "general_information",
+  PROFILE = "profile",
+  PHIC_MEMBERSHIP = "phic_membership",
+  SERVICES = "services",
+  TUBERCULOSIS = "tuberculosis",
 }
 
 export default TableNames;
