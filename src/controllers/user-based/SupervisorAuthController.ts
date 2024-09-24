@@ -126,4 +126,6 @@ export const logout = (req: Request, res: Response) => {
 
 
 // function for deletion of officer accounts
-export const deleteAccount = (req: Request, res: Response)
+export const deleteAccount = (req: Request, res: Response) => {
+  res.status(200).send("Deleted account.");
+}

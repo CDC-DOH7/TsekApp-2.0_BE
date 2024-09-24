@@ -20,8 +20,10 @@ enum TableNames {
   CASES = "cases",
   FEEDBACK = "feedback",
   GENERAL_INFORMATION = "general_information",
-  PROFILE = "profile",
+  IMMUSTAT = "immu_stat",
+  MEDICATION = "medication",
   PHIC_MEMBERSHIP = "phic_membership",
+  PROFILE = "profile", 
   SERVICES = "services",
   TUBERCULOSIS = "tuberculosis",
 }
