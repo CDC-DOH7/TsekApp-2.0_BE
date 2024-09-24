@@ -51,6 +51,11 @@ class RecordsUniqueIDGenerator {
 
     // choose what type of ID is generated
     switch (idType) {
+      // for ARD id
+      case 0:
+        identifier = "ARD"
+        break;
+
       // for consultation id
       case 1:
         identifier = "CON";
@@ -62,27 +67,27 @@ class RecordsUniqueIDGenerator {
         break;
 
       // for family id
-      case 2:
+      case 3:
         identifier = "MNG";
         break;
 
       // for NCD factor
-      case 3:
+      case 4:
         identifier = "NCD";
         break;
 
       // for Past Medical History
-      case 4:
+      case 5:
         identifier = "PMH";
         break;
 
       // for referrals
-      case 5:
+      case 6:
         identifier = "REF";
         break;
 
       // for risk screening
-      case 6:
+      case 7:
         identifier = "RSK";
         break;
 

@@ -142,7 +142,7 @@ const supervisorUpdateConsultationLog = (
 ) => {
   const query = `UPDATE ${TableNames.CONSULTATION_LOGS_TABLE} 
   SET cl_description = ?, cl_date = ?, officer_id = ?, 
-  ref_id = ? WHERE cl_id = ?`;
+  ref_id = ? WHERE cl_id = ? AND patient_id = ? AND hf_id = ?`;
 
   // supervisor-specific
   supervisorDb.query(
@@ -153,6 +153,8 @@ const supervisorUpdateConsultationLog = (
       consultation.officer_id,
       consultation.ref_id,
       consultation.cl_id,
+      consultation.patient_id,
+      consultation.hf_id
     ],
     callback
   );

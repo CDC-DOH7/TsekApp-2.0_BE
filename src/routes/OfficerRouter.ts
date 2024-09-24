@@ -16,8 +16,10 @@ officerRouter.post("/register", register);
 officerRouter.post("/login", login);
 officerRouter.post("/logout", authMiddleware, logout);
 
-// roles
+// consultation table roles
 officerRouter.post("/records/create", officerCreateConsultation);
 officerRouter.post("/records/search", officerSearchConsultation);
+
+//
 
 export default officerRouter;

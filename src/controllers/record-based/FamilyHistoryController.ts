@@ -1,15 +1,15 @@
-// controllers/consultationController.ts
+// controllers/FamilyHistoryController.ts
 import { Request, Response } from "express";
-import ConsultationModel from "../../models/record-specific/ConsultationLogModel";
+import FamilyHistoryModel from "../../models/record-specific/FamilyHistoryModel";
 import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
 } from "../../middleware/authMiddleware";
-import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
+import FamilyHistoryParamsInterface from "../../interfaces/misc/FamilyHistoryParamsInterface";
 
-// (Officer) Add/create a new consultation log
-export const officerCreateConsultation = [
+// (Officer) Add/create a new FamilyHistory log
+export const officerCreateFamilyHistory = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
@@ -26,7 +26,7 @@ export const officerCreateConsultation = [
       1
     );
 
-    const newConsultation: ConsultationParamsInterface = {
+    const newFamilyHistory: FamilyHistoryParamsInterface = {
       cl_id,
       cl_description,
       cl_date,
@@ -36,22 +36,22 @@ export const officerCreateConsultation = [
       ref_id,
     };
 
-    ConsultationModel.officerCreateConsultationLog(
-      newConsultation,
+    FamilyHistoryModel.officerCreateFamilyHistory(
+      newFamilyHistory,
       (err, results) => {
         if (err) {
           return res.status(500).send(err);
         }
         res
           .status(201)
-          .json({ message: "Consultation added successfully", results });
+          .json({ message: "FamilyHistory added successfully", results });
       }
     );
   },
 ];
 
-// (Officer) Read/Search a consultation log
-export const officerSearchConsultation = [
+// (Officer) Read/Search a FamilyHistory log
+export const officerSearchFamilyHistory = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
@@ -69,7 +69,7 @@ export const officerSearchConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.officerSearchConsultationLog(
+    FamilyHistoryModel.officerSearchFamilyHistoryLog(
       {
         cl_date_startDate,
         cl_date_endDate,
@@ -90,8 +90,8 @@ export const officerSearchConsultation = [
   },
 ];
 
-// (Supervisor) Read/Search a consultation log
-export const supervisorSearchConsultation = [
+// (Supervisor) Read/Search a FamilyHistory log
+export const supervisorSearchFamilyHistory = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
@@ -110,7 +110,7 @@ export const supervisorSearchConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorSearchConsultationLog(
+    FamilyHistoryModel.supervisorSearchFamilyHistoryLog(
       {
         cl_date_startDate,
         cl_date_endDate,
@@ -131,8 +131,8 @@ export const supervisorSearchConsultation = [
   },
 ];
 
-// (Supervisor) Read/Search a consultation log
-export const supervisorUpdateConsultation = [
+// (Supervisor) Read/Search a FamilyHistory log
+export const supervisorUpdateFamilyHistory = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
@@ -151,7 +151,7 @@ export const supervisorUpdateConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(
+    FamilyHistoryModel.supervisorUpdateFamilyHistoryLog(
       {
         cl_description,
         cl_date,
@@ -172,8 +172,8 @@ export const supervisorUpdateConsultation = [
   },
 ];
 
-// (Supervisor) Delete a consultation log
-export const supervisorDeleteConsultation = [
+// (Supervisor) Delete a FamilyHistory log
+export const supervisorDeleteFamilyHistory = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const { cl_id, supervisor_id } = req.body;
@@ -183,7 +183,7 @@ export const supervisorDeleteConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(cl_id, (err, results) => {
+    FamilyHistoryModel.supervisorUpdateFamilyHistoryLog(cl_id, (err, results) => {
       if (err) {
         return res.status(500).send(err);
       }

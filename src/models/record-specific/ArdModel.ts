@@ -93,7 +93,11 @@ const supervisorUpdateArd = (
   ard: ArdParamsInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `UPDATE ${TableNames.ASSESS_RED_FLAG_TABLE} SET ard_chest_pain = ?, ard_difficulty_breathing = ?, ard_loss_consciousness = ?, ard_slurred_speech = ?, ard_facial_asymmetry = ?, ard_numb_arm = ?, ard_disoriented = ?, ard_chest_retractions = ?, ard_seizure_or_convulsion = ?, ard_selfharm_or_suicide = ?, ard_aggressive_behavior = ?, ard_eye_injury = ?, ard_severe_injuries = ? WHERE ard_id = ?`;
+  const query = `UPDATE ${TableNames.ASSESS_RED_FLAG_TABLE} SET ard_chest_pain = ?, ard_difficulty_breathing = ?, ard_loss_consciousness = ?,
+  ard_slurred_speech = ?, ard_facial_asymmetry = ?, ard_numb_arm = ?,
+  ard_disoriented = ?, ard_chest_retractions = ?, ard_seizure_or_convulsion = ?,
+  ard_selfharm_or_suicide = ?, ard_aggressive_behavior = ?, ard_eye_injury = ?,
+  ard_severe_injuries = ? WHERE ard_id = ? AND patient_id = ?`;
 
   // supervisor-specific
   supervisorDb.query(
@@ -113,6 +117,7 @@ const supervisorUpdateArd = (
       ard.ard_eye_injury,
       ard.ard_severe_injuries,
       ard.ard_id,
+      ard.patient_id
     ],
     callback
   );

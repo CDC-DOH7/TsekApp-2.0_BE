@@ -1,5 +1,5 @@
 import ManagementParamsInterface from "../../interfaces/misc/ManagementParamsInterface";
-import ManagementSearchFilterInterface from "../../interfaces/search_filters/ManagementFilterInterface";
+import ManagementSearchFilterInterface from "../../interfaces/search_filters/Management/SupervisorManagementFilterInterface";
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
