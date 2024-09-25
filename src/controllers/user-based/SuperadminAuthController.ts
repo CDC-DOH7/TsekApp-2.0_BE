@@ -100,7 +100,12 @@ export const login = (req: Request, res: Response) => {
         }`;
 
         // Exclude the password field from the superadmin info
-        const { superadmin_password, ...superadmin_info } = superadmin;
+        const {
+          superadmin_password,
+          superadmin_username,
+          superadmin_email,
+          ...superadmin_info
+        } = superadmin;
 
         res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
         res.status(200).json({ message: messageString, superadmin_info });

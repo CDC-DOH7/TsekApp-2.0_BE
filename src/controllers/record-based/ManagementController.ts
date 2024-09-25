@@ -1,67 +1,70 @@
-// controllers/consultationController.ts
+// controllers/ManagementController.ts
 import { Request, Response } from "express";
-import ConsultationModel from "../../models/record-specific/ConsultationLogModel";
+import ManagementModel from "../../models/record-specific/ManagementModel";
 import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
 } from "../../middleware/authMiddleware";
-import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
+import ManagementParamsInterface from "../../interfaces/misc/ManagementParamsInterface";
 
-// (Officer) Add/create a new consultation log
-export const officerCreateConsultation = [
+// (Officer) Add/create a new Management
+export const officerCreateManagement = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
-      req.body;
+    const {
+      patient_id,
+      mngm_lifestyle_mod,
+      mngm_med_antihypertensive,
+      mngm_med_antidiabetes,
+      mngm_date_followup,
+      mngm_remarks,
+      officer_id,
+      hf_id,
+    } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    const cl_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
+    const mngm_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
       patient_id,
       hf_id,
-      1
+      3
     );
 
-    const newConsultation: ConsultationParamsInterface = {
-      cl_id,
-      cl_description,
-      cl_date,
+    const newManagement: ManagementParamsInterface = {
+      mngm_id,
       patient_id,
-      officer_id,
-      hf_id,
-      ref_id,
+      mngm_lifestyle_mod,
+      mngm_med_antihypertensive,
+      mngm_med_antidiabetes,
+      mngm_date_followup,
+      mngm_remarks,
     };
 
-    ConsultationModel.officerCreateConsultationLog(
-      newConsultation,
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        res
-          .status(201)
-          .json({ message: "Consultation added successfully", results });
+    ManagementModel.officerCreateManagement(newManagement, (err, results) => {
+      if (err) {
+        return res.status(500).send(err);
       }
-    );
+      res
+        .status(201)
+        .json({ message: "Management info added successfully", results });
+    });
   },
 ];
 
-// (Officer) Read/Search a consultation log
-export const officerSearchConsultation = [
+// (Officer) Read/Search a Management
+export const officerSearchManagement = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
+      mngm_date_followup_startdate,
+      mngm_date_followup_enddate,
+      mngm_id,
       patient_id,
       officer_id,
-      ref_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -69,15 +72,12 @@ export const officerSearchConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.officerSearchConsultationLog(
+    ManagementModel.officerSearchManagement(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
+        mngm_id,
         patient_id,
-        officer_id,
-        ref_id,
+        mngm_date_followup_startdate,
+        mngm_date_followup_enddate,
       },
       (err, results) => {
         if (err) {
@@ -90,19 +90,16 @@ export const officerSearchConsultation = [
   },
 ];
 
-// (Supervisor) Read/Search a consultation log
-export const supervisorSearchConsultation = [
-  authenticateOfficer, // Use the middleware to authenticate the officer
+// (Supervisor) Read/Search a Management
+export const supervisorSearchManagement = [
+  authenticateSupervisor, // Use the middleware to authenticate the supervisor
   (req: Request, res: Response) => {
     const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
+      mngm_id,
       patient_id,
+      mngm_date_followup_startdate,
+      mngm_date_followup_enddate,
       supervisor_id,
-      officer_id,
-      ref_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -110,15 +107,12 @@ export const supervisorSearchConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorSearchConsultationLog(
+    ManagementModel.supervisorSearchManagement(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
+        mngm_id,
         patient_id,
-        officer_id,
-        ref_id,
+        mngm_date_followup_startdate,
+        mngm_date_followup_enddate,
       },
       (err, results) => {
         if (err) {
@@ -131,35 +125,35 @@ export const supervisorSearchConsultation = [
   },
 ];
 
-// (Supervisor) Read/Search a consultation log
-export const supervisorUpdateConsultation = [
-  authenticateSupervisor, // Use the middleware to authenticate the officer
+// (Supervisor) Read/Search a Management
+export const supervisorUpdateManagement = [
+  authenticateSupervisor, // Use the middleware to authenticate the supervisor
   (req: Request, res: Response) => {
     const {
-      cl_description,
-      cl_date,
-      officer_id,
-      ref_id,
-      cl_id,
+      mngm_lifestyle_mod,
+      mngm_med_antihypertensive,
+      mngm_med_antidiabetes,
+      mngm_date_followup,
+      mngm_remarks,
+      mngm_id,
       patient_id,
-      hf_id,
       supervisor_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(
+    ManagementModel.supervisorUpdateManagement(
       {
-        cl_description,
-        cl_date,
-        officer_id,
-        ref_id,
-        cl_id,
+        mngm_lifestyle_mod,
+        mngm_med_antihypertensive,
+        mngm_med_antidiabetes,
+        mngm_date_followup,
+        mngm_remarks,
+        mngm_id,
         patient_id,
-        hf_id,
       },
       (err, results) => {
         if (err) {
@@ -172,18 +166,18 @@ export const supervisorUpdateConsultation = [
   },
 ];
 
-// (Supervisor) Delete a consultation log
-export const supervisorDeleteConsultation = [
-  authenticateSupervisor, // Use the middleware to authenticate the officer
+// (Supervisor) Delete a Management
+export const supervisorDeleteManagement = [
+  authenticateSupervisor, // Use the middleware to authenticate the supervisor
   (req: Request, res: Response) => {
-    const { cl_id, supervisor_id } = req.body;
+    const { mngm_id, supervisor_id } = req.body;
 
-    // Ensure the officer_id in the body matches the authenticated officer
+    // Ensure the officer_id in the body matches the authenticated supervisor
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(cl_id, (err, results) => {
+    ManagementModel.supervisorUpdateManagement(mngm_id, (err, results) => {
       if (err) {
         return res.status(500).send(err);
       }

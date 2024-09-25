@@ -61,6 +61,31 @@ const officerCreateFamilyHistory = (
 };
 
 // # ---- Supervisor Functions ---- #
+const supervisorSearchFamilyHistory = (
+  searchFilter: FamilyHistorySearchFilterInterface,
+  callback: (err: Error | null, results?: any) => void
+) => {
+  const { fh_id, patient_id } = searchFilter;
+
+  let query = `SELECT * FROM ${TableNames.FAMILY_HISTORY_TABLE} WHERE fh_id = ?`;
+  const queryParams: any[] = [fh_id]; // Initial wildcard for cl_id
+
+  // Add wildcard searches for each field
+  if (patient_id) {
+    query += " AND patient_id = ?";
+    queryParams.push(patient_id);
+  }
+
+  // supervisor-specific
+  supervisorDb.query(query, queryParams, (err, results) => {
+    if (err) {
+      return callback(err);
+    }
+    callback(null, results);
+  });
+};
+
+
 const supervisorUpdateFamilyHistory = (
   familyHistory: FamilyHistoryParamsInterface,
   callback: (err: Error | null, results?: any) => void
@@ -100,6 +125,7 @@ const supervisorDeleteFamilyHistory = (
 export default {
   officerSearchFamilyHistory,
   officerCreateFamilyHistory,
+  supervisorSearchFamilyHistory,
   supervisorUpdateFamilyHistory,
   supervisorDeleteFamilyHistory,
 };

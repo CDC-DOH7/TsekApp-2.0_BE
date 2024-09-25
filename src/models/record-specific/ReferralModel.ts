@@ -68,8 +68,16 @@ const supervisorSearchReferral = (
   searchFilter: ReferralSearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const { ref_id, patient_id, hf_id, ref_date_startDate, ref_date_endDate } =
-    searchFilter;
+  const {
+    ref_date_startdate,
+    ref_date_enddate,
+    ref_id,
+    patient_id,
+    officer_id,
+    hf_id,
+    ref_reason,
+    ref_destination,
+  } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.REFERRAL_TABLE} WHERE hf_id = ?`;
   const queryParams: any[] = [hf_id]; // Initial wildcard for hf_id
@@ -83,13 +91,13 @@ const supervisorSearchReferral = (
     query += " AND patient_id LIKE ?";
     queryParams.push(patient_id);
   }
-  if (ref_date_startDate) {
+  if (ref_date_startdate) {
     query += " AND ref_date >= ?";
-    queryParams.push(ref_date_startDate);
+    queryParams.push(ref_date_startdate);
   }
-  if (ref_date_endDate) {
+  if (ref_date_enddate) {
     query += " AND ref_date <= ?";
-    queryParams.push(ref_date_endDate);
+    queryParams.push(ref_date_enddate);
   }
 
   // sort the results from latest

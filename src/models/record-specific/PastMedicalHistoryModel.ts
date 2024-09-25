@@ -116,14 +116,12 @@ const supervisorUpdatePastMedicalHistory = (
   pmh_disorders = ?, pmh_specify_disorder = ?,
   pmh_vision_problems = ?, pmh_previous_surgical_history = ?,
   pmh_specify_surgical_history = ?, pmh_thyroid_disorder = ?,
-  pmh_kidney_disorder = ? WHERE pmh_id = ?`;
+  pmh_kidney_disorder = ? WHERE pmh_id = ? AND patient_id = ?`;
 
   // supervisor-specific
   supervisorDb.query(
     query,
-    [
-      pastMedicalHistory.pmh_id,
-      pastMedicalHistory.patient_id,
+    [ 
       pastMedicalHistory.pmh_hypertension,
       pastMedicalHistory.pmh_heart_disease,
       pastMedicalHistory.pmh_diabetes,
@@ -141,6 +139,8 @@ const supervisorUpdatePastMedicalHistory = (
       pastMedicalHistory.pmh_specify_surgical_history,
       pastMedicalHistory.pmh_thyroid_disorder,
       pastMedicalHistory.pmh_kidney_disorder,
+      pastMedicalHistory.pmh_id,
+      pastMedicalHistory.patient_id,
     ],
     callback
   );

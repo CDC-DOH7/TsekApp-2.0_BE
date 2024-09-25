@@ -12,28 +12,48 @@ import FamilyHistoryParamsInterface from "../../interfaces/misc/FamilyHistoryPar
 export const officerCreateFamilyHistory = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
-      req.body;
+    const {
+      patient_id,
+      fh_hypertension,
+      fh_stroke,
+      fh_heart_disease,
+      fh_diabetes_mellitus,
+      fh_asthma,
+      fh_cancer,
+      fh_kidney_disease,
+      fh_vascular_disease,
+      fh_tb,
+      fh_disorders,
+      fh_copd,
+      hf_id,
+      officer_id,
+    } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    const cl_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
+    const fh_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
       patient_id,
       hf_id,
-      1
+      2
     );
 
     const newFamilyHistory: FamilyHistoryParamsInterface = {
-      cl_id,
-      cl_description,
-      cl_date,
+      fh_id,
       patient_id,
-      officer_id,
-      hf_id,
-      ref_id,
+      fh_hypertension,
+      fh_stroke,
+      fh_heart_disease,
+      fh_diabetes_mellitus,
+      fh_asthma,
+      fh_cancer,
+      fh_kidney_disease,
+      fh_vascular_disease,
+      fh_tb,
+      fh_disorders,
+      fh_copd,
     };
 
     FamilyHistoryModel.officerCreateFamilyHistory(
@@ -44,40 +64,27 @@ export const officerCreateFamilyHistory = [
         }
         res
           .status(201)
-          .json({ message: "FamilyHistory added successfully", results });
+          .json({ message: "Family History added successfully", results });
       }
     );
   },
 ];
 
-// (Officer) Read/Search a FamilyHistory log
+// (Officer) Read/Search a Family History Record
 export const officerSearchFamilyHistory = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
-      patient_id,
-      officer_id,
-      ref_id,
-    } = req.body;
+    const { fh_id, patient_id, officer_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    FamilyHistoryModel.officerSearchFamilyHistoryLog(
+    FamilyHistoryModel.officerSearchFamilyHistory(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
+        fh_id,
         patient_id,
-        officer_id,
-        ref_id,
       },
       (err, results) => {
         if (err) {
@@ -90,35 +97,21 @@ export const officerSearchFamilyHistory = [
   },
 ];
 
-// (Supervisor) Read/Search a FamilyHistory log
+// (Supervisor) Read/Search a Family History Record
 export const supervisorSearchFamilyHistory = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
-      patient_id,
-      supervisor_id,
-      officer_id,
-      ref_id,
-    } = req.body;
+    const { fh_id, patient_id, supervisor_id } = req.body;
 
-    // Ensure the officer_id in the body matches the authenticated officer
+    // Ensure the supervisor_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    FamilyHistoryModel.supervisorSearchFamilyHistoryLog(
+    FamilyHistoryModel.supervisorSearchFamilyHistory(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
+        fh_id,
         patient_id,
-        officer_id,
-        ref_id,
       },
       (err, results) => {
         if (err) {
@@ -131,35 +124,47 @@ export const supervisorSearchFamilyHistory = [
   },
 ];
 
-// (Supervisor) Read/Search a FamilyHistory log
+// (Supervisor) Read/Search a Family History Record
 export const supervisorUpdateFamilyHistory = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      cl_description,
-      cl_date,
-      officer_id,
-      ref_id,
-      cl_id,
+      fh_id,
       patient_id,
-      hf_id,
+      fh_hypertension,
+      fh_stroke,
+      fh_heart_disease,
+      fh_diabetes_mellitus,
+      fh_asthma,
+      fh_cancer,
+      fh_kidney_disease,
+      fh_vascular_disease,
+      fh_tb,
+      fh_disorders,
+      fh_copd,
       supervisor_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    FamilyHistoryModel.supervisorUpdateFamilyHistoryLog(
+    FamilyHistoryModel.supervisorUpdateFamilyHistory(
       {
-        cl_description,
-        cl_date,
-        officer_id,
-        ref_id,
-        cl_id,
+        fh_id,
         patient_id,
-        hf_id,
+        fh_hypertension,
+        fh_stroke,
+        fh_heart_disease,
+        fh_diabetes_mellitus,
+        fh_asthma,
+        fh_cancer,
+        fh_kidney_disease,
+        fh_vascular_disease,
+        fh_tb,
+        fh_disorders,
+        fh_copd,
       },
       (err, results) => {
         if (err) {
@@ -172,23 +177,26 @@ export const supervisorUpdateFamilyHistory = [
   },
 ];
 
-// (Supervisor) Delete a FamilyHistory log
+// (Supervisor) Delete a Family History Record
 export const supervisorDeleteFamilyHistory = [
-  authenticateSupervisor, // Use the middleware to authenticate the officer
+  authenticateSupervisor, // Use the middleware to authenticate the supervisor
   (req: Request, res: Response) => {
-    const { cl_id, supervisor_id } = req.body;
+    const { fh_id, supervisor_id } = req.body;
 
-    // Ensure the officer_id in the body matches the authenticated officer
+    // Ensure the officer_id in the body matches the authenticated supervisor
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    FamilyHistoryModel.supervisorUpdateFamilyHistoryLog(cl_id, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
+    FamilyHistoryModel.supervisorDeleteFamilyHistory(
+      fh_id,
+      (err, results) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
 
-      res.status(201).json({ message: "Deleted definitions.", results });
-    });
+        res.status(201).json({ message: "Deleted definitions.", results });
+      }
+    );
   },
 ];

@@ -3,19 +3,42 @@ import TableNames from "../../common/constants/TableNames";
 // -- create tables for the database --
 // Create table SQL statements
 export const createTablesScripts = [
-    `CREATE TABLE IF NOT EXISTS ${TableNames.HEALTH_FACILITY_INFO_TABLE} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.BARANGAY_TABLE} (
+      barangay_id INT NOT NULL PRIMARY KEY,
+      barangay_name VARCHAR(50) NOT NULL,
+      muncity_id INT NOT NULL,
+
+      FOREIGN KEY (muncity_id) REFERENCES a_muncity_info(muncity_id)
+      )`,
+  `CREATE TABLE IF NOT EXISTS ${TableNames.MUNCITY_TABLE} (
+      muncity_id INT NOT NULL PRIMARY KEY,
+      muncity_name VARCHAR(50) NOT NULL,
+      province_id INT NOT NULL,
+      province_name VARCHAR(50) NOT NULL
+
+      FOREIGN KEY (province_id) REFERENCES a_province_info(province_id),
+    )`,
+  `CREATE TABLE IF NOT EXISTS ${TableNames.PROVINCE_TABLE} (
+      province_id INT NOT NULL PRIMARY KEY,
+      province_name VARCHAR(50) NOT NULL
+    )`,
+  `CREATE TABLE IF NOT EXISTS ${TableNames.HEALTH_FACILITY_INFO_TABLE} (
       hf_id VARCHAR(50) NOT NULL PRIMARY KEY,
       hf_name VARCHAR(64) NOT NULL,
       hf_phic_accreditation VARCHAR(50),
       hf_brgy VARCHAR(50) NOT NULL,
-      brgy_id INT(11) NOT NULL,
+      brgy_id INT NOT NULL,
       hf_muncity VARCHAR(50) NOT NULL, 
-      muncity_id VARCHAR(50) NOT NULL,
+      muncity_id INT NOT NULL,
       hf_province VARCHAR(50) NOT NULL,
       province_id INT NOT NULL,
       hf_region VARCHAR(50) NOT NULL,
+    
+      FOREIGN KEY (brgy_id) REFERENCES a_barangay_info(barangay_id),
+      FOREIGN KEY (muncity_id) REFERENCES a_muncity_info(muncity_id),
+      FOREIGN KEY (province_id) REFERENCES a_province_info(province_id)
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.SUPERADMIN_INFO_TABLE} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.SUPERADMIN_INFO_TABLE} (
       superadmin_id VARCHAR(50) PRIMARY KEY,
       superadmin_email VARCHAR(50) NOT NULL,
       superadmin_username VARCHAR(50) NOT NULL,
@@ -23,10 +46,8 @@ export const createTablesScripts = [
       superadmin_fname VARCHAR(50) NOT NULL,
       superadmin_mname VARCHAR(50),
       superadmin_lname VARCHAR(50) NOT NULL,
-      superadmin_designation VARCHAR(50) NOT NULL,
-      superadmin_is_verified BOOLEAN NOT NULL
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.SUPERVISOR_INFO_TABLE} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.SUPERVISOR_INFO_TABLE} (
       supervisor_id VARCHAR(50) PRIMARY KEY,
       supervisor_email VARCHAR(50) NOT NULL,
       supervisor_username VARCHAR(50) NOT NULL,
@@ -40,7 +61,7 @@ export const createTablesScripts = [
       hf_id VARCHAR(18) NOT NULL,
       FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id)
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.OFFICER_INFO_TABLE} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.OFFICER_INFO_TABLE} (
       officer_id VARCHAR(50) PRIMARY KEY,
       officer_email VARCHAR(50) NOT NULL,
       officer_username VARCHAR(50) NOT NULL,
@@ -53,13 +74,14 @@ export const createTablesScripts = [
       officer_is_verified BOOLEAN NOT NULL,
       hf_id VARCHAR(18) NOT NULL
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.PATIENT_INFO_TABLE} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.PATIENT_INFO_TABLE} (
       patient_id VARCHAR(50) NOT NULL PRIMARY KEY,
       patient_fname VARCHAR(50) NOT NULL,
       patient_mname VARCHAR(50),
       patient_lname VARCHAR(50) NOT NULL,
       patient_date_assess DATE NOT NULL,
       patient_age INT NOT NULL,
+      patient_age_group VARCHAR(50) NOT NULL,
       patient_sex CHAR(1) NOT NULL,
       patient_dob DATE NOT NULL,
       patient_civil_status VARCHAR(20) NOT NULL,
@@ -68,8 +90,11 @@ export const createTablesScripts = [
       patient_street VARCHAR(100),
       patient_purok VARCHAR(50),
       patient_sitio VARCHAR(50),
-      patient_brgy VARCHAR(50),
+      brgy_id INT NOT NULL,
+      patient_brgy VARCHAR(50),       
+      muncity_id INT NOT NULL,
       patient_muncity VARCHAR(50),
+      province_id INT NOT NULL, 
       patient_province VARCHAR(50),
       patient_phic_no VARCHAR(50),
       patient_pwd_no VARCHAR(50),
@@ -77,9 +102,13 @@ export const createTablesScripts = [
       patient_ip VARCHAR(50),
       patient_ip_ethinicity VARCHAR(50),
       hf_id VARCHAR(50),
-      FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id)
+      
+      FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id),
+      FOREIGN KEY (brgy_id) REFERENCES a_barangay_info(barangay_id),
+      FOREIGN KEY (muncity_id) REFERENCES a_muncity_info(muncity_id),
+      FOREIGN KEY (province_id) REFERENCES a_province_info(province_id)
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.ASSESS_RED_FLAG_TABLE}(
+  `CREATE TABLE IF NOT EXISTS ${TableNames.ASSESS_RED_FLAG_TABLE}(
       ard_id VARCHAR(50) NOT NULL PRIMARY KEY,
       patient_id VARCHAR(50),
       ard_chest_pain CHAR(3),
@@ -97,7 +126,7 @@ export const createTablesScripts = [
       ard_severe_injuries CHAR(3),
       FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id)
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.PAST_MEDICAL_HISTORY_TABLE}(
+  `CREATE TABLE IF NOT EXISTS ${TableNames.PAST_MEDICAL_HISTORY_TABLE}(
       pmh_id VARCHAR(50) NOT NULL PRIMARY KEY,
       patient_id VARCHAR(50),
       pmh_hypertension CHAR(3),
@@ -119,7 +148,7 @@ export const createTablesScripts = [
       pmh_kidney_disorder CHAR(3),
       FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id)
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.FAMILY_HISTORY_TABLE}(
+  `CREATE TABLE IF NOT EXISTS ${TableNames.FAMILY_HISTORY_TABLE}(
       fh_id VARCHAR(50) NOT NULL PRIMARY KEY,
       patient_id VARCHAR(50),
       fh_hypertension CHAR(3),
@@ -135,7 +164,7 @@ export const createTablesScripts = [
       fh_copd CHAR(3),
       FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id)
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.NCD_RISK_FACTORS_TABLE}(
+  `CREATE TABLE IF NOT EXISTS ${TableNames.NCD_RISK_FACTORS_TABLE}(
       rf_id VARCHAR(50) NOT NULL PRIMARY KEY,
       patient_id VARCHAR(50),
       rf_tobacco_use CHAR(3),
@@ -150,7 +179,7 @@ export const createTablesScripts = [
       rf_bp VARCHAR(10),
       FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id)
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.RISK_SCREENING_TABLE}(
+  `CREATE TABLE IF NOT EXISTS ${TableNames.RISK_SCREENING_TABLE}(
       rs_id VARCHAR(50) NOT NULL PRIMARY KEY,
       patient_id VARCHAR(50),
       rs_blood_sugar_fbs FLOAT,
@@ -170,18 +199,17 @@ export const createTablesScripts = [
       rs_respiratory VARCHAR(50),
       FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id)
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.MANAGEMENT_TABLE}(
+  `CREATE TABLE IF NOT EXISTS ${TableNames.MANAGEMENT_TABLE}(
       mngm_id VARCHAR(50) NOT NULL PRIMARY KEY,
       patient_id VARCHAR(50),
-      mngm_diagnosis VARCHAR(50) NOT NULL,
-      mngm_diagnosis_date DATE NOT NULL,
-      mngm_medication_prescription TEXT NOT NULL,
-      mngm_followup_date DATE,
-      mngm_referral VARCHAR(50) NOT NULL,
-      mngm_notes TEXT,
+      mngm_lifestyle_mod VARCHAR(100),
+      mngm_med_antihypertensive VARCHAR(100),
+      mngm_med_antidiabetes TEXT NOT NULL,
+      mngm_date_followup DATE,
+      mngm_remarks TEXT,
       FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id)
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.REFERRAL_TABLE} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.REFERRAL_TABLE} (
       ref_id VARCHAR(50) NOT NULL PRIMARY KEY,
       patient_id VARCHAR(50),
       officer_id VARCHAR(50),
@@ -193,7 +221,7 @@ export const createTablesScripts = [
       FOREIGN KEY (officer_id) REFERENCES a_officer_info(officer_id),
       FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id)
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.CONSULTATION_LOGS_TABLE} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.CONSULTATION_LOGS_TABLE} (
       cl_id VARCHAR(50) PRIMARY KEY,
       cl_description TEXT,
       cl_date DATE NOT NULL,
@@ -202,15 +230,15 @@ export const createTablesScripts = [
       hf_id VARCHAR(50),
       ref_id VARCHAR(50)
     )`,
-  
-    // generate default tables for the previous data records
-    `CREATE TABLE IF NOT EXISTS ${TableNames.AGE_BRACKET} (
+
+  // generate default tables for the previous data records
+  `CREATE TABLE IF NOT EXISTS ${TableNames.AGE_BRACKET} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       description VARCHAR(255) NOT NULL,
       created_at TIMESTAMP,
       updated_at TIMESTAMP
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.AVAILABLE_SERVICES} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.AVAILABLE_SERVICES} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       facility_code VARCHAR(255) NOT NULL,
       service VARCHAR(255),
@@ -219,7 +247,7 @@ export const createTablesScripts = [
       created_at TIMESTAMP,
       updated_at TIMESTAMP
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.BRACKET_SERVICES} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.BRACKET_SERVICES} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       bracket_id VARCHAR(255) NOT NULL,
       service VARCHAR(255),
@@ -228,13 +256,13 @@ export const createTablesScripts = [
       created_at TIMESTAMP,
       updated_at TIMESTAMP
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.CASES} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.CASES} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       description VARCHAR(255) NOT NULL,
       created_at TIMESTAMP,
       updated_at TIMESTAMP
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.FEEDBACK} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.FEEDBACK} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       user_id INT NOT NULL,
       message TEXT NOT NULL,
@@ -243,7 +271,7 @@ export const createTablesScripts = [
       created_at TIMESTAMP,
       updated_at TIMESTAMP
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.GENERAL_INFORMATION} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.GENERAL_INFORMATION} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       profile_id INT,
       dengvaxia_recipient_no VARCHAR(100),
@@ -259,14 +287,14 @@ export const createTablesScripts = [
       created_at TIMESTAMP,
       updated_at TIMESTAMP
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.IMMUSTAT} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.IMMUSTAT} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       profile_id INT,
       description VARCHAR(255),
       created_at TIMESTAMP,
       updated_at TIMESTAMP
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.MEDICATION} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.MEDICATION} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       profile_id INT NOT NULL,
       type VARCHAR(255) NOT NULL,
@@ -275,7 +303,7 @@ export const createTablesScripts = [
       created_at TIMESTAMP,
       updated_at TIMESTAMP
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.PHIC_MEMBERSHIP} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.PHIC_MEMBERSHIP} (
       id INT UNSIGNED NOT NULL,
       profile_id INT,
       phic_status VARCHAR(100),
@@ -289,7 +317,7 @@ export const createTablesScripts = [
       created_at TIMESTAMP,
       updated_at TIMESTAMP,
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.PROFILE} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.PROFILE} (
       id INT(10) unsigned PRIMARY KEY AUTO_INCREMENT,
       unique_id VARCHAR(255) NOT NULL,
       familyID VARCHAR(255) NOT NULL,
@@ -347,15 +375,15 @@ export const createTablesScripts = [
       member_others VARCHAR(255) NOT NULL,
       balik_probinsya VARCHAR(255) NOT NULL,
       updated_by VARCHAR(10) NOT NULL,
-    )`, 
-    `CREATE TABLE IF NOT EXISTS ${TableNames.SERVICES} (
+    )`,
+  `CREATE TABLE IF NOT EXISTS ${TableNames.SERVICES} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       code VARCHAR(255) NOT NULL,
       description VARCHAR(255) NOT NULL,
       created_at TIMESTAMP,
       updated_at TIMESTAMP
     )`,
-    `CREATE TABLE IF NOT EXISTS ${TableNames.TUBERCULOSIS} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.TUBERCULOSIS} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
       profile_id INT,
       tb_diagnosis VARCHAR(10),
@@ -376,4 +404,4 @@ export const createTablesScripts = [
       tb_genxpert INT,
       tb_result_genxpert VARCHAR(255)
     )`,
-  ];
+];

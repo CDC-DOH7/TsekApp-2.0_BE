@@ -1,83 +1,88 @@
-// controllers/consultationController.ts
+// controllers/NcdRiskFactorsController.ts
 import { Request, Response } from "express";
-import ConsultationModel from "../../models/record-specific/ConsultationLogModel";
+import NcdRiskFactorsModel from "../../models/record-specific/NcdRiskFactorsModel";
 import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
 } from "../../middleware/authMiddleware";
-import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
+import NcdRiskFactorsParamsInterface from "../../interfaces/misc/NcdRiskFactorsParamsInterface";
 
-// (Officer) Add/create a new consultation log
-export const officerCreateConsultation = [
+// (Officer) Add/create a new NcdRiskFactors
+export const officerCreateNcdRiskFactors = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
-      req.body;
+    const {
+      patient_id,
+      rf_tobacco_use,
+      rf_alcohol_intake,
+      rf_binge_drinker,
+      rf_physical_activity,
+      rf_nad_assessment,
+      rf_kg_weight,
+      rf_cm_height,
+      rf_bmi,
+      rf_waist_circumference,
+      rf_bp,
+      officer_id,
+      hf_id,
+    } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    const cl_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
+    const rf_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
       patient_id,
       hf_id,
-      1
+      4
     );
 
-    const newConsultation: ConsultationParamsInterface = {
-      cl_id,
-      cl_description,
-      cl_date,
+    const newNcdRiskFactors: NcdRiskFactorsParamsInterface = {
+      rf_id,
       patient_id,
-      officer_id,
-      hf_id,
-      ref_id,
+      rf_tobacco_use,
+      rf_alcohol_intake,
+      rf_binge_drinker,
+      rf_physical_activity,
+      rf_nad_assessment,
+      rf_kg_weight,
+      rf_cm_height,
+      rf_bmi,
+      rf_waist_circumference,
+      rf_bp,
     };
 
-    ConsultationModel.officerCreateConsultationLog(
-      newConsultation,
+    NcdRiskFactorsModel.officerCreateNcdRiskFactors(
+      newNcdRiskFactors,
       (err, results) => {
         if (err) {
           return res.status(500).send(err);
         }
         res
           .status(201)
-          .json({ message: "Consultation added successfully", results });
+          .json({ message: "NcdRiskFactors added successfully", results });
       }
     );
   },
 ];
 
-// (Officer) Read/Search a consultation log
-export const officerSearchConsultation = [
+// (Officer) Read/Search a NcdRiskFactors log
+export const officerSearchNcdRiskFactors = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
-      patient_id,
-      officer_id,
-      ref_id,
-    } = req.body;
+    const { rf_id, patient_id, officer_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.officerSearchConsultationLog(
+    NcdRiskFactorsModel.officerSearchNcdRiskFactors(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
         patient_id,
-        officer_id,
-        ref_id,
+        rf_id,
       },
       (err, results) => {
         if (err) {
@@ -90,35 +95,21 @@ export const officerSearchConsultation = [
   },
 ];
 
-// (Supervisor) Read/Search a consultation log
-export const supervisorSearchConsultation = [
-  authenticateOfficer, // Use the middleware to authenticate the officer
+// (Supervisor) Read/Search a NcdRiskFactors log
+export const supervisorSearchNcdRiskFactors = [
+  authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
-      patient_id,
-      supervisor_id,
-      officer_id,
-      ref_id,
-    } = req.body;
+    const { rf_id, patient_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorSearchConsultationLog(
+    NcdRiskFactorsModel.supervisorSearchNcdRiskFactors(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
+        rf_id,
         patient_id,
-        officer_id,
-        ref_id,
       },
       (err, results) => {
         if (err) {
@@ -131,18 +122,23 @@ export const supervisorSearchConsultation = [
   },
 ];
 
-// (Supervisor) Read/Search a consultation log
-export const supervisorUpdateConsultation = [
+// (Supervisor) Read/Search a NcdRiskFactors log
+export const supervisorUpdateNcdRiskFactors = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      cl_description,
-      cl_date,
-      officer_id,
-      ref_id,
-      cl_id,
+      rf_tobacco_use,
+      rf_alcohol_intake,
+      rf_binge_drinker,
+      rf_physical_activity,
+      rf_nad_assessment,
+      rf_kg_weight,
+      rf_cm_height,
+      rf_bmi,
+      rf_waist_circumference,
+      rf_bp,
+      rf_id,
       patient_id,
-      hf_id,
       supervisor_id,
     } = req.body;
 
@@ -151,15 +147,20 @@ export const supervisorUpdateConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(
+    NcdRiskFactorsModel.supervisorUpdateNcdRiskFactors(
       {
-        cl_description,
-        cl_date,
-        officer_id,
-        ref_id,
-        cl_id,
+        rf_tobacco_use,
+        rf_alcohol_intake,
+        rf_binge_drinker,
+        rf_physical_activity,
+        rf_nad_assessment,
+        rf_kg_weight,
+        rf_cm_height,
+        rf_bmi,
+        rf_waist_circumference,
+        rf_bp,
+        rf_id,
         patient_id,
-        hf_id,
       },
       (err, results) => {
         if (err) {
@@ -172,23 +173,26 @@ export const supervisorUpdateConsultation = [
   },
 ];
 
-// (Supervisor) Delete a consultation log
-export const supervisorDeleteConsultation = [
+// (Supervisor) Delete a NcdRiskFactors log
+export const supervisorDeleteNcdRiskFactors = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_id, supervisor_id } = req.body;
+    const { rf_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(cl_id, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
+    NcdRiskFactorsModel.supervisorUpdateNcdRiskFactors(
+      rf_id,
+      (err, results) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
 
-      res.status(201).json({ message: "Deleted definitions.", results });
-    });
+        res.status(201).json({ message: "Deleted definitions.", results });
+      }
+    );
   },
 ];

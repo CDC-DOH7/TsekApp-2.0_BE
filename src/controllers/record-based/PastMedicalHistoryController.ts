@@ -1,67 +1,95 @@
 // controllers/consultationController.ts
 import { Request, Response } from "express";
-import ConsultationModel from "../../models/record-specific/ConsultationLogModel";
+import PastMedicalHistoryModel from "../../models/record-specific/PastMedicalHistoryModel";
 import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
 } from "../../middleware/authMiddleware";
-import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
+import PastMedicalHistoryParamsInterface from "../../interfaces/misc/PastMedicalHistoryParamsInterface";
 
-// (Officer) Add/create a new consultation log
-export const officerCreateConsultation = [
+// (Officer) Add/create a new Past Medical History
+export const officerCreatePastMedicalHistory = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
-      req.body;
+    const {
+      patient_id,
+      pmh_hypertension,
+      pmh_heart_disease,
+      pmh_diabetes,
+      pmh_specify_diabetes,
+      pmh_cancer,
+      pmh_specify_cancer,
+      pmh_copd,
+      pmh_asthma,
+      pmh_allergies,
+      pmh_specify_allergy,
+      pmh_disorders,
+      pmh_specify_disorder,
+      pmh_vision_problems,
+      pmh_previous_surgical_history,
+      pmh_specify_surgical_history,
+      pmh_thyroid_disorder,
+      pmh_kidney_disorder,
+      officer_id,
+      hf_id,
+    } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    const cl_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
+    const pmh_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
       patient_id,
       hf_id,
-      1
+      5
     );
 
-    const newConsultation: ConsultationParamsInterface = {
-      cl_id,
-      cl_description,
-      cl_date,
+    const newPastMedicalHistory: PastMedicalHistoryParamsInterface = {
+      pmh_id,
       patient_id,
-      officer_id,
-      hf_id,
-      ref_id,
+      pmh_hypertension,
+      pmh_heart_disease,
+      pmh_diabetes,
+      pmh_specify_diabetes,
+      pmh_cancer,
+      pmh_specify_cancer,
+      pmh_copd,
+      pmh_asthma,
+      pmh_allergies,
+      pmh_specify_allergy,
+      pmh_disorders,
+      pmh_specify_disorder,
+      pmh_vision_problems,
+      pmh_previous_surgical_history,
+      pmh_specify_surgical_history,
+      pmh_thyroid_disorder,
+      pmh_kidney_disorder,
     };
 
-    ConsultationModel.officerCreateConsultationLog(
-      newConsultation,
+    PastMedicalHistoryModel.officerCreatePastMedicalHistory(
+      newPastMedicalHistory,
       (err, results) => {
         if (err) {
           return res.status(500).send(err);
         }
         res
           .status(201)
-          .json({ message: "Consultation added successfully", results });
+          .json({ message: "Past Medical History added successfully", results });
       }
     );
   },
 ];
 
-// (Officer) Read/Search a consultation log
-export const officerSearchConsultation = [
+// (Officer) Read/Search a Past Medical History
+export const officerSearchPastMedicalHistory = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
+      pmh_id,
       patient_id,
       officer_id,
-      ref_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -69,15 +97,10 @@ export const officerSearchConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.officerSearchConsultationLog(
+    PastMedicalHistoryModel.officerSearchPastMedicalHistory(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
+        pmh_id,
         patient_id,
-        officer_id,
-        ref_id,
       },
       (err, results) => {
         if (err) {
@@ -90,59 +113,13 @@ export const officerSearchConsultation = [
   },
 ];
 
-// (Supervisor) Read/Search a consultation log
-export const supervisorSearchConsultation = [
-  authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
-    const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
-      patient_id,
-      supervisor_id,
-      officer_id,
-      ref_id,
-    } = req.body;
-
-    // Ensure the officer_id in the body matches the authenticated officer
-    if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
-    }
-
-    ConsultationModel.supervisorSearchConsultationLog(
-      {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
-        patient_id,
-        officer_id,
-        ref_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
-  },
-];
-
-// (Supervisor) Read/Search a consultation log
-export const supervisorUpdateConsultation = [
+// (Supervisor) Read/Search a Past Medical History
+export const supervisorSearchPastMedicalHistory = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      cl_description,
-      cl_date,
-      officer_id,
-      ref_id,
-      cl_id,
+      pmh_id,
       patient_id,
-      hf_id,
       supervisor_id,
     } = req.body;
 
@@ -151,15 +128,75 @@ export const supervisorUpdateConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(
+    PastMedicalHistoryModel.supervisorSearchPastMedicalHistory(
       {
-        cl_description,
-        cl_date,
-        officer_id,
-        ref_id,
-        cl_id,
+        pmh_id,
         patient_id,
-        hf_id,
+      },
+      (err, results) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
+
+        res.status(201).json({ message: "Found Results!", results });
+      }
+    );
+  },
+];
+
+// (Supervisor) Read/Search a Past Medical History
+export const supervisorUpdatePastMedicalHistory = [
+  authenticateSupervisor, // Use the middleware to authenticate the officer
+  (req: Request, res: Response) => {
+    const {
+      pmh_hypertension,
+      pmh_heart_disease,
+      pmh_diabetes,
+      pmh_specify_diabetes,
+      pmh_cancer,
+      pmh_specify_cancer,
+      pmh_copd,
+      pmh_asthma,
+      pmh_allergies,
+      pmh_specify_allergy,
+      pmh_disorders,
+      pmh_specify_disorder,
+      pmh_vision_problems,
+      pmh_previous_surgical_history,
+      pmh_specify_surgical_history,
+      pmh_thyroid_disorder,
+      pmh_kidney_disorder,
+      pmh_id,
+      patient_id,
+      supervisor_id,
+    } = req.body;
+
+    // Ensure the officer_id in the body matches the authenticated officer
+    if (req.body.supervisor_id !== supervisor_id) {
+      return res.status(403).send("Access denied. Invalid officer ID.");
+    }
+
+    PastMedicalHistoryModel.supervisorUpdatePastMedicalHistory(
+      {
+        pmh_hypertension,
+        pmh_heart_disease,
+        pmh_diabetes,
+        pmh_specify_diabetes,
+        pmh_cancer,
+        pmh_specify_cancer,
+        pmh_copd,
+        pmh_asthma,
+        pmh_allergies,
+        pmh_specify_allergy,
+        pmh_disorders,
+        pmh_specify_disorder,
+        pmh_vision_problems,
+        pmh_previous_surgical_history,
+        pmh_specify_surgical_history,
+        pmh_thyroid_disorder,
+        pmh_kidney_disorder,
+        pmh_id,
+        patient_id,
       },
       (err, results) => {
         if (err) {
@@ -172,23 +209,26 @@ export const supervisorUpdateConsultation = [
   },
 ];
 
-// (Supervisor) Delete a consultation log
-export const supervisorDeleteConsultation = [
+// (Supervisor) Delete a Past Medical History
+export const supervisorDeletePastMedicalHistory = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_id, supervisor_id } = req.body;
+    const { pmh_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(cl_id, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
+    PastMedicalHistoryModel.supervisorUpdatePastMedicalHistory(
+      pmh_id,
+      (err, results) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
 
-      res.status(201).json({ message: "Deleted definitions.", results });
-    });
+        res.status(201).json({ message: "Deleted definitions.", results });
+      }
+    );
   },
 ];

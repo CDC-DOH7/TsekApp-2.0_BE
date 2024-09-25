@@ -62,7 +62,6 @@ export const register = (req: Request, res: Response) => {
       supervisor_contact_no,
       supervisor_designation,
       true, // set true as default
-      //supervisor_is_verified, 
       hf_id,
     ];
 
@@ -109,7 +108,13 @@ export const login = (req: Request, res: Response) => {
         }`;
 
         // Exclude the password field from the supervisor info
-        const { supervisor_password, ...supervisor_info } = supervisor;
+        const {
+          supervisor_password,
+          supervisor_username,
+          supervisor_is_verified,
+          supervisor_email,
+          ...supervisor_info
+        } = supervisor;
 
         res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
         res.status(200).json({ message: messageString, supervisor_info });
@@ -124,8 +129,7 @@ export const logout = (req: Request, res: Response) => {
   res.status(200).send("Logged out");
 };
 
-
 // function for deletion of officer accounts
 export const deleteAccount = (req: Request, res: Response) => {
   res.status(200).send("Deleted account.");
-}
+};

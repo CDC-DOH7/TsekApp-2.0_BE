@@ -1,4 +1,4 @@
-import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
+import ConsultationParamsInterface from "../../interfaces/misc/ConsultationLogParamsInterface";
 import ConsultationLogSearchFilterInterface from "../../interfaces/search_filters/ConsultationLogSearchFilterInterface";
 import TableNames from "../../common/constants/TableNames";
 

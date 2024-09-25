@@ -1,67 +1,119 @@
 // controllers/consultationController.ts
 import { Request, Response } from "express";
-import ConsultationModel from "../../models/record-specific/ConsultationLogModel";
-import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import PatientInfoModel from "../../models/record-specific/PatientInfoModel";
+import PatientUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/PatientUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
 } from "../../middleware/authMiddleware";
-import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
+import PatientInfoParamsInterface from "../../interfaces/misc/PatientInfoParamsInterface";
 
 // (Officer) Add/create a new consultation log
-export const officerCreateConsultation = [
+export const officerCreatePatientInfo = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
-      req.body;
+    const {
+      patient_fname,
+      patient_mname,
+      patient_lname,
+      patient_date_assess,
+      patient_age,
+      patient_age_group,
+      patient_sex,
+      patient_dob,
+      patient_civil_status,
+      patient_religion,
+      patient_contact_no,
+      patient_street,
+      patient_purok,
+      patient_sitio,
+      brgy_id,
+      patient_brgy,
+      muncity_id,
+      patient_muncity,
+      province_id,
+      patient_province,
+      patient_phic_no,
+      patient_pwd_no,
+      patient_emp_status,
+      patient_ip,
+      patient_ip_ethinicity,
+      hf_id,
+      officer_id,
+    } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    const cl_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
-      patient_id,
-      hf_id,
-      1
+    const patient_id = PatientUniqueIDGenerator.generateCompactUniqueID(
+      patient_fname,
+      patient_mname,
+      patient_lname,
+      patient_brgy,
+      patient_muncity,
+      patient_province
     );
 
-    const newConsultation: ConsultationParamsInterface = {
-      cl_id,
-      cl_description,
-      cl_date,
+    const newPatientInfo: PatientInfoParamsInterface = {
       patient_id,
-      officer_id,
+      patient_fname,
+      patient_mname,
+      patient_lname,
+      patient_date_assess,
+      patient_age,
+      patient_age_group,
+      patient_sex,
+      patient_dob,
+      patient_civil_status,
+      patient_religion,
+      patient_contact_no,
+      patient_street,
+      patient_purok,
+      patient_sitio,
+      brgy_id,
+      patient_brgy,
+      muncity_id,
+      patient_muncity,
+      province_id,
+      patient_province,
+      patient_phic_no,
+      patient_pwd_no,
+      patient_emp_status,
+      patient_ip,
+      patient_ip_ethinicity,
       hf_id,
-      ref_id,
     };
 
-    ConsultationModel.officerCreateConsultationLog(
-      newConsultation,
+    PatientInfoModel.officerCreatePatientInfo(
+      newPatientInfo,
       (err, results) => {
         if (err) {
           return res.status(500).send(err);
         }
         res
           .status(201)
-          .json({ message: "Consultation added successfully", results });
+          .json({ message: "PatientInfo added successfully", results });
       }
     );
   },
 ];
 
 // (Officer) Read/Search a consultation log
-export const officerSearchConsultation = [
+export const officerSearchPatientInfo = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
+      patient_date_assess_startdate,
+      patient_date_assess_enddate,
       patient_id,
+      patient_fname,
+      patient_mname,
+      patient_lname,
+      patient_age,
       officer_id,
-      ref_id,
+      hf_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -69,15 +121,16 @@ export const officerSearchConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.officerSearchConsultationLog(
+    PatientInfoModel.officerSearchPatientInfo(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
+        patient_date_assess_startdate,
+        patient_date_assess_enddate,
         patient_id,
-        officer_id,
-        ref_id,
+        patient_fname,
+        patient_mname,
+        patient_lname,
+        patient_age,
+        hf_id,
       },
       (err, results) => {
         if (err) {
@@ -91,18 +144,19 @@ export const officerSearchConsultation = [
 ];
 
 // (Supervisor) Read/Search a consultation log
-export const supervisorSearchConsultation = [
+export const supervisorSearchPatientInfo = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
+      patient_date_assess_startdate,
+      patient_date_assess_enddate,
       patient_id,
+      patient_fname,
+      patient_mname,
+      patient_lname,
+      patient_age,
       supervisor_id,
-      officer_id,
-      ref_id,
+      hf_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -110,15 +164,16 @@ export const supervisorSearchConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorSearchConsultationLog(
+    PatientInfoModel.supervisorSearchPatientInfo(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
+        patient_date_assess_startdate,
+        patient_date_assess_enddate,
         patient_id,
-        officer_id,
-        ref_id,
+        patient_fname,
+        patient_mname,
+        patient_lname,
+        patient_age,
+        hf_id,
       },
       (err, results) => {
         if (err) {
@@ -132,15 +187,35 @@ export const supervisorSearchConsultation = [
 ];
 
 // (Supervisor) Read/Search a consultation log
-export const supervisorUpdateConsultation = [
+export const supervisorUpdatePatientInfo = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      cl_description,
-      cl_date,
-      officer_id,
-      ref_id,
-      cl_id,
+      patient_fname,
+      patient_mname,
+      patient_lname,
+      patient_date_assess,
+      patient_age,
+      patient_age_group,
+      patient_sex,
+      patient_dob,
+      patient_civil_status,
+      patient_religion,
+      patient_contact_no,
+      patient_street,
+      patient_purok,
+      patient_sitio,
+      brgy_id,
+      patient_brgy,
+      muncity_id,
+      patient_muncity,
+      province_id,
+      patient_province,
+      patient_phic_no,
+      patient_pwd_no,
+      patient_emp_status,
+      patient_ip,
+      patient_ip_ethinicity,
       patient_id,
       hf_id,
       supervisor_id,
@@ -151,13 +226,33 @@ export const supervisorUpdateConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(
+    PatientInfoModel.supervisorUpdatePatientInfo(
       {
-        cl_description,
-        cl_date,
-        officer_id,
-        ref_id,
-        cl_id,
+        patient_fname,
+        patient_mname,
+        patient_lname,
+        patient_date_assess,
+        patient_age,
+        patient_age_group,
+        patient_sex,
+        patient_dob,
+        patient_civil_status,
+        patient_religion,
+        patient_contact_no,
+        patient_street,
+        patient_purok,
+        patient_sitio,
+        brgy_id,
+        patient_brgy,
+        muncity_id,
+        patient_muncity,
+        province_id,
+        patient_province,
+        patient_phic_no,
+        patient_pwd_no,
+        patient_emp_status,
+        patient_ip,
+        patient_ip_ethinicity,
         patient_id,
         hf_id,
       },
@@ -173,17 +268,17 @@ export const supervisorUpdateConsultation = [
 ];
 
 // (Supervisor) Delete a consultation log
-export const supervisorDeleteConsultation = [
+export const supervisorDeletePatientInfo = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_id, supervisor_id } = req.body;
+    const { patient_id, hf_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(cl_id, (err, results) => {
+    PatientInfoModel.supervisorDeletePatientInfo({patient_id, hf_id}, (err, results) => {
       if (err) {
         return res.status(500).send(err);
       }

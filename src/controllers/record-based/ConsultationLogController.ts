@@ -6,7 +6,7 @@ import {
   authenticateOfficer,
   authenticateSupervisor,
 } from "../../middleware/authMiddleware";
-import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
+import ConsultationParamsInterface from "../../interfaces/misc/ConsultationLogParamsInterface";
 
 // (Officer) Add/create a new consultation log
 export const officerCreateConsultation = [

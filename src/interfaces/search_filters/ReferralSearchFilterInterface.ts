@@ -1,6 +1,6 @@
 export default interface ReferralSearchFilterInterface {
-  ref_date_startDate: Date | null;
-  ref_date_endDate: Date | null;
+  ref_date_startdate: Date | null;
+  ref_date_enddate: Date | null;
   ref_id: string | null;
   patient_id: string | null;
   officer_id: string | null;

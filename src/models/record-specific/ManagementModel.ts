@@ -1,5 +1,5 @@
 import ManagementParamsInterface from "../../interfaces/misc/ManagementParamsInterface";
-import ManagementSearchFilterInterface from "../../interfaces/search_filters/Management/SupervisorManagementFilterInterface";
+import ManagementSearchFilterInterface from "../../interfaces/search_filters/ManagementSearchFilterInterface";
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
@@ -12,37 +12,27 @@ const officerSearchManagement = (
   callback: (err: Error | null, results?: any) => void
 ) => {
   const {
-    mgm_id,
+    mngm_id,
     patient_id,
-    mngm_diagnosis_date_startDate,
-    mngm_diagnosis_date_endDate,
-    mngm_followup_date_startDate,
-    mngm_followup_date_endDate,
+    mngm_date_followup_startdate,
+    mngm_date_followup_enddate,
   } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.MANAGEMENT_TABLE} WHERE mgm_id = ?`;
-  const queryParams: any[] = [mgm_id]; // Initial wildcard for cl_id
+  const queryParams: any[] = [mngm_id]; // Initial wildcard for cl_id
 
   // Add wildcard searches for each field
   if (patient_id) {
     query += " AND patient_id LIKE ?";
     queryParams.push(patient_id);
   }
-  if (mngm_diagnosis_date_startDate) {
-    query += " AND mngm_diagnosis_date >= ?";
-    queryParams.push(mngm_diagnosis_date_startDate);
+  if (mngm_date_followup_startdate) {
+    query += " AND mngm_date_followup >= ?";
+    queryParams.push(mngm_date_followup_startdate);
   }
-  if (mngm_diagnosis_date_endDate) {
-    query += " AND mngm_diagnosis_date <= ?";
-    queryParams.push(mngm_diagnosis_date_endDate);
-  }
-  if (mngm_followup_date_startDate) {
-    query += " AND mngm_followup_date >= ?";
-    queryParams.push(mngm_followup_date_startDate);
-  }
-  if (mngm_followup_date_endDate) {
-    query += " AND mngm_followup_date <= ?";
-    queryParams.push(mngm_followup_date_endDate);
+  if (mngm_date_followup_enddate) {
+    query += " AND mngm_date_followup <= ?";
+    queryParams.push(mngm_date_followup_enddate);
   }
 
   // officer-specific
@@ -60,10 +50,9 @@ const officerCreateManagement = (
   callback: (err: Error | null, results?: any) => void
 ) => {
   const query = `INSERT INTO ${TableNames.MANAGEMENT_TABLE}
-  (mngm_id, patient_id, mngm_diagnosis, mngm_diagnosis_date,
-   mngm_medication_prescription, mngm_followup_date, 
-   mngm_referral, mngm_notes) 
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+  (mngm_id, patient_id, mngm_lifestyle_mod, mngm_med_antihypertensive,
+  mngm_med_antidiabetes, mngm_date_followup, mngm_remarks) 
+  VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
   officerDb.query(
@@ -71,12 +60,11 @@ const officerCreateManagement = (
     [
       management.mngm_id,
       management.patient_id,
-      management.mngm_diagnosis,
-      management.mngm_diagnosis_date,
-      management.mngm_medication_prescription,
-      management.mngm_followup_date,
-      management.mngm_referral,
-      management.mngm_notes,
+      management.mngm_lifestyle_mod,
+      management.mngm_med_antihypertensive,
+      management.mngm_med_antidiabetes,
+      management.mngm_date_followup,
+      management.mngm_remarks,
     ],
     callback
   );
@@ -88,37 +76,27 @@ const supervisorSearchManagement = (
   callback: (err: Error | null, results?: any) => void
 ) => {
   const {
-    mgm_id,
+    mngm_id,
     patient_id,
-    mngm_diagnosis_date_startDate,
-    mngm_diagnosis_date_endDate,
-    mngm_followup_date_startDate,
-    mngm_followup_date_endDate,
+    mngm_date_followup_startdate,
+    mngm_date_followup_enddate,
   } = searchFilter;
 
-  let query = `SELECT * FROM ${TableNames.MANAGEMENT_TABLE} WHERE mgm_id = ?`;
-  const queryParams: any[] = [mgm_id]; // Initial wildcard for cl_id
+  let query = `SELECT * FROM ${TableNames.MANAGEMENT_TABLE} WHERE mngm_id = ?`;
+  const queryParams: any[] = [mngm_id]; // Initial wildcard for mngm_id
 
   // Add wildcard searches for each field
   if (patient_id) {
     query += " AND patient_id LIKE ?";
     queryParams.push(patient_id);
   }
-  if (mngm_diagnosis_date_startDate) {
-    query += " AND mngm_diagnosis_date >= ?";
-    queryParams.push(mngm_diagnosis_date_startDate);
+  if (mngm_date_followup_startdate) {
+    query += " AND mngm_date_followup >= ?";
+    queryParams.push(mngm_date_followup_startdate);
   }
-  if (mngm_diagnosis_date_endDate) {
-    query += " AND mngm_diagnosis_date <= ?";
-    queryParams.push(mngm_diagnosis_date_endDate);
-  }
-  if (mngm_followup_date_startDate) {
-    query += " AND mngm_followup_date >= ?";
-    queryParams.push(mngm_followup_date_startDate);
-  }
-  if (mngm_followup_date_endDate) {
-    query += " AND mngm_followup_date <= ?";
-    queryParams.push(mngm_followup_date_endDate);
+  if (mngm_date_followup_enddate) {
+    query += " AND mngm_date_followup <= ?";
+    queryParams.push(mngm_date_followup_enddate);
   }
 
   // officer-specific
@@ -135,21 +113,21 @@ const supervisorUpdateManagement = (
   management: ManagementParamsInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `UPDATE ${TableNames.MANAGEMENT_TABLE} SET mngm_diagnosis = ?, 
-  mngm_diagnosis_date = ?, mngm_medication_prescription = ?, mngm_followup_date = ?, 
-  mngm_referral = ?, mngm_notes = ? WHERE mngm_id = ?`;
+  const query = `UPDATE ${TableNames.MANAGEMENT_TABLE} SET mngm_lifestyle_mod = ?, 
+  mngm_med_antihypertensive = ?, mngm_med_antidiabetes = ?, mngm_date_followup = ?, 
+  mngm_remarks = ? WHERE mngm_id = ? AND patient_id = ?`;
 
   // supervisor-specific
   supervisorDb.query(
     query,
     [
-      management.mngm_diagnosis,
-      management.mngm_diagnosis_date,
-      management.mngm_medication_prescription,
-      management.mngm_followup_date,
-      management.mngm_referral,
-      management.mngm_notes,
+      management.mngm_lifestyle_mod,
+      management.mngm_med_antihypertensive,
+      management.mngm_med_antidiabetes,
+      management.mngm_date_followup,
+      management.mngm_remarks,
       management.mngm_id,
+      management.patient_id,
     ],
     callback
   );
@@ -160,7 +138,7 @@ const supervisorDeleteManagement = (
   mngm_id: string,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `DELETE FROM ${TableNames.MANAGEMENT_TABLE} WHERE fh_id = ?`;
+  const query = `DELETE FROM ${TableNames.MANAGEMENT_TABLE} WHERE mngm_id = ?`;
   supervisorDb.query(query, [mngm_id], callback);
 };
 

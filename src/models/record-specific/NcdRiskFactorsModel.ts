@@ -96,7 +96,7 @@ const supervisorUpdateNcdRiskFactors = (
   const query = `UPDATE ${TableNames.NCD_RISK_FACTORS_TABLE} SET rf_tobacco_use = ?,
   rf_alcohol_intake = ?, rf_binge_drinker = ?, rf_physical_activity = ?, rf_nad_assessment = ?,
   rf_kg_weight = ?, rf_cm_height = ?, rf_bmi = ?, rf_waist_circumference = ?,
-  rf_bp = ? WHERE rf_id = ?`;
+  rf_bp = ? WHERE rf_id = ? AND patient_id = ?`;
 
   // supervisor-specific
   supervisorDb.query(
@@ -113,6 +113,7 @@ const supervisorUpdateNcdRiskFactors = (
       ncdRiskFactors.rf_waist_circumference,
       ncdRiskFactors.rf_bp,
       ncdRiskFactors.rf_id,
+      ncdRiskFactors.patient_id
     ],
     callback
   );

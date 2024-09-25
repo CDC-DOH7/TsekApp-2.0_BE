@@ -93,7 +93,7 @@ class RecordsUniqueIDGenerator {
 
       // default to random generation
       default:
-        identifier = "RAN";
+        identifier = "RAND";
         break;
     }
 

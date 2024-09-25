@@ -5,6 +5,7 @@ import TableNames from "../../common/constants/TableNames";
 // Decide on who can access
 import officerDb from "../user-specific/OfficerModel";
 import supervisorDb from "../user-specific/SupervisorModel";
+import PatientInfoDeletionInterface from "../../interfaces/misc/PatientInfoDeletionInterface";
 
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchPatientInfo = (
@@ -16,8 +17,8 @@ const officerSearchPatientInfo = (
     patient_fname,
     patient_mname,
     patient_lname,
-    patient_date_assess_startDate,
-    patient_date_assess_endDate,
+    patient_date_assess_startdate,
+    patient_date_assess_enddate,
     hf_id,
   } = searchFilter;
 
@@ -41,13 +42,13 @@ const officerSearchPatientInfo = (
     query += " AND patient_lname LIKE ?";
     queryParams.push(patient_lname);
   }
-  if (patient_date_assess_startDate) {
+  if (patient_date_assess_startdate) {
     query += " AND patient_date_assess >= ?";
-    queryParams.push(patient_date_assess_startDate);
+    queryParams.push(patient_date_assess_startdate);
   }
-  if (patient_date_assess_endDate) {
+  if (patient_date_assess_enddate) {
     query += " AND patient_date_assess <= ?";
-    queryParams.push(patient_date_assess_endDate);
+    queryParams.push(patient_date_assess_enddate);
   }
 
   // sort the results from latest
@@ -97,8 +98,8 @@ const supervisorSearchPatientInfo = (
     patient_fname,
     patient_mname,
     patient_lname,
-    patient_date_assess_startDate,
-    patient_date_assess_endDate,
+    patient_date_assess_startdate,
+    patient_date_assess_enddate,
     hf_id,
   } = searchFilter;
 
@@ -122,13 +123,13 @@ const supervisorSearchPatientInfo = (
     query += " AND patient_lname LIKE ?";
     queryParams.push(patient_lname);
   }
-  if (patient_date_assess_startDate) {
+  if (patient_date_assess_startdate) {
     query += " AND patient_date_assess >= ?";
-    queryParams.push(patient_date_assess_startDate);
+    queryParams.push(patient_date_assess_startdate);
   }
-  if (patient_date_assess_endDate) {
+  if (patient_date_assess_enddate) {
     query += " AND patient_date_assess <= ?";
-    queryParams.push(patient_date_assess_endDate);
+    queryParams.push(patient_date_assess_enddate);
   }
 
   // sort the results from latest
@@ -150,7 +151,11 @@ const supervisorUpdatePatientInfo = (
 ) => {
   const query = `UPDATE ${TableNames.PATIENT_INFO_TABLE} SET patient_fname,
   patient_mname = ?, patient_lname = ?, patient_date_assess = ?,
-  patient_age = ? WHERE patient_id = ?`;
+  patient_age = ?, patient_age_group = ?, patient_sex = ?, patient_dob,
+  patient_civil_status = ?, patient_religion, patient_contact_no,
+  patient_street, patient_purok, patient_sitio, brgy_id, patient_brgy,
+  muncity_id, patient_muncity, province_id, patient_province, patient_phic_no,
+  patient_pwd_no, patient_emp_status, patient_ip, patient_ip_ethinicity WHERE patient_id = ? AND hf_id = ?`;
 
   // supervisor-specific
   supervisorDb.query(
@@ -161,19 +166,42 @@ const supervisorUpdatePatientInfo = (
       patientInfo.patient_lname,
       patientInfo.patient_date_assess,
       patientInfo.patient_age,
+      patientInfo.patient_age_group,
+      patientInfo.patient_sex,
+      patientInfo.patient_dob,
+      patientInfo.patient_civil_status,
+      patientInfo.patient_religion,
+      patientInfo.patient_contact_no,
+      patientInfo.patient_street,
+      patientInfo.patient_purok,
+      patientInfo.patient_sitio,
+      patientInfo.brgy_id,
+      patientInfo.patient_brgy,
+      patientInfo.muncity_id,
+      patientInfo.patient_muncity,
+      patientInfo.province_id,
+      patientInfo.patient_province,
+      patientInfo.patient_phic_no,
+      patientInfo.patient_pwd_no,
+      patientInfo.patient_emp_status,
+      patientInfo.patient_ip,
+      patientInfo.patient_ip_ethinicity,
       patientInfo.patient_id,
+      patientInfo.hf_id,
     ],
     callback
   );
 };
 
+
+
 // Delete consultation record
 const supervisorDeletePatientInfo = (
-  patient_id: string,
+  deletionParameters: PatientInfoDeletionInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `DELETE FROM ${TableNames.PATIENT_INFO_TABLE} WHERE patient_id = ?`;
-  supervisorDb.query(query, [patient_id], callback);
+  const query = `DELETE FROM ${TableNames.PATIENT_INFO_TABLE} WHERE patient_id = ? AND hf_id = ?`;
+  supervisorDb.query(query, [deletionParameters.patient_id, deletionParameters.hf_id], callback);
 };
 
 export default {

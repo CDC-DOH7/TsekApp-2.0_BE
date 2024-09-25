@@ -128,7 +128,13 @@ export const login = (req: Request, res: Response) => {
         }`;
 
         // Exclude the password field from the officer info
-        const { officer_password, ...officer_info } = officer;
+        const {
+          officer_password,
+          officer_username,
+          officer_is_verified,
+          officer_email,
+          ...officer_info
+        } = officer;
 
         res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
         res.status(200).json({ message: messageString, officer_info });
