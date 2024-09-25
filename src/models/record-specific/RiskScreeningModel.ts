@@ -36,7 +36,7 @@ const officerSearchRiskScreening = (
 
 // Create consultation record
 const officerCreateRiskScreening = (
-  referral: RiskScreeningParamsInterface,
+  riskScreening: RiskScreeningParamsInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
   const query = `INSERT INTO ${TableNames.RISK_SCREENING_TABLE}
@@ -52,23 +52,23 @@ const officerCreateRiskScreening = (
   officerDb.query(
     query,
     [
-      referral.rs_id,
-      referral.patient_id,
-      referral.rs_blood_sugar_fbs,
-      referral.rs_blood_sugar_rbs,
-      referral.rs_blood_sugar_date_taken,
-      referral.rs_blood_sugar_symptoms,
-      referral.rs_lipid_cholesterol,
-      referral.rs_lipid_hdl,
-      referral.rs_lipid_ldl,
-      referral.rs_lipid_vldl,
-      referral.rs_lipid_triglyceride,
-      referral.rs_lipid_date_taken,
-      referral.rs_urine_protein,
-      referral.rs_urine_protein_date_taken,
-      referral.rs_urine_ketones,
-      referral.rs_urine_ketones_date_taken,
-      referral.rs_respiratory,
+      riskScreening.rs_id,
+      riskScreening.patient_id,
+      riskScreening.rs_blood_sugar_fbs,
+      riskScreening.rs_blood_sugar_rbs,
+      riskScreening.rs_blood_sugar_date_taken,
+      riskScreening.rs_blood_sugar_symptoms,
+      riskScreening.rs_lipid_cholesterol,
+      riskScreening.rs_lipid_hdl,
+      riskScreening.rs_lipid_ldl,
+      riskScreening.rs_lipid_vldl,
+      riskScreening.rs_lipid_triglyceride,
+      riskScreening.rs_lipid_date_taken,
+      riskScreening.rs_urine_protein,
+      riskScreening.rs_urine_protein_date_taken,
+      riskScreening.rs_urine_ketones,
+      riskScreening.rs_urine_ketones_date_taken,
+      riskScreening.rs_respiratory,
     ],
     callback
   );
@@ -104,7 +104,7 @@ const supervisorSearchRiskScreening = (
 
 // Update consultation record
 const supervisorUpdateRiskScreening = (
-  referral: RiskScreeningParamsInterface,
+  riskScreening: RiskScreeningParamsInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
   const query = `UPDATE ${TableNames.RISK_SCREENING_TABLE} SET
@@ -112,28 +112,29 @@ const supervisorUpdateRiskScreening = (
   rs_blood_sugar_symptoms, rs_lipid_cholesterol, rs_lipid_hdl, rs_lipid_ldl,
   rs_lipid_vldl, rs_lipid_triglyceride, rs_lipid_date_taken, rs_urine_protein,
   rs_urine_protein_date_taken, rs_urine_ketones, rs_urine_ketones_date_taken,
-  rs_respiratory, WHERE rs_id = ?`;
+  rs_respiratory, WHERE rs_id = ? AND patient_id = ?`;
 
   // supervisor-specific
   supervisorDb.query(
     query,
     [
-      referral.rs_blood_sugar_fbs,
-      referral.rs_blood_sugar_rbs,
-      referral.rs_blood_sugar_date_taken,
-      referral.rs_blood_sugar_symptoms,
-      referral.rs_lipid_cholesterol,
-      referral.rs_lipid_hdl,
-      referral.rs_lipid_ldl,
-      referral.rs_lipid_vldl,
-      referral.rs_lipid_triglyceride,
-      referral.rs_lipid_date_taken,
-      referral.rs_urine_protein,
-      referral.rs_urine_protein_date_taken,
-      referral.rs_urine_ketones,
-      referral.rs_urine_ketones_date_taken,
-      referral.rs_respiratory,
-      referral.rs_id,
+      riskScreening.rs_blood_sugar_fbs,
+      riskScreening.rs_blood_sugar_rbs,
+      riskScreening.rs_blood_sugar_date_taken,
+      riskScreening.rs_blood_sugar_symptoms,
+      riskScreening.rs_lipid_cholesterol,
+      riskScreening.rs_lipid_hdl,
+      riskScreening.rs_lipid_ldl,
+      riskScreening.rs_lipid_vldl,
+      riskScreening.rs_lipid_triglyceride,
+      riskScreening.rs_lipid_date_taken,
+      riskScreening.rs_urine_protein,
+      riskScreening.rs_urine_protein_date_taken,
+      riskScreening.rs_urine_ketones,
+      riskScreening.rs_urine_ketones_date_taken,
+      riskScreening.rs_respiratory,
+      riskScreening.rs_id,
+      riskScreening.patient_id,
     ],
     callback
   );

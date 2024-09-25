@@ -88,8 +88,12 @@ const supervisorSearchReferral = (
     queryParams.push(ref_id);
   }
   if (patient_id) {
-    query += " AND patient_id LIKE ?";
+    query += " and patient_id like ?";
     queryParams.push(patient_id);
+  }
+  if (officer_id) {
+    query += " and officer_id like ?";
+    queryParams.push(officer_id);
   }
   if (ref_date_startdate) {
     query += " AND ref_date >= ?";
@@ -98,6 +102,14 @@ const supervisorSearchReferral = (
   if (ref_date_enddate) {
     query += " AND ref_date <= ?";
     queryParams.push(ref_date_enddate);
+  }
+  if (ref_reason) {
+    query += " and ref_reason like ?";
+    queryParams.push(ref_reason);
+  }
+  if (ref_destination) {
+    query += " and ref_destination like ?";
+    queryParams.push(ref_destination);
   }
 
   // sort the results from latest
@@ -118,7 +130,7 @@ const supervisorUpdateReferral = (
   callback: (err: Error | null, results?: any) => void
 ) => {
   const query = `UPDATE ${TableNames.REFERRAL_TABLE} SET officer_id,
-  ref_date = ?, ref_reason = ?, ref_destination = ? WHERE ref_id = ?`;
+  ref_date = ?, ref_reason = ?, ref_destination = ? WHERE patient_id = ? AND ref_id = ? AND hf_id = ?`;
 
   // supervisor-specific
   supervisorDb.query(
@@ -128,7 +140,9 @@ const supervisorUpdateReferral = (
       referral.ref_date,
       referral.ref_reason,
       referral.ref_destination,
+      referral.patient_id,
       referral.ref_id,
+      referral.hf_id,
     ],
     callback
   );

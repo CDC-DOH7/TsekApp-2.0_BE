@@ -1,83 +1,98 @@
-// controllers/consultationController.ts
+// controllers/RiskScreeningController.ts
 import { Request, Response } from "express";
-import ConsultationModel from "../../models/record-specific/ConsultationLogModel";
+import RiskScreeningModel from "../../models/record-specific/RiskScreeningModel";
 import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
 } from "../../middleware/authMiddleware";
-import ConsultationParamsInterface from "../../interfaces/misc/ConsultationLogParamsInterface";
+import RiskScreeningParamsInterface from "../../interfaces/misc/RiskScreeningParamsInterface";
 
-// (Officer) Add/create a new consultation log
-export const officerCreateConsultation = [
+// (Officer) Add/create a new RiskScreening log
+export const officerCreateRiskScreening = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
-      req.body;
+    const {
+      patient_id,
+      rs_blood_sugar_fbs,
+      rs_blood_sugar_rbs,
+      rs_blood_sugar_date_taken,
+      rs_blood_sugar_symptoms,
+      rs_lipid_cholesterol,
+      rs_lipid_hdl,
+      rs_lipid_ldl,
+      rs_lipid_vldl,
+      rs_lipid_triglyceride,
+      rs_lipid_date_taken,
+      rs_urine_protein,
+      rs_urine_protein_date_taken,
+      rs_urine_ketones,
+      rs_urine_ketones_date_taken,
+      rs_respiratory,
+      officer_id,
+      hf_id,
+    } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    const cl_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
+    const rs_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
       patient_id,
       hf_id,
-      1
+      7
     );
 
-    const newConsultation: ConsultationParamsInterface = {
-      cl_id,
-      cl_description,
-      cl_date,
+    const newRiskScreening: RiskScreeningParamsInterface = {
+      rs_id,
       patient_id,
-      officer_id,
-      hf_id,
-      ref_id,
+      rs_blood_sugar_fbs,
+      rs_blood_sugar_rbs,
+      rs_blood_sugar_date_taken,
+      rs_blood_sugar_symptoms,
+      rs_lipid_cholesterol,
+      rs_lipid_hdl,
+      rs_lipid_ldl,
+      rs_lipid_vldl,
+      rs_lipid_triglyceride,
+      rs_lipid_date_taken,
+      rs_urine_protein,
+      rs_urine_protein_date_taken,
+      rs_urine_ketones,
+      rs_urine_ketones_date_taken,
+      rs_respiratory,
     };
 
-    ConsultationModel.officerCreateConsultationLog(
-      newConsultation,
+    RiskScreeningModel.officerCreateRiskScreening(
+      newRiskScreening,
       (err, results) => {
         if (err) {
           return res.status(500).send(err);
         }
         res
           .status(201)
-          .json({ message: "Consultation added successfully", results });
+          .json({ message: "RiskScreening added successfully", results });
       }
     );
   },
 ];
 
-// (Officer) Read/Search a consultation log
-export const officerSearchConsultation = [
+// (Officer) Read/Search a RiskScreening log
+export const officerSearchRiskScreening = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
-      patient_id,
-      officer_id,
-      ref_id,
-    } = req.body;
+    const { rs_id, patient_id, officer_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.officerSearchConsultationLog(
+    RiskScreeningModel.officerSearchRiskScreening(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
+        rs_id,
         patient_id,
-        officer_id,
-        ref_id,
       },
       (err, results) => {
         if (err) {
@@ -90,35 +105,21 @@ export const officerSearchConsultation = [
   },
 ];
 
-// (Supervisor) Read/Search a consultation log
-export const supervisorSearchConsultation = [
+// (Supervisor) Read/Search a RiskScreening log
+export const supervisorSearchRiskScreening = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const {
-      cl_date_startDate,
-      cl_date_endDate,
-      hf_id,
-      cl_id,
-      patient_id,
-      supervisor_id,
-      officer_id,
-      ref_id,
-    } = req.body;
+    const { rs_id, patient_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorSearchConsultationLog(
+    RiskScreeningModel.supervisorSearchRiskScreening(
       {
-        cl_date_startDate,
-        cl_date_endDate,
-        hf_id,
-        cl_id,
+        rs_id,
         patient_id,
-        officer_id,
-        ref_id,
       },
       (err, results) => {
         if (err) {
@@ -131,18 +132,28 @@ export const supervisorSearchConsultation = [
   },
 ];
 
-// (Supervisor) Read/Search a consultation log
-export const supervisorUpdateConsultation = [
+// (Supervisor) Read/Search a RiskScreening log
+export const supervisorUpdateRiskScreening = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      cl_description,
-      cl_date,
-      officer_id,
-      ref_id,
-      cl_id,
+      rs_blood_sugar_fbs,
+      rs_blood_sugar_rbs,
+      rs_blood_sugar_date_taken,
+      rs_blood_sugar_symptoms,
+      rs_lipid_cholesterol,
+      rs_lipid_hdl,
+      rs_lipid_ldl,
+      rs_lipid_vldl,
+      rs_lipid_triglyceride,
+      rs_lipid_date_taken,
+      rs_urine_protein,
+      rs_urine_protein_date_taken,
+      rs_urine_ketones,
+      rs_urine_ketones_date_taken,
+      rs_respiratory,
+      rs_id,
       patient_id,
-      hf_id,
       supervisor_id,
     } = req.body;
 
@@ -151,15 +162,25 @@ export const supervisorUpdateConsultation = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(
+    RiskScreeningModel.supervisorUpdateRiskScreening(
       {
-        cl_description,
-        cl_date,
-        officer_id,
-        ref_id,
-        cl_id,
+        rs_blood_sugar_fbs,
+        rs_blood_sugar_rbs,
+        rs_blood_sugar_date_taken,
+        rs_blood_sugar_symptoms,
+        rs_lipid_cholesterol,
+        rs_lipid_hdl,
+        rs_lipid_ldl,
+        rs_lipid_vldl,
+        rs_lipid_triglyceride,
+        rs_lipid_date_taken,
+        rs_urine_protein,
+        rs_urine_protein_date_taken,
+        rs_urine_ketones,
+        rs_urine_ketones_date_taken,
+        rs_respiratory,
+        rs_id,
         patient_id,
-        hf_id,
       },
       (err, results) => {
         if (err) {
@@ -172,18 +193,18 @@ export const supervisorUpdateConsultation = [
   },
 ];
 
-// (Supervisor) Delete a consultation log
-export const supervisorDeleteConsultation = [
+// (Supervisor) Delete a RiskScreening log
+export const supervisorDeleteRiskScreening = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { cl_id, supervisor_id } = req.body;
+    const { rs_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(cl_id, (err, results) => {
+    RiskScreeningModel.supervisorUpdateRiskScreening(rs_id, (err, results) => {
       if (err) {
         return res.status(500).send(err);
       }

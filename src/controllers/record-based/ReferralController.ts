@@ -106,7 +106,7 @@ export const supervisorSearchReferral = [
       hf_id,
       ref_reason,
       ref_destination,
-      supervisor_id
+      supervisor_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -141,11 +141,13 @@ export const supervisorUpdateReferral = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
+      hf_id,
+      patient_id,
+      officer_id,
       ref_date,
       ref_reason,
       ref_destination,
       ref_id,
-      officer_id,
       supervisor_id,
     } = req.body;
 
@@ -156,11 +158,13 @@ export const supervisorUpdateReferral = [
 
     ReferralModel.supervisorUpdateReferral(
       {
+        hf_id,
+        patient_id,
         officer_id,
         ref_date,
         ref_reason,
         ref_destination,
-        ref_id
+        ref_id,
       },
       (err, results) => {
         if (err) {
