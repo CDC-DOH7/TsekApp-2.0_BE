@@ -1,12 +1,13 @@
 // controllers/consultationController.ts
 import { Request, Response } from "express";
-import PatientInfoModel from "../../models/record-specific/PatientInfoModel";
-import PatientUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/PatientUniqueIDGenerator";
+import PatientInfoModel from "../../../models/record-specific/PatientInfoModel";
+import PatientUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/PatientUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../middleware/authMiddleware";
-import PatientInfoParamsInterface from "../../interfaces/misc/PatientInfoParamsInterface";
+} from "../../../middleware/authMiddleware";
+import PatientInfoParamsInterface from "../../../interfaces/misc/PatientInfoParamsInterface";
+import { calculateAgeGroup } from "../../../common/calc/CalcPatientAgeGroup";
 
 // (Officer) Add/create a new consultation log
 export const officerCreatePatientInfo = [
@@ -18,7 +19,6 @@ export const officerCreatePatientInfo = [
       patient_lname,
       patient_date_assess,
       patient_age,
-      patient_age_group,
       patient_sex,
       patient_dob,
       patient_civil_status,
@@ -47,6 +47,7 @@ export const officerCreatePatientInfo = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
+    // Generate unique patient_id
     const patient_id = PatientUniqueIDGenerator.generateCompactUniqueID(
       patient_fname,
       patient_mname,
@@ -56,6 +57,8 @@ export const officerCreatePatientInfo = [
       patient_province
     );
 
+    const patient_age_group_id: number = calculateAgeGroup(patient_age);
+
     const newPatientInfo: PatientInfoParamsInterface = {
       patient_id,
       patient_fname,
@@ -63,7 +66,7 @@ export const officerCreatePatientInfo = [
       patient_lname,
       patient_date_assess,
       patient_age,
-      patient_age_group,
+      patient_age_group_id,
       patient_sex,
       patient_dob,
       patient_civil_status,
@@ -196,7 +199,6 @@ export const supervisorUpdatePatientInfo = [
       patient_lname,
       patient_date_assess,
       patient_age,
-      patient_age_group,
       patient_sex,
       patient_dob,
       patient_civil_status,
@@ -226,6 +228,8 @@ export const supervisorUpdatePatientInfo = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
+    const patient_age_group_id = calculateAgeGroup(patient_age); 
+
     PatientInfoModel.supervisorUpdatePatientInfo(
       {
         patient_fname,
@@ -233,7 +237,7 @@ export const supervisorUpdatePatientInfo = [
         patient_lname,
         patient_date_assess,
         patient_age,
-        patient_age_group,
+        patient_age_group_id,
         patient_sex,
         patient_dob,
         patient_civil_status,

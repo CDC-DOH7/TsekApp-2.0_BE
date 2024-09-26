@@ -5,12 +5,12 @@ import TableNames from "../../common/constants/TableNames";
 // Decide on who can access
 import officerDb from "../user-specific/OfficerModel";
 import supervisorDb from "../user-specific/SupervisorModel";
+import { QueryResult } from "mysql2";
 
 // # --- Begin Operations for Consultation Log Models --- #
-const officerSearchConsultationLog = (
+const officerSearchConsultationLog = async(
   searchFilter: ConsultationLogSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+): Promise<QueryResult> => {
   const {
     cl_date_startDate,
     cl_date_endDate,
@@ -51,25 +51,33 @@ const officerSearchConsultationLog = (
   }
 
   // officer-specific
-  officerDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  try {
+    const [results] = await (await officerDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Create consultation record
-const officerCreateConsultationLog = (
+const officerCreateConsultationLog = async(
   consultation: ConsultationParamsInterface,
-  callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `INSERT INTO ${TableNames.CONSULTATION_LOGS_TABLE}(cl_id, cl_description, cl_date, patient_id, officer_id, hf_id, ref_id) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  const query = `INSERT INTO ${TableNames.CONSULTATION_LOGS_TABLE}
+  (cl_id, 
+  cl_description, 
+  cl_date, 
+  patient_id, 
+  officer_id, 
+  hf_id, 
+  ref_id) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+
 
   // officer-specific
-  officerDb.query(
-    query,
-    [
+  try {
+    const [result] = await (
+      await officerDb
+    ).query(query, [
       consultation.cl_id,
       consultation.cl_description,
       consultation.cl_date,
@@ -77,9 +85,11 @@ const officerCreateConsultationLog = (
       consultation.officer_id,
       consultation.hf_id,
       consultation.ref_id,
-    ],
-    callback
-  );
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // # ---- Supervisor Functions ---- # //

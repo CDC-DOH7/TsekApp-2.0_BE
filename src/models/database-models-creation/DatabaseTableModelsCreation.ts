@@ -14,14 +14,21 @@ export const createTablesScripts = [
       muncity_id INT NOT NULL PRIMARY KEY,
       muncity_name VARCHAR(50) NOT NULL,
       province_id INT NOT NULL,
-      province_name VARCHAR(50) NOT NULL
+      province_name VARCHAR(50) NOT NULL,
 
-      FOREIGN KEY (province_id) REFERENCES a_province_info(province_id),
+      FOREIGN KEY (province_id) REFERENCES a_province_info(province_id)
     )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.PROVINCE_TABLE} (
       province_id INT NOT NULL PRIMARY KEY,
       province_name VARCHAR(50) NOT NULL
     )`,
+  `
+  CREATE TABLE IF NOT EXISTS ${TableNames.AGE_GROUP_TABLE} (
+      ag_id INT NOT NULL PRIMARY KEY,
+      ag_range VARCHAR(50) NOT NULL,
+      ag_description VARCHAR(50) NOT NULL
+    )
+  `,
   `CREATE TABLE IF NOT EXISTS ${TableNames.HEALTH_FACILITY_INFO_TABLE} (
       hf_id VARCHAR(50) NOT NULL PRIMARY KEY,
       hf_name VARCHAR(64) NOT NULL,
@@ -45,7 +52,7 @@ export const createTablesScripts = [
       superadmin_password TEXT NOT NULL,
       superadmin_fname VARCHAR(50) NOT NULL,
       superadmin_mname VARCHAR(50),
-      superadmin_lname VARCHAR(50) NOT NULL,
+      superadmin_lname VARCHAR(50) NOT NULL
     )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.SUPERVISOR_INFO_TABLE} (
       supervisor_id VARCHAR(50) PRIMARY KEY,
@@ -81,7 +88,7 @@ export const createTablesScripts = [
       patient_lname VARCHAR(50) NOT NULL,
       patient_date_assess DATE NOT NULL,
       patient_age INT NOT NULL,
-      patient_age_group VARCHAR(50) NOT NULL,
+      patient_age_group_id INT NOT NULL,
       patient_sex CHAR(1) NOT NULL,
       patient_dob DATE NOT NULL,
       patient_civil_status VARCHAR(20) NOT NULL,
@@ -102,7 +109,8 @@ export const createTablesScripts = [
       patient_ip VARCHAR(50),
       patient_ip_ethinicity VARCHAR(50),
       hf_id VARCHAR(50),
-      
+     
+      FOREIGN KEY (patient_age_group_id) REFERENCES a_age_group(ag_id),
       FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id),
       FOREIGN KEY (brgy_id) REFERENCES a_barangay_info(barangay_id),
       FOREIGN KEY (muncity_id) REFERENCES a_muncity_info(muncity_id),
@@ -315,7 +323,7 @@ export const createTablesScripts = [
       phic_benefits_yes VARCHAR(100),
       phic_status1 INT,
       created_at TIMESTAMP,
-      updated_at TIMESTAMP,
+      updated_at TIMESTAMP
     )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.PROFILE} (
       id INT(10) unsigned PRIMARY KEY AUTO_INCREMENT,
@@ -374,7 +382,7 @@ export const createTablesScripts = [
       ip VARCHAR(255) NOT NULL,
       member_others VARCHAR(255) NOT NULL,
       balik_probinsya VARCHAR(255) NOT NULL,
-      updated_by VARCHAR(10) NOT NULL,
+      updated_by VARCHAR(10) NOT NULL
     )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.SERVICES} (
       id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,

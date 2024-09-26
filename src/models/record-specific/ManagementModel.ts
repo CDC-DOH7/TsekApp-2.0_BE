@@ -5,12 +5,12 @@ import TableNames from "../../common/constants/TableNames";
 // Decide on who can access
 import officerDb from "../user-specific/OfficerModel";
 import supervisorDb from "../user-specific/SupervisorModel";
+import { QueryResult } from "mysql2";
 
 // # --- Begin Operations for Management Models --- #
-const officerSearchManagement = (
+const officerSearchManagement = async(
   searchFilter: ManagementSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+): Promise<QueryResult> => {
   const {
     mngm_id,
     patient_id,
@@ -36,28 +36,33 @@ const officerSearchManagement = (
   }
 
   // officer-specific
-  officerDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  try {
+    const [results] = await (await officerDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Create consultation record
-const officerCreateManagement = (
+const officerCreateManagement = async(
   management: ManagementParamsInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+): Promise<QueryResult> => {
   const query = `INSERT INTO ${TableNames.MANAGEMENT_TABLE}
-  (mngm_id, patient_id, mngm_lifestyle_mod, mngm_med_antihypertensive,
-  mngm_med_antidiabetes, mngm_date_followup, mngm_remarks) 
+  (mngm_id, 
+  patient_id, 
+  mngm_lifestyle_mod, 
+  mngm_med_antihypertensive,
+  mngm_med_antidiabetes, 
+  mngm_date_followup, 
+  mngm_remarks) 
   VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
-  // officer-specific
-  officerDb.query(
-    query,
-    [
+   // officer-specific
+   try {
+    const [result] = await (
+      await officerDb
+    ).query(query, [
       management.mngm_id,
       management.patient_id,
       management.mngm_lifestyle_mod,
@@ -65,13 +70,15 @@ const officerCreateManagement = (
       management.mngm_med_antidiabetes,
       management.mngm_date_followup,
       management.mngm_remarks,
-    ],
-    callback
-  );
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // # ---- Supervisor Functions ---- #
-const supervisorSearchManagement = (
+const supervisorSearchManagement = async(
   searchFilter: ManagementSearchFilterInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
@@ -99,47 +106,57 @@ const supervisorSearchManagement = (
     queryParams.push(mngm_date_followup_enddate);
   }
 
-  // officer-specific
-  supervisorDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
+    // supervisor-specific
+    try {
+      const [results] = await (await supervisorDb).query(query, queryParams);
+      return results;
+    } catch (err) {
+      throw err;
     }
-    callback(null, results);
-  });
 };
 
 // Update consultation record
-const supervisorUpdateManagement = (
+const supervisorUpdateManagement = async(
   management: ManagementParamsInterface,
-  callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `UPDATE ${TableNames.MANAGEMENT_TABLE} SET mngm_lifestyle_mod = ?, 
-  mngm_med_antihypertensive = ?, mngm_med_antidiabetes = ?, mngm_date_followup = ?, 
-  mngm_remarks = ? WHERE mngm_id = ? AND patient_id = ?`;
+  const query = `UPDATE ${TableNames.MANAGEMENT_TABLE} SET 
+  mngm_lifestyle_mod = ?, 
+  mngm_med_antihypertensive = ?, 
+  mngm_med_antidiabetes = ?, 
+  mngm_date_followup = ?, 
+  mngm_remarks = ? 
+  WHERE mngm_id = ? AND patient_id = ?`;
 
   // supervisor-specific
-  supervisorDb.query(
-    query,
-    [
-      management.mngm_lifestyle_mod,
-      management.mngm_med_antihypertensive,
-      management.mngm_med_antidiabetes,
-      management.mngm_date_followup,
-      management.mngm_remarks,
-      management.mngm_id,
-      management.patient_id,
-    ],
-    callback
-  );
+  try {
+    const [result] = await (await supervisorDb).query(query, 
+      [
+        management.mngm_lifestyle_mod,
+        management.mngm_med_antihypertensive,
+        management.mngm_med_antidiabetes,
+        management.mngm_date_followup,
+        management.mngm_remarks,
+        management.mngm_id,
+        management.patient_id,
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Delete consultation record
-const supervisorDeleteManagement = (
+const supervisorDeleteManagement = async(
   mngm_id: string,
-  callback: (err: Error | null, results?: any) => void
 ) => {
   const query = `DELETE FROM ${TableNames.MANAGEMENT_TABLE} WHERE mngm_id = ?`;
-  supervisorDb.query(query, [mngm_id], callback);
+  // supervisor-specific
+  try {
+    const [result] = await (await supervisorDb).query(query, [mngm_id]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 export default {

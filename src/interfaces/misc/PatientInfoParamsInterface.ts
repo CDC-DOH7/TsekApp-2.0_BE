@@ -5,7 +5,7 @@ export default interface PatientInfoParamsInterface {
   patient_lname: string;
   patient_date_assess: Date;
   patient_age: number;
-  patient_age_group: string;
+  patient_age_group_id: number;
   patient_sex: string;
   patient_dob: Date;
   patient_civil_status: string;

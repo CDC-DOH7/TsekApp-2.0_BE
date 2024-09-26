@@ -1,69 +1,67 @@
 // controllers/consultationController.ts
 import { Request, Response } from "express";
-import ReferralModel from "../../models/record-specific/ReferralModel";
-import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import ConsultationModel from "../../../models/record-specific/ConsultationLogModel";
+import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../middleware/authMiddleware";
-import ReferralParamsInterface from "../../interfaces/misc/ReferralParamsInterface";
+} from "../../../middleware/authMiddleware";
+import ConsultationParamsInterface from "../../../interfaces/misc/ConsultationLogParamsInterface";
 
-// (Officer) Add/create a new Referral
-export const officerCreateReferral = [
+// (Officer) Add/create a new consultation log
+export const officerCreateConsultation = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const {
-      patient_id,
-      officer_id,
-      hf_id,
-      ref_date,
-      ref_reason,
-      ref_destination,
-    } = req.body;
+    const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
+      req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    const ref_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
+    const cl_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
       patient_id,
       hf_id,
-      6
+      1
     );
 
-    const newReferral: ReferralParamsInterface = {
-      ref_id,
+    const newConsultation: ConsultationParamsInterface = {
+      cl_id,
+      cl_description,
+      cl_date,
       patient_id,
       officer_id,
       hf_id,
-      ref_date,
-      ref_reason,
-      ref_destination,
+      ref_id,
     };
 
-    ReferralModel.officerCreateReferral(newReferral, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
+    ConsultationModel.officerCreateConsultationLog(
+      newConsultation,
+      (err, results) => {
+        if (err) {
+          return res.status(500).send(err);
+        }
+        res
+          .status(201)
+          .json({ message: "Consultation added successfully", results });
       }
-      res.status(201).json({ message: "Referral added successfully", results });
-    });
+    );
   },
 ];
 
-// (Officer) Read/Search a Referral
-export const officerSearchReferral = [
+// (Officer) Read/Search a consultation log
+export const officerSearchConsultation = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      ref_date_startdate,
-      ref_date_enddate,
-      ref_id,
+      cl_date_startDate,
+      cl_date_endDate,
+      hf_id,
+      cl_id,
       patient_id,
       officer_id,
-      hf_id,
-      ref_reason,
-      ref_destination,
+      ref_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -71,16 +69,15 @@ export const officerSearchReferral = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ReferralModel.officerSearchReferral(
+    ConsultationModel.officerSearchConsultationLog(
       {
-        ref_date_startdate,
-        ref_date_enddate,
-        ref_id,
+        cl_date_startDate,
+        cl_date_endDate,
+        hf_id,
+        cl_id,
         patient_id,
         officer_id,
-        hf_id,
-        ref_reason,
-        ref_destination,
+        ref_id,
       },
       (err, results) => {
         if (err) {
@@ -93,20 +90,19 @@ export const officerSearchReferral = [
   },
 ];
 
-// (Supervisor) Read/Search a Referral
-export const supervisorSearchReferral = [
+// (Supervisor) Read/Search a consultation log
+export const supervisorSearchConsultation = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      ref_date_startdate,
-      ref_date_enddate,
-      ref_id,
-      patient_id,
-      officer_id,
+      cl_date_startDate,
+      cl_date_endDate,
       hf_id,
-      ref_reason,
-      ref_destination,
+      cl_id,
+      patient_id,
       supervisor_id,
+      officer_id,
+      ref_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -114,16 +110,15 @@ export const supervisorSearchReferral = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ReferralModel.supervisorSearchReferral(
+    ConsultationModel.supervisorSearchConsultationLog(
       {
-        ref_date_startdate,
-        ref_date_enddate,
-        ref_id,
+        cl_date_startDate,
+        cl_date_endDate,
+        hf_id,
+        cl_id,
         patient_id,
         officer_id,
-        hf_id,
-        ref_reason,
-        ref_destination,
+        ref_id,
       },
       (err, results) => {
         if (err) {
@@ -136,18 +131,18 @@ export const supervisorSearchReferral = [
   },
 ];
 
-// (Supervisor) Read/Search a Referral
-export const supervisorUpdateReferral = [
+// (Supervisor) Read/Search a consultation log
+export const supervisorUpdateConsultation = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
     const {
-      hf_id,
-      patient_id,
+      cl_description,
+      cl_date,
       officer_id,
-      ref_date,
-      ref_reason,
-      ref_destination,
       ref_id,
+      cl_id,
+      patient_id,
+      hf_id,
       supervisor_id,
     } = req.body;
 
@@ -156,15 +151,15 @@ export const supervisorUpdateReferral = [
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ReferralModel.supervisorUpdateReferral(
+    ConsultationModel.supervisorUpdateConsultationLog(
       {
-        hf_id,
-        patient_id,
+        cl_description,
+        cl_date,
         officer_id,
-        ref_date,
-        ref_reason,
-        ref_destination,
         ref_id,
+        cl_id,
+        patient_id,
+        hf_id,
       },
       (err, results) => {
         if (err) {
@@ -177,18 +172,18 @@ export const supervisorUpdateReferral = [
   },
 ];
 
-// (Supervisor) Delete a Referral
-export const supervisorDeleteReferral = [
+// (Supervisor) Delete a consultation log
+export const supervisorDeleteConsultation = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   (req: Request, res: Response) => {
-    const { ref_id, supervisor_id } = req.body;
+    const { cl_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
       return res.status(403).send("Access denied. Invalid officer ID.");
     }
 
-    ReferralModel.supervisorUpdateReferral(ref_id, (err, results) => {
+    ConsultationModel.supervisorUpdateConsultationLog(cl_id, (err, results) => {
       if (err) {
         return res.status(500).send(err);
       }

@@ -1,12 +1,12 @@
 // controllers/FamilyHistoryController.ts
 import { Request, Response } from "express";
-import FamilyHistoryModel from "../../models/record-specific/FamilyHistoryModel";
-import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import FamilyHistoryModel from "../../../models/record-specific/FamilyHistoryModel";
+import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../middleware/authMiddleware";
-import FamilyHistoryParamsInterface from "../../interfaces/misc/FamilyHistoryParamsInterface";
+} from "../../../middleware/authMiddleware";
+import FamilyHistoryParamsInterface from "../../../interfaces/misc/FamilyHistoryParamsInterface";
 
 // (Officer) Add/create a new FamilyHistory log
 export const officerCreateFamilyHistory = [

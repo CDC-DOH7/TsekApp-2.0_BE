@@ -8,10 +8,9 @@ import supervisorDb from "../user-specific/SupervisorModel";
 import PatientInfoDeletionInterface from "../../interfaces/misc/PatientInfoDeletionInterface";
 
 // # --- Begin Operations for Past Medical Records Models --- #
-const officerSearchPatientInfo = (
-  searchFilter: PatientInfoSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+const officerSearchPatientInfo = async (
+  searchFilter: PatientInfoSearchFilterInterface
+): Promise<any> => {
   const {
     patient_id,
     patient_fname,
@@ -55,27 +54,32 @@ const officerSearchPatientInfo = (
   query += " ORDER BY patient_date_assess DESC";
 
   // officer-specific
-  officerDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  try {
+    const [results] = await (await officerDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Create consultation record
-const officerCreatePatientInfo = (
-  patientInfo: PatientInfoParamsInterface,
-  callback: (err: Error | null, results?: any) => void
+const officerCreatePatientInfo = async (
+  patientInfo: PatientInfoParamsInterface
 ) => {
   const query = `INSERT INTO ${TableNames.PATIENT_INFO_TABLE}
-  (patient_id, patient_fname, patient_mname, patient_lname,
-  patient_date_assess, patient_age, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  (patient_id,
+  patient_fname,
+  patient_mname,
+  patient_lname,
+  patient_date_assess, 
+  patient_age, 
+  hf_id) VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
-  officerDb.query(
-    query,
-    [
+  try {
+    const [result] = await (
+      await officerDb
+    ).query(query, [
       patientInfo.patient_id,
       patientInfo.patient_fname,
       patientInfo.patient_mname,
@@ -83,15 +87,16 @@ const officerCreatePatientInfo = (
       patientInfo.patient_date_assess,
       patientInfo.patient_age,
       patientInfo.hf_id,
-    ],
-    callback
-  );
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // # ---- Supervisor Functions ---- #
-const supervisorSearchPatientInfo = (
-  searchFilter: PatientInfoSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
+const supervisorSearchPatientInfo = async (
+  searchFilter: PatientInfoSearchFilterInterface
 ) => {
   const {
     patient_id,
@@ -136,37 +141,57 @@ const supervisorSearchPatientInfo = (
   query += " ORDER BY patient_date_assess DESC";
 
   // supervisor-specific
-  supervisorDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  try {
+    const [results] = await (await supervisorDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Update consultation record
-const supervisorUpdatePatientInfo = (
+const supervisorUpdatePatientInfo = async (
   patientInfo: PatientInfoParamsInterface,
-  callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `UPDATE ${TableNames.PATIENT_INFO_TABLE} SET patient_fname,
-  patient_mname = ?, patient_lname = ?, patient_date_assess = ?,
-  patient_age = ?, patient_age_group = ?, patient_sex = ?, patient_dob,
-  patient_civil_status = ?, patient_religion, patient_contact_no,
-  patient_street, patient_purok, patient_sitio, brgy_id, patient_brgy,
-  muncity_id, patient_muncity, province_id, patient_province, patient_phic_no,
-  patient_pwd_no, patient_emp_status, patient_ip, patient_ip_ethinicity WHERE patient_id = ? AND hf_id = ?`;
+  const query = `UPDATE ${TableNames.PATIENT_INFO_TABLE} SET 
+  patient_fname = ?,
+  patient_mname = ?, 
+  patient_lname = ?, 
+  patient_date_assess = ?,
+  patient_age = ?, 
+  patient_age_group = ?,
+  patient_sex = ?,
+  patient_dob = ?,
+  patient_civil_status = ?,
+  patient_religion = ?,
+  patient_contact_no = ?,
+  patient_street = ?,
+  patient_purok = ?, 
+  patient_sitio = ?, 
+  brgy_id = ?, 
+  patient_brgy = ?,
+  muncity_id = ?, 
+  patient_muncity = ?, 
+  province_id = ?, 
+  patient_province = ?, 
+  patient_phic_no = ?,
+  patient_pwd_no = ?, 
+  patient_emp_status = ?, 
+  patient_ip = ?, 
+  patient_ip_ethinicity = ?
+  WHERE patient_id = ? AND hf_id = ?`;
 
   // supervisor-specific
-  supervisorDb.query(
-    query,
-    [
+  try {
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [
       patientInfo.patient_fname,
       patientInfo.patient_mname,
       patientInfo.patient_lname,
       patientInfo.patient_date_assess,
       patientInfo.patient_age,
-      patientInfo.patient_age_group,
+      patientInfo.patient_age_group_id,
       patientInfo.patient_sex,
       patientInfo.patient_dob,
       patientInfo.patient_civil_status,
@@ -188,20 +213,29 @@ const supervisorUpdatePatientInfo = (
       patientInfo.patient_ip_ethinicity,
       patientInfo.patient_id,
       patientInfo.hf_id,
-    ],
-    callback
-  );
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
-
-
 // Delete consultation record
-const supervisorDeletePatientInfo = (
-  deletionParameters: PatientInfoDeletionInterface,
-  callback: (err: Error | null, results?: any) => void
+const supervisorDeletePatientInfo = async (
+  deletionParameters: PatientInfoDeletionInterface
 ) => {
-  const query = `DELETE FROM ${TableNames.PATIENT_INFO_TABLE} WHERE patient_id = ? AND hf_id = ?`;
-  supervisorDb.query(query, [deletionParameters.patient_id, deletionParameters.hf_id], callback);
+  const query = `DELETE FROM ${TableNames.PATIENT_INFO_TABLE} 
+  WHERE patient_id = ? AND hf_id = ?`;
+
+  // supervisor-specific
+  try {
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [deletionParameters.patient_id, deletionParameters.hf_id]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 export default {

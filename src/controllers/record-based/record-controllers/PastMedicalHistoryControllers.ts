@@ -1,12 +1,12 @@
 // controllers/consultationController.ts
 import { Request, Response } from "express";
-import PastMedicalHistoryModel from "../../models/record-specific/PastMedicalHistoryModel";
-import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import PastMedicalHistoryModel from "../../../models/record-specific/PastMedicalHistoryModel";
+import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../middleware/authMiddleware";
-import PastMedicalHistoryParamsInterface from "../../interfaces/misc/PastMedicalHistoryParamsInterface";
+} from "../../../middleware/authMiddleware";
+import PastMedicalHistoryParamsInterface from "../../../interfaces/misc/PastMedicalHistoryParamsInterface";
 
 // (Officer) Add/create a new Past Medical History
 export const officerCreatePastMedicalHistory = [

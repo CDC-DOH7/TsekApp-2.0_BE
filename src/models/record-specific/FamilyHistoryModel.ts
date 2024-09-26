@@ -5,12 +5,12 @@ import TableNames from "../../common/constants/TableNames";
 // Decide on who can access
 import officerDb from "../user-specific/OfficerModel";
 import supervisorDb from "../user-specific/SupervisorModel";
+import { QueryResult } from "mysql2";
 
 // # --- Begin Operations for Family History Models --- #
-const officerSearchFamilyHistory = (
+const officerSearchFamilyHistory = async(
   searchFilter: FamilyHistorySearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+): Promise<QueryResult> => {
   const { fh_id, patient_id } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.FAMILY_HISTORY_TABLE} WHERE fh_id = ?`;
@@ -23,47 +23,61 @@ const officerSearchFamilyHistory = (
   }
 
   // officer-specific
-  officerDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  try {
+    const [results] = await (await officerDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Create consultation record
-const officerCreateFamilyHistory = (
+const officerCreateFamilyHistory = async(
   familyHistory: FamilyHistoryParamsInterface,
   callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `INSERT INTO ${TableNames.FAMILY_HISTORY_TABLE}(fh_id, patient_id, fh_hypertension, fh_stroke, fh_heart_disease, fh_diabetes_mellitus, fh_asthma, fh_cancer, fh_kidney_disease, fh_vascular_disease, fh_tb, fh_disorders, fh_copd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  const query = `INSERT INTO ${TableNames.FAMILY_HISTORY_TABLE}
+  (fh_id, 
+  patient_id, 
+  fh_hypertension, 
+  fh_stroke, 
+  fh_heart_disease, 
+  fh_diabetes_mellitus, 
+  fh_asthma, 
+  fh_cancer, 
+  fh_kidney_disease, 
+  fh_vascular_disease, 
+  fh_tb, 
+  fh_disorders, 
+  fh_copd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
-  officerDb.query(
-    query,
-    [
-      familyHistory.fh_id,
-      familyHistory.patient_id,
-      familyHistory.fh_hypertension,
-      familyHistory.fh_stroke,
-      familyHistory.fh_heart_disease,
-      familyHistory.fh_diabetes_mellitus,
-      familyHistory.fh_asthma,
-      familyHistory.fh_cancer,
-      familyHistory.fh_kidney_disease,
-      familyHistory.fh_vascular_disease,
-      familyHistory.fh_tb,
-      familyHistory.fh_disorders,
-      familyHistory.fh_copd,
-    ],
-    callback
-  );
+  try{
+    const [result] = await (await officerDb).query(query, 
+      [
+        familyHistory.fh_id,
+        familyHistory.patient_id,
+        familyHistory.fh_hypertension,
+        familyHistory.fh_stroke,
+        familyHistory.fh_heart_disease,
+        familyHistory.fh_diabetes_mellitus,
+        familyHistory.fh_asthma,
+        familyHistory.fh_cancer,
+        familyHistory.fh_kidney_disease,
+        familyHistory.fh_vascular_disease,
+        familyHistory.fh_tb,
+        familyHistory.fh_disorders,
+        familyHistory.fh_copd,
+      ]
+    );
+  }catch(err){
+
+  }
 };
 
 // # ---- Supervisor Functions ---- #
-const supervisorSearchFamilyHistory = (
+const supervisorSearchFamilyHistory = async(
   searchFilter: FamilyHistorySearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
 ) => {
   const { fh_id, patient_id } = searchFilter;
 
@@ -76,26 +90,36 @@ const supervisorSearchFamilyHistory = (
     queryParams.push(patient_id);
   }
 
-  // supervisor-specific
-  supervisorDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+   // supervisor-specific
+   try {
+    const [results] = await (await supervisorDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 
-const supervisorUpdateFamilyHistory = (
+const supervisorUpdateFamilyHistory = async(
   familyHistory: FamilyHistoryParamsInterface,
-  callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `UPDATE ${TableNames.FAMILY_HISTORY_TABLE} patient_id = ?, fh_hypertension = ?, fh_stroke = ?, fh_heart_disease = ?, fh_diabetes_mellitus = ?, fh_asthma = ?, fh_cancer = ?, fh_kidney_disease = ?, fh_vascular_disease = ?, fh_tb = ?, fh_disorders = ?, fh_copd = ? WHERE fh_id = ?`;
+  const query = `UPDATE ${TableNames.FAMILY_HISTORY_TABLE} patient_id = ?, 
+  fh_hypertension = ?, 
+  fh_stroke = ?, 
+  fh_heart_disease = ?, 
+  fh_diabetes_mellitus = ?, 
+  fh_asthma = ?, 
+  fh_cancer = ?, 
+  fh_kidney_disease = ?, 
+  fh_vascular_disease = ?, 
+  fh_tb = ?, 
+  fh_disorders = ?, 
+  fh_copd = ? 
+  WHERE fh_id = ?`;
 
   // supervisor-specific
-  supervisorDb.query(
-    query,
-    [
+  try {
+    const [result] = await (await supervisorDb).query(query, [
       familyHistory.fh_hypertension,
       familyHistory.fh_stroke,
       familyHistory.fh_heart_disease,
@@ -108,18 +132,25 @@ const supervisorUpdateFamilyHistory = (
       familyHistory.fh_disorders,
       familyHistory.fh_copd,
       familyHistory.fh_id,
-    ],
-    callback
-  );
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Delete consultation record
-const supervisorDeleteFamilyHistory = (
+const supervisorDeleteFamilyHistory = async (
   fh_id: string,
-  callback: (err: Error | null, results?: any) => void
-) => {
+): Promise<QueryResult> => {
   const query = `DELETE FROM ${TableNames.FAMILY_HISTORY_TABLE} WHERE fh_id = ?`;
-  supervisorDb.query(query, [fh_id], callback);
+  // supervisor-specific
+  try {
+    const [result] = await (await supervisorDb).query(query, [fh_id]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 export default {

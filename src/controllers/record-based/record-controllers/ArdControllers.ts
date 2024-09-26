@@ -1,12 +1,12 @@
 // controllers/ArdController.ts
 import { Request, Response } from "express";
-import ArdModel from "../../models/record-specific/ArdModel";
-import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import ArdModel from "../../../models/record-specific/ArdModel";
+import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../middleware/authMiddleware";
-import ArdParamsInterface from "../../interfaces/misc/ArdParamsInterface";
+} from "../../../middleware/authMiddleware";
+import ArdParamsInterface from "../../../interfaces/misc/ArdParamsInterface";
 
 // (Officer) Add/create a new Ard log
 export const officerCreateArd = [

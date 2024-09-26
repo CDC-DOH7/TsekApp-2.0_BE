@@ -5,12 +5,12 @@ import TableNames from "../../common/constants/TableNames";
 // Decide on who can access
 import officerDb from "../user-specific/OfficerModel";
 import supervisorDb from "../user-specific/SupervisorModel";
+import { QueryResult } from "mysql2";
 
 // # --- Begin Operations for NCD Risk Factors Models --- #
-const officerSearchNcdRiskFactors = (
-  searchFilter: NcdRiskFactorsSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+const officerSearchNcdRiskFactors = async (
+  searchFilter: NcdRiskFactorsSearchFilterInterface
+): Promise<QueryResult> => {
   const { rf_id, patient_id } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.NCD_RISK_FACTORS_TABLE} WHERE rf_id = ?`;
@@ -23,29 +23,38 @@ const officerSearchNcdRiskFactors = (
   }
 
   // officer-specific
-  officerDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  try {
+    const [results] = await (await officerDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Create consultation record
-const officerCreateNcdRiskFactors = (
-  ncdRiskFactors: NcdRiskFactorsParamsInterface,
-  callback: (err: Error | null, results?: any) => void
+const officerCreateNcdRiskFactors = async (
+  ncdRiskFactors: NcdRiskFactorsParamsInterface
 ) => {
   const query = `INSERT INTO ${TableNames.NCD_RISK_FACTORS_TABLE}
-  (rf_id, patient_id, rf_tobacco_use, rf_alcohol_intake, rf_binge_drinker,
-  rf_physical_activity, rf_nad_assessment, rf_kg_weight, rf_cm_height,
-  rf_bmi, rf_waist_circumference, rf_bp) 
+  (rf_id, 
+  patient_id, 
+  rf_tobacco_use, 
+  rf_alcohol_intake, 
+  rf_binge_drinker,
+  rf_physical_activity, 
+  rf_nad_assessment, 
+  rf_kg_weight, 
+  rf_cm_height,
+  rf_bmi, 
+  rf_waist_circumference, 
+  rf_bp) 
   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
-  officerDb.query(
-    query,
-    [
+  try {
+    const [result] = await (
+      await officerDb
+    ).query(query, [
       ncdRiskFactors.rf_id,
       ncdRiskFactors.patient_id,
       ncdRiskFactors.rf_tobacco_use,
@@ -58,15 +67,16 @@ const officerCreateNcdRiskFactors = (
       ncdRiskFactors.rf_bmi,
       ncdRiskFactors.rf_waist_circumference,
       ncdRiskFactors.rf_bp,
-    ],
-    callback
-  );
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // # ---- Supervisor Functions ---- #
-const supervisorSearchNcdRiskFactors = (
+const supervisorSearchNcdRiskFactors = async(
   searchFilter: NcdRiskFactorsSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
 ) => {
   const { rf_id, patient_id } = searchFilter;
 
@@ -79,29 +89,35 @@ const supervisorSearchNcdRiskFactors = (
     queryParams.push(patient_id);
   }
 
-  // officer-specific
-  supervisorDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  // supervisor-specific
+  try {
+    const [results] = await (await supervisorDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Update consultation record
-const supervisorUpdateNcdRiskFactors = (
+const supervisorUpdateNcdRiskFactors = async(
   ncdRiskFactors: NcdRiskFactorsParamsInterface,
-  callback: (err: Error | null, results?: any) => void
 ) => {
-  const query = `UPDATE ${TableNames.NCD_RISK_FACTORS_TABLE} SET rf_tobacco_use = ?,
-  rf_alcohol_intake = ?, rf_binge_drinker = ?, rf_physical_activity = ?, rf_nad_assessment = ?,
-  rf_kg_weight = ?, rf_cm_height = ?, rf_bmi = ?, rf_waist_circumference = ?,
-  rf_bp = ? WHERE rf_id = ? AND patient_id = ?`;
+  const query = `UPDATE ${TableNames.NCD_RISK_FACTORS_TABLE} SET 
+  rf_tobacco_use = ?,
+  rf_alcohol_intake = ?, 
+  rf_binge_drinker = ?, 
+  rf_physical_activity = ?, 
+  rf_nad_assessment = ?,
+  rf_kg_weight = ?, 
+  rf_cm_height = ?, 
+  rf_bmi = ?, 
+  rf_waist_circumference = ?,
+  rf_bp = ? 
+  WHERE rf_id = ? AND patient_id = ?`;
 
   // supervisor-specific
-  supervisorDb.query(
-    query,
-    [
+  try {
+    const [result] = await (await supervisorDb).query(query, [
       ncdRiskFactors.rf_tobacco_use,
       ncdRiskFactors.rf_alcohol_intake,
       ncdRiskFactors.rf_binge_drinker,
@@ -113,19 +129,27 @@ const supervisorUpdateNcdRiskFactors = (
       ncdRiskFactors.rf_waist_circumference,
       ncdRiskFactors.rf_bp,
       ncdRiskFactors.rf_id,
-      ncdRiskFactors.patient_id
-    ],
-    callback
-  );
+      ncdRiskFactors.patient_id,
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Delete consultation record
-const supervisorDeleteNcdRiskFactors = (
+const supervisorDeleteNcdRiskFactors = async(
   rf_id: string,
-  callback: (err: Error | null, results?: any) => void
 ) => {
   const query = `DELETE FROM ${TableNames.NCD_RISK_FACTORS_TABLE} WHERE rf_id = ?`;
-  supervisorDb.query(query, [rf_id], callback);
+  
+  // supervisor-specific
+  try {
+    const [result] = await (await supervisorDb).query(query, [rf_id]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 export default {

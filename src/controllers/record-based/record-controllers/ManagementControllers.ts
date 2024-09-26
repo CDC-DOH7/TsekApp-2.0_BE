@@ -1,12 +1,12 @@
 // controllers/ManagementController.ts
 import { Request, Response } from "express";
-import ManagementModel from "../../models/record-specific/ManagementModel";
-import RecordsUniqueIDGenerator from "../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import ManagementModel from "../../../models/record-specific/ManagementModel";
+import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../middleware/authMiddleware";
-import ManagementParamsInterface from "../../interfaces/misc/ManagementParamsInterface";
+} from "../../../middleware/authMiddleware";
+import ManagementParamsInterface from "../../../interfaces/misc/ManagementParamsInterface";
 
 // (Officer) Add/create a new Management
 export const officerCreateManagement = [
