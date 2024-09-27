@@ -34,7 +34,7 @@ const officerSearchNcdRiskFactors = async (
 // Create consultation record
 const officerCreateNcdRiskFactors = async (
   ncdRiskFactors: NcdRiskFactorsParamsInterface
-) => {
+): Promise<QueryResult> => {
   const query = `INSERT INTO ${TableNames.NCD_RISK_FACTORS_TABLE}
   (rf_id, 
   patient_id, 
@@ -77,7 +77,7 @@ const officerCreateNcdRiskFactors = async (
 // # ---- Supervisor Functions ---- #
 const supervisorSearchNcdRiskFactors = async(
   searchFilter: NcdRiskFactorsSearchFilterInterface,
-) => {
+): Promise<QueryResult> => {
   const { rf_id, patient_id } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.NCD_RISK_FACTORS_TABLE} WHERE rf_id = ?`;
@@ -101,7 +101,7 @@ const supervisorSearchNcdRiskFactors = async(
 // Update consultation record
 const supervisorUpdateNcdRiskFactors = async(
   ncdRiskFactors: NcdRiskFactorsParamsInterface,
-) => {
+): Promise<QueryResult> => {
   const query = `UPDATE ${TableNames.NCD_RISK_FACTORS_TABLE} SET 
   rf_tobacco_use = ?,
   rf_alcohol_intake = ?, 
@@ -140,7 +140,7 @@ const supervisorUpdateNcdRiskFactors = async(
 // Delete consultation record
 const supervisorDeleteNcdRiskFactors = async(
   rf_id: string,
-) => {
+): Promise<QueryResult> => {
   const query = `DELETE FROM ${TableNames.NCD_RISK_FACTORS_TABLE} WHERE rf_id = ?`;
   
   // supervisor-specific

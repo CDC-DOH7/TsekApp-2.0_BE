@@ -11,7 +11,7 @@ import ArdParamsInterface from "../../../interfaces/misc/ArdParamsInterface";
 // (Officer) Add/create a new Ard log
 export const officerCreateArd = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       patient_id,
       ard_chest_pain,
@@ -27,15 +27,13 @@ export const officerCreateArd = [
       ard_aggressive_behavior,
       ard_eye_injury,
       ard_severe_injuries,
-
-      // pass these params for ID generation
       officer_id,
       hf_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
     const ard_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
@@ -44,91 +42,76 @@ export const officerCreateArd = [
       0
     );
 
-    const newArd: ArdParamsInterface = {
-      ard_id,
-      patient_id,
-      ard_chest_pain,
-      ard_difficulty_breathing,
-      ard_loss_consciousness,
-      ard_slurred_speech,
-      ard_facial_asymmetry,
-      ard_numb_arm,
-      ard_disoriented,
-      ard_chest_retractions,
-      ard_seizure_or_convulsion,
-      ard_selfharm_or_suicide,
-      ard_aggressive_behavior,
-      ard_eye_injury,
-      ard_severe_injuries,
-    };
-
-    ArdModel.officerCreateArd(newArd, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
+    try {
+      const results = await ArdModel.officerCreateArd({
+        ard_id,
+        patient_id,
+        ard_chest_pain,
+        ard_difficulty_breathing,
+        ard_loss_consciousness,
+        ard_slurred_speech,
+        ard_facial_asymmetry,
+        ard_numb_arm,
+        ard_disoriented,
+        ard_chest_retractions,
+        ard_seizure_or_convulsion,
+        ard_selfharm_or_suicide,
+        ard_aggressive_behavior,
+        ard_eye_injury,
+        ard_severe_injuries,
+      });
+      
       res.status(201).json({ message: "Ard added successfully", results });
-    });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Officer) Read/Search a Ard log
 export const officerSearchArd = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const { ard_id, patient_id, officer_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    ArdModel.officerSearchArd(
-      {
-        ard_id,
-        patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+    try {
+      const results = await ArdModel.officerSearchArd({ ard_id, patient_id });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a Ard log
 export const supervisorSearchArd = [
-  authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  authenticateSupervisor, // Use the middleware to authenticate the supervisor
+  async (req: Request, res: Response) => {
     const { ard_id, patient_id, supervisor_id } = req.body;
 
-    // Ensure the officer_id in the body matches the authenticated officer
+    // Ensure the supervisor_id in the body matches the authenticated supervisor
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    ArdModel.supervisorSearchArd(
-      {
-        ard_id,
-        patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+    try {
+      const results = await ArdModel.supervisorSearchArd({ ard_id, patient_id });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
-// (Supervisor) Read/Search a Ard log
+// (Supervisor) Update a Ard log
 export const supervisorUpdateArd = [
-  authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  authenticateSupervisor, // Use the middleware to authenticate the supervisor
+  async (req: Request, res: Response) => {
     const {
       ard_chest_pain,
       ard_difficulty_breathing,
@@ -148,13 +131,13 @@ export const supervisorUpdateArd = [
       supervisor_id,
     } = req.body;
 
-    // Ensure the officer_id in the body matches the authenticated officer
+    // Ensure the supervisor_id in the body matches the authenticated supervisor
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    ArdModel.supervisorUpdateArd(
-      {
+    try {
+      const results = await ArdModel.supervisorUpdateArd({
         ard_chest_pain,
         ard_difficulty_breathing,
         ard_loss_consciousness,
@@ -170,35 +153,30 @@ export const supervisorUpdateArd = [
         ard_severe_injuries,
         ard_id,
         patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Updated definitions.", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Updated definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
-// (Supervisor) Delete a Ard log
+// (Supervisor) Delete an Ard log
 export const supervisorDeleteArd = [
-  authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  authenticateSupervisor, // Use the middleware to authenticate the supervisor
+  async (req: Request, res: Response) => {
     const { ard_id, supervisor_id } = req.body;
 
-    // Ensure the officer_id in the body matches the authenticated officer
+    // Ensure the supervisor_id in the body matches the authenticated supervisor
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    ArdModel.supervisorDeleteArd(ard_id, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-
-      res.status(201).json({ message: "Deleted definitions.", results });
-    });
+    try {
+      const results = await ArdModel.supervisorDeleteArd(ard_id);
+      res.status(200).json({ message: "Deleted definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];

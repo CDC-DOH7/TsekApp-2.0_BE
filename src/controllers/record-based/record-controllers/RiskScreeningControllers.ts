@@ -11,7 +11,7 @@ import RiskScreeningParamsInterface from "../../../interfaces/misc/RiskScreening
 // (Officer) Add/create a new RiskScreening log
 export const officerCreateRiskScreening = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       patient_id,
       rs_blood_sugar_fbs,
@@ -35,7 +35,7 @@ export const officerCreateRiskScreening = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
     const rs_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
@@ -44,98 +44,83 @@ export const officerCreateRiskScreening = [
       7
     );
 
-    const newRiskScreening: RiskScreeningParamsInterface = {
-      rs_id,
-      patient_id,
-      rs_blood_sugar_fbs,
-      rs_blood_sugar_rbs,
-      rs_blood_sugar_date_taken,
-      rs_blood_sugar_symptoms,
-      rs_lipid_cholesterol,
-      rs_lipid_hdl,
-      rs_lipid_ldl,
-      rs_lipid_vldl,
-      rs_lipid_triglyceride,
-      rs_lipid_date_taken,
-      rs_urine_protein,
-      rs_urine_protein_date_taken,
-      rs_urine_ketones,
-      rs_urine_ketones_date_taken,
-      rs_respiratory,
-    };
-
-    RiskScreeningModel.officerCreateRiskScreening(
-      newRiskScreening,
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        res
-          .status(201)
-          .json({ message: "RiskScreening added successfully", results });
-      }
-    );
+    try {
+      const results = await RiskScreeningModel.officerCreateRiskScreening({
+        rs_id,
+        patient_id,
+        rs_blood_sugar_fbs,
+        rs_blood_sugar_rbs,
+        rs_blood_sugar_date_taken,
+        rs_blood_sugar_symptoms,
+        rs_lipid_cholesterol,
+        rs_lipid_hdl,
+        rs_lipid_ldl,
+        rs_lipid_vldl,
+        rs_lipid_triglyceride,
+        rs_lipid_date_taken,
+        rs_urine_protein,
+        rs_urine_protein_date_taken,
+        rs_urine_ketones,
+        rs_urine_ketones_date_taken,
+        rs_respiratory,
+      });
+      res.status(201).json({ message: "Risk screening added successfully", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Officer) Read/Search a RiskScreening log
 export const officerSearchRiskScreening = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const { rs_id, patient_id, officer_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    RiskScreeningModel.officerSearchRiskScreening(
-      {
+    try {
+      const results = await RiskScreeningModel.officerSearchRiskScreening({
         rs_id,
         patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+    });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a RiskScreening log
 export const supervisorSearchRiskScreening = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const { rs_id, patient_id, supervisor_id } = req.body;
 
-    // Ensure the officer_id in the body matches the authenticated officer
+    // Ensure the supervisor_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    RiskScreeningModel.supervisorSearchRiskScreening(
-      {
+    try {
+      const results = await RiskScreeningModel.supervisorSearchRiskScreening({
         rs_id,
         patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+    });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a RiskScreening log
 export const supervisorUpdateRiskScreening = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       rs_blood_sugar_fbs,
       rs_blood_sugar_rbs,
@@ -157,13 +142,13 @@ export const supervisorUpdateRiskScreening = [
       supervisor_id,
     } = req.body;
 
-    // Ensure the officer_id in the body matches the authenticated officer
+    // Ensure the supervisor_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    RiskScreeningModel.supervisorUpdateRiskScreening(
-      {
+    try {
+      const results = await RiskScreeningModel.supervisorUpdateRiskScreening({
         rs_blood_sugar_fbs,
         rs_blood_sugar_rbs,
         rs_blood_sugar_date_taken,
@@ -181,35 +166,30 @@ export const supervisorUpdateRiskScreening = [
         rs_respiratory,
         rs_id,
         patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Updated definitions.", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Updated definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Delete a RiskScreening log
 export const supervisorDeleteRiskScreening = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const { rs_id, supervisor_id } = req.body;
 
-    // Ensure the officer_id in the body matches the authenticated officer
+    // Ensure the supervisor_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    RiskScreeningModel.supervisorUpdateRiskScreening(rs_id, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-
-      res.status(201).json({ message: "Deleted definitions.", results });
-    });
+    try {
+      const results = await RiskScreeningModel.supervisorUpdateRiskScreening(rs_id);
+      res.status(200).json({ message: "Deleted definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];

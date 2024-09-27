@@ -1,11 +1,11 @@
 import { Router } from "express";
+import { authMiddleware } from "../middleware/authMiddleware";
+import RecordPaths from "../common/constants/RoutePathNames";
 import {
   register,
   login,
   logout,
 } from "../controllers/user-based/OfficerAuthController";
-import { authMiddleware } from "../middleware/authMiddleware";
-import RecordPaths from "../common/constants/RoutePathNames";
 
 // creation functions
 import {
@@ -40,7 +40,7 @@ officerRouter.post("/login", login);
 officerRouter.post("/logout", authMiddleware, logout);
 
 // record-creation functions
-const recordCreationRoutes = [
+const recordCreatingRoutes = [
   { path: `${RecordPaths.CREATE_PATH}/ard`, handler: officerCreateArd },
   { path: `${RecordPaths.CREATE_PATH}/consultation`, handler: officerCreateConsultation },
   { path: `${RecordPaths.CREATE_PATH}/famhist`, handler: officerCreateFamilyHistory },
@@ -65,7 +65,9 @@ const recordSearchingRoutes = [
   { path: `${RecordPaths.SEARCH_PATH}/riskscreening`, handler: officerSearchRiskScreening }
 ];
 
-recordCreationRoutes.forEach(route => {
+
+// deploy endpoints
+recordCreatingRoutes.forEach(route => {
   officerRouter.post(route.path, route.handler);
 });
 

@@ -11,6 +11,9 @@ import superadminRouter from "./routes/SuperadminRouter";
 // Dotenv
 import dotenv from "dotenv";
 
+// Import the database initialization function
+import initializeDatabase from "./models/database-models-creation/databaseInititialization";
+
 dotenv.config();
 
 const eTsekApp: express.Application = express();
@@ -39,21 +42,28 @@ eTsekApp.get("/", (req: Request, res: Response) => {
 
 // Async function to start the server
 const startServer = async () => {
-  return new Promise((resolve, reject) => {
-    const server = eTsekApp.listen(PORT, () => {
-      console.log(`eTsekApp v1 API is running at: http://localhost:${PORT}`);
-      resolve(server);
-    });
+  try {
+    // Initialize the database
+    await initializeDatabase();
 
-    server.on("error", (err) => {
-      console.error(`Error starting server: ${err}`);
-      reject(err);
+    return new Promise((resolve, reject) => {
+      const server = eTsekApp.listen(PORT, () => {
+        console.log(`eTsekApp v1 API is running at: http://localhost:${PORT}`);
+        resolve(server);
+      });
+
+      server.on("error", (err) => {
+        console.error(`Error starting server: ${err}`);
+        reject(err);
+      });
     });
-  });
+  } catch (err: any) {
+    console.error(`Database initialization failed: ${err.message}`);
+    throw err; // Rethrow the error to handle it in the catch block
+  }
 };
 
 // Initialize the server
 startServer().catch((err) => {
   console.error(`Server initialization failed: ${err.message}`);
 });
-

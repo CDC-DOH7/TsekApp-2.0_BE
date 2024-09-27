@@ -5,10 +5,11 @@ import TableNames from "../../common/constants/TableNames";
 // Decide on who can access
 import officerDb from "../user-specific/OfficerModel";
 import supervisorDb from "../user-specific/SupervisorModel";
+import { QueryResult } from "mysql2";
 
 // # --- Begin Operations for ARD Models --- #
 
-const officerSearchArd = async (searchFilter: ArdSearchFilterInterface): Promise<any> => {
+const officerSearchArd = async (searchFilter: ArdSearchFilterInterface): Promise<QueryResult> => {
   const { ard_id, patient_id } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.ASSESS_RED_FLAG_TABLE} WHERE ard_id = ?`;
@@ -29,7 +30,7 @@ const officerSearchArd = async (searchFilter: ArdSearchFilterInterface): Promise
 };
 
 // Create consultation record
-const officerCreateArd = async (ard: ArdParamsInterface): Promise<any> => {
+const officerCreateArd = async (ard: ArdParamsInterface): Promise<QueryResult> => {
   const query = `INSERT INTO ${TableNames.ASSESS_RED_FLAG_TABLE}
   (ard_id,
   patient_id, 
@@ -75,7 +76,7 @@ const officerCreateArd = async (ard: ArdParamsInterface): Promise<any> => {
 
 // # ---- Supervisor Functions ---- # //
 
-const supervisorSearchArd = async (searchFilter: ArdSearchFilterInterface): Promise<any> => {
+const supervisorSearchArd = async (searchFilter: ArdSearchFilterInterface): Promise<QueryResult> => {
   const { ard_id, patient_id } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.ASSESS_RED_FLAG_TABLE} WHERE ard_id = ?`;
@@ -96,7 +97,7 @@ const supervisorSearchArd = async (searchFilter: ArdSearchFilterInterface): Prom
 };
 
 // Update consultation record
-const supervisorUpdateArd = async (ard: ArdParamsInterface): Promise<any> => {
+const supervisorUpdateArd = async (ard: ArdParamsInterface): Promise<QueryResult> => {
   const query = `UPDATE ${TableNames.ASSESS_RED_FLAG_TABLE} SET 
     ard_chest_pain = ?, 
     ard_difficulty_breathing = ?, 
@@ -139,7 +140,7 @@ const supervisorUpdateArd = async (ard: ArdParamsInterface): Promise<any> => {
 };
 
 // Delete consultation record
-const supervisorDeleteArd = async (ard_id: string): Promise<any> => {
+const supervisorDeleteArd = async (ard_id: string): Promise<QueryResult> => {
   const query = `DELETE FROM ${TableNames.ASSESS_RED_FLAG_TABLE} WHERE ard_id = ?`;
 
   // supervisor-specific

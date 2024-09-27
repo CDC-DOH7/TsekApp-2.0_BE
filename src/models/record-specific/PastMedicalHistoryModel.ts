@@ -10,7 +10,7 @@ import { QueryResult } from "mysql2";
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchPastMedicalHistory = async (
   searchFilter: PastMedicalHistorySearchFilterInterface,
-) => {
+): Promise<QueryResult> => {
   const { pmh_id, patient_id } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.PAST_MEDICAL_HISTORY_TABLE} WHERE pmh_id = ?`;
@@ -37,7 +37,7 @@ const officerSearchPastMedicalHistory = async (
 // Create consultation record
 const officerCreatePastMedicalHistory = async(
   pastMedicalHistory: PastMedicalHistoryParamsInterface,
-) => {
+): Promise<QueryResult> => {
   const query = `INSERT INTO ${TableNames.PAST_MEDICAL_HISTORY_TABLE}
   (pmh_id, 
   patient_id, 
@@ -94,7 +94,7 @@ const officerCreatePastMedicalHistory = async(
 
 const supervisorSearchPastMedicalHistory = async(
   searchFilter: PastMedicalHistorySearchFilterInterface,
-) => {
+): Promise<QueryResult> => {
   const { pmh_id, patient_id } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.PAST_MEDICAL_HISTORY_TABLE} WHERE pmh_id = ?`;
@@ -174,7 +174,7 @@ const supervisorUpdatePastMedicalHistory = async(
 // Delete consultation record
 const supervisorDeletePastMedicalHistory = async(
   pmh_id: string,
-): Promise<any> => {
+): Promise<QueryResult> => {
   const query = `DELETE FROM ${TableNames.PAST_MEDICAL_HISTORY_TABLE} WHERE pmh_id = ?`;
   
   // supervisor-specific

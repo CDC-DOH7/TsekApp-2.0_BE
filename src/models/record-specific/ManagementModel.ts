@@ -8,8 +8,8 @@ import supervisorDb from "../user-specific/SupervisorModel";
 import { QueryResult } from "mysql2";
 
 // # --- Begin Operations for Management Models --- #
-const officerSearchManagement = async(
-  searchFilter: ManagementSearchFilterInterface,
+const officerSearchManagement = async (
+  searchFilter: ManagementSearchFilterInterface
 ): Promise<QueryResult> => {
   const {
     mngm_id,
@@ -45,8 +45,8 @@ const officerSearchManagement = async(
 };
 
 // Create consultation record
-const officerCreateManagement = async(
-  management: ManagementParamsInterface,
+const officerCreateManagement = async (
+  management: ManagementParamsInterface
 ): Promise<QueryResult> => {
   const query = `INSERT INTO ${TableNames.MANAGEMENT_TABLE}
   (mngm_id, 
@@ -58,8 +58,8 @@ const officerCreateManagement = async(
   mngm_remarks) 
   VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
-   // officer-specific
-   try {
+  // officer-specific
+  try {
     const [result] = await (
       await officerDb
     ).query(query, [
@@ -78,10 +78,9 @@ const officerCreateManagement = async(
 };
 
 // # ---- Supervisor Functions ---- #
-const supervisorSearchManagement = async(
-  searchFilter: ManagementSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+const supervisorSearchManagement = async (
+  searchFilter: ManagementSearchFilterInterface
+): Promise<QueryResult> => {
   const {
     mngm_id,
     patient_id,
@@ -106,19 +105,19 @@ const supervisorSearchManagement = async(
     queryParams.push(mngm_date_followup_enddate);
   }
 
-    // supervisor-specific
-    try {
-      const [results] = await (await supervisorDb).query(query, queryParams);
-      return results;
-    } catch (err) {
-      throw err;
-    }
+  // supervisor-specific
+  try {
+    const [results] = await (await supervisorDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Update consultation record
-const supervisorUpdateManagement = async(
-  management: ManagementParamsInterface,
-) => {
+const supervisorUpdateManagement = async (
+  management: ManagementParamsInterface
+): Promise<QueryResult> => {
   const query = `UPDATE ${TableNames.MANAGEMENT_TABLE} SET 
   mngm_lifestyle_mod = ?, 
   mngm_med_antihypertensive = ?, 
@@ -129,15 +128,16 @@ const supervisorUpdateManagement = async(
 
   // supervisor-specific
   try {
-    const [result] = await (await supervisorDb).query(query, 
-      [
-        management.mngm_lifestyle_mod,
-        management.mngm_med_antihypertensive,
-        management.mngm_med_antidiabetes,
-        management.mngm_date_followup,
-        management.mngm_remarks,
-        management.mngm_id,
-        management.patient_id,
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [
+      management.mngm_lifestyle_mod,
+      management.mngm_med_antihypertensive,
+      management.mngm_med_antidiabetes,
+      management.mngm_date_followup,
+      management.mngm_remarks,
+      management.mngm_id,
+      management.patient_id,
     ]);
     return result;
   } catch (err) {
@@ -146,9 +146,9 @@ const supervisorUpdateManagement = async(
 };
 
 // Delete consultation record
-const supervisorDeleteManagement = async(
-  mngm_id: string,
-) => {
+const supervisorDeleteManagement = async (
+  mngm_id: string
+): Promise<QueryResult> => {
   const query = `DELETE FROM ${TableNames.MANAGEMENT_TABLE} WHERE mngm_id = ?`;
   // supervisor-specific
   try {

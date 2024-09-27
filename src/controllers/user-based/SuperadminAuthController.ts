@@ -1,3 +1,4 @@
+// controllers/SuperadminController.ts
 import { Request, Response } from "express";
 import db from "../../models/user-specific/SuperadminModel";
 import bcrypt from "bcryptjs";
@@ -19,8 +20,8 @@ const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN_ENCODED
 
 const COOKIE_MAX_AGE = Number(process.env.JWT_EXPIRES_IN) || 604800000; // One week in milliseconds
 
-// function for registration
-export const register = (req: Request, res: Response) => {
+// Function for registration
+export const register = async (req: Request, res: Response) => {
   const {
     superadmin_email,
     superadmin_username,
@@ -30,14 +31,17 @@ export const register = (req: Request, res: Response) => {
     superadmin_lname,
   } = req.body;
 
-  bcrypt.hash(superadmin_password, 10, (err, hash) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
-    // query to be called to the database
-    const query = `INSERT INTO a_superadmin_info(superadmin_id, superadmin_email, 
-    superadmin_username, superadmin_password, superadmin_fname, superadmin_mname, 
-    superadmin_lname) VALUES (?, ?, ?, ?, ?, ?, ?); `;
+  try {
+    const hash = await bcrypt.hash(superadmin_password, 10);
+    const query = `INSERT INTO a_superadmin_info
+    (superadmin_id, 
+    superadmin_email, 
+    superadmin_username, 
+    superadmin_password, 
+    superadmin_fname, 
+    superadmin_mname, 
+    superadmin_lname) 
+    VALUES (?, ?, ?, ?, ?, ?, ?);`;
 
     const superadmin_id = UniqueIDGenerator.generateCompactUniqueID(
       superadmin_fname,
@@ -57,65 +61,57 @@ export const register = (req: Request, res: Response) => {
       superadmin_lname,
     ];
 
-    // execute the query
-    db.query<ResultSetHeader>(query, procedureParams, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-      res.status(201).send({ message: "Superadmin registered" });
-    });
-  });
+    await (await db).query<ResultSetHeader>(query, procedureParams);
+    res.status(201).send({ message: "Superadmin registered" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
 };
 
-// function for login
-export const login = (req: Request, res: Response) => {
+// Function for login
+export const login = async (req: Request, res: Response) => {
   const { superadmin_username, superadmin_password } = req.body;
-  console.log(req.body);
-  const query = `SELECT * FROM a_superadmin_info WHERE superadmin_username = ?`;
-  db.query<Superadmin[]>(query, [superadmin_username], (err, results) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
+
+  try {
+    const query = `SELECT * FROM a_superadmin_info WHERE superadmin_username = ?`;
+    const [results] = await (await db).query<Superadmin[]>(query, [superadmin_username]);
+
     if (results.length === 0) {
       return res.status(401).send("Invalid credentials");
     }
+
     const superadmin = results[0];
-    bcrypt.compare(
-      superadmin_password,
-      superadmin.superadmin_password,
-      (err, isMatch) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        if (!isMatch) {
-          return res.status(401).send("Invalid credentials");
-        }
+    const isMatch = await bcrypt.compare(superadmin_password, superadmin.superadmin_password);
 
-        const token = jwt.sign({ id: superadmin.superadmin_id }, JWT_SECRET, {
-          expiresIn: JWT_EXPIRES_IN,
-        });
+    if (!isMatch) {
+      return res.status(401).send("Invalid credentials");
+    }
 
-        const messageString = `Logged in! Welcome ${superadmin.superadmin_lname.toUpperCase()}, ${
-          superadmin.superadmin_fname
-        }`;
+    const token = jwt.sign({ id: superadmin.superadmin_id }, JWT_SECRET, {
+      expiresIn: JWT_EXPIRES_IN,
+    });
 
-        // Exclude the password field from the superadmin info
-        const {
-          superadmin_password,
-          superadmin_username,
-          superadmin_email,
-          ...superadmin_info
-        } = superadmin;
+    const messageString = `Logged in! Welcome ${superadmin.superadmin_lname.toUpperCase()}, ${superadmin.superadmin_fname}`;
 
-        res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
-        res.status(200).json({ message: messageString, superadmin_info });
-      }
-    );
-  });
+    // Exclude the password field from the superadmin info
+    const {
+      superadmin_password: _, // Exclude
+      superadmin_username: __, // Exclude
+      superadmin_email,
+      ...superadmin_info
+    } = superadmin;
+
+    res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
+    res.status(200).json({ message: messageString, superadmin_info });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
 };
 
-// function for logout
-export const logout = (req: Request, res: Response) => {
+// Function for logout
+export const logout = async (req: Request, res: Response) => {
   res.clearCookie("token");
   res.status(200).send("Logged out");
 };

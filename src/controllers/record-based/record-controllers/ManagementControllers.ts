@@ -11,7 +11,7 @@ import ManagementParamsInterface from "../../../interfaces/misc/ManagementParams
 // (Officer) Add/create a new Management
 export const officerCreateManagement = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       patient_id,
       mngm_lifestyle_mod,
@@ -25,7 +25,7 @@ export const officerCreateManagement = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
     const mngm_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
@@ -44,21 +44,21 @@ export const officerCreateManagement = [
       mngm_remarks,
     };
 
-    ManagementModel.officerCreateManagement(newManagement, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-      res
-        .status(201)
-        .json({ message: "Management info added successfully", results });
-    });
+    try {
+      const results = await ManagementModel.officerCreateManagement(
+        newManagement
+      );
+      res.status(201).json({ message: "Management added successfully.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Officer) Read/Search a Management
 export const officerSearchManagement = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       mngm_date_followup_startdate,
       mngm_date_followup_enddate,
@@ -69,31 +69,27 @@ export const officerSearchManagement = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    ManagementModel.officerSearchManagement(
-      {
+    try {
+      const results = await ManagementModel.officerSearchManagement({
         mngm_id,
         patient_id,
         mngm_date_followup_startdate,
         mngm_date_followup_enddate,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+      });
+      res.status(201).json({ message: "Found results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a Management
 export const supervisorSearchManagement = [
   authenticateSupervisor, // Use the middleware to authenticate the supervisor
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       mngm_id,
       patient_id,
@@ -104,31 +100,27 @@ export const supervisorSearchManagement = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    ManagementModel.supervisorSearchManagement(
-      {
+    try {
+      const results = await ManagementModel.supervisorSearchManagement({
         mngm_id,
         patient_id,
         mngm_date_followup_startdate,
         mngm_date_followup_enddate,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a Management
 export const supervisorUpdateManagement = [
   authenticateSupervisor, // Use the middleware to authenticate the supervisor
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       mngm_lifestyle_mod,
       mngm_med_antihypertensive,
@@ -145,8 +137,8 @@ export const supervisorUpdateManagement = [
       return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    ManagementModel.supervisorUpdateManagement(
-      {
+    try {
+      const results = await ManagementModel.supervisorUpdateManagement({
         mngm_lifestyle_mod,
         mngm_med_antihypertensive,
         mngm_med_antidiabetes,
@@ -154,22 +146,18 @@ export const supervisorUpdateManagement = [
         mngm_remarks,
         mngm_id,
         patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Updated definitions.", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Updated definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Delete a Management
 export const supervisorDeleteManagement = [
   authenticateSupervisor, // Use the middleware to authenticate the supervisor
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const { mngm_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated supervisor
@@ -177,12 +165,11 @@ export const supervisorDeleteManagement = [
       return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    ManagementModel.supervisorUpdateManagement(mngm_id, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-
-      res.status(201).json({ message: "Deleted definitions.", results });
-    });
+    try {
+      const results = await ManagementModel.supervisorUpdateManagement(mngm_id);
+      res.status(200).json({ message: "Deleted definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];

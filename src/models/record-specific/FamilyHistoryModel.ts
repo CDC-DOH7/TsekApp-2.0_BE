@@ -34,8 +34,7 @@ const officerSearchFamilyHistory = async(
 // Create consultation record
 const officerCreateFamilyHistory = async(
   familyHistory: FamilyHistoryParamsInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+): Promise<QueryResult> => {
   const query = `INSERT INTO ${TableNames.FAMILY_HISTORY_TABLE}
   (fh_id, 
   patient_id, 
@@ -70,15 +69,16 @@ const officerCreateFamilyHistory = async(
         familyHistory.fh_copd,
       ]
     );
+    return result;
   }catch(err){
-
+    throw err;
   }
 };
 
 // # ---- Supervisor Functions ---- #
 const supervisorSearchFamilyHistory = async(
   searchFilter: FamilyHistorySearchFilterInterface,
-) => {
+): Promise<QueryResult> => {
   const { fh_id, patient_id } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.FAMILY_HISTORY_TABLE} WHERE fh_id = ?`;
@@ -102,7 +102,7 @@ const supervisorSearchFamilyHistory = async(
 
 const supervisorUpdateFamilyHistory = async(
   familyHistory: FamilyHistoryParamsInterface,
-) => {
+): Promise<QueryResult> => {
   const query = `UPDATE ${TableNames.FAMILY_HISTORY_TABLE} patient_id = ?, 
   fh_hypertension = ?, 
   fh_stroke = ?, 

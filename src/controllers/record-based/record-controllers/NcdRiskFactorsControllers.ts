@@ -11,7 +11,7 @@ import NcdRiskFactorsParamsInterface from "../../../interfaces/misc/NcdRiskFacto
 // (Officer) Add/create a new NcdRiskFactors
 export const officerCreateNcdRiskFactors = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       patient_id,
       rf_tobacco_use,
@@ -30,7 +30,7 @@ export const officerCreateNcdRiskFactors = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
     const rf_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
@@ -53,79 +53,60 @@ export const officerCreateNcdRiskFactors = [
       rf_waist_circumference,
       rf_bp,
     };
-
-    NcdRiskFactorsModel.officerCreateNcdRiskFactors(
-      newNcdRiskFactors,
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        res
-          .status(201)
-          .json({ message: "NcdRiskFactors added successfully", results });
-      }
-    );
+    
+    try {
+      const results = await NcdRiskFactorsModel.officerCreateNcdRiskFactors(newNcdRiskFactors);
+      res.status(201).json({ message: "NcdRiskFactors added successfully", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Officer) Read/Search a NcdRiskFactors log
 export const officerSearchNcdRiskFactors = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const { rf_id, patient_id, officer_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    NcdRiskFactorsModel.officerSearchNcdRiskFactors(
-      {
-        patient_id,
-        rf_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+    try {
+      const results = await NcdRiskFactorsModel.officerSearchNcdRiskFactors({ rf_id, patient_id });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a NcdRiskFactors log
 export const supervisorSearchNcdRiskFactors = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const { rf_id, patient_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    NcdRiskFactorsModel.supervisorSearchNcdRiskFactors(
-      {
-        rf_id,
-        patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+    try {
+      const results = await NcdRiskFactorsModel.supervisorSearchNcdRiskFactors({ rf_id, patient_id });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a NcdRiskFactors log
 export const supervisorUpdateNcdRiskFactors = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       rf_tobacco_use,
       rf_alcohol_intake,
@@ -144,11 +125,11 @@ export const supervisorUpdateNcdRiskFactors = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    NcdRiskFactorsModel.supervisorUpdateNcdRiskFactors(
-      {
+    try {
+      const results = await NcdRiskFactorsModel.supervisorUpdateNcdRiskFactors({
         rf_tobacco_use,
         rf_alcohol_intake,
         rf_binge_drinker,
@@ -161,38 +142,31 @@ export const supervisorUpdateNcdRiskFactors = [
         rf_bp,
         rf_id,
         patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
+      });
+      res.status(200).json({ message: "Updated definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
 
-        res.status(201).json({ message: "Updated definitions.", results });
-      }
-    );
   },
 ];
 
 // (Supervisor) Delete a NcdRiskFactors log
 export const supervisorDeleteNcdRiskFactors = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const { rf_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    NcdRiskFactorsModel.supervisorUpdateNcdRiskFactors(
-      rf_id,
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Deleted definitions.", results });
-      }
-    );
+    try {
+      const results = await NcdRiskFactorsModel.supervisorUpdateNcdRiskFactors(rf_id);
+      res.status(200).json({ message: "Deleted definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];

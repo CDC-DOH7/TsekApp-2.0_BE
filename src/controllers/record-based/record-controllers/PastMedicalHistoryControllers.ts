@@ -11,7 +11,7 @@ import PastMedicalHistoryParamsInterface from "../../../interfaces/misc/PastMedi
 // (Officer) Add/create a new Past Medical History
 export const officerCreatePastMedicalHistory = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       patient_id,
       pmh_hypertension,
@@ -37,7 +37,7 @@ export const officerCreatePastMedicalHistory = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
     const pmh_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
@@ -68,24 +68,19 @@ export const officerCreatePastMedicalHistory = [
       pmh_kidney_disorder,
     };
 
-    PastMedicalHistoryModel.officerCreatePastMedicalHistory(
-      newPastMedicalHistory,
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        res
-          .status(201)
-          .json({ message: "Past Medical History added successfully", results });
-      }
-    );
+    try {
+      const results = await PastMedicalHistoryModel.officerCreatePastMedicalHistory(newPastMedicalHistory);
+      res.status(201).json({ message: "Past Medical History added successfully", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Officer) Read/Search a Past Medical History
 export const officerSearchPastMedicalHistory = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       pmh_id,
       patient_id,
@@ -94,29 +89,22 @@ export const officerSearchPastMedicalHistory = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
-
-    PastMedicalHistoryModel.officerSearchPastMedicalHistory(
-      {
-        pmh_id,
-        patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+    
+    try {
+      const results = await PastMedicalHistoryModel.officerSearchPastMedicalHistory({ pmh_id, patient_id });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a Past Medical History
 export const supervisorSearchPastMedicalHistory = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       pmh_id,
       patient_id,
@@ -125,29 +113,22 @@ export const supervisorSearchPastMedicalHistory = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    PastMedicalHistoryModel.supervisorSearchPastMedicalHistory(
-      {
-        pmh_id,
-        patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+    try {
+      const results = await PastMedicalHistoryModel.supervisorSearchPastMedicalHistory({ pmh_id, patient_id });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a Past Medical History
 export const supervisorUpdatePastMedicalHistory = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       pmh_hypertension,
       pmh_heart_disease,
@@ -173,11 +154,12 @@ export const supervisorUpdatePastMedicalHistory = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    PastMedicalHistoryModel.supervisorUpdatePastMedicalHistory(
-      {
+
+    try {
+      const results = await PastMedicalHistoryModel.supervisorUpdatePastMedicalHistory({
         pmh_hypertension,
         pmh_heart_disease,
         pmh_diabetes,
@@ -197,38 +179,30 @@ export const supervisorUpdatePastMedicalHistory = [
         pmh_kidney_disorder,
         pmh_id,
         patient_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Updated definitions.", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Updated definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Delete a Past Medical History
 export const supervisorDeletePastMedicalHistory = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const { pmh_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    PastMedicalHistoryModel.supervisorUpdatePastMedicalHistory(
-      pmh_id,
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Deleted definitions.", results });
-      }
-    );
+    try {
+      const results = await PastMedicalHistoryModel.supervisorUpdatePastMedicalHistory(pmh_id);
+      res.status(200).json({ message: "Deleted definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];

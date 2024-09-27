@@ -5,7 +5,6 @@ import TableNames from "../../common/constants/TableNames";
 // Decide on who can access
 import officerDb from "../user-specific/OfficerModel";
 import supervisorDb from "../user-specific/SupervisorModel";
-import { result } from "lodash";
 
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchReferral = async (

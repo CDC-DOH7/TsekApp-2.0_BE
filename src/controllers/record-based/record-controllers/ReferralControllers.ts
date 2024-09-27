@@ -11,7 +11,7 @@ import ReferralParamsInterface from "../../../interfaces/misc/ReferralParamsInte
 // (Officer) Add/create a new Referral
 export const officerCreateReferral = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       patient_id,
       officer_id,
@@ -23,7 +23,7 @@ export const officerCreateReferral = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
     const ref_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
@@ -32,29 +32,28 @@ export const officerCreateReferral = [
       6
     );
 
-    const newReferral: ReferralParamsInterface = {
-      ref_id,
-      patient_id,
-      officer_id,
-      hf_id,
-      ref_date,
-      ref_reason,
-      ref_destination,
-    };
-
-    ReferralModel.officerCreateReferral(newReferral, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
+    try {
+      const results = await ReferralModel.officerCreateReferral({
+        ref_id,
+        patient_id,
+        officer_id,
+        hf_id,
+        ref_date,
+        ref_reason,
+        ref_destination,
+      });
       res.status(201).json({ message: "Referral added successfully", results });
-    });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
+    
   },
 ];
 
 // (Officer) Read/Search a Referral
 export const officerSearchReferral = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       ref_date_startdate,
       ref_date_enddate,
@@ -68,11 +67,11 @@ export const officerSearchReferral = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    ReferralModel.officerSearchReferral(
-      {
+    try {
+      const results = await ReferralModel.officerSearchReferral({
         ref_date_startdate,
         ref_date_enddate,
         ref_id,
@@ -81,22 +80,18 @@ export const officerSearchReferral = [
         hf_id,
         ref_reason,
         ref_destination,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a Referral
 export const supervisorSearchReferral = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       ref_date_startdate,
       ref_date_enddate,
@@ -111,11 +106,11 @@ export const supervisorSearchReferral = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    ReferralModel.supervisorSearchReferral(
-      {
+    try {
+      const results = await ReferralModel.supervisorSearchReferral({
         ref_date_startdate,
         ref_date_enddate,
         ref_id,
@@ -124,22 +119,18 @@ export const supervisorSearchReferral = [
         hf_id,
         ref_reason,
         ref_destination,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a Referral
 export const supervisorUpdateReferral = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const {
       hf_id,
       patient_id,
@@ -153,11 +144,11 @@ export const supervisorUpdateReferral = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
-
-    ReferralModel.supervisorUpdateReferral(
-      {
+    
+    try {
+      const results = await ReferralModel.supervisorUpdateReferral({
         hf_id,
         patient_id,
         officer_id,
@@ -165,35 +156,30 @@ export const supervisorUpdateReferral = [
         ref_reason,
         ref_destination,
         ref_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Updated definitions.", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Updated definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Delete a Referral
 export const supervisorDeleteReferral = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async(req: Request, res: Response) => {
     const { ref_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    ReferralModel.supervisorUpdateReferral(ref_id, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-
-      res.status(201).json({ message: "Deleted definitions.", results });
-    });
+    try {
+      const results = await ReferralModel.supervisorUpdateReferral(ref_id);
+      res.status(200).json({ message: "Deleted definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];

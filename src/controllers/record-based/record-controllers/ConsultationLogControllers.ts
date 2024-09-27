@@ -11,13 +11,13 @@ import ConsultationParamsInterface from "../../../interfaces/misc/ConsultationLo
 // (Officer) Add/create a new consultation log
 export const officerCreateConsultation = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
       req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
     const cl_id = RecordsUniqueIDGenerator.generateCompactUniqueID(
@@ -36,24 +36,23 @@ export const officerCreateConsultation = [
       ref_id,
     };
 
-    ConsultationModel.officerCreateConsultationLog(
-      newConsultation,
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        res
-          .status(201)
-          .json({ message: "Consultation added successfully", results });
-      }
-    );
+    try {
+      const results = await ConsultationModel.officerCreateConsultationLog(
+        newConsultation
+      );
+      res
+        .status(201)
+        .json({ message: "Consultation added successfully", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Officer) Read/Search a consultation log
 export const officerSearchConsultation = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       cl_date_startDate,
       cl_date_endDate,
@@ -66,11 +65,11 @@ export const officerSearchConsultation = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    ConsultationModel.officerSearchConsultationLog(
-      {
+    try {
+      const results = await ConsultationModel.officerSearchConsultationLog({
         cl_date_startDate,
         cl_date_endDate,
         hf_id,
@@ -78,22 +77,18 @@ export const officerSearchConsultation = [
         patient_id,
         officer_id,
         ref_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a consultation log
 export const supervisorSearchConsultation = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       cl_date_startDate,
       cl_date_endDate,
@@ -107,11 +102,11 @@ export const supervisorSearchConsultation = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    ConsultationModel.supervisorSearchConsultationLog(
-      {
+    try {
+      const results = await ConsultationModel.supervisorSearchConsultationLog({
         cl_date_startDate,
         cl_date_endDate,
         hf_id,
@@ -119,22 +114,18 @@ export const supervisorSearchConsultation = [
         patient_id,
         officer_id,
         ref_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Found Results!", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Found Results!", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Read/Search a consultation log
 export const supervisorUpdateConsultation = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       cl_description,
       cl_date,
@@ -148,11 +139,11 @@ export const supervisorUpdateConsultation = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(
-      {
+    try {
+      const results = await ConsultationModel.supervisorUpdateConsultationLog({
         cl_description,
         cl_date,
         officer_id,
@@ -160,35 +151,30 @@ export const supervisorUpdateConsultation = [
         cl_id,
         patient_id,
         hf_id,
-      },
-      (err, results) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-
-        res.status(201).json({ message: "Updated definitions.", results });
-      }
-    );
+      });
+      res.status(200).json({ message: "Updated definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];
 
 // (Supervisor) Delete a consultation log
 export const supervisorDeleteConsultation = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const { cl_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
-      return res.status(403).send("Access denied. Invalid officer ID.");
+      return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    ConsultationModel.supervisorUpdateConsultationLog(cl_id, (err, results) => {
-      if (err) {
+      try {
+        const results = await ConsultationModel.supervisorUpdateConsultationLog(cl_id);
+        res.status(200).json({ message: "Deleted definitions.", results });
+      } catch (err) {
         return res.status(500).send(err);
       }
-
-      res.status(201).json({ message: "Deleted definitions.", results });
-    });
   },
 ];
