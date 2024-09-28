@@ -1,16 +1,16 @@
 import TableNames from "../../../common/constants/TableNames";
 
+// -- create e-tsekapp database if non-existent--
 // -- create tables for the database --
-// Create table SQL statements
 export const createTablesScripts = [
   `CREATE TABLE IF NOT EXISTS ${TableNames.BARANGAY_TABLE} (
       brgy_id INT NOT NULL PRIMARY KEY,
       province_id INT NOT NULL,
       muncity_id INT NOT NULL,
       brgy_name VARCHAR(50) NOT NULL,
-      old_target INT NOT NULL,
-      target INT NOT NULL,
-      target_2022 INT NOT NULL,
+      old_target INT,
+      target INT,
+      target_2022 INT,
 
       FOREIGN KEY (muncity_id) REFERENCES a_muncity_info(muncity_id),
       FOREIGN KEY (province_id) REFERENCES a_province_info(province_id)
@@ -46,7 +46,7 @@ export const createTablesScripts = [
       province_id INT NOT NULL,
       hf_region VARCHAR(50) NOT NULL,
     
-      FOREIGN KEY (brgy_id) REFERENCES a_barangay_info(barangay_id),
+      FOREIGN KEY (brgy_id) REFERENCES a_barangay_info(brgy_id),
       FOREIGN KEY (muncity_id) REFERENCES a_muncity_info(muncity_id),
       FOREIGN KEY (province_id) REFERENCES a_province_info(province_id)
     )`,
@@ -118,7 +118,7 @@ export const createTablesScripts = [
      
       FOREIGN KEY (patient_age_group_id) REFERENCES a_age_group(ag_id),
       FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id),
-      FOREIGN KEY (brgy_id) REFERENCES a_barangay_info(barangay_id),
+      FOREIGN KEY (brgy_id) REFERENCES a_barangay_info(brgy_id),
       FOREIGN KEY (muncity_id) REFERENCES a_muncity_info(muncity_id),
       FOREIGN KEY (province_id) REFERENCES a_province_info(province_id)
     )`,

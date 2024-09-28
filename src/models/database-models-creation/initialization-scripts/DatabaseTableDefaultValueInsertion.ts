@@ -1,21 +1,20 @@
 import TableNames from "../../../common/constants/TableNames";
-
 // default province values
 export const insertDefaultProvinceValues = [
-  `INSERT INTO ${TableNames.PROVINCE_TABLE}(province_id,province_name) VALUES
-	  (1,'Bohol'),
-	  (2,'Cebu'),
-	  (3,'Negros Oriental'),
-	  (4,'Siquijor'),
-	  (5,'Negros Occidental'),
-	  (6,'Camotes'),
-	  (7,'Biliran'),
-	  (8,'Leyte'),
-	  (9,'Southern Leyte'),
-	  (10,'Samar')
-  INSERT INTO ${TableNames.PROVINCE_TABLE} (province_id,province_name) VALUES
-	  (11,'Eastern Samar'),
-	  (12,'Northern Samar')`
+  `INSERT INTO ${TableNames.PROVINCE_TABLE}(province_id, province_name) VALUES
+	  (1, 'Bohol'),
+	  (2, 'Cebu'),
+	  (3, 'Negros Oriental'),
+	  (4, 'Siquijor'),
+	  (5, 'Negros Occidental'),
+	  (6, 'Camotes'),
+	  (7, 'Biliran'),
+	  (8, 'Leyte'),
+	  (9, 'Southern Leyte'),
+	  (10, 'Samar')`,
+  `INSERT INTO ${TableNames.PROVINCE_TABLE}(province_id, province_name) VALUES
+	  (11, 'Eastern Samar'),
+	  (12, 'Northern Samar')`,
 ];
 
 // default age groups values
@@ -26,7 +25,7 @@ export const insertDefaultAgeGroupValues = [
     (2, "30-39 years old", "Young Adult"),
     (3, "40-49 years old", "Middle-aged Adult"),
     (4, "50-59 years old", "Middle-aged Adult"),
-    (5, "60+ years old", "Senior Citizen")`
+    (5, "60+ years old", "Senior Citizen")`,
 ];
 
 // default muncity values
@@ -42,7 +41,7 @@ export const insertDefaultMuncityValues = [
 	 (8,1,'Bien Unido'),
 	 (9,1,'Bilar'),
 	 (10,1,'Buenavista')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (11,1,'Calape'),
 	 (12,1,'Candijay'),
 	 (13,1,'Carmen'),
@@ -53,7 +52,7 @@ export const insertDefaultMuncityValues = [
 	 (18,1,'Dagohoy'),
 	 (19,1,'Danao'),
 	 (20,1,'Dauis')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (21,1,'Dimiao'),
 	 (22,1,'Duero'),
 	 (23,1,'Garcia Hernandez'),
@@ -64,7 +63,7 @@ export const insertDefaultMuncityValues = [
 	 (28,1,'Lila'),
 	 (29,1,'Loay'),
 	 (30,1,'Loboc')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (31,1,'Loon'),
 	 (32,1,'Mabini'),
 	 (33,1,'Maribojoc'),
@@ -75,7 +74,7 @@ export const insertDefaultMuncityValues = [
 	 (38,1,'San Isidro'),
 	 (39,1,'San Miguel'),
 	 (40,1,'Sevilla')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (41,1,'Sierra Bullones'),
 	 (42,1,'Sikatuna'),
 	 (43,1,'Tagbilaran City (Capital)'),
@@ -86,7 +85,7 @@ export const insertDefaultMuncityValues = [
 	 (48,1,'Valencia'),
 	 (49,2,'Alcantara'),
 	 (50,2,'Alcoy')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (51,2,'Alegria'),
 	 (52,2,'Aloguinsan'),
 	 (53,2,'Argao'),
@@ -97,7 +96,7 @@ export const insertDefaultMuncityValues = [
 	 (58,2,'Barili'),
 	 (59,2,'Boljoon'),
 	 (60,2,'Borbon')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (61,2,'Carmen'),
 	 (62,2,'Catmon'),
 	 (63,2,'Cebu City (Capital)'),
@@ -108,7 +107,7 @@ export const insertDefaultMuncityValues = [
 	 (68,2,'Compostela'),
 	 (69,2,'Consolacion'),
 	 (70,2,'Cordova')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (71,2,'Daanbantayan'),
 	 (72,2,'Dalaguete'),
 	 (73,2,'Danao City'),
@@ -119,7 +118,7 @@ export const insertDefaultMuncityValues = [
 	 (78,2,'Madridejos'),
 	 (79,2,'Malabuyoc'),
 	 (80,2,'Mandaue City')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (81,2,'Medellin'),
 	 (82,2,'Minglanilla'),
 	 (83,2,'Moalboal'),
@@ -130,7 +129,7 @@ export const insertDefaultMuncityValues = [
 	 (88,2,'Ronda'),
 	 (89,2,'Samboan'),
 	 (90,2,'San Fernando')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (91,6,'San Francisco'),
 	 (92,2,'San Remigio'),
 	 (93,2,'Santa Fe'),
@@ -141,7 +140,7 @@ export const insertDefaultMuncityValues = [
 	 (98,2,'Tabuelan'),
 	 (99,2,'Toledo City'),
 	 (100,2,'Tuburan')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (101,6,'Tudela'),
 	 (127,4,'Enrique Villanueva'),
 	 (128,4,'Larena'),
@@ -152,7 +151,7 @@ export const insertDefaultMuncityValues = [
 	 (133,3,'Amlan (Ayuquitan) '),
 	 (134,3,'Ayungon '),
 	 (135,3,'Bacong ')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (136,3,'Bais City '),
 	 (137,3,'Basay '),
 	 (138,3,'Bindoy (Payabon) '),
@@ -163,7 +162,7 @@ export const insertDefaultMuncityValues = [
 	 (143,3,'Dauin '),
 	 (144,3,'Dumaguete City (Capital) '),
 	 (145,3,'Jimalalud ')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (146,3,'La Libertad '),
 	 (147,3,'Mabinay '),
 	 (148,3,'Manjuyod '),
@@ -174,7 +173,7 @@ export const insertDefaultMuncityValues = [
 	 (153,3,'Sibulan '),
 	 (154,3,'Tayasan '),
 	 (155,3,'Valencia (Luzurriaga) ')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (156,3,'Vallehermoso '),
 	 (157,3,'Zamboanguita '),
 	 (158,7,'Almeria'),
@@ -185,7 +184,7 @@ export const insertDefaultMuncityValues = [
 	 (163,7,'Kawayan '),
 	 (164,7,'Maripipi'),
 	 (165,7,'Naval')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (166,8,'Abuyog'),
 	 (167,8,'Alangalang'),
 	 (168,8,'Albuera'),
@@ -196,7 +195,7 @@ export const insertDefaultMuncityValues = [
 	 (173,8,'Calubian'),
 	 (174,8,'Capoocan'),
 	 (175,8,'Carigara')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (176,8,'City of Baybay'),
 	 (177,8,'Dagami'),
 	 (178,8,'Dulag'),
@@ -207,7 +206,7 @@ export const insertDefaultMuncityValues = [
 	 (183,8,'Jaro'),
 	 (184,8,'Javier'),
 	 (185,8,'Julita')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (186,8,'Kananga'),
 	 (187,8,'La Paz'),
 	 (188,8,'Leyte'),
@@ -218,7 +217,7 @@ export const insertDefaultMuncityValues = [
 	 (193,8,'Mayorga'),
 	 (194,8,'Merida'),
 	 (195,8,'Ormoc City')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (196,8,'Palo'),
 	 (197,8,'Palompon'),
 	 (198,8,'Pastrana'),
@@ -229,7 +228,7 @@ export const insertDefaultMuncityValues = [
 	 (203,8,'Tabontabon'),
 	 (204,8,'Tacloban City'),
 	 (205,8,'Tanauan')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (206,8,'Tolosa'),
 	 (207,8,'Tunga'),
 	 (208,8,'Villaba'),
@@ -240,7 +239,7 @@ export const insertDefaultMuncityValues = [
 	 (213,9,'Libagon'),
 	 (214,9,'Liloan'),
 	 (215,9,'Limasawa')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (216,9,'Maasin'),
 	 (217,9,'Macrohon'),
 	 (218,9,'Malitbog'),
@@ -251,7 +250,7 @@ export const insertDefaultMuncityValues = [
 	 (223,9,'San Juan'),
 	 (224,9,'San Ricardo'),
 	 (225,9,'Silago')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (226,9,'Sogod'),
 	 (227,9,'Tomas Oppus'),
 	 (228,10,'Almagro'),
@@ -262,7 +261,7 @@ export const insertDefaultMuncityValues = [
 	 (233,10,'Daram'),
 	 (234,10,'Gandara'),
 	 (235,10,'Hinabangan')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (236,10,'Jiabong'),
 	 (237,10,'Marabut'),
 	 (238,10,'Matuguinao'),
@@ -273,7 +272,7 @@ export const insertDefaultMuncityValues = [
 	 (243,10,'Santa Margarita'),
 	 (244,10,'Santa Rita'),
 	 (245,10,'Santo Niño')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (246,10,'Talalora'),
 	 (247,10,'Tarangnan'),
 	 (248,10,'Villareal'),
@@ -284,7 +283,7 @@ export const insertDefaultMuncityValues = [
 	 (253,10,'Pagsanghan'),
 	 (254,11,'Arteche'),
 	 (255,11,'Balangiga')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (256,11,'Balangkayan'),
 	 (257,11,'Can-Avid'),
 	 (258,11,'City Borongan'),
@@ -295,7 +294,7 @@ export const insertDefaultMuncityValues = [
 	 (263,11,'Hernani'),
 	 (264,11,'Jipapad'),
 	 (265,11,'Lawaan')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (266,11,'Llorente'),
 	 (267,11,'Maslog'),
 	 (268,11,'Maydolong'),
@@ -306,7 +305,7 @@ export const insertDefaultMuncityValues = [
 	 (273,11,'San Julian'),
 	 (274,11,'San Policarpo'),
 	 (275,11,'Sulat')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (276,11,'Taft'),
 	 (277,12,'Allen'),
 	 (278,12,'Biri'),
@@ -317,7 +316,7 @@ export const insertDefaultMuncityValues = [
 	 (283,12,'Gamay'),
 	 (284,12,'Laoang'),
 	 (285,12,'Lapinig')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (286,12,'Las Navas'),
 	 (287,12,'Lavezares'),
 	 (288,12,'Mapanas'),
@@ -328,7 +327,7 @@ export const insertDefaultMuncityValues = [
 	 (293,12,'San Antonio'),
 	 (294,12,'San Isidro'),
 	 (295,12,'San Jose')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (296,12,'San Roque'),
 	 (297,12,'San Vicente'),
 	 (298,12,'Silvino Lobos'),
@@ -339,7 +338,7 @@ export const insertDefaultMuncityValues = [
 	 (303,5,'Candoni'),
 	 (304,5,'Cauayan'),
 	 (305,5,'City of Bago')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (306,5,'City of Cadiz'),
 	 (307,5,'City of Escalante'),
 	 (308,5,'City of Himamaylan'),
@@ -350,7 +349,7 @@ export const insertDefaultMuncityValues = [
 	 (313,5,'City of Silay'),
 	 (314,5,'City of Sipalay'),
 	 (315,5,'Enrique B. Magalona')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (316,5,'Hinigaran'),
 	 (317,5,'Hinoba-an'),
 	 (318,5,'Ilog'),
@@ -361,19 +360,19 @@ export const insertDefaultMuncityValues = [
 	 (323,5,'Murcia'),
 	 (324,5,'Pontevedra'),
 	 (325,5,'Pulupandan')`,
-`INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
+  `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
 	 (326,5,'San Enrique'),
 	 (327,5,'Toboso'),
 	 (328,5,'Valladolid'),
 	 (329,5,'Salvador Benedicto'),
 	 (330,5,'City of Talisay'),
 	 (331,5,'City of Victorias'),
-	 (332,5,'City of Barongan')`
+	 (332,5,'City of Barongan')`,
 ];
 
 // default barangay info values
 export const insertDefaultBarangayValues = [
-	`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1,1,1,'Bahi',112,960,0),
 	 (2,1,1,'Basacdacu',168,820,0),
 	 (3,1,1,'Cantiguib',140,605,0),
@@ -384,7 +383,7 @@ export const insertDefaultBarangayValues = [
 	 (8,1,1,'Santa Filomena',72,946,0),
 	 (9,1,1,'Tagbuane',128,897,0),
 	 (10,1,1,'Toril',144,772,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (11,1,1,'West Poblacion',132,1153,0),
 	 (12,1,2,'Cabatang',340,891,0),
 	 (13,1,2,'Cagongcagong',276,455,0),
@@ -395,7 +394,7 @@ export const insertDefaultBarangayValues = [
 	 (18,1,2,'La Hacienda',1704,3888,0),
 	 (19,1,2,'Mahayag',360,704,0),
 	 (20,1,2,'Napo',516,1340,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (21,1,2,'Pagahat',224,773,0),
 	 (22,1,2,'Poblacion (calingganay)',1264,4359,0),
 	 (23,1,2,'Progreso',388,1067,0),
@@ -406,7 +405,7 @@ export const insertDefaultBarangayValues = [
 	 (28,1,3,'Bacong',648,2403,201),
 	 (29,1,3,'Badiang',420,1325,500),
 	 (30,1,3,'Buenasuerte',168,332,10)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (31,1,3,'Candabong',748,2269,0),
 	 (32,1,3,'Casica',144,480,0),
 	 (33,1,3,'Katipunan',228,483,10),
@@ -417,7 +416,7 @@ export const insertDefaultBarangayValues = [
 	 (38,1,3,'Suba',156,1140,0),
 	 (39,1,3,'Talisay',380,968,0),
 	 (40,1,3,'Tanod',212,436,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (41,1,3,'Tawid',300,816,0),
 	 (42,1,3,'Virgen',508,1564,0),
 	 (43,1,4,'Angilan',220,980,0),
@@ -428,7 +427,7 @@ export const insertDefaultBarangayValues = [
 	 (48,1,4,'Canlaas',160,672,0),
 	 (49,1,4,'Can-omay',84,562,0),
 	 (50,1,4,'Cansibuan',128,589,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (51,1,4,'Celing',40,708,0),
 	 (52,1,4,'Danao',84,489,0),
 	 (53,1,4,'Danicop',76,682,0),
@@ -439,7 +438,7 @@ export const insertDefaultBarangayValues = [
 	 (58,1,4,'Tabuan',184,599,0),
 	 (59,1,4,'Tagubaas',64,472,0),
 	 (60,1,4,'Tupas',116,879,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (61,1,4,'Ubojan',64,466,0),
 	 (62,1,4,'Viga',168,606,0),
 	 (63,1,4,'Villa Aurora (canoc-oc)',56,893,0),
@@ -450,7 +449,7 @@ export const insertDefaultBarangayValues = [
 	 (68,1,5,'Landican',116,899,0),
 	 (69,1,5,'Laya',144,1105,0),
 	 (70,1,5,'Libertad',188,1360,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (71,1,5,'Montana',228,1778,0),
 	 (72,1,5,'Pamilacan',448,1467,0),
 	 (73,1,5,'Payahan',284,952,0),
@@ -461,7 +460,7 @@ export const insertDefaultBarangayValues = [
 	 (78,1,5,'Santa Cruz',204,1979,0),
 	 (79,1,5,'Taguihon',168,1942,0),
 	 (80,1,5,'Tanday',256,837,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (81,1,6,'Baucan Norte',212,689,0),
 	 (82,1,6,'Baucan Sur',208,827,0),
 	 (83,1,6,'Boctol',400,1368,0),
@@ -472,7 +471,7 @@ export const insertDefaultBarangayValues = [
 	 (88,1,6,'Candasig',96,630,0),
 	 (89,1,6,'Cantalid',144,414,0),
 	 (90,1,6,'Cantomimbo',204,558,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (91,1,6,'Cogon',204,801,0),
 	 (92,1,6,'Datag Norte',192,625,0),
 	 (93,1,6,'Datag Sur',84,515,0),
@@ -483,7 +482,7 @@ export const insertDefaultBarangayValues = [
 	 (98,1,6,'Del Rosario',24,238,0),
 	 (99,1,6,'Dorol',204,772,0),
 	 (100,1,6,'Haguilanan Grande',248,710,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (101,1,6,'Hanopol Este',52,357,0),
 	 (102,1,6,'Hanopol Norte',112,397,0),
 	 (103,1,6,'Hanopol Weste',48,253,0),
@@ -494,7 +493,7 @@ export const insertDefaultBarangayValues = [
 	 (108,1,6,'San Isidro',116,471,0),
 	 (109,1,6,'San Roque',68,565,0),
 	 (110,1,6,'Santo Niño',160,550,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (111,1,6,'Tagustusan',232,738,0),
 	 (112,1,7,'Aloja',212,439,0),
 	 (113,1,7,'Behind The Clouds (san Jose)',176,242,0),
@@ -505,7 +504,7 @@ export const insertDefaultBarangayValues = [
 	 (118,1,7,'Janlud',296,807,0),
 	 (119,1,7,'Poblacion Norte',420,2057,0),
 	 (120,1,7,'Poblacion Sur',256,1358,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (121,1,7,'Poblacion Vieja (longsudaan)',224,930,0),
 	 (122,1,7,'Quezon',220,630,0),
 	 (123,1,7,'Quirino',176,497,0),
@@ -516,7 +515,7 @@ export const insertDefaultBarangayValues = [
 	 (128,1,8,'Bilangbilangan Diot',448,846,0),
 	 (129,1,8,'Hingotanan East',996,2217,0),
 	 (130,1,8,'Hingotanan West',1028,2054,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (131,1,8,'Liberty',484,1032,0),
 	 (132,1,8,'Malingin',956,1749,0),
 	 (133,1,8,'Mandawa',1200,2467,0),
@@ -527,7 +526,7 @@ export const insertDefaultBarangayValues = [
 	 (138,1,8,'Poblacion (bien Unido)',1084,3386,0),
 	 (139,1,8,'Puerto San Pedro',532,1183,0),
 	 (140,1,8,'Sagasa',964,1534,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (141,1,8,'Tuboran',320,1090,0),
 	 (142,1,9,'Bonifacio',92,269,0),
 	 (143,1,9,'Bugang Norte',176,654,0),
@@ -538,7 +537,7 @@ export const insertDefaultBarangayValues = [
 	 (148,1,9,'Cansumbol',284,1230,0),
 	 (149,1,9,'Dagohoy',316,790,0),
 	 (150,1,9,'Owac',304,1007,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (151,1,9,'Poblacion',92,1643,0),
 	 (152,1,9,'Quezon',120,639,0),
 	 (153,1,9,'Riverside',248,1047,0),
@@ -549,7 +548,7 @@ export const insertDefaultBarangayValues = [
 	 (158,1,9,'Villa Suerte',68,240,0),
 	 (159,1,9,'Yanaya',440,1332,0),
 	 (160,1,9,'Zamora',292,1821,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (161,1,10,'Anonang',192,290,0),
 	 (162,1,10,'Asinan',272,758,0),
 	 (163,1,10,'Bago',388,576,0),
@@ -560,7 +559,7 @@ export const insertDefaultBarangayValues = [
 	 (168,1,10,'Bugaong',192,464,0),
 	 (169,1,10,'Cambuhat',476,1164,0),
 	 (170,1,10,'Cambus-oc',452,743,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (171,1,10,'Cangawa',316,1200,0),
 	 (172,1,10,'Cantomugcad',92,303,0),
 	 (173,1,10,'Cantores',364,646,0),
@@ -571,7 +570,7 @@ export const insertDefaultBarangayValues = [
 	 (178,1,10,'Dait',316,1015,0),
 	 (179,1,10,'Eastern Cabul-an',976,2172,0),
 	 (180,1,10,'Hunan',300,844,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (181,1,10,'Lapacan Norte',164,401,0),
 	 (182,1,10,'Lapacan Sur',184,548,0),
 	 (183,1,10,'Lubang',652,1080,0),
@@ -582,7 +581,7 @@ export const insertDefaultBarangayValues = [
 	 (188,1,10,'Nueva Montana',324,676,0),
 	 (189,1,10,'Overland',492,925,0),
 	 (190,1,10,'Panghagban',524,1114,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (191,1,10,'Poblacion',244,955,0),
 	 (192,1,10,'Puting Bato',220,559,0),
 	 (193,1,10,'Rufo Hill',484,813,0),
@@ -593,7 +592,7 @@ export const insertDefaultBarangayValues = [
 	 (198,1,11,'Banlasan',356,761,0),
 	 (199,1,11,'Bentig',568,2016,0),
 	 (200,1,11,'Binogawan',100,443,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (201,1,11,'Bonbon',504,1341,0),
 	 (202,1,11,'Cabayugan',320,952,0),
 	 (203,1,11,'Cabudburan',188,524,0),
@@ -604,7 +603,7 @@ export const insertDefaultBarangayValues = [
 	 (208,1,11,'Desamparados (pob.)',160,813,0),
 	 (209,1,11,'Kahayag',160,548,0),
 	 (210,1,11,'Kinabag-an',124,661,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (211,1,11,'Labuon',116,561,0),
 	 (212,1,11,'Lawis',212,657,0),
 	 (213,1,11,'Liboron',372,1503,0),
@@ -615,7 +614,7 @@ export const insertDefaultBarangayValues = [
 	 (218,1,11,'Magtongtong',140,661,0),
 	 (219,1,11,'Mandaug',448,1405,0),
 	 (220,1,11,'Mantatao',484,878,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (221,1,11,'Sampoangon',208,421,0),
 	 (222,1,11,'San Isidro',940,2271,0),
 	 (223,1,11,'Santa Cruz (pob.)',368,2679,0),
@@ -626,7 +625,7 @@ export const insertDefaultBarangayValues = [
 	 (228,1,11,'Ulbujan',720,1658,0),
 	 (229,1,12,'Abihilan',376,1658,0),
 	 (230,1,12,'Anoling',596,1151,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (231,1,12,'Boyo-an',448,1666,0),
 	 (232,1,12,'Cadapdapan',540,1317,0),
 	 (233,1,12,'Cambane',232,430,0),
@@ -637,7 +636,7 @@ export const insertDefaultBarangayValues = [
 	 (238,1,12,'Luan',416,756,0),
 	 (239,1,12,'Lungsoda-an',488,1551,0),
 	 (240,1,12,'Mahangin',344,922,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (241,1,12,'Pagahat',152,445,0),
 	 (242,1,12,'Panadtaran',252,972,0),
 	 (243,1,12,'Panas',704,1733,0),
@@ -648,7 +647,7 @@ export const insertDefaultBarangayValues = [
 	 (248,1,12,'Tubod (tres Rosas)',352,919,0),
 	 (249,1,12,'Tugas',580,1707,0),
 	 (250,1,13,'Alegria',596,1296,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (251,1,13,'Bicao',1040,2634,0),
 	 (252,1,13,'Buenavista',1144,2695,0),
 	 (253,1,13,'Buenos Aires',224,1456,0),
@@ -659,7 +658,7 @@ export const insertDefaultBarangayValues = [
 	 (258,1,13,'Katipunan',1168,3131,0),
 	 (259,1,13,'La Libertad',248,832,0),
 	 (260,1,13,'La Paz',456,1531,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (261,1,13,'La Salvacion',400,1089,0),
 	 (262,1,13,'La Victoria',316,1243,0),
 	 (263,1,13,'Matin-ao',400,912,0),
@@ -670,7 +669,7 @@ export const insertDefaultBarangayValues = [
 	 (268,1,13,'Nueva Fuerza',1092,2517,0),
 	 (269,1,13,'Nueva Vida Este',384,914,0),
 	 (270,1,13,'Nueva Vida Norte',280,1000,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (271,1,13,'Nueva Vida Sur',408,940,0),
 	 (272,1,13,'Poblacion Norte',932,3335,0),
 	 (273,1,13,'Poblacion Sur',420,3392,0),
@@ -681,7 +680,7 @@ export const insertDefaultBarangayValues = [
 	 (278,1,13,'Villarcayo',664,1955,0),
 	 (279,1,14,'Alegria',320,1291,0),
 	 (280,1,14,'Ambuan',464,1190,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (281,1,14,'Baang',452,1492,0),
 	 (282,1,14,'Bagtic',356,1091,0),
 	 (283,1,14,'Bongbong',148,584,0),
@@ -692,7 +691,7 @@ export const insertDefaultBarangayValues = [
 	 (288,1,14,'Haguilanan',220,1132,0),
 	 (289,1,14,'Kang-iras',248,749,0),
 	 (290,1,14,'Libertad Sur',152,337,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (291,1,14,'Liboron',332,987,0),
 	 (292,1,14,'Mahayag Norte',224,570,0),
 	 (293,1,14,'Mahayag Sur',88,287,0),
@@ -703,7 +702,7 @@ export const insertDefaultBarangayValues = [
 	 (298,1,14,'Rizal',176,724,0),
 	 (299,1,14,'Sinakayanan',244,944,0),
 	 (300,1,14,'Triple Union',256,1189,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (301,1,15,'Bacani',644,1226,0),
 	 (302,1,15,'Bogtongbod',664,1477,0),
 	 (303,1,15,'Bonbon',480,1476,0),
@@ -714,7 +713,7 @@ export const insertDefaultBarangayValues = [
 	 (308,1,15,'Caboy',220,589,0),
 	 (309,1,15,'Caluwasan',96,264,0),
 	 (310,1,15,'Candajec',460,1098,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (311,1,15,'Cantoyoc',168,358,0),
 	 (312,1,15,'Comaang',236,515,0),
 	 (313,1,15,'Danahao',356,717,0),
@@ -725,7 +724,7 @@ export const insertDefaultBarangayValues = [
 	 (318,1,15,'Poblacion Centro',308,1329,0),
 	 (319,1,15,'Poblacion Norte',244,860,0),
 	 (320,1,15,'Poblacion Sur',308,1289,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (321,1,15,'Tangaran',272,803,0),
 	 (322,1,15,'Tontunan',300,613,0),
 	 (323,1,15,'Tubod',276,501,0),
@@ -736,7 +735,7 @@ export const insertDefaultBarangayValues = [
 	 (328,1,16,'Cancatac',136,976,0),
 	 (329,1,16,'Pandol',52,738,0),
 	 (330,1,16,'Poblacion',72,1303,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (331,1,16,'Sambog',180,1550,0),
 	 (332,1,16,'Tanday',164,804,0),
 	 (333,1,17,'De La Paz',492,2921,0),
@@ -747,7 +746,7 @@ export const insertDefaultBarangayValues = [
 	 (338,1,17,'Malayo Sur',120,681,0),
 	 (339,1,17,'Monserrat',108,487,0),
 	 (340,1,17,'New Lourdes',260,1011,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (341,1,17,'Patrocinio',140,767,0),
 	 (342,1,17,'Poblacion',116,1414,0),
 	 (343,1,17,'Rosario',124,759,0),
@@ -758,7 +757,7 @@ export const insertDefaultBarangayValues = [
 	 (348,1,18,'Cagawasan',452,981,0),
 	 (349,1,18,'Cagawitan',336,688,0),
 	 (350,1,18,'Caluasan',744,1957,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (351,1,18,'Candelaria',468,1093,0),
 	 (352,1,18,'Can-oling',356,1019,0),
 	 (353,1,18,'Estaca',284,556,0),
@@ -769,7 +768,7 @@ export const insertDefaultBarangayValues = [
 	 (358,1,18,'San Miguel',1220,2849,0),
 	 (359,1,18,'San Vicente',428,1434,0),
 	 (360,1,18,'Santa Cruz',280,922,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (361,1,18,'Villa Aurora',220,472,0),
 	 (362,1,19,'Cabatuan',856,1477,0),
 	 (363,1,19,'Cantubod',404,1098,0),
@@ -780,7 +779,7 @@ export const insertDefaultBarangayValues = [
 	 (368,1,19,'Magtangtang',620,1299,0),
 	 (369,1,19,'Nahud',476,999,0),
 	 (370,1,19,'Poblacion',820,3552,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (371,1,19,'Remedios',600,1332,0),
 	 (372,1,19,'San Carlos',716,1210,0),
 	 (373,1,19,'San Miguel',272,578,0),
@@ -791,7 +790,7 @@ export const insertDefaultBarangayValues = [
 	 (378,1,19,'Villa Anunciado',80,116,0),
 	 (379,1,20,'Biking',572,3546,3608),
 	 (380,1,20,'Bingag',612,4589,4669)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (381,1,20,'Catarman',736,4913,4999),
 	 (382,1,20,'Dao',0,1566,1594),
 	 (383,1,20,'Mariveles',500,3790,3857),
@@ -802,7 +801,7 @@ export const insertDefaultBarangayValues = [
 	 (388,1,20,'Tabalong',176,5560,5658),
 	 (389,1,20,'Tinago',496,2848,2898),
 	 (390,1,20,'Totolan',1188,7273,7401)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (391,1,21,'Abihid',124,355,0),
 	 (392,1,21,'Alemania',44,173,0),
 	 (393,1,21,'Baguhan',148,346,0),
@@ -813,7 +812,7 @@ export const insertDefaultBarangayValues = [
 	 (398,1,21,'Bilisan',24,170,0),
 	 (399,1,21,'Cabagakian',212,564,0),
 	 (400,1,21,'Cabanbanan',152,364,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (401,1,21,'Cadap-agan',176,485,0),
 	 (402,1,21,'Cambacol',84,265,0),
 	 (403,1,21,'Cambayaon',140,429,0),
@@ -824,7 +823,7 @@ export const insertDefaultBarangayValues = [
 	 (408,1,21,'Datag',40,249,0),
 	 (409,1,21,'Guindaguitan',160,452,0),
 	 (410,1,21,'Guingoyuran',164,532,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (411,1,21,'Ile',60,263,0),
 	 (412,1,21,'Lapsaon',180,439,0),
 	 (413,1,21,'Limokon Ilaod',188,544,0),
@@ -835,7 +834,7 @@ export const insertDefaultBarangayValues = [
 	 (418,1,21,'Pagsa',156,343,0),
 	 (419,1,21,'Pangihawan',52,193,0),
 	 (420,1,21,'Puangyuta',80,323,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (421,1,21,'Sawang',40,532,0),
 	 (422,1,21,'Tangohay',92,694,0),
 	 (423,1,21,'Taongon Cabatuan',80,551,0),
@@ -846,7 +845,7 @@ export const insertDefaultBarangayValues = [
 	 (428,1,22,'Anibongan',232,496,0),
 	 (429,1,22,'Bangwalog',500,1405,0),
 	 (430,1,22,'Cansuhay',256,816,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (431,1,22,'Danao',276,668,0),
 	 (432,1,22,'Duay',168,499,0),
 	 (433,1,22,'Guinsularan',412,1747,0),
@@ -857,7 +856,7 @@ export const insertDefaultBarangayValues = [
 	 (438,1,22,'Madua Norte',104,533,0),
 	 (439,1,22,'Madua Sur',192,756,0),
 	 (440,1,22,'Mambool',200,628,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (441,1,22,'Mawi',56,541,0),
 	 (442,1,22,'Payao',196,661,0),
 	 (443,1,22,'San Antonio (pob.)',224,1222,0),
@@ -868,7 +867,7 @@ export const insertDefaultBarangayValues = [
 	 (448,1,23,'Antipolo',200,634,0),
 	 (449,1,23,'Basiao',140,550,0),
 	 (450,1,23,'Cagwang',92,363,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (451,1,23,'Calma',156,785,0),
 	 (452,1,23,'Cambuyo',220,660,0),
 	 (453,1,23,'Canayaon East',76,957,0),
@@ -879,7 +878,7 @@ export const insertDefaultBarangayValues = [
 	 (458,1,23,'Cayam',392,1459,0),
 	 (459,1,23,'Cupa',28,226,0),
 	 (460,1,23,'Datag',476,1312,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (461,1,23,'Estaca',28,210,0),
 	 (462,1,23,'Libertad',140,451,0),
 	 (463,1,23,'Lungsodaan East',176,1152,0),
@@ -890,7 +889,7 @@ export const insertDefaultBarangayValues = [
 	 (468,1,23,'Poblacion East',252,1417,0),
 	 (469,1,23,'Poblacion West',104,937,0),
 	 (470,1,23,'Sacaon',196,651,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (471,1,23,'Sampong',92,251,0),
 	 (472,1,23,'Tabuan',264,1363,0),
 	 (473,1,23,'Togbongon',76,335,0),
@@ -901,7 +900,7 @@ export const insertDefaultBarangayValues = [
 	 (478,1,24,'Bato',412,1306,0),
 	 (479,1,24,'Bayong',552,1345,0),
 	 (480,1,24,'Biabas',516,1359,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (481,1,24,'Bulawan',256,1043,0),
 	 (482,1,24,'Cabantian',388,1602,0),
 	 (483,1,24,'Canhaway',712,3177,0),
@@ -912,7 +911,7 @@ export const insertDefaultBarangayValues = [
 	 (488,1,24,'Guinacot',308,1891,0),
 	 (489,1,24,'Guio-ang',828,2957,0),
 	 (490,1,24,'Lombog',756,2023,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (491,1,24,'Mayuga',772,2532,0),
 	 (492,1,24,'Sawang (pob.)',316,1900,0),
 	 (493,1,24,'Tabajan (pob.)',400,2617,0),
@@ -923,7 +922,7 @@ export const insertDefaultBarangayValues = [
 	 (498,1,25,'Baguhan',324,518,0),
 	 (499,1,25,'Bahan',260,673,0),
 	 (500,1,25,'Banahao',344,786,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (501,1,25,'Baogo',616,1268,0),
 	 (502,1,25,'Bugang',368,838,0),
 	 (503,1,25,'Cagawasan',716,1502,0),
@@ -934,7 +933,7 @@ export const insertDefaultBarangayValues = [
 	 (508,1,25,'Cogon',176,848,0),
 	 (509,1,25,'Cuaming',1804,3053,0),
 	 (510,1,25,'Dagnawan',248,652,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (511,1,25,'Dagohoy',592,1593,0),
 	 (512,1,25,'Dait Sur',304,805,0),
 	 (513,1,25,'Datag',412,684,0),
@@ -945,7 +944,7 @@ export const insertDefaultBarangayValues = [
 	 (518,1,25,'Ilihan',232,428,0),
 	 (519,1,25,'Lapacan Norte',144,410,0),
 	 (520,1,25,'Lapacan Sur',440,1228,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (521,1,25,'Lawis',716,1342,0),
 	 (522,1,25,'Liloan Norte',700,1543,0),
 	 (523,1,25,'Liloan Sur',612,1205,0),
@@ -956,7 +955,7 @@ export const insertDefaultBarangayValues = [
 	 (528,1,25,'Luyo',384,850,0),
 	 (529,1,25,'Mabuhay',236,464,0),
 	 (530,1,25,'Maria Rosario',252,790,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (531,1,25,'Nabuad',884,2067,0),
 	 (532,1,25,'Napo',476,753,0),
 	 (533,1,25,'Ondol',572,1145,0),
@@ -967,7 +966,7 @@ export const insertDefaultBarangayValues = [
 	 (538,1,25,'San Jose',1104,2189,0),
 	 (539,1,25,'Santo Niño',364,710,0),
 	 (540,1,25,'Santo Rosario',452,1156,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (541,1,25,'Sua',416,733,0),
 	 (542,1,25,'Tambook',216,480,0),
 	 (543,1,25,'Tungod',604,1225,0),
@@ -978,7 +977,7 @@ export const insertDefaultBarangayValues = [
 	 (548,1,26,'Boctol',368,1141,0),
 	 (549,1,26,'Bunga Ilaya',200,1028,0),
 	 (550,1,26,'Bunga Mar',44,1509,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (551,1,26,'Buyog',164,356,0),
 	 (552,1,26,'Cabunga-an',500,1390,0),
 	 (553,1,26,'Calabacita',560,1468,0),
@@ -989,7 +988,7 @@ export const insertDefaultBarangayValues = [
 	 (558,1,26,'Cantuyoc',252,859,0),
 	 (559,1,26,'Can-uba',44,391,0),
 	 (560,1,26,'Can-upao',384,2138,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (561,1,26,'Faraon',112,601,0),
 	 (562,1,26,'Ipil',52,332,0),
 	 (563,1,26,'Kinagbaan',108,482,0),
@@ -1000,7 +999,7 @@ export const insertDefaultBarangayValues = [
 	 (568,1,26,'Malbog',252,1115,0),
 	 (569,1,26,'Mayana',692,2312,0),
 	 (570,1,26,'Naatang',132,603,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (571,1,26,'Nausok',76,361,0),
 	 (572,1,26,'Odiong',384,1013,0),
 	 (573,1,26,'Pagina',168,1342,0),
@@ -1011,7 +1010,7 @@ export const insertDefaultBarangayValues = [
 	 (578,1,26,'Tubod Monte',348,1607,0),
 	 (579,1,27,'Alumar',628,1204,0),
 	 (580,1,27,'Banacon',756,1343,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (581,1,27,'Buyog',432,937,0),
 	 (582,1,27,'Cabasakan',668,1220,0),
 	 (583,1,27,'Campao Occidental',200,501,0),
@@ -1022,7 +1021,7 @@ export const insertDefaultBarangayValues = [
 	 (588,1,27,'Handumon',496,1212,0),
 	 (589,1,27,'Jagoliao',848,1400,0),
 	 (590,1,27,'Jandayan Norte',460,996,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (591,1,27,'Jandayan Sur',700,1591,0),
 	 (592,1,27,'Mahanay (mahanay Island)',320,557,0),
 	 (593,1,27,'Nasingin',1128,2116,0),
@@ -1033,7 +1032,7 @@ export const insertDefaultBarangayValues = [
 	 (598,1,27,'San Jose',744,1789,0),
 	 (599,1,27,'Santo Niño',400,794,0),
 	 (600,1,27,'Taytay',532,1589,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (601,1,27,'Tugas',368,917,0),
 	 (602,1,27,'Tulang',768,1819,0),
 	 (603,1,28,'Banban',316,1000,0),
@@ -1044,7 +1043,7 @@ export const insertDefaultBarangayValues = [
 	 (608,1,28,'Catugasan',56,422,0),
 	 (609,1,28,'Cayupo',28,231,0),
 	 (610,1,28,'Cogon',144,497,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (611,1,28,'Jambawan',180,626,0),
 	 (612,1,28,'La Fortuna',100,724,0),
 	 (613,1,28,'Lomanoy',84,611,0),
@@ -1055,7 +1054,7 @@ export const insertDefaultBarangayValues = [
 	 (618,1,28,'Poblacion',104,1236,0),
 	 (619,1,28,'Taug',44,664,0),
 	 (620,1,28,'Tiguis',24,978,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (621,1,29,'Agape',180,663,0),
 	 (622,1,29,'Alegria Norte',96,310,0),
 	 (623,1,29,'Alegria Sur',232,1031,0),
@@ -1066,7 +1065,7 @@ export const insertDefaultBarangayValues = [
 	 (628,1,29,'Concepcion',152,715,0),
 	 (629,1,29,'Hinawanan',144,428,0),
 	 (630,1,29,'Las Salinas Norte',84,281,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (631,1,29,'Las Salinas Sur',80,801,0),
 	 (632,1,29,'Palo',76,411,0),
 	 (633,1,29,'Poblacion Ibabao',264,1273,0),
@@ -1077,7 +1076,7 @@ export const insertDefaultBarangayValues = [
 	 (638,1,29,'Tangcasan Sur',352,875,0),
 	 (639,1,29,'Tayong Occidental',116,529,0),
 	 (640,1,29,'Tayong Oriental',312,996,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (641,1,29,'Tocdog Dacu',144,700,0),
 	 (642,1,29,'Tocdog Ilaya',112,429,0),
 	 (643,1,29,'Villalimpia',416,1756,0),
@@ -1088,7 +1087,7 @@ export const insertDefaultBarangayValues = [
 	 (648,1,30,'Bahian',92,520,0),
 	 (649,1,30,'Bonbon Lower',48,243,0),
 	 (650,1,30,'Bonbon Upper',76,653,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (651,1,30,'Buenavista',96,346,0),
 	 (652,1,30,'Bugho',68,584,0),
 	 (653,1,30,'Cabadiangan',44,269,0),
@@ -1099,7 +1098,7 @@ export const insertDefaultBarangayValues = [
 	 (658,1,30,'Candabong',108,753,0),
 	 (659,1,30,'Candasag',36,218,0),
 	 (660,1,30,'Canlasid',112,305,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (661,1,30,'Gon-ob',60,280,0),
 	 (662,1,30,'Gotozon',208,900,0),
 	 (663,1,30,'Jimilian',112,1210,0),
@@ -1110,7 +1109,7 @@ export const insertDefaultBarangayValues = [
 	 (668,1,30,'Taytay',72,253,0),
 	 (669,1,30,'Tigbao',140,854,0),
 	 (670,1,30,'Ugpong',124,347,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (671,1,30,'Valladolid',60,460,0),
 	 (672,1,30,'Villaflor',132,737,0),
 	 (673,1,31,'Agsoso',76,308,0),
@@ -1121,7 +1120,7 @@ export const insertDefaultBarangayValues = [
 	 (678,1,31,'Bagacay Saong',52,169,0),
 	 (679,1,31,'Bahi',144,461,0),
 	 (680,1,31,'Basac',216,1541,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (681,1,31,'Basdacu',88,943,0),
 	 (682,1,31,'Basdio',80,560,0),
 	 (683,1,31,'Biasong',92,334,0),
@@ -1132,7 +1131,7 @@ export const insertDefaultBarangayValues = [
 	 (688,1,31,'Cabug',84,220,0),
 	 (689,1,31,'Calayugan Norte',224,728,0),
 	 (690,1,31,'Calayugan Sur',148,520,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (691,1,31,'Cambaquiz',220,857,0),
 	 (692,1,31,'Campatud',180,429,0),
 	 (693,1,31,'Candaigan',144,440,0),
@@ -1143,7 +1142,7 @@ export const insertDefaultBarangayValues = [
 	 (698,1,31,'Canmanoc',100,299,0),
 	 (699,1,31,'Cansuagwit',52,368,0),
 	 (700,1,31,'Cansubayon',156,490,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (701,1,31,'Cantam-is Bago',100,244,0),
 	 (702,1,31,'Cantam-is Baslay',108,384,0),
 	 (703,1,31,'Cantaongon',248,1045,0),
@@ -1154,7 +1153,7 @@ export const insertDefaultBarangayValues = [
 	 (708,1,31,'Cogon Norte (pob.)',232,2090,0),
 	 (709,1,31,'Cogon Sur',120,445,0),
 	 (710,1,31,'Cuasi',292,1190,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (711,1,31,'Genomoan',132,323,0),
 	 (712,1,31,'Lintuan',248,973,0),
 	 (713,1,31,'Looc',200,868,0),
@@ -1165,7 +1164,7 @@ export const insertDefaultBarangayValues = [
 	 (718,1,31,'Nagtuang',104,598,0),
 	 (719,1,31,'Napo (pob.)',224,1442,0),
 	 (720,1,31,'Nueva Vida',92,304,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (721,1,31,'Panangquilon',108,469,0),
 	 (722,1,31,'Pantudlan',128,870,0),
 	 (723,1,31,'Pig-ot',96,718,0),
@@ -1176,7 +1175,7 @@ export const insertDefaultBarangayValues = [
 	 (728,1,31,'Talisay',240,1219,0),
 	 (729,1,31,'Tan-awan',48,123,0),
 	 (730,1,31,'Tangnan',164,887,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (731,1,31,'Taytay',120,334,0),
 	 (732,1,31,'Ticugan',84,394,0),
 	 (733,1,31,'Tiwi',28,149,0),
@@ -1187,7 +1186,7 @@ export const insertDefaultBarangayValues = [
 	 (738,1,31,'Ubayon',0,731,0),
 	 (739,1,31,'Ubojan',168,621,0),
 	 (740,1,32,'Abaca',1104,2496,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (741,1,32,'Abad Santos',324,587,0),
 	 (742,1,32,'Aguipo',500,1273,0),
 	 (743,1,32,'Baybayon',500,1359,0),
@@ -1198,7 +1197,7 @@ export const insertDefaultBarangayValues = [
 	 (748,1,32,'Del Mar',384,862,0),
 	 (749,1,32,'Lungsoda-an',544,1118,0),
 	 (750,1,32,'Marcelo',516,950,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (751,1,32,'Minol',492,1447,0),
 	 (752,1,32,'Paraiso',492,849,0),
 	 (753,1,32,'Poblacion I',236,1453,0),
@@ -1209,7 +1208,7 @@ export const insertDefaultBarangayValues = [
 	 (758,1,32,'San Roque (cabulao)',1144,2636,0),
 	 (759,1,32,'Tambo',444,904,0),
 	 (760,1,32,'Tangkigan',484,1397,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (761,1,32,'Valaga',340,827,0),
 	 (762,1,33,'Agahay',92,647,0),
 	 (763,1,33,'Aliguay',132,1004,0),
@@ -1220,7 +1219,7 @@ export const insertDefaultBarangayValues = [
 	 (768,1,33,'Cabawan',240,1682,0),
 	 (769,1,33,'Candavid',176,515,0),
 	 (770,1,33,'Dipatlong',324,1547,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (771,1,33,'Guiwanon',144,550,0),
 	 (772,1,33,'Jandig',232,1068,0),
 	 (773,1,33,'Lagtangon',36,240,0),
@@ -1231,7 +1230,7 @@ export const insertDefaultBarangayValues = [
 	 (778,1,33,'Punta Cruz',84,762,0),
 	 (779,1,33,'San Isidro',140,626,0),
 	 (780,1,33,'San Roque (aghao)',192,1299,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (781,1,33,'San Vicente',140,1135,0),
 	 (782,1,33,'Tinibgan',136,596,0),
 	 (783,1,33,'Toril',48,521,0),
@@ -1242,7 +1241,7 @@ export const insertDefaultBarangayValues = [
 	 (788,1,34,'Libaong',304,2206,0),
 	 (789,1,34,'Looc',364,2631,0),
 	 (790,1,34,'Lourdes',136,1597,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (791,1,34,'Poblacion',224,5488,0),
 	 (792,1,34,'Tangnan',660,3771,0),
 	 (793,1,34,'Tawala',420,4631,0),
@@ -1253,7 +1252,7 @@ export const insertDefaultBarangayValues = [
 	 (798,1,35,'Buenasuerte',600,1959,0),
 	 (799,1,35,'Cagawasan',432,1116,0),
 	 (800,1,35,'Cansungay',392,848,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (801,1,35,'Catagda-an',512,1543,0),
 	 (802,1,35,'Del Pilar',332,929,0),
 	 (803,1,35,'Estaca',1076,3025,0),
@@ -1264,7 +1263,7 @@ export const insertDefaultBarangayValues = [
 	 (808,1,35,'Lundag',376,816,0),
 	 (809,1,35,'Pamacsalan',244,679,0),
 	 (810,1,35,'Poblacion',644,2990,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (811,1,35,'Rizal',572,1474,0),
 	 (812,1,35,'San Carlos',224,702,0),
 	 (813,1,35,'San Isidro',1016,2592,0),
@@ -1275,7 +1274,7 @@ export const insertDefaultBarangayValues = [
 	 (818,1,36,'Bayog',132,314,0),
 	 (819,1,36,'Bogo',708,1167,0),
 	 (820,1,36,'Bonbonon',608,1341,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (821,1,36,'Butan',316,589,0),
 	 (822,1,36,'Campamanog',704,1662,0),
 	 (823,1,36,'Canmangao',624,971,0),
@@ -1286,7 +1285,7 @@ export const insertDefaultBarangayValues = [
 	 (828,1,36,'Poblacion',1144,2840,0),
 	 (829,1,36,'Popoo',460,1019,0),
 	 (830,1,36,'Saguise',328,740,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (831,1,36,'San Jose (tawid)',576,1227,0),
 	 (832,1,36,'San Vicente',492,1083,0),
 	 (833,1,36,'Santo Rosario',248,333,0),
@@ -1297,7 +1296,7 @@ export const insertDefaultBarangayValues = [
 	 (838,1,37,'Calangahan',492,990,0),
 	 (839,1,37,'Canmano',428,980,0),
 	 (840,1,37,'Canmaya Centro',568,1498,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (841,1,37,'Canmaya Diot',504,1263,0),
 	 (842,1,37,'Dagnawan',312,871,0),
 	 (843,1,37,'Kabasacan',232,558,0),
@@ -1308,7 +1307,7 @@ export const insertDefaultBarangayValues = [
 	 (848,1,37,'Libertad Sur',76,121,0),
 	 (849,1,37,'Mantalongon',380,985,0),
 	 (850,1,37,'Poblacion',848,4297,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (851,1,37,'Sagbayan Sur',400,1210,0),
 	 (852,1,37,'San Agustin',468,1073,0),
 	 (853,1,37,'San Antonio',448,999,0),
@@ -1319,7 +1318,7 @@ export const insertDefaultBarangayValues = [
 	 (858,1,37,'San Vicente Sur',108,312,0),
 	 (859,1,37,'Santa Catalina',392,1175,0),
 	 (860,1,37,'Santa Cruz',432,952,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (861,1,37,'Ubojan',452,1151,0),
 	 (862,1,38,'Abehilan',212,641,0),
 	 (863,1,38,'Baryong Daan',136,302,0),
@@ -1330,7 +1329,7 @@ export const insertDefaultBarangayValues = [
 	 (868,1,38,'Candungao',328,954,0),
 	 (869,1,38,'Cansague Norte',108,418,0),
 	 (870,1,38,'Cansague Sur',188,601,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (871,1,38,'Causwagan Sur',188,600,0),
 	 (872,1,38,'Masonoy',212,489,0),
 	 (873,1,38,'Poblacion',484,2209,0),
@@ -1341,7 +1340,7 @@ export const insertDefaultBarangayValues = [
 	 (878,1,39,'Camanaga',468,1705,0),
 	 (879,1,39,'Cambangay Norte',580,1691,0),
 	 (880,1,39,'Capayas',320,1068,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (881,1,39,'Corazon',664,2107,0),
 	 (882,1,39,'Garcia',316,640,0),
 	 (883,1,39,'Hagbuyo',448,1297,0),
@@ -1352,7 +1351,7 @@ export const insertDefaultBarangayValues = [
 	 (888,1,39,'San Jose',232,851,0),
 	 (889,1,39,'San Vicente',456,776,0),
 	 (890,1,39,'Santo Niño',232,746,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (891,1,39,'Tomoc',432,1103,0),
 	 (892,1,40,'Bayawahan',292,917,0),
 	 (893,1,40,'Cabancalan',240,741,0),
@@ -1363,7 +1362,7 @@ export const insertDefaultBarangayValues = [
 	 (898,1,40,'Ewon',232,832,0),
 	 (899,1,40,'Guinob-an',124,707,0),
 	 (900,1,40,'Lagtangan',236,737,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (901,1,40,'Licolico',224,901,0),
 	 (902,1,40,'Lobgob',324,824,0),
 	 (903,1,40,'Magsaysay',548,1287,0),
@@ -1374,7 +1373,7 @@ export const insertDefaultBarangayValues = [
 	 (908,1,41,'Cahayag',200,496,0),
 	 (909,1,41,'Canlangit',420,1472,0),
 	 (910,1,41,'Canta-ub',160,386,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (911,1,41,'Casilay',100,398,0),
 	 (912,1,41,'Danicop',332,979,0),
 	 (913,1,41,'Dusita',160,642,0),
@@ -1385,7 +1384,7 @@ export const insertDefaultBarangayValues = [
 	 (918,1,41,'Matin-ao',356,1349,0),
 	 (919,1,41,'Poblacion',628,2878,0),
 	 (920,1,41,'Salvador',508,1801,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (921,1,41,'San Agustin',540,1120,0),
 	 (922,1,41,'San Isidro',544,1435,0),
 	 (923,1,41,'San Jose',420,919,0),
@@ -1396,7 +1395,7 @@ export const insertDefaultBarangayValues = [
 	 (928,1,42,'Abucay Sur',112,689,0),
 	 (929,1,42,'Badiang',196,620,0),
 	 (930,1,42,'Bahaybahay',96,445,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (931,1,42,'Cambuac Norte',160,712,0),
 	 (932,1,42,'Cambuac Sur',352,1214,0),
 	 (933,1,42,'Canagong',156,657,0),
@@ -1407,7 +1406,7 @@ export const insertDefaultBarangayValues = [
 	 (938,1,43,'Booy',1216,10177,0),
 	 (939,1,43,'Cabawan',320,1794,0),
 	 (940,1,43,'Cogon',836,18362,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (941,1,43,'Dampas',488,10177,0),
 	 (942,1,43,'Dao',532,9163,0),
 	 (943,1,43,'Manga',888,7473,0),
@@ -1418,7 +1417,7 @@ export const insertDefaultBarangayValues = [
 	 (948,1,43,'San Isidro',484,5611,0),
 	 (949,1,43,'Taloto',428,7621,0),
 	 (950,1,43,'Tiptip',332,5050,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (951,1,43,'Ubujan',468,5766,0),
 	 (952,1,44,'Bagacay',1592,3684,0),
 	 (953,1,44,'Balintawak',492,1641,0),
@@ -1429,7 +1428,7 @@ export const insertDefaultBarangayValues = [
 	 (958,1,44,'Guindacpan',1412,2292,0),
 	 (959,1,44,'Magsaysay',948,1496,0),
 	 (960,1,44,'Mahanay',1188,1868,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (961,1,44,'Nocnocan',1180,1979,0),
 	 (962,1,44,'Poblacion',548,4482,0),
 	 (963,1,44,'Rizal',792,1502,0),
@@ -1440,7 +1439,7 @@ export const insertDefaultBarangayValues = [
 	 (968,1,44,'San Isidro',1440,4522,0),
 	 (969,1,44,'San Jose',1604,6363,0),
 	 (970,1,44,'San Pedro',724,1728,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (971,1,44,'San Roque',1156,2991,0),
 	 (972,1,44,'Santo Niño',1544,4200,0),
 	 (973,1,44,'Sikatuna',988,1791,0),
@@ -1451,7 +1450,7 @@ export const insertDefaultBarangayValues = [
 	 (978,1,45,'Bongbong',656,1211,0),
 	 (979,1,45,'Catoogan',388,1000,0),
 	 (980,1,45,'Guinobatan',620,2108,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (981,1,45,'Hinlayagan Ilaud',456,1173,0),
 	 (982,1,45,'Hinlayagan Ilaya',620,2250,0),
 	 (983,1,45,'Kauswagan',1304,2484,0),
@@ -1462,7 +1461,7 @@ export const insertDefaultBarangayValues = [
 	 (988,1,45,'Mahagbu',484,1201,0),
 	 (989,1,45,'Manuel M. Roxas',396,1177,0),
 	 (990,1,45,'Poblacion',1056,3699,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (991,1,45,'San Isidro',292,518,0),
 	 (992,1,45,'San Vicente',868,2026,0),
 	 (993,1,45,'Santo Tomas',452,1138,0),
@@ -1473,7 +1472,7 @@ export const insertDefaultBarangayValues = [
 	 (998,1,46,'Banlasan',236,922,0),
 	 (999,1,46,'Batasan (batasan Island)',392,881,0),
 	 (1000,1,46,'Bilangbilangan (bilangbilangan Island)',212,459,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1001,1,46,'Bosongon',372,1340,0),
 	 (1002,1,46,'Buenos Aires',312,1139,0),
 	 (1003,1,46,'Bunacan',396,992,0),
@@ -1484,7 +1483,7 @@ export const insertDefaultBarangayValues = [
 	 (1008,1,46,'Genonocan',168,712,0),
 	 (1009,1,46,'Guiwanon',380,1304,0),
 	 (1010,1,46,'Ilihan Norte',200,1432,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1011,1,46,'Ilihan Sur',216,680,0),
 	 (1012,1,46,'Libertad',572,1219,0),
 	 (1013,1,46,'Macaas',752,2473,0),
@@ -1495,7 +1494,7 @@ export const insertDefaultBarangayValues = [
 	 (1018,1,46,'Pandan',340,1256,0),
 	 (1019,1,46,'Pangapasan (pangapasan Island)',196,532,0),
 	 (1020,1,46,'Pinayagan Norte',444,2288,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1021,1,46,'Pinayagan Sur',672,2255,0),
 	 (1022,1,46,'Pooc Occidental (pob.)',88,880,0),
 	 (1023,1,46,'Pooc Oriental (pob.)',304,2620,0),
@@ -1506,7 +1505,7 @@ export const insertDefaultBarangayValues = [
 	 (1028,1,46,'Ubay Island',68,203,0),
 	 (1029,1,46,'Ubojan',672,2525,0),
 	 (1030,1,46,'Villanueva',148,600,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1031,1,47,'Achila',676,1478,0),
 	 (1032,1,47,'Bay-ang',864,1972,0),
 	 (1033,1,47,'Benliw',1028,2269,0),
@@ -1517,7 +1516,7 @@ export const insertDefaultBarangayValues = [
 	 (1038,1,47,'Bulilis',916,2117,0),
 	 (1039,1,47,'Cagting',764,1771,0),
 	 (1040,1,47,'Calanggaman',476,1747,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1041,1,47,'California',440,973,0),
 	 (1042,1,47,'Camali-an',332,664,0),
 	 (1043,1,47,'Camambugan',1084,2680,0),
@@ -1528,7 +1527,7 @@ export const insertDefaultBarangayValues = [
 	 (1048,1,47,'Governor Boyles',368,916,0),
 	 (1049,1,47,'Guintabo-an',276,699,0),
 	 (1050,1,47,'Hambabauran',524,1247,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1051,1,47,'Humayhumay',840,1864,0),
 	 (1052,1,47,'Ilihan',276,794,0),
 	 (1053,1,47,'Imelda',884,1929,0),
@@ -1539,7 +1538,7 @@ export const insertDefaultBarangayValues = [
 	 (1058,1,47,'Pag-asa',616,1317,0),
 	 (1059,1,47,'Pangpang',584,1374,0),
 	 (1060,1,47,'Poblacion',640,3446,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1061,1,47,'San Francisco',652,1746,0),
 	 (1062,1,47,'San Isidro',300,798,0),
 	 (1063,1,47,'San Pascual',1196,3913,0),
@@ -1550,7 +1549,7 @@ export const insertDefaultBarangayValues = [
 	 (1068,1,47,'Tapon',1216,2926,0),
 	 (1069,1,47,'Tintinan',396,731,0),
 	 (1070,1,47,'Tipolo',1160,2613,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1071,1,47,'Tubog',396,1017,0),
 	 (1072,1,47,'Tuboran',720,1442,0),
 	 (1073,1,47,'Union',956,2474,0),
@@ -1561,7 +1560,7 @@ export const insertDefaultBarangayValues = [
 	 (1078,1,48,'Anoyon',184,617,0),
 	 (1079,1,48,'Balingasao',128,514,0),
 	 (1080,1,48,'Banderahan (upper Ginopolan)',320,902,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1081,1,48,'Botong',208,603,0),
 	 (1082,1,48,'Buyog',96,434,0),
 	 (1083,1,48,'Canduao Occidental',100,824,0),
@@ -1572,7 +1571,7 @@ export const insertDefaultBarangayValues = [
 	 (1088,1,48,'Catug-a',72,428,0),
 	 (1089,1,48,'Cutcutan',148,935,0),
 	 (1090,1,48,'Danao',192,637,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1091,1,48,'Genoveva',184,560,0),
 	 (1092,1,48,'Ginopolan (ginopolan Proper)',160,799,0),
 	 (1093,1,48,'La Victoria',448,1018,0),
@@ -1583,7 +1582,7 @@ export const insertDefaultBarangayValues = [
 	 (1098,1,48,'Marawis',176,582,0),
 	 (1099,1,48,'Maubo',172,535,0),
 	 (1100,1,48,'Nailo',144,478,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1101,1,48,'Omjon',332,1233,0),
 	 (1102,1,48,'Pangi-an',116,419,0),
 	 (1103,1,48,'Poblacion Occidental',120,1560,0),
@@ -1594,7 +1593,7 @@ export const insertDefaultBarangayValues = [
 	 (1108,1,48,'Taytay',168,673,0),
 	 (1109,1,48,'Ticum',328,846,0),
 	 (1110,2,49,'Cabadiangan',536,1095,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1111,2,49,'Cabil-isan',356,966,0),
 	 (1112,2,49,'Candabong',1036,2738,0),
 	 (1113,2,49,'Lawaan',828,1929,0),
@@ -1605,7 +1604,7 @@ export const insertDefaultBarangayValues = [
 	 (1118,2,49,'Salagmaya',372,698,0),
 	 (1119,2,50,'Atabay',676,1898,0),
 	 (1120,2,50,'Daan-lungsod',784,2016,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1121,2,50,'Guiwang',468,1692,0),
 	 (1122,2,50,'Nug-as',1804,3559,0),
 	 (1123,2,50,'Pasol',648,1936,0),
@@ -1616,7 +1615,7 @@ export const insertDefaultBarangayValues = [
 	 (1128,2,51,'Guadalupe',1640,2820,0),
 	 (1129,2,51,'Legaspi',656,1833,0),
 	 (1130,2,51,'Lepanto',980,2274,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1131,2,51,'Madridejos',1640,5563,0),
 	 (1132,2,51,'Montpeller',704,1523,0),
 	 (1133,2,51,'Poblacion',564,2651,0),
@@ -1627,7 +1626,7 @@ export const insertDefaultBarangayValues = [
 	 (1138,2,52,'Bonbon',2704,8447,0),
 	 (1139,2,52,'Esperanza',700,2019,0),
 	 (1140,2,52,'Kandingan',288,1014,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1141,2,52,'Kantabogon',520,1836,0),
 	 (1142,2,52,'Kawasan',704,2423,0),
 	 (1143,2,52,'Olango',472,1245,0),
@@ -1638,7 +1637,7 @@ export const insertDefaultBarangayValues = [
 	 (1148,2,52,'Tampa-an',648,2187,0),
 	 (1149,2,52,'Toyokon',424,750,0),
 	 (1150,2,52,'Zaragosa',424,1325,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1151,2,53,'Alambijud',628,1668,0),
 	 (1152,2,53,'Anajao',404,803,0),
 	 (1153,2,53,'Apo',308,749,0),
@@ -1649,7 +1648,7 @@ export const insertDefaultBarangayValues = [
 	 (1158,2,53,'Bug-ot',320,956,0),
 	 (1159,2,53,'Bulasa',1112,3947,0),
 	 (1160,2,53,'Butong',464,1045,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1161,2,53,'Calagasan',364,1149,0),
 	 (1162,2,53,'Canbantug',432,913,0),
 	 (1163,2,53,'Canbanua',288,2713,0),
@@ -1660,7 +1659,7 @@ export const insertDefaultBarangayValues = [
 	 (1168,2,53,'Colawin',328,1040,0),
 	 (1169,2,53,'Conalum',248,633,0),
 	 (1170,2,53,'Guiwanon',448,2008,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1171,2,53,'Gutlang',212,926,0),
 	 (1172,2,53,'Jampang',848,2704,0),
 	 (1173,2,53,'Jomgao',292,1202,0),
@@ -1671,7 +1670,7 @@ export const insertDefaultBarangayValues = [
 	 (1178,2,53,'Lengigon',408,1169,0),
 	 (1179,2,53,'Linut-od',436,1110,0),
 	 (1180,2,53,'Mabasa',816,1371,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1181,2,53,'Mandilikit',184,718,0),
 	 (1182,2,53,'Mompeller',356,927,0),
 	 (1183,2,53,'Panadtaran',196,634,0),
@@ -1682,7 +1681,7 @@ export const insertDefaultBarangayValues = [
 	 (1188,2,53,'Talaga',804,3798,0),
 	 (1189,2,53,'Talaytay',364,1824,0),
 	 (1190,2,53,'Talo-ot',996,4317,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1191,2,53,'Tiguib',516,937,0),
 	 (1192,2,53,'Tulang',468,926,0),
 	 (1193,2,53,'Tulic',328,3035,0),
@@ -1693,7 +1692,7 @@ export const insertDefaultBarangayValues = [
 	 (1198,2,54,'Bago',760,2099,0),
 	 (1199,2,54,'Bairan',416,948,0),
 	 (1200,2,54,'Banban',348,871,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1201,2,54,'Baye',300,672,0),
 	 (1202,2,54,'Bog-o',184,422,0),
 	 (1203,2,54,'Kaluangan',440,703,0),
@@ -1704,7 +1703,7 @@ export const insertDefaultBarangayValues = [
 	 (1208,2,54,'Magcalape',304,454,0),
 	 (1209,2,54,'Manguiao',1068,1904,0),
 	 (1210,2,54,'New Bago',828,1884,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1211,2,54,'Owak',1656,4171,0),
 	 (1212,2,54,'Poblacion',1852,5921,0),
 	 (1213,2,54,'Saksak',200,331,0),
@@ -1715,7 +1714,7 @@ export const insertDefaultBarangayValues = [
 	 (1218,2,54,'Tag-amakan',532,964,0),
 	 (1219,2,54,'Tagbubonga',312,499,0),
 	 (1220,2,54,'Tubigagmanok',1752,4865,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1221,2,54,'Tubod',428,965,0),
 	 (1222,2,54,'Ubogon',304,703,0),
 	 (1223,2,55,'Alawijao',628,1166,0),
@@ -1726,7 +1725,7 @@ export const insertDefaultBarangayValues = [
 	 (1228,2,55,'Bato',448,1262,0),
 	 (1229,2,55,'Bugas',1232,2885,0),
 	 (1230,2,55,'Calangcang',308,564,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1231,2,55,'Candiis',788,1175,0),
 	 (1232,2,55,'Dagatan',656,1462,0),
 	 (1233,2,55,'Dobdob',532,1110,0),
@@ -1737,7 +1736,7 @@ export const insertDefaultBarangayValues = [
 	 (1238,2,55,'Manduyong',728,1805,0),
 	 (1239,2,55,'Matutinao',312,978,0),
 	 (1240,2,55,'Patong',540,887,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1241,2,55,'Poblacion',788,4428,0),
 	 (1242,2,55,'Sanlagan',432,846,0),
 	 (1243,2,55,'Santicon',252,573,0),
@@ -1748,7 +1747,7 @@ export const insertDefaultBarangayValues = [
 	 (1248,2,55,'Tigbao',600,946,0),
 	 (1249,2,55,'Tiguib',284,527,0),
 	 (1250,2,55,'Tubod',552,1238,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1251,2,55,'Zaragosa',936,1842,0),
 	 (1252,2,56,'Abucayan',1512,5751,0),
 	 (1253,2,56,'Aliwanay',608,3546,0),
@@ -1759,7 +1758,7 @@ export const insertDefaultBarangayValues = [
 	 (1258,2,56,'Buanoy',2900,13046,0),
 	 (1259,2,56,'Cabagdalan',468,911,0),
 	 (1260,2,56,'Cabasiangan',848,1334,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1261,2,56,'Cambuhawe',1120,3651,0),
 	 (1262,2,56,'Cansomoroy',752,2077,0),
 	 (1263,2,56,'Cantibas',488,1456,0),
@@ -1770,7 +1769,7 @@ export const insertDefaultBarangayValues = [
 	 (1268,2,56,'Hingatmonan',652,1343,0),
 	 (1269,2,56,'Lamesa',880,1947,0),
 	 (1270,2,56,'Liki',804,1345,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1271,2,56,'Luca',524,1514,0),
 	 (1272,2,56,'Matun-og',488,1084,0),
 	 (1273,2,56,'Nangka',2080,6655,0),
@@ -1781,7 +1780,7 @@ export const insertDefaultBarangayValues = [
 	 (1278,2,56,'Sunog',936,1975,0),
 	 (1279,2,56,'Vito',796,2098,0),
 	 (1280,2,57,'Baigad',596,1677,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1281,2,57,'Bantigue (pob.)',1784,5661,0),
 	 (1282,2,57,'Baod',1352,3288,0),
 	 (1283,2,57,'Binaobao (pob.)',892,3199,0),
@@ -1792,7 +1791,7 @@ export const insertDefaultBarangayValues = [
 	 (1288,2,57,'Kabac',1580,4826,0),
 	 (1289,2,57,'Kabangbang',968,2537,0),
 	 (1290,2,57,'Kampingganon',488,1082,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1291,2,57,'Kangkaibe',1060,2541,0),
 	 (1292,2,57,'Lipayran',1916,3789,0),
 	 (1293,2,57,'Luyongbaybay',788,1540,0),
@@ -1803,7 +1802,7 @@ export const insertDefaultBarangayValues = [
 	 (1298,2,57,'Sillon',1824,4548,0),
 	 (1299,2,57,'Suba (pob.)',896,4175,0),
 	 (1300,2,57,'Sulangan',2500,5329,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1301,2,57,'Sungko',1512,3584,0),
 	 (1302,2,57,'Tamiao',892,2279,0),
 	 (1303,2,57,'Ticad (pob.)',1992,7461,0),
@@ -1814,7 +1813,7 @@ export const insertDefaultBarangayValues = [
 	 (1308,2,58,'Budbud',616,1761,0),
 	 (1309,2,58,'Bugtong Kawayan',464,866,0),
 	 (1310,2,58,'Cabcaban',908,2080,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1311,2,58,'Cagay',616,1962,0),
 	 (1312,2,58,'Campangga',352,1574,0),
 	 (1313,2,58,'Candugay',736,1923,0),
@@ -1825,7 +1824,7 @@ export const insertDefaultBarangayValues = [
 	 (1318,2,58,'Gunting',864,3096,0),
 	 (1319,2,58,'Hilasgasan',376,808,0),
 	 (1320,2,58,'Japitan',1708,4134,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1321,2,58,'Kalubihan',528,1518,0),
 	 (1322,2,58,'Kangdampas',592,1165,0),
 	 (1323,2,58,'Luhod',504,1033,0),
@@ -1836,7 +1835,7 @@ export const insertDefaultBarangayValues = [
 	 (1328,2,58,'Malolos',576,1885,0),
 	 (1329,2,58,'Mantalongon',1164,3233,0),
 	 (1330,2,58,'Mantayupan',1004,2507,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1331,2,58,'Mayana',640,1352,0),
 	 (1332,2,58,'Minolos',1004,2596,0),
 	 (1333,2,58,'Nabunturan',372,837,0),
@@ -1847,7 +1846,7 @@ export const insertDefaultBarangayValues = [
 	 (1338,2,58,'Patupat',616,2002,0),
 	 (1339,2,58,'Poblacion',588,5563,0),
 	 (1340,2,58,'San Rafael',724,1790,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1341,2,58,'Santa Ana',884,2258,0),
 	 (1342,2,58,'Sayaw',288,1404,0),
 	 (1343,2,58,'Tal-ot',744,2030,0),
@@ -1858,7 +1857,7 @@ export const insertDefaultBarangayValues = [
 	 (1348,2,59,'El Pardo',1520,3532,0),
 	 (1349,2,59,'Granada',396,1356,0),
 	 (1350,2,59,'Lower Becerril',596,1403,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1351,2,59,'Lunop',536,991,0),
 	 (1352,2,59,'Nangka',480,735,0),
 	 (1353,2,59,'Poblacion',696,4417,0),
@@ -1869,7 +1868,7 @@ export const insertDefaultBarangayValues = [
 	 (1358,2,60,'Bili',252,831,0),
 	 (1359,2,60,'Bingay',240,1320,0),
 	 (1360,2,60,'Bongdo',532,1503,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1361,2,60,'Bongdo Gua',368,966,0),
 	 (1362,2,60,'Bongoyan',544,1787,0),
 	 (1363,2,60,'Cadaruhan',1312,4624,0),
@@ -1880,7 +1879,7 @@ export const insertDefaultBarangayValues = [
 	 (1368,2,60,'Laaw',608,1671,0),
 	 (1369,2,60,'Lugo',1064,3347,0),
 	 (1370,2,60,'Managase',580,1509,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1371,2,60,'Poblacion',1776,5507,0),
 	 (1372,2,60,'Sagay',468,1358,0),
 	 (1373,2,60,'San Jose',372,810,0),
@@ -1891,7 +1890,7 @@ export const insertDefaultBarangayValues = [
 	 (1378,2,61,'Cantukong',300,1563,0),
 	 (1379,2,61,'Cantumog',508,2050,0),
 	 (1380,2,61,'Caurasan',584,1200,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1381,2,61,'Cogon East',468,3562,0),
 	 (1382,2,61,'Cogon West',432,3117,0),
 	 (1383,2,61,'Corte',884,2777,0),
@@ -1902,7 +1901,7 @@ export const insertDefaultBarangayValues = [
 	 (1388,2,61,'Lanipga',452,1105,0),
 	 (1389,2,61,'Liboron',304,652,0),
 	 (1390,2,61,'Lower Natimao-an',684,1343,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1391,2,61,'Luyang',1200,6350,0),
 	 (1392,2,61,'Poblacion',664,5242,0),
 	 (1393,2,61,'Puente',712,2569,0),
@@ -1913,7 +1912,7 @@ export const insertDefaultBarangayValues = [
 	 (1398,2,62,'Amancion',136,224,0),
 	 (1399,2,62,'Anapog',204,351,0),
 	 (1400,2,62,'Bactas',308,938,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1401,2,62,'Basak',432,1391,0),
 	 (1402,2,62,'Binongkalan',304,1717,0),
 	 (1403,2,62,'Bongyas',176,325,0),
@@ -1924,7 +1923,7 @@ export const insertDefaultBarangayValues = [
 	 (1408,2,62,'Corazon (pob.)',480,3240,0),
 	 (1409,2,62,'Duyan',192,740,0),
 	 (1410,2,62,'Flores (pob.)',556,3271,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1411,2,62,'Ginabucan',464,875,0),
 	 (1412,2,62,'Macaas',596,3672,0),
 	 (1413,2,62,'Panalipan',780,3835,0),
@@ -1935,7 +1934,7 @@ export const insertDefaultBarangayValues = [
 	 (1418,2,63,'Agsungot',684,2478,0),
 	 (1420,2,63,'Apas',0,26607,0),
 	 (1421,2,63,'Babag',1660,4817,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1423,2,63,'Bacayan',656,17224,0),
 	 (1425,2,63,'Banilad',200,8537,0),
 	 (1426,2,63,'Basak Pardo',1612,21007,0),
@@ -1946,7 +1945,7 @@ export const insertDefaultBarangayValues = [
 	 (1432,2,63,'Buhisan',2036,16205,0),
 	 (1433,2,63,'Bulacao',1772,32947,0),
 	 (1434,2,63,'Buot-taup Pardo',984,2678,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1435,2,63,'Busay (pob.)',1712,14118,0),
 	 (1436,2,63,'Calamba',380,12093,0),
 	 (1437,2,63,'Cambinocot',1744,3353,0),
@@ -1957,7 +1956,7 @@ export const insertDefaultBarangayValues = [
 	 (1442,2,63,'Cogon Pardo',2028,23021,0),
 	 (1443,2,63,'Cogon Ramos (pob.)',80,3613,0),
 	 (1444,2,63,'Day-as',612,5212,1000)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1445,2,63,'Duljo (pob.)',1292,19112,0),
 	 (1446,2,63,'Ermita (pob.)',2520,9144,0),
 	 (1447,2,63,'Guadalupe',244,66259,0),
@@ -1968,7 +1967,7 @@ export const insertDefaultBarangayValues = [
 	 (1452,2,63,'Kalunasan',3484,28950,0),
 	 (1453,2,63,'Kamagayan (pob.)',308,2348,0),
 	 (1454,2,63,'Kasambagan',260,9119,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1455,2,63,'Kinasang-an Pardo',1736,16430,0),
 	 (1456,2,63,'Labangon',3844,36222,0),
 	 (1457,2,63,'Lahug (pob.)',772,41748,0),
@@ -1979,7 +1978,7 @@ export const insertDefaultBarangayValues = [
 	 (1462,2,63,'Mabolo',816,23813,0),
 	 (1463,2,63,'Malubog',836,2779,0),
 	 (1464,2,63,'Mambaling',0,35234,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1466,2,63,'Pahina Central (pob.)',528,5689,0),
 	 (1467,2,63,'Pahina San Nicolas',308,3458,0),
 	 (1468,2,63,'Pamutan',816,2015,0),
@@ -1990,7 +1989,7 @@ export const insertDefaultBarangayValues = [
 	 (1473,2,63,'Pit-os',336,6756,0),
 	 (1474,2,63,'Pulangbato',552,6479,0),
 	 (1475,2,63,'Pung-ol-sibugay',940,2766,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1476,2,63,'Punta Princesa',812,24203,0),
 	 (1477,2,63,'Quiot Pardo',844,26184,0),
 	 (1478,2,63,'Sambag I (pob.)',536,14536,0),
@@ -2001,7 +2000,7 @@ export const insertDefaultBarangayValues = [
 	 (1483,2,63,'San Roque (ciudad)',472,4808,0),
 	 (1484,2,63,'Santa Cruz (pob.)',88,2506,0),
 	 (1485,2,63,'Sapangdaku',1300,8217,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1486,2,63,'Sawang Calero (pob.)',2276,8936,0),
 	 (1487,2,63,'Sinsin',720,2338,0),
 	 (1488,2,63,'Sirao',472,3739,0),
@@ -2012,7 +2011,7 @@ export const insertDefaultBarangayValues = [
 	 (1493,2,63,'Tabunan',1036,2313,0),
 	 (1494,2,63,'Tagbao',1104,1912,0),
 	 (1495,2,63,'Talamban',168,34774,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1496,2,63,'Taptap',1024,2265,0),
 	 (1497,2,63,'Tejero (villa Gonzalo)',2432,15685,0),
 	 (1498,2,63,'Tinago',576,7296,0),
@@ -2023,7 +2022,7 @@ export const insertDefaultBarangayValues = [
 	 (1503,2,64,'Anonang Sur',1028,1891,0),
 	 (1504,2,64,'Banban',1056,2449,0),
 	 (1505,2,64,'Binabag',1272,2190,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1506,2,64,'Bungtod (pob.)',712,2515,0),
 	 (1507,2,64,'Carbon (pob.)',4,285,0),
 	 (1508,2,64,'Cayang',1432,4201,0),
@@ -2034,7 +2033,7 @@ export const insertDefaultBarangayValues = [
 	 (1513,2,64,'Guadalupe',1384,3830,0),
 	 (1514,2,64,'La Paz',1436,4050,0),
 	 (1515,2,64,'La Purisima Concepcion (pob.)',124,1007,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1516,2,64,'Libertad',1692,4359,0),
 	 (1517,2,64,'Lourdes (pob.)',32,493,0),
 	 (1518,2,64,'Malingin',1136,2891,0),
@@ -2045,7 +2044,7 @@ export const insertDefaultBarangayValues = [
 	 (1523,2,64,'Polambato',1440,4199,0),
 	 (1524,2,64,'Sambag (pob.)',468,1816,0),
 	 (1525,2,64,'San Vicente (pob.)',100,568,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1526,2,64,'Santo Niño',192,1224,0),
 	 (1527,2,64,'Santo Rosario (pob.)',204,1393,0),
 	 (1528,2,64,'Siocon',524,1818,0),
@@ -2056,7 +2055,7 @@ export const insertDefaultBarangayValues = [
 	 (1533,2,65,'Calidngan',1236,3525,0),
 	 (1534,2,65,'Can-asujan',2412,9861,0),
 	 (1535,2,65,'Guadalupe',4260,13678,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1536,2,65,'Liburon',1984,8230,0),
 	 (1537,2,65,'Napo',2624,6954,0),
 	 (1538,2,65,'Ocana',2464,10129,0),
@@ -2067,7 +2066,7 @@ export const insertDefaultBarangayValues = [
 	 (1543,2,65,'Tuyom',1388,6579,0),
 	 (1544,2,65,'Valencia',1896,5935,0),
 	 (1545,2,65,'Valladolid',2868,12468,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1546,2,66,'Alfaco',1728,3772,0),
 	 (1547,2,66,'Bairan',1052,2351,0),
 	 (1548,2,66,'Balirong',1832,5150,0),
@@ -2078,7 +2077,7 @@ export const insertDefaultBarangayValues = [
 	 (1553,2,66,'Colon',884,4833,0),
 	 (1554,2,66,'East Poblacion',12,688,0),
 	 (1555,2,66,'Inayagan',2744,9026,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1556,2,66,'Inoburan',1584,6550,0),
 	 (1557,2,66,'Jaguimit',988,2536,0),
 	 (1558,2,66,'Lanas',1192,3127,0),
@@ -2089,7 +2088,7 @@ export const insertDefaultBarangayValues = [
 	 (1563,2,66,'Naalad',992,3178,0),
 	 (1564,2,66,'North Poblacion',508,3267,0),
 	 (1565,2,66,'Pangdan',1692,5118,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1566,2,66,'Patag',828,1535,0),
 	 (1567,2,66,'South Poblacion',1380,6138,0),
 	 (1568,2,66,'Tagjaguimit',1512,2507,0),
@@ -2100,7 +2099,7 @@ export const insertDefaultBarangayValues = [
 	 (1573,2,66,'West Poblacion',784,3580,0),
 	 (1574,2,67,'Biasong',676,7014,0),
 	 (1575,2,67,'Bulacao',1448,13738,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1576,2,67,'Candulawan',1256,4379,0),
 	 (1577,2,67,'Camp Iv',752,3576,0),
 	 (1578,2,67,'Cansojong',1448,17329,0),
@@ -2111,7 +2110,7 @@ export const insertDefaultBarangayValues = [
 	 (1583,2,67,'Lawaan Ii',604,6528,0),
 	 (1584,2,67,'Lawaan Iii',904,13024,0),
 	 (1585,2,67,'Linao',632,10939,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1586,2,67,'Maghaway',972,7734,0),
 	 (1587,2,67,'Manipis',940,2657,0),
 	 (1588,2,67,'Mohon',1816,11615,0),
@@ -2122,7 +2121,7 @@ export const insertDefaultBarangayValues = [
 	 (1593,2,67,'Tabunok',1740,14682,0),
 	 (1594,2,67,'Tangke',1892,14831,0),
 	 (1595,2,67,'Tapul',644,1923,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1596,2,68,'Bagalnga',836,2470,0),
 	 (1597,2,68,'Basak',572,1918,0),
 	 (1598,2,68,'Buluang',436,1477,0),
@@ -2133,7 +2132,7 @@ export const insertDefaultBarangayValues = [
 	 (1603,2,68,'Dapdap',412,1311,0),
 	 (1604,2,68,'Estaca',1092,6846,0),
 	 (1605,2,68,'Lupa',292,945,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1606,2,68,'Magay',644,2587,0),
 	 (1607,2,68,'Mulao',704,1731,0),
 	 (1608,2,68,'Panangban',452,1195,0),
@@ -2144,7 +2143,7 @@ export const insertDefaultBarangayValues = [
 	 (1613,2,69,'Cabangahan',732,2687,0),
 	 (1614,2,69,'Cansaga',556,5859,0),
 	 (1615,2,69,'Casili',1764,17339,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1616,2,69,'Danglag',588,4582,0),
 	 (1617,2,69,'Garing',476,2829,0),
 	 (1618,2,69,'Jugan',952,10698,0),
@@ -2155,7 +2154,7 @@ export const insertDefaultBarangayValues = [
 	 (1623,2,69,'Panoypoy',364,1330,0),
 	 (1624,2,69,'Pitogo',600,5711,0),
 	 (1625,2,69,'Poblacion Occidental',980,6334,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1626,2,69,'Poblacion Oriental',336,3586,0),
 	 (1627,2,69,'Polog',448,2269,0),
 	 (1628,2,69,'Pulpogan',3764,14199,0),
@@ -2166,7 +2165,7 @@ export const insertDefaultBarangayValues = [
 	 (1633,2,69,'Tugbongan',1920,9158,0),
 	 (1634,2,70,'Alegria',852,3830,0),
 	 (1635,2,70,'Bangbang',2108,5721,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1636,2,70,'Buagsong',860,4259,0),
 	 (1637,2,70,'Catarman',1780,4973,0),
 	 (1638,2,70,'Cogon',676,2938,0),
@@ -2177,7 +2176,7 @@ export const insertDefaultBarangayValues = [
 	 (1643,2,70,'Ibabao',2432,9040,0),
 	 (1644,2,70,'Pilipog',904,4623,0),
 	 (1645,2,70,'Poblacion',3032,10414,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1646,2,70,'San Miguel',812,3941,0),
 	 (1647,2,71,'Aguho',1704,6196,0),
 	 (1648,2,71,'Bagay',2392,4922,0),
@@ -2188,7 +2187,7 @@ export const insertDefaultBarangayValues = [
 	 (1653,2,71,'Carnaza',1252,2444,0),
 	 (1654,2,71,'Dalingding',960,2312,0),
 	 (1655,2,71,'Lanao',1272,3585,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1656,2,71,'Logon',1812,6189,0),
 	 (1657,2,71,'Malbago',1756,4769,0),
 	 (1658,2,71,'Malingin',660,1731,0),
@@ -2199,7 +2198,7 @@ export const insertDefaultBarangayValues = [
 	 (1663,2,71,'Talisay',1996,4649,0),
 	 (1664,2,71,'Tapilon',2956,9005,0),
 	 (1665,2,71,'Tinubdan',1108,2166,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1666,2,71,'Tominjao',1812,4077,0),
 	 (1667,2,72,'Ablayan',560,1306,0),
 	 (1668,2,72,'Babayongan',208,506,0),
@@ -2210,7 +2209,7 @@ export const insertDefaultBarangayValues = [
 	 (1673,2,72,'Caliongan',1176,2509,0),
 	 (1674,2,72,'Casay',1120,4634,0),
 	 (1675,2,72,'Catolohan',1068,1903,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1676,2,72,'Cawayan',752,2901,0),
 	 (1677,2,72,'Consolacion',612,2127,0),
 	 (1678,2,72,'Coro',520,1329,0),
@@ -2221,7 +2220,7 @@ export const insertDefaultBarangayValues = [
 	 (1683,2,72,'Langkas',604,1454,0),
 	 (1684,2,72,'Lumbang',348,836,0),
 	 (1685,2,72,'Malones',568,1397,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1686,2,72,'Maloray',532,1018,0),
 	 (1687,2,72,'Mananggal',292,1133,0),
 	 (1688,2,72,'Manlapay',940,2328,0),
@@ -2232,7 +2231,7 @@ export const insertDefaultBarangayValues = [
 	 (1693,2,72,'Panas',376,900,0),
 	 (1694,2,72,'Poblacion',1080,6876,0),
 	 (1695,2,72,'Sacsac',508,1868,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1696,2,72,'Salug',720,1197,0),
 	 (1697,2,72,'Tabon',1656,3348,0),
 	 (1698,2,72,'Tapun',1180,4402,0),
@@ -2243,7 +2242,7 @@ export const insertDefaultBarangayValues = [
 	 (1703,2,73,'Cabungahan',876,2507,0),
 	 (1704,2,73,'Cagat-lamac',356,1356,0),
 	 (1705,2,73,'Cahumayan',2112,4503,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1706,2,73,'Cambanay',672,3815,0),
 	 (1707,2,73,'Cambubho',348,1017,0),
 	 (1708,2,73,'Cogon-cruz',1012,4531,0),
@@ -2254,7 +2253,7 @@ export const insertDefaultBarangayValues = [
 	 (1713,2,73,'Guinsay',2196,9902,0),
 	 (1714,2,73,'Ibo',416,1267,0),
 	 (1715,2,73,'Langosig',564,1104,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1716,2,73,'Lawaan',692,1817,0),
 	 (1717,2,73,'Licos',764,2004,0),
 	 (1718,2,73,'Looc',2540,10326,0),
@@ -2265,7 +2264,7 @@ export const insertDefaultBarangayValues = [
 	 (1723,2,73,'Masaba',1096,3343,0),
 	 (1724,2,73,'Maslog',2724,10743,0),
 	 (1725,2,73,'Nangka',228,447,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1726,2,73,'Oguis',360,686,0),
 	 (1727,2,73,'Pili',452,841,0),
 	 (1728,2,73,'Poblacion',1408,9835,0),
@@ -2276,7 +2275,7 @@ export const insertDefaultBarangayValues = [
 	 (1733,2,73,'Sandayong Sur',952,3321,0),
 	 (1734,2,73,'Santa Rosa',640,1687,0),
 	 (1735,2,73,'Santican',804,1318,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1736,2,73,'Sibacan',324,687,0),
 	 (1737,2,73,'Suba',1972,8140,0),
 	 (1738,2,73,'Taboc',1836,5932,0),
@@ -2287,7 +2286,7 @@ export const insertDefaultBarangayValues = [
 	 (1743,2,74,'Bitoon',968,3223,0),
 	 (1744,2,74,'Bulak',628,1559,0),
 	 (1745,2,74,'Bullogan',480,1152,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1746,2,74,'Calaboon',780,2077,0),
 	 (1747,2,74,'Camboang',504,1292,0),
 	 (1748,2,74,'Candabong',416,1063,0),
@@ -2298,7 +2297,7 @@ export const insertDefaultBarangayValues = [
 	 (1753,2,74,'Kabalaasnan',144,417,0),
 	 (1754,2,74,'Kabatbatan',208,417,0),
 	 (1755,2,74,'Kambanog',244,474,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1756,2,74,'Kang-actol',552,1378,0),
 	 (1757,2,74,'Kanghalo',276,605,0),
 	 (1758,2,74,'Kanghumaod',928,1777,0),
@@ -2309,7 +2308,7 @@ export const insertDefaultBarangayValues = [
 	 (1763,2,74,'Lamak',316,617,0),
 	 (1764,2,74,'Lawaan',980,2511,0),
 	 (1765,2,74,'Liong',720,2336,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1766,2,74,'Manlapay',632,1414,0),
 	 (1767,2,74,'Masa',348,669,0),
 	 (1768,2,74,'Matalao',192,369,0),
@@ -2320,7 +2319,7 @@ export const insertDefaultBarangayValues = [
 	 (1773,2,74,'Poblacion Looc',352,1296,0),
 	 (1774,2,74,'Poblacion Sima',76,636,0),
 	 (1775,2,74,'Tangil',924,3123,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1776,2,74,'Tapon',1168,3786,0),
 	 (1777,2,74,'Tubod-bitoon',1072,2304,0),
 	 (1778,2,74,'Tubod-dugoan',740,1700,0),
@@ -2331,7 +2330,7 @@ export const insertDefaultBarangayValues = [
 	 (1783,2,75,'Campisong',164,479,0),
 	 (1784,2,75,'Canorong',372,871,0),
 	 (1785,2,75,'Guiwanon',340,1133,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1786,2,75,'Looc',368,1159,0),
 	 (1787,2,75,'Malatbo',312,868,0),
 	 (1788,2,75,'Mangaco',504,1385,0),
@@ -2342,7 +2341,7 @@ export const insertDefaultBarangayValues = [
 	 (1793,2,76,'Agus',2712,17060,0),
 	 (1794,2,76,'Babag',2108,24622,0),
 	 (1795,2,76,'Bankal',1652,22583,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1796,2,76,'Baring',1440,3628,0),
 	 (1797,2,76,'Basak',6532,64782,0),
 	 (1798,2,76,'Buaya',2168,17390,0),
@@ -2353,7 +2352,7 @@ export const insertDefaultBarangayValues = [
 	 (1803,2,76,'Caw-oy',768,1988,0),
 	 (1804,2,76,'Gun-ob',4172,33779,0),
 	 (1805,2,76,'Ibo',532,8792,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1806,2,76,'Looc',2480,17329,0),
 	 (1807,2,76,'Mactan',6388,36209,0),
 	 (1808,2,76,'Maribago',2868,17951,0),
@@ -2364,7 +2363,7 @@ export const insertDefaultBarangayValues = [
 	 (1813,2,76,'Poblacion',760,6039,0),
 	 (1814,2,76,'Punta Engaño',3720,9471,0),
 	 (1815,2,76,'Pusok',1848,31172,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1816,2,76,'Sabang',3140,6590,0),
 	 (1817,2,76,'San Vicente',1484,4170,0),
 	 (1818,2,76,'Santa Rosa',1668,4655,0),
@@ -2375,7 +2374,7 @@ export const insertDefaultBarangayValues = [
 	 (1823,2,77,'Cabadiangan',480,2145,0),
 	 (1824,2,77,'Calero',1248,5751,0),
 	 (1825,2,77,'Catarman',3864,17127,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1826,2,77,'Cotcot',1028,7353,0),
 	 (1827,2,77,'Jubay',2264,12909,0),
 	 (1828,2,77,'Lataban',696,2429,0),
@@ -2386,7 +2385,7 @@ export const insertDefaultBarangayValues = [
 	 (1833,2,77,'Santa Cruz',404,2384,0),
 	 (1834,2,77,'Tabla',360,1540,0),
 	 (1835,2,77,'Tayud',1564,17111,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1836,2,77,'Yati',2204,29611,0),
 	 (1837,2,78,'Bunakan',1100,2043,0),
 	 (1838,2,78,'Kangwayan',588,1172,0),
@@ -2397,7 +2396,7 @@ export const insertDefaultBarangayValues = [
 	 (1843,2,78,'Mancilang',2296,5339,0),
 	 (1844,2,78,'Pili',1452,2650,0),
 	 (1845,2,78,'Poblacion',1368,3797,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1846,2,78,'San Agustin',1460,2596,0),
 	 (1847,2,78,'Tabagak',864,2076,0),
 	 (1848,2,78,'Talangnan',1964,3564,0),
@@ -2408,7 +2407,7 @@ export const insertDefaultBarangayValues = [
 	 (1853,2,79,'Barangay Ii (pob.)',228,1286,0),
 	 (1854,2,79,'Cerdeña (ansan)',1028,2156,0),
 	 (1855,2,79,'Labrador (bulod)',408,793,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1856,2,79,'Lombo',696,1559,0),
 	 (1857,2,79,'Looc',348,1318,0),
 	 (1858,2,79,'Mahanlud',368,599,0),
@@ -2419,7 +2418,7 @@ export const insertDefaultBarangayValues = [
 	 (1863,2,79,'Sorsogon (balimaya)',440,1098,0),
 	 (1864,2,79,'Tolosa (calatagan)',868,1539,0),
 	 (1865,2,80,'Alang-alang',372,14560,10000)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1866,2,80,'Bakilid',252,4967,0),
 	 (1867,2,80,'Banilad',680,24638,0),
 	 (1868,2,80,'Basak',448,11476,0),
@@ -2430,7 +2429,7 @@ export const insertDefaultBarangayValues = [
 	 (1873,2,80,'Casuntingan',920,15895,0),
 	 (1874,2,80,'Centro (pob.)',100,3660,0),
 	 (1875,2,80,'Cubacub',856,11127,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1876,2,80,'Guizo',988,10412,0),
 	 (1877,2,80,'Ibabao-estancia',728,10282,0),
 	 (1878,2,80,'Jagobiao',792,14807,0),
@@ -2441,7 +2440,7 @@ export const insertDefaultBarangayValues = [
 	 (1883,2,80,'Opao',1480,12396,0),
 	 (1884,2,80,'Pagsabungan',560,22002,0),
 	 (1885,2,80,'Pakna-an',1680,29152,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1886,2,80,'Subangdaku',732,19167,0),
 	 (1887,2,80,'Tabok',996,19657,0),
 	 (1888,2,80,'Tawason',632,5365,0),
@@ -2452,7 +2451,7 @@ export const insertDefaultBarangayValues = [
 	 (1893,2,81,'Canhabagat',892,2548,0),
 	 (1894,2,81,'Caputatan Norte',1740,3127,0),
 	 (1895,2,81,'Caputatan Sur',1164,2934,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1896,2,81,'Curva',1240,2425,0),
 	 (1897,2,81,'Daanlungsod',1452,4092,0),
 	 (1898,2,81,'Dalingding Sur',440,1050,0),
@@ -2463,7 +2462,7 @@ export const insertDefaultBarangayValues = [
 	 (1903,2,81,'Lamintak Norte',964,2305,0),
 	 (1904,2,81,'Lamintak Sur',696,2795,0),
 	 (1905,2,81,'Luy-a',680,2097,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1906,2,81,'Maharuhay',880,1598,0),
 	 (1907,2,81,'Mahawak',1124,3311,0),
 	 (1908,2,81,'Panugnawan',1520,2478,0),
@@ -2474,7 +2473,7 @@ export const insertDefaultBarangayValues = [
 	 (1913,2,82,'Camp 7',840,2782,0),
 	 (1914,2,82,'Camp 8',672,1945,0),
 	 (1915,2,82,'Cuanos',1432,3039,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1916,2,82,'Guindaruhan',952,3790,0),
 	 (1917,2,82,'Linao',1504,14004,0),
 	 (1918,2,82,'Manduang',1252,2323,0),
@@ -2485,7 +2484,7 @@ export const insertDefaultBarangayValues = [
 	 (1923,2,82,'Poblacion Ward Iv',552,5158,0),
 	 (1924,2,82,'Tubod',1140,6087,0),
 	 (1925,2,82,'Tulay',2352,12211,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1926,2,82,'Tunghaan',1944,15350,0),
 	 (1927,2,82,'Tungkil',664,14184,0),
 	 (1928,2,82,'Tungkop',1088,11905,0),
@@ -2496,7 +2495,7 @@ export const insertDefaultBarangayValues = [
 	 (1933,2,83,'Basdiot',1392,6437,0),
 	 (1934,2,83,'Batadbatad',756,1426,0),
 	 (1935,2,83,'Bugho',680,1974,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1936,2,83,'Buguil',500,818,0),
 	 (1937,2,83,'Busay',648,1416,0),
 	 (1938,2,83,'Lanao',740,1541,0),
@@ -2507,7 +2506,7 @@ export const insertDefaultBarangayValues = [
 	 (1943,2,83,'Tuble',712,2177,0),
 	 (1944,2,83,'Tunga',772,2611,0),
 	 (1945,2,84,'Alo',336,1509,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1946,2,84,'Bangcogon',344,1199,0),
 	 (1947,2,84,'Bonbon',468,1410,0),
 	 (1948,2,84,'Calumpang',208,1169,0),
@@ -2518,7 +2517,7 @@ export const insertDefaultBarangayValues = [
 	 (1953,2,84,'Daanlungsod',360,1744,0),
 	 (1954,2,84,'Gawi',600,1823,0),
 	 (1955,2,84,'Hagdan',264,705,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1956,2,84,'Lagunde',620,3062,0),
 	 (1957,2,84,'Looc',472,1258,0),
 	 (1958,2,84,'Luka',276,1343,0),
@@ -2529,7 +2528,7 @@ export const insertDefaultBarangayValues = [
 	 (1963,2,84,'Pungtod',380,1683,0),
 	 (1964,2,84,'Tan-awan',256,1546,0),
 	 (1965,2,84,'Tumalog',452,1015,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1966,2,85,'Biasong',240,373,0),
 	 (1967,2,85,'Cawit',1032,2083,0),
 	 (1968,2,85,'Dapdap',196,609,0),
@@ -2540,7 +2539,7 @@ export const insertDefaultBarangayValues = [
 	 (1973,2,85,'Moabog',384,1119,0),
 	 (1974,2,85,'Montserrat',672,1301,0),
 	 (1975,2,85,'San Isidro',244,522,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1976,2,85,'San Juan',336,790,0),
 	 (1977,2,85,'Upper Poblacion',304,936,0),
 	 (1978,2,85,'Villahermosa',420,1072,0),
@@ -2551,7 +2550,7 @@ export const insertDefaultBarangayValues = [
 	 (1983,2,86,'Busay',684,1209,0),
 	 (1984,2,86,'Butong',548,2202,0),
 	 (1985,2,86,'Cabiangon',224,1082,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1986,2,86,'Camugao',1072,2216,0),
 	 (1987,2,86,'Duangan',688,1515,0),
 	 (1988,2,86,'Guimbawian',892,2049,0),
@@ -2562,7 +2561,7 @@ export const insertDefaultBarangayValues = [
 	 (1993,2,86,'Pandacan',1436,6373,0),
 	 (1994,2,86,'Poblacion',2296,7308,0),
 	 (1995,2,86,'Punod',1044,1927,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (1996,2,86,'Rizal',736,2616,0),
 	 (1997,2,86,'Sacsac',560,1659,0),
 	 (1998,2,86,'Sambagon',508,1334,0),
@@ -2573,7 +2572,7 @@ export const insertDefaultBarangayValues = [
 	 (2003,2,86,'Tupas',472,935,0),
 	 (2004,2,86,'Tutay',808,2663,0),
 	 (2005,2,87,'Adela',800,1879,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2006,2,87,'Altavista',436,1037,0),
 	 (2007,2,87,'Cagcagan',1616,3369,0),
 	 (2008,2,87,'Cansabusab',148,624,0),
@@ -2584,7 +2583,7 @@ export const insertDefaultBarangayValues = [
 	 (2013,2,87,'Mabini',364,1362,0),
 	 (2014,2,87,'Mercedes',1312,2797,0),
 	 (2015,2,87,'Pagsa',276,1280,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2016,2,87,'Paz',0,1355,0),
 	 (2017,2,87,'Rizal',300,942,0),
 	 (2018,2,87,'San Jose',440,1358,0),
@@ -2595,7 +2594,7 @@ export const insertDefaultBarangayValues = [
 	 (2023,2,88,'Can-abuhon',360,1006,0),
 	 (2024,2,88,'Canduling',268,1464,0),
 	 (2025,2,88,'Cansalonoy',316,915,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2026,2,88,'Cansayahon',760,2107,0),
 	 (2027,2,88,'Ilaya',504,1764,0),
 	 (2028,2,88,'Langin',688,1365,0),
@@ -2606,7 +2605,7 @@ export const insertDefaultBarangayValues = [
 	 (2033,2,88,'Santa Cruz',1080,3488,0),
 	 (2034,2,88,'Tupas',304,641,0),
 	 (2035,2,88,'Vive',412,936,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2036,2,89,'Basak',364,1151,0),
 	 (2037,2,89,'Bonbon',156,658,0),
 	 (2038,2,89,'Bulangsuran',512,1213,0),
@@ -2617,7 +2616,7 @@ export const insertDefaultBarangayValues = [
 	 (2043,2,89,'Colase',244,1175,0),
 	 (2044,2,89,'Dalahikan',332,1492,0),
 	 (2045,2,89,'Jumangpas',428,1641,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2046,2,89,'Monteverde',388,794,0),
 	 (2047,2,89,'Poblacion',1004,4250,0),
 	 (2048,2,89,'San Sebastian',592,2377,0),
@@ -2628,7 +2627,7 @@ export const insertDefaultBarangayValues = [
 	 (2053,2,90,'Basak',460,1100,0),
 	 (2054,2,90,'Bugho',680,1425,0),
 	 (2055,2,90,'Cabatbatan',920,2092,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2056,2,90,'Greenhills',916,2714,0),
 	 (2057,2,90,'Ilaya',912,2137,0),
 	 (2058,2,90,'Lantawan',824,2222,0),
@@ -2639,7 +2638,7 @@ export const insertDefaultBarangayValues = [
 	 (2063,2,90,'Poblacion North',1052,4808,0),
 	 (2064,2,90,'Poblacion South',2588,8974,0),
 	 (2065,2,90,'San Isidro',1092,4466,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2066,2,90,'Sangat',1108,6395,0),
 	 (2067,2,90,'Tabionan',1360,2323,0),
 	 (2068,2,90,'Tananas',752,1846,0),
@@ -2650,7 +2649,7 @@ export const insertDefaultBarangayValues = [
 	 (2073,2,91,'Campo',1572,3379,0),
 	 (2074,2,91,'Consuelo',2632,6221,0),
 	 (2075,2,91,'Esperanza',2872,6892,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2076,2,91,'Himensulan',1344,2522,0),
 	 (2077,2,91,'Montealegre',632,1877,0),
 	 (2078,2,91,'Northern Poblacion',1728,5178,0),
@@ -2661,7 +2660,7 @@ export const insertDefaultBarangayValues = [
 	 (2083,2,91,'Southern Poblacion',1652,4483,0),
 	 (2084,2,91,'Unidos',380,1073,0),
 	 (2085,2,91,'Union',2252,5435,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2086,2,91,'Western Poblacion',1068,2899,0),
 	 (2087,2,92,'Anapog',984,2111,0),
 	 (2088,2,92,'Argawanon',1524,4456,0),
@@ -2672,7 +2671,7 @@ export const insertDefaultBarangayValues = [
 	 (2093,2,92,'Calambua',624,1569,0),
 	 (2094,2,92,'Canagahan',888,1611,0),
 	 (2095,2,92,'Dapdap',676,1975,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2096,2,92,'Gawaygaway',528,1540,0),
 	 (2097,2,92,'Hagnaya',1520,4465,0),
 	 (2098,2,92,'Kayam',336,1461,0),
@@ -2683,7 +2682,7 @@ export const insertDefaultBarangayValues = [
 	 (2103,2,92,'Looc',568,2381,0),
 	 (2104,2,92,'Luyang',1356,2535,0),
 	 (2105,2,92,'Mano',1520,4001,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2106,2,92,'Poblacion',1260,5795,0),
 	 (2107,2,92,'Punta',840,3434,0),
 	 (2108,2,92,'Sab-a',744,1131,0),
@@ -2694,7 +2693,7 @@ export const insertDefaultBarangayValues = [
 	 (2113,2,92,'Victoria',1004,2067,0),
 	 (2114,2,93,'Balidbid',908,2005,0),
 	 (2115,2,93,'Hagdan',2040,3772,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2116,2,93,'Hilantagaan',2380,4032,0),
 	 (2117,2,93,'Kinatarkan',964,1804,0),
 	 (2118,2,93,'Langub',1108,2224,0),
@@ -2705,7 +2704,7 @@ export const insertDefaultBarangayValues = [
 	 (2123,2,93,'Talisay',1176,3112,0),
 	 (2124,2,94,'Bunlan',852,2349,0),
 	 (2125,2,94,'Cabutongan',436,1136,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2126,2,94,'Candamiang',384,1107,0),
 	 (2127,2,94,'Canlumacad',292,960,0),
 	 (2128,2,94,'Liloan',668,2401,0),
@@ -2716,7 +2715,7 @@ export const insertDefaultBarangayValues = [
 	 (2133,2,94,'Talisay',632,2772,0),
 	 (2134,2,95,'Abugon',656,2339,0),
 	 (2135,2,95,'Bae',500,1248,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2136,2,95,'Bagacay',872,2629,0),
 	 (2137,2,95,'Bahay',1608,5424,0),
 	 (2138,2,95,'Banlot',916,2024,0),
@@ -2727,7 +2726,7 @@ export const insertDefaultBarangayValues = [
 	 (2143,2,95,'Candaguit',632,2554,0),
 	 (2144,2,95,'Cantolaroy',356,686,0),
 	 (2145,2,95,'Dugoan',304,847,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2146,2,95,'Guimbangco-an',412,1154,0),
 	 (2147,2,95,'Lamacan',684,2133,0),
 	 (2148,2,95,'Libo',460,1256,0),
@@ -2738,7 +2737,7 @@ export const insertDefaultBarangayValues = [
 	 (2153,2,95,'Papan',516,883,0),
 	 (2154,2,95,'Poblacion',1208,7057,0),
 	 (2155,2,95,'Sabang',492,2604,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2156,2,95,'Sayao',888,1917,0),
 	 (2157,2,95,'Simala',1024,3273,0),
 	 (2158,2,95,'Tubod',1180,2504,0),
@@ -2749,7 +2748,7 @@ export const insertDefaultBarangayValues = [
 	 (2163,2,96,'Cabalawan',1904,3061,0),
 	 (2164,2,96,'Cabangahan',504,1116,0),
 	 (2165,2,96,'Calumboyan',1076,3133,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2166,2,96,'Dakit',484,909,0),
 	 (2167,2,96,'Damolog',1052,3715,0),
 	 (2168,2,96,'Ibabao',700,2644,0),
@@ -2760,7 +2759,7 @@ export const insertDefaultBarangayValues = [
 	 (2173,2,96,'Pansoy',944,1716,0),
 	 (2174,2,96,'Poblacion',1040,3757,0),
 	 (2175,2,96,'Tabunok',1292,3829,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2176,2,96,'Takay',584,1211,0),
 	 (2177,2,97,'Alang-alang',308,791,0),
 	 (2178,2,97,'Caduawan',1428,3014,0),
@@ -2771,7 +2770,7 @@ export const insertDefaultBarangayValues = [
 	 (2183,2,97,'Ilihan',1428,4611,0),
 	 (2184,2,97,'Kal-anan',300,882,0),
 	 (2185,2,97,'Labangon',1024,2112,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2186,2,97,'Libjo',1516,2960,0),
 	 (2187,2,97,'Loong',508,1310,0),
 	 (2188,2,97,'Mabuli',1060,1853,0),
@@ -2782,7 +2781,7 @@ export const insertDefaultBarangayValues = [
 	 (2193,2,97,'Pio',184,881,0),
 	 (2194,2,97,'Poblacion',308,1501,0),
 	 (2195,2,97,'Salag',528,1595,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2196,2,97,'Sambag',388,973,0),
 	 (2197,2,97,'San Isidro',348,724,0),
 	 (2198,2,97,'San Vicente',364,887,0),
@@ -2793,7 +2792,7 @@ export const insertDefaultBarangayValues = [
 	 (2203,2,98,'Dalid',612,1426,0),
 	 (2204,2,98,'Kanlim-ao',420,1052,0),
 	 (2205,2,98,'Kanluhangon',520,1110,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2206,2,98,'Kantubaon',880,1849,0),
 	 (2207,2,98,'Mabunao',496,1025,0),
 	 (2208,2,98,'Maravilla',1236,2784,0),
@@ -2804,7 +2803,7 @@ export const insertDefaultBarangayValues = [
 	 (2213,2,98,'Villahermosa',236,497,0),
 	 (2214,2,99,'Awihao',1396,4552,0),
 	 (2215,2,99,'Bagakay',844,2689,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2216,2,99,'Bato',1544,8843,0),
 	 (2217,2,99,'Biga',976,3600,0),
 	 (2218,2,99,'Bulongan',948,2864,0),
@@ -2815,7 +2814,7 @@ export const insertDefaultBarangayValues = [
 	 (2223,2,99,'Camp 8',1236,2736,0),
 	 (2224,2,99,'Canlumampao',1796,4512,0),
 	 (2225,2,99,'Cantabaco',2100,7903,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2226,2,99,'Capitan Claudio',1836,4664,0),
 	 (2227,2,99,'Carmen',1292,4174,0),
 	 (2228,2,99,'Daanglungsod',600,3174,0),
@@ -2826,7 +2825,7 @@ export const insertDefaultBarangayValues = [
 	 (2233,2,99,'Ilihan',828,3469,0),
 	 (2234,2,99,'Juan Climaco, Sr. (magdugo)',1180,6794,0),
 	 (2235,2,99,'Landahan',912,2362,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2236,2,99,'Loay',776,1624,0),
 	 (2237,2,99,'Luray Ii',1372,5020,0),
 	 (2238,2,99,'Matab-ang',3400,10677,0),
@@ -2837,7 +2836,7 @@ export const insertDefaultBarangayValues = [
 	 (2243,2,99,'Putingbato',596,1529,0),
 	 (2244,2,99,'Sagay',592,1239,0),
 	 (2245,2,99,'Sam-ang',1148,1860,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2246,2,99,'Sangi',736,4545,0),
 	 (2247,2,99,'Santo Niño (mainggit)',1480,5752,0),
 	 (2248,2,99,'Subayon',560,1549,0),
@@ -2848,7 +2847,7 @@ export const insertDefaultBarangayValues = [
 	 (2253,2,100,'Amatugan',592,883,0),
 	 (2254,2,100,'Antipolo',564,1348,0),
 	 (2255,2,100,'Apalan',748,1802,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2256,2,100,'Bagasawe',744,1961,0),
 	 (2257,2,100,'Bakyawan',564,952,0),
 	 (2258,2,100,'Bangkito',188,320,0),
@@ -2859,7 +2858,7 @@ export const insertDefaultBarangayValues = [
 	 (2263,2,100,'Barangay Vi (pob.)',760,2255,0),
 	 (2264,2,100,'Barangay Vii (pob.)',240,1486,0),
 	 (2265,2,100,'Barangay Viii (pob.)',1028,2692,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2266,2,100,'Bulwang',448,729,0),
 	 (2267,2,100,'Caridad',736,1736,0),
 	 (2268,2,100,'Carmelo',1064,2346,0),
@@ -2870,7 +2869,7 @@ export const insertDefaultBarangayValues = [
 	 (2273,2,100,'Ga-ang',420,711,0),
 	 (2274,2,100,'Gimama-a',784,1560,0),
 	 (2275,2,100,'Jagbuaya',528,1512,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2276,2,100,'Kabangkalan',468,885,0),
 	 (2277,2,100,'Kabkaban',276,544,0),
 	 (2278,2,100,'Kagba-o',372,552,0),
@@ -2881,7 +2880,7 @@ export const insertDefaultBarangayValues = [
 	 (2283,2,100,'Kanlunsing',140,221,0),
 	 (2284,2,100,'Kansi',616,1352,0),
 	 (2285,2,100,'Kaorasan',204,406,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2286,2,100,'Libo',184,326,0),
 	 (2287,2,100,'Lusong',668,1041,0),
 	 (2288,2,100,'Macupa',248,394,0),
@@ -2892,7 +2891,7 @@ export const insertDefaultBarangayValues = [
 	 (2293,2,100,'Mangga',1100,3291,0),
 	 (2294,2,100,'Marmol',972,1581,0),
 	 (2295,2,100,'Molobolo',300,709,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2296,2,100,'Montealegre',1128,1800,0),
 	 (2297,2,100,'Putat',1872,4513,0),
 	 (2298,2,100,'San Juan',616,1054,0),
@@ -2903,7 +2902,7 @@ export const insertDefaultBarangayValues = [
 	 (2303,2,100,'Tominjao',544,1029,0),
 	 (2304,2,100,'Tomugpa',192,304,0),
 	 (2305,2,101,'Buenavista',216,592,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2306,2,101,'Calmante',516,1584,0),
 	 (2307,2,101,'Daan Secante',148,498,0),
 	 (2308,2,101,'General',252,1167,0),
@@ -2914,7 +2913,7 @@ export const insertDefaultBarangayValues = [
 	 (2313,2,101,'Secante Bag-o',264,624,0),
 	 (2314,2,101,'Southern Poblacion',156,826,0),
 	 (2315,2,101,'Villahermosa',388,1216,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2873,4,127,'Balolong',32,142,0),
 	 (2874,4,127,'Bino-ongan',124,483,0),
 	 (2875,4,127,'Bitaug',316,865,0),
@@ -2925,7 +2924,7 @@ export const insertDefaultBarangayValues = [
 	 (2880,4,127,'Lomangcapan',112,736,0),
 	 (2881,4,127,'Lotloton',120,501,0),
 	 (2882,4,127,'Manan-ao',44,146,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2883,4,127,'Olave',44,191,0),
 	 (2884,4,127,'Parian',20,198,0),
 	 (2885,4,127,'Poblacion',88,522,0),
@@ -2936,7 +2935,7 @@ export const insertDefaultBarangayValues = [
 	 (2890,4,128,'Bintangan',80,339,0),
 	 (2891,4,128,'Bontod',76,509,0),
 	 (2892,4,128,'Cabulihan',56,322,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2893,4,128,'Calunasan',92,396,0),
 	 (2894,4,128,'Candigum',76,354,0),
 	 (2895,4,128,'Cang-allas',68,344,0),
@@ -2947,7 +2946,7 @@ export const insertDefaultBarangayValues = [
 	 (2900,4,128,'Canlasog',76,335,0),
 	 (2901,4,128,'Catamboan',176,501,0),
 	 (2902,4,128,'Helen (datag)',124,1293,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2903,4,128,'Nonoc',100,1127,0),
 	 (2904,4,128,'North Poblacion',40,1315,0),
 	 (2905,4,128,'Ponong',88,285,0),
@@ -2958,7 +2957,7 @@ export const insertDefaultBarangayValues = [
 	 (2910,4,129,'Campalanas',924,2058,2367),
 	 (2911,4,129,'Cangclaran',328,561,0),
 	 (2912,4,129,'Cangomantong',368,1131,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2913,4,129,'Capalasanan',576,1191,0),
 	 (2914,4,129,'Catamboan (pob.)',484,1698,0),
 	 (2915,4,129,'Gabayan',780,2049,0),
@@ -2969,7 +2968,7 @@ export const insertDefaultBarangayValues = [
 	 (2920,4,129,'Po-o',228,732,0),
 	 (2921,4,129,'Simacolong',736,1848,0),
 	 (2922,4,129,'Tagmanocan',332,964,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2923,4,129,'Talayong',300,659,0),
 	 (2924,4,129,'Tigbawan (pob.)',272,1669,0),
 	 (2925,4,129,'Tignao',316,951,0),
@@ -2980,7 +2979,7 @@ export const insertDefaultBarangayValues = [
 	 (2930,4,130,'Cabal-asan',136,402,0),
 	 (2931,4,130,'Calunasan',196,659,0),
 	 (2932,4,130,'Candaping A',144,584,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2933,4,130,'Candaping B',196,647,0),
 	 (2934,4,130,'Cantaroc A',128,466,0),
 	 (2935,4,130,'Cantaroc B',188,503,0),
@@ -2991,7 +2990,7 @@ export const insertDefaultBarangayValues = [
 	 (2940,4,130,'Looc',56,485,0),
 	 (2941,4,130,'Minalulan',248,829,0),
 	 (2942,4,130,'Nabutay',548,959,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2943,4,130,'Olang',212,685,0),
 	 (2944,4,130,'Pisong A',116,342,0),
 	 (2945,4,130,'Pisong B',116,285,0),
@@ -3002,7 +3001,7 @@ export const insertDefaultBarangayValues = [
 	 (2950,4,131,'Canasagan',128,650,0),
 	 (2951,4,131,'Candura',76,449,0),
 	 (2952,4,131,'Cangmunag',308,1280,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2953,4,131,'Cansayang',136,549,0),
 	 (2954,4,131,'Catulayan',460,1841,0),
 	 (2955,4,131,'Lala-o',160,739,0),
@@ -3013,7 +3012,7 @@ export const insertDefaultBarangayValues = [
 	 (2960,4,131,'Solangon',324,1446,0),
 	 (2961,4,131,'Tag-ibo',256,933,0),
 	 (2962,4,131,'Tambisan',336,1321,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2963,4,131,'Timbaon',508,1481,0),
 	 (2964,4,131,'Tubod',308,1203,0),
 	 (2965,4,132,'Banban',148,823,0),
@@ -3024,7 +3023,7 @@ export const insertDefaultBarangayValues = [
 	 (2970,4,132,'Canal',44,491,0),
 	 (2971,4,132,'Candanay Norte',132,981,0),
 	 (2972,4,132,'Candanay Sur',88,1031,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2973,4,132,'Cang-adieng',84,305,0),
 	 (2974,4,132,'Cang-agong',204,937,0),
 	 (2975,4,132,'Cang-alwang',164,797,0),
@@ -3035,7 +3034,7 @@ export const insertDefaultBarangayValues = [
 	 (2980,4,132,'Cang-isad',84,178,0),
 	 (2981,4,132,'Cangmatnog',96,197,0),
 	 (2982,4,132,'Cangmohao',32,234,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2983,4,132,'Cantabon',172,499,0),
 	 (2984,4,132,'Caticugan',200,1012,0),
 	 (2985,4,132,'Dumanhog',120,678,0),
@@ -3046,7 +3045,7 @@ export const insertDefaultBarangayValues = [
 	 (2990,4,132,'Olo',0,765,0),
 	 (2991,4,132,'Pangi',124,1658,0),
 	 (2992,4,132,'Panlautan',76,244,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (2993,4,132,'Pasihagon',316,1131,0),
 	 (2994,4,132,'Pili',108,411,0),
 	 (2995,4,132,'Poblacion',76,1740,0),
@@ -3057,7 +3056,7 @@ export const insertDefaultBarangayValues = [
 	 (3000,4,132,'Songculan',44,290,0),
 	 (3001,4,132,'Tacdog',56,546,0),
 	 (3002,4,132,'Tacloban',180,641,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3003,4,132,'Tambisan',168,767,0),
 	 (3004,4,132,'Tebjong',100,220,0),
 	 (3005,4,132,'Tinago',244,1066,0),
@@ -3068,7 +3067,7 @@ export const insertDefaultBarangayValues = [
 	 (3010,3,133,'Jantianon',1184,3111,0),
 	 (3011,3,133,'Jugno',1120,4083,0),
 	 (3012,3,133,'Mag-abo',388,2011,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3013,3,133,'Poblacion',240,1591,0),
 	 (3014,3,133,'Silab',1348,3748,0),
 	 (3015,3,133,'Tambojangin',648,2408,0),
@@ -3079,7 +3078,7 @@ export const insertDefaultBarangayValues = [
 	 (3020,3,134,'Awa-an',1220,2983,0),
 	 (3021,3,134,'Ban-ban',1592,2705,0),
 	 (3022,3,134,'Calagcalag',816,1833,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3023,3,134,'Candana-ay',864,1402,0),
 	 (3024,3,134,'Carol-an',1976,3043,0),
 	 (3025,3,134,'Gomentoc',1348,2244,0),
@@ -3090,7 +3089,7 @@ export const insertDefaultBarangayValues = [
 	 (3030,3,134,'Lamigan',676,932,0),
 	 (3031,3,134,'Maaslum',1248,1789,0),
 	 (3032,3,134,'Mabato',2316,3518,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3033,3,134,'Manogtong',984,1559,0),
 	 (3034,3,134,'Nabhang',1036,1236,0),
 	 (3035,3,134,'Poblacion',532,2105,0),
@@ -3101,7 +3100,7 @@ export const insertDefaultBarangayValues = [
 	 (3040,3,134,'Tiguib',1360,2832,0),
 	 (3041,3,135,'Balayagmanok',332,1435,0),
 	 (3042,3,135,'Banilad',1120,4753,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3043,3,135,'Buntis',692,3218,0),
 	 (3044,3,135,'Buntod',408,1969,0),
 	 (3045,3,135,'Calangag',228,717,0),
@@ -3112,7 +3111,7 @@ export const insertDefaultBarangayValues = [
 	 (3050,3,135,'Lutao',244,1227,0),
 	 (3051,3,135,'Magsuhot',108,373,0),
 	 (3052,3,135,'Malabago',124,342,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3053,3,135,'Mampas',104,263,0),
 	 (3054,3,135,'North Poblacion',88,1207,0),
 	 (3055,3,135,'Sacsac',988,3938,0),
@@ -3123,7 +3122,7 @@ export const insertDefaultBarangayValues = [
 	 (3060,3,135,'Timbao',396,1194,0),
 	 (3061,3,135,'Tubod',320,1130,0),
 	 (3062,3,135,'West Poblacion',40,750,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3063,3,136,'Barangay I (Pob.)',456,3562,0),
 	 (3064,3,136,'Barangay II (Pob.)',1432,8978,0),
 	 (3065,3,136,'Basak',852,1862,0),
@@ -3134,7 +3133,7 @@ export const insertDefaultBarangayValues = [
 	 (3070,3,136,'Cambaguio',700,1102,0),
 	 (3071,3,136,'Cambanjao',688,1577,0),
 	 (3072,3,136,'Cambuilao',700,1817,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3073,3,136,'Canlargo',704,1803,0),
 	 (3074,3,136,'Capiñahan',652,1726,0),
 	 (3075,3,136,'Consolacion',112,576,0),
@@ -3145,7 +3144,7 @@ export const insertDefaultBarangayValues = [
 	 (3080,3,136,'Lonoy',1964,3137,0),
 	 (3081,3,136,'Lo-oc',536,2293,0),
 	 (3082,3,136,'Mabunao',1036,1425,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3083,3,136,'Manlipac',1780,2623,0),
 	 (3084,3,136,'Mansangaban',936,1293,0),
 	 (3085,3,136,'Okiot',1264,3910,0),
@@ -3156,7 +3155,7 @@ export const insertDefaultBarangayValues = [
 	 (3090,3,136,'Sab-ahan',3616,6187,0),
 	 (3091,3,136,'San Isidro',120,415,0),
 	 (3092,3,136,'Tagpo',1196,2770,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3093,3,136,'Talungon',488,3042,0),
 	 (3094,3,136,'Tamisu',1308,3652,0),
 	 (3095,3,136,'Tamogong',148,513,0),
@@ -3167,7 +3166,7 @@ export const insertDefaultBarangayValues = [
 	 (3100,3,137,'Bongalonan',2396,4285,0),
 	 (3101,3,137,'Cabalayongan',616,1237,0),
 	 (3102,3,137,'Cabatuanan',560,864,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3103,3,137,'Linantayan',936,1246,0),
 	 (3104,3,137,'Maglinao',1664,2979,0),
 	 (3105,3,137,'Nagbo-alao',2724,5076,0),
@@ -3178,7 +3177,7 @@ export const insertDefaultBarangayValues = [
 	 (3110,3,138,'Bulod',1260,2068,0),
 	 (3111,3,138,'Cabcaban',2128,3244,0),
 	 (3112,3,138,'Cabugan',788,1687,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3113,3,138,'Camudlas',600,926,0),
 	 (3114,3,138,'Canluto',772,1398,0),
 	 (3115,3,138,'Danao',816,1234,0),
@@ -3189,7 +3188,7 @@ export const insertDefaultBarangayValues = [
 	 (3120,3,138,'Matobato',1444,2336,0),
 	 (3121,3,138,'Nagcasunog',316,600,0),
 	 (3122,3,138,'Nalundan',5284,7574,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3123,3,138,'Pangalaycayan',604,1268,0),
 	 (3124,3,138,'Peñahan',392,642,0),
 	 (3125,3,138,'Poblacion (Payabon)',816,3307,0),
@@ -3200,7 +3199,7 @@ export const insertDefaultBarangayValues = [
 	 (3130,3,139,'Bayog',1028,2942,0),
 	 (3131,3,139,'Binalbagan',1080,2437,0),
 	 (3132,3,139,'Bucalan (East Budsalan)',1952,2989,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3133,3,139,'Budlasan (West Budlasan)',2104,4621,0),
 	 (3134,3,139,'Linothangan',1440,3860,0),
 	 (3135,3,139,'Lumapao',956,3048,0),
@@ -3211,7 +3210,7 @@ export const insertDefaultBarangayValues = [
 	 (3140,3,139,'Panubigan',2160,7034,0),
 	 (3141,3,139,'Pula',1736,5198,0),
 	 (3142,3,140,'Ali-is',1840,2880,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3143,3,140,'Banaybanay',2396,4425,0),
 	 (3144,3,140,'Banga',2004,7147,0),
 	 (3145,3,140,'Boyco',396,1643,0),
@@ -3222,7 +3221,7 @@ export const insertDefaultBarangayValues = [
 	 (3150,3,140,'Kalumboyan',3328,7489,0),
 	 (3151,3,140,'Malabugas',1540,5328,0),
 	 (3152,3,140,'Mandu-ao',2872,4761,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3153,3,140,'Maninihon',3272,6743,0),
 	 (3154,3,140,'Minaba',1484,2578,0),
 	 (3155,3,140,'Nangka',5888,10521,0),
@@ -3233,7 +3232,7 @@ export const insertDefaultBarangayValues = [
 	 (3160,3,140,'San Jose',1352,2324,0),
 	 (3161,3,140,'San Miguel',756,1716,0),
 	 (3162,3,140,'San Roque',796,1615,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3163,3,140,'Suba (Pob.)',848,2613,0),
 	 (3164,3,140,'Tabuan',2720,4968,0),
 	 (3165,3,140,'Tayawan',3268,6063,0),
@@ -3244,7 +3243,7 @@ export const insertDefaultBarangayValues = [
 	 (3170,3,141,'Bakid',812,1339,0),
 	 (3171,3,141,'Balogo',1652,2704,0),
 	 (3172,3,141,'Banwaque',940,1503,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3173,3,141,'Basak',2256,4309,0),
 	 (3174,3,141,'Binobohan',964,1655,0),
 	 (3175,3,141,'Buenavista',2612,4610,0),
@@ -3255,7 +3254,7 @@ export const insertDefaultBarangayValues = [
 	 (3180,3,141,'Hilaitan',2820,5441,0),
 	 (3181,3,141,'Hinakpan',1300,2318,0),
 	 (3182,3,141,'Humayhumay',780,1564,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3183,3,141,'Imelda',896,1289,0),
 	 (3184,3,141,'Kagawasan',972,1670,0),
 	 (3185,3,141,'Linantuyan',1532,2334,0),
@@ -3266,7 +3265,7 @@ export const insertDefaultBarangayValues = [
 	 (3190,3,141,'Maniak',952,2258,0),
 	 (3191,3,141,'Mckinley',1292,2488,0),
 	 (3192,3,141,'Nagsaha',804,1646,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3193,3,141,'Padre Zamora',1204,2551,0),
 	 (3194,3,141,'Plagatasanon',552,1002,0),
 	 (3195,3,141,'Planas',1024,1665,0),
@@ -3277,7 +3276,7 @@ export const insertDefaultBarangayValues = [
 	 (3200,3,141,'Tinayunan Hill',1440,2587,0),
 	 (3201,3,141,'Trinidad',2700,6267,0),
 	 (3202,3,141,'Villegas',1132,2048,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3203,3,142,'Azagra',1748,5395,0),
 	 (3204,3,142,'Bahi-an',1300,2082,0),
 	 (3205,3,142,'Luca',760,3095,0),
@@ -3288,7 +3287,7 @@ export const insertDefaultBarangayValues = [
 	 (3210,3,142,'Poblacion I (Barangay 1)',156,2114,0),
 	 (3211,3,142,'Poblacion II (Barangay 2)',344,1621,0),
 	 (3212,3,142,'Poblacion III (Barangay 3)',212,2052,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3213,3,142,'Poblacion IV (Barangay 4)',708,2996,0),
 	 (3214,3,142,'Poblacion IX (Barangay 9)',72,1652,0),
 	 (3215,3,142,'Poblacion V (Barangay 5)',56,1111,0),
@@ -3299,7 +3298,7 @@ export const insertDefaultBarangayValues = [
 	 (3220,3,142,'San Isidro',872,4217,0),
 	 (3221,3,142,'San Jose',1016,4277,0),
 	 (3222,3,142,'San Miguel',1196,2675,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3223,3,142,'Santa Cruz Nuevo',1780,4677,0),
 	 (3224,3,142,'Santa Cruz Viejo',1428,5390,0),
 	 (3225,3,142,'Santo Niño',3104,6835,0),
@@ -3310,7 +3309,7 @@ export const insertDefaultBarangayValues = [
 	 (3230,3,143,'Baslay',308,736,0),
 	 (3231,3,143,'Batuhon Dacu',184,607,0),
 	 (3232,3,143,'Boloc-boloc',196,700,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3233,3,143,'Bulak',300,1638,0),
 	 (3234,3,143,'Bunga',252,873,0),
 	 (3235,3,143,'Casile',208,902,0),
@@ -3321,7 +3320,7 @@ export const insertDefaultBarangayValues = [
 	 (3240,3,143,'Magsaysay',460,1341,0),
 	 (3241,3,143,'Malongcay Dacu',644,1282,0),
 	 (3242,3,143,'Masaplod Norte',284,1505,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3243,3,143,'Masaplod Sur',288,1586,0),
 	 (3244,3,143,'Panubtuban',304,974,0),
 	 (3245,3,143,'Poblacion I',228,1561,0),
@@ -3332,7 +3331,7 @@ export const insertDefaultBarangayValues = [
 	 (3250,3,144,'Bagacay',1176,10250,0),
 	 (3251,3,144,'Bajumpandan',568,6421,0),
 	 (3252,3,144,'Balugo',312,3588,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3253,3,144,'Banilad',760,9198,0),
 	 (3254,3,144,'Bantayan',188,5240,0),
 	 (3255,3,144,'Batinguel',824,9700,0),
@@ -3343,7 +3342,7 @@ export const insertDefaultBarangayValues = [
 	 (3260,3,144,'Candau-ay',1072,7804,0),
 	 (3261,3,144,'Cantil-e',640,4433,0),
 	 (3262,3,144,'Daro',276,6839,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3263,3,144,'Junob',764,7171,0),
 	 (3264,3,144,'Looc',532,4902,0),
 	 (3265,3,144,'Mangnao-Canal',244,4087,0),
@@ -3354,7 +3353,7 @@ export const insertDefaultBarangayValues = [
 	 (3270,3,144,'Poblacion No. 4 (Barangay 4)',4,140,0),
 	 (3271,3,144,'Poblacion No. 7 (Barangay 7)',64,379,0),
 	 (3272,3,144,'Poblacion No. 8 (Barangay 8)',116,2301,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3273,3,144,'Pulantubig',204,3464,0),
 	 (3274,3,144,'Tabuctubig',144,1771,0),
 	 (3275,3,144,'Taclobo',272,10125,0),
@@ -3365,7 +3364,7 @@ export const insertDefaultBarangayValues = [
 	 (3280,3,145,'Bae',580,925,0),
 	 (3281,3,145,'Bala-as',332,564,0),
 	 (3282,3,145,'Bangcal',732,1170,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3283,3,145,'Banog',552,854,0),
 	 (3284,3,145,'Buto',488,784,0),
 	 (3285,3,145,'Cabang',380,555,0),
@@ -3376,7 +3375,7 @@ export const insertDefaultBarangayValues = [
 	 (3290,3,145,'Eli',1180,1736,0),
 	 (3291,3,145,'Lacaon',896,1262,0),
 	 (3292,3,145,'Mahanlud',800,943,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3293,3,145,'Malabago',384,497,0),
 	 (3294,3,145,'Mambaid',440,809,0),
 	 (3295,3,145,'Mongpong',744,895,0),
@@ -3387,7 +3386,7 @@ export const insertDefaultBarangayValues = [
 	 (3300,3,145,'Polopantao',604,1330,0),
 	 (3301,3,145,'Sampiniton',1016,1569,0),
 	 (3302,3,145,'South Poblacion',568,1935,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3303,3,145,'Talamban',504,723,0),
 	 (3304,3,145,'Tamao',1016,1506,0),
 	 (3305,3,146,'Aniniaw',716,1125,0),
@@ -3398,7 +3397,7 @@ export const insertDefaultBarangayValues = [
 	 (3310,3,146,'Cangabo',712,1212,0),
 	 (3311,3,146,'Cantupa',636,1310,0),
 	 (3312,3,146,'Elecia (Talostos)',1316,1647,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3313,3,146,'Eli',1132,1326,0),
 	 (3314,3,146,'Guihob',1316,1952,0),
 	 (3315,3,146,'Kansumandig',804,1266,0),
@@ -3409,7 +3408,7 @@ export const insertDefaultBarangayValues = [
 	 (3320,3,146,'Mapalasan',464,552,0),
 	 (3321,3,146,'Maragondong',480,795,0),
 	 (3322,3,146,'Martilo',940,2098,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3323,3,146,'Nasungan',1176,1545,0),
 	 (3324,3,146,'Pacuan',1432,2719,0),
 	 (3325,3,146,'Pangca',452,525,0),
@@ -3420,7 +3419,7 @@ export const insertDefaultBarangayValues = [
 	 (3330,3,146,'San Jose',644,1725,0),
 	 (3331,3,146,'Solongon',1180,2397,0),
 	 (3332,3,146,'Tala-on',692,864,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3333,3,146,'Talayong',568,924,0),
 	 (3334,3,147,'Abis',1440,2907,0),
 	 (3335,3,147,'Arebasore',1112,1931,0),
@@ -3431,7 +3430,7 @@ export const insertDefaultBarangayValues = [
 	 (3340,3,147,'Bugnay',616,801,0),
 	 (3341,3,147,'Bulibulihan',748,1478,0),
 	 (3342,3,147,'Bulwang',1176,2475,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3343,3,147,'Campanun-an',1472,2455,0),
 	 (3344,3,147,'Canggohob',1180,1664,0),
 	 (3345,3,147,'Cansal-ing',864,1463,0),
@@ -3442,7 +3441,7 @@ export const insertDefaultBarangayValues = [
 	 (3350,3,147,'Inapoy',1516,2990,0),
 	 (3351,3,147,'Lamdas',1036,1518,0),
 	 (3352,3,147,'Lumbangan',1984,5213,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3353,3,147,'Luyang',1156,1810,0),
 	 (3354,3,147,'Manlingay',540,791,0),
 	 (3355,3,147,'Mayaposi',1488,2757,0),
@@ -3453,7 +3452,7 @@ export const insertDefaultBarangayValues = [
 	 (3360,3,147,'Paniabonan',1568,3641,0),
 	 (3361,3,147,'Pantao',2716,4292,0),
 	 (3362,3,147,'Poblacion',944,7040,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3363,3,147,'Samac',1872,3572,0),
 	 (3364,3,147,'Tadlong',1256,2242,0),
 	 (3365,3,147,'Tara',2716,4927,0),
@@ -3464,7 +3463,7 @@ export const insertDefaultBarangayValues = [
 	 (3370,3,148,'Bolisong',1232,3359,0),
 	 (3371,3,148,'Butong',852,2065,0),
 	 (3372,3,148,'Campuyo',1048,3151,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3373,3,148,'Candabong',1500,2390,0),
 	 (3374,3,148,'Concepcion',408,870,0),
 	 (3375,3,148,'Dungo-an',524,1357,0),
@@ -3475,7 +3474,7 @@ export const insertDefaultBarangayValues = [
 	 (3380,3,148,'Mandalupang',1092,2206,0),
 	 (3381,3,148,'Panciao',1604,2390,0),
 	 (3382,3,148,'Poblacion',68,1162,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3383,3,148,'Sac-sac',476,743,0),
 	 (3384,3,148,'Salvacion',760,1093,0),
 	 (3385,3,148,'San Isidro',412,804,0),
@@ -3486,7 +3485,7 @@ export const insertDefaultBarangayValues = [
 	 (3390,3,148,'Tanglad',808,1553,0),
 	 (3391,3,148,'Tubod',468,966,0),
 	 (3392,3,148,'Tupas',320,1728,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3393,3,149,'Abante',408,791,0),
 	 (3394,3,149,'Balayong',1068,2212,0),
 	 (3395,3,149,'Banawe',856,1886,0),
@@ -3497,7 +3496,7 @@ export const insertDefaultBarangayValues = [
 	 (3400,3,149,'Magsusunog',692,1477,0),
 	 (3401,3,149,'Malalangsi',744,3394,0),
 	 (3402,3,149,'Mamburao',1088,2040,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3403,3,149,'Mangoto',744,1534,0),
 	 (3404,3,149,'Poblacion',1364,6434,0),
 	 (3405,3,149,'San Isidro',1672,3271,0),
@@ -3508,7 +3507,7 @@ export const insertDefaultBarangayValues = [
 	 (3410,3,150,'Basiao',360,699,0),
 	 (3411,3,150,'Cambaloctot',304,678,0),
 	 (3412,3,150,'Cancawas',548,1815,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3413,3,150,'Janayjanay',408,975,0),
 	 (3414,3,150,'Jilocon',648,2020,0),
 	 (3415,3,150,'Naiba',288,821,0),
@@ -3519,7 +3518,7 @@ export const insertDefaultBarangayValues = [
 	 (3420,3,150,'Siapo',988,2268,0),
 	 (3421,3,150,'Tampi',416,2139,0),
 	 (3422,3,150,'Tapon Norte',776,2782,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3423,3,151,'Alangilan',3084,4563,0),
 	 (3424,3,151,'Amio',1208,2093,0),
 	 (3425,3,151,'Buenavista',936,1217,0),
@@ -3530,7 +3529,7 @@ export const insertDefaultBarangayValues = [
 	 (3430,3,151,'Kabulacan',1516,2840,0),
 	 (3431,3,151,'Mabuhay',1032,1866,0),
 	 (3432,3,151,'Manalongon',2368,5134,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3433,3,151,'Mansagomayon',720,1218,0),
 	 (3434,3,151,'Milagrosa',2192,3646,0),
 	 (3435,3,151,'Nagbalaye',2852,5188,0),
@@ -3541,7 +3540,7 @@ export const insertDefaultBarangayValues = [
 	 (3440,3,151,'San Jose',1752,2766,0),
 	 (3441,3,151,'San Miguel',852,1371,0),
 	 (3442,3,151,'San Pedro',1776,3380,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3443,3,151,'Santo Rosario',816,1221,0),
 	 (3444,3,151,'Talalak',2788,4323,0),
 	 (3445,3,152,'Albiga',724,1816,0),
@@ -3552,7 +3551,7 @@ export const insertDefaultBarangayValues = [
 	 (3450,3,152,'Canaway',1664,3748,0),
 	 (3451,3,152,'Casala-an',2504,4004,0),
 	 (3452,3,152,'Caticugan',1020,2570,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3453,3,152,'Datag',1004,2026,0),
 	 (3454,3,152,'Giliga-on',2644,5232,0),
 	 (3455,3,152,'Inalad',556,2022,0),
@@ -3563,7 +3562,7 @@ export const insertDefaultBarangayValues = [
 	 (3460,3,152,'Napacao',1520,2923,0),
 	 (3461,3,152,'Poblacion I',308,2164,0),
 	 (3462,3,152,'Poblacion II',324,2394,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3463,3,152,'Poblacion III',928,3024,0),
 	 (3464,3,152,'Poblacion IV',608,2090,0),
 	 (3465,3,152,'Salag',1460,2930,0),
@@ -3574,7 +3573,7 @@ export const insertDefaultBarangayValues = [
 	 (3470,3,152,'Tayak',1860,2968,0),
 	 (3471,3,153,'Agan-an',432,3525,0),
 	 (3472,3,153,'Ajong',1300,3562,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3473,3,153,'Balugo',964,2327,0),
 	 (3474,3,153,'Bolocboloc',660,9324,0),
 	 (3475,3,153,'Calabnugan',504,1736,0),
@@ -3585,7 +3584,7 @@ export const insertDefaultBarangayValues = [
 	 (3480,3,153,'Maningcao',860,2136,0),
 	 (3481,3,153,'Maslog',684,6051,0),
 	 (3482,3,153,'Poblacion',472,5711,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3483,3,153,'San Antonio',976,2883,0),
 	 (3484,3,153,'Tubigon',612,1116,0),
 	 (3485,3,153,'Tubtubon',952,5872,0),
@@ -3596,7 +3595,7 @@ export const insertDefaultBarangayValues = [
 	 (3490,3,154,'Cambaye',896,1066,0),
 	 (3491,3,154,'Dalaupon',676,828,0),
 	 (3492,3,154,'Guincalaban',1664,2239,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3493,3,154,'Ilaya-Tayasan',708,914,0),
 	 (3494,3,154,'Jilabangan',1012,1276,0),
 	 (3495,3,154,'Lag-it',1192,1710,0),
@@ -3607,7 +3606,7 @@ export const insertDefaultBarangayValues = [
 	 (3500,3,154,'Matauta',444,637,0),
 	 (3501,3,154,'Matuog',980,2141,0),
 	 (3502,3,154,'Numnum',408,469,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3503,3,154,'Palaslan',732,1831,0),
 	 (3504,3,154,'Pinalubngan',644,952,0),
 	 (3505,3,154,'Pindahan',1640,2187,0),
@@ -3618,7 +3617,7 @@ export const insertDefaultBarangayValues = [
 	 (3510,3,154,'Suquib',636,787,0),
 	 (3511,3,154,'Tamao',700,1502,0),
 	 (3512,3,154,'Tambulan',1964,2632,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3513,3,154,'Tanlad',656,1108,0),
 	 (3514,3,155,'Apolong',304,1687,0),
 	 (3515,3,155,'Balabag East',332,3311,0),
@@ -3629,7 +3628,7 @@ export const insertDefaultBarangayValues = [
 	 (3520,3,155,'Bong-ao',328,2741,0),
 	 (3521,3,155,'Bongbong',324,1598,0),
 	 (3522,3,155,'Caidiocan',424,1681,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3523,3,155,'Calayugan',208,1158,0),
 	 (3524,3,155,'Cambucad',184,616,0),
 	 (3525,3,155,'Dobdob',892,1400,0),
@@ -3640,7 +3639,7 @@ export const insertDefaultBarangayValues = [
 	 (3530,3,155,'Malaunay',912,2146,0),
 	 (3531,3,155,'Mampas',140,537,0),
 	 (3532,3,155,'North Poblacion',48,793,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3533,3,155,'Palinpinon',568,3048,0),
 	 (3534,3,155,'Puhagan',548,1871,0),
 	 (3535,3,155,'Pulangbato',380,1037,0),
@@ -3651,7 +3650,7 @@ export const insertDefaultBarangayValues = [
 	 (3540,3,156,'Cabulihan',868,1423,0),
 	 (3541,3,156,'Don Espiridion Villegas',1020,1952,0),
 	 (3542,3,156,'Guba',1528,2118,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3543,3,156,'Macapso',540,1568,0),
 	 (3544,3,156,'Maglahos',856,1379,0),
 	 (3545,3,156,'Malangsa',1308,1990,0),
@@ -3662,7 +3661,7 @@ export const insertDefaultBarangayValues = [
 	 (3550,3,156,'Tabon',1604,3006,0),
 	 (3551,3,156,'Tagbino',2588,3984,0),
 	 (3552,3,156,'Ulay',1208,2405,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3553,3,157,'Basac',828,2229,0),
 	 (3554,3,157,'Calango',760,1644,0),
 	 (3555,3,157,'Lotuban',672,2134,0),
@@ -3673,7 +3672,7 @@ export const insertDefaultBarangayValues = [
 	 (3560,3,157,'Najandig',772,1578,0),
 	 (3561,3,157,'Nasig-id',536,1444,0),
 	 (3562,3,157,'Poblacion',744,6336,0)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3564,3,144,'Poblacion No. 3 (Barangay 3)',0,203,0),
 	 (3565,3,144,'Poblacion No. 5 (Barangay 5)',0,113,0),
 	 (3566,3,144,'Poblacion No. 6 (Barangay 6)',0,245,0),
@@ -3684,7 +3683,7 @@ export const insertDefaultBarangayValues = [
 	 (3571,5,305,'Bagroy',NULL,NULL,NULL),
 	 (3572,5,305,'Balingasag',NULL,NULL,NULL),
 	 (3573,5,305,'Binubuhan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3574,5,305,'Busay',NULL,NULL,NULL),
 	 (3575,5,305,'Calumangan',NULL,NULL,NULL),
 	 (3576,5,305,'Caridad',NULL,NULL,NULL),
@@ -3695,7 +3694,7 @@ export const insertDefaultBarangayValues = [
 	 (3581,5,305,'Ma-ao Barrio',NULL,NULL,NULL),
 	 (3582,5,305,'Mailum',NULL,NULL,NULL),
 	 (3583,5,305,'Malingin',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3584,5,305,'Napoles',NULL,NULL,NULL),
 	 (3585,5,305,'Pacol',NULL,NULL,NULL),
 	 (3586,5,305,'Poblacion',NULL,NULL,NULL),
@@ -3706,7 +3705,7 @@ export const insertDefaultBarangayValues = [
 	 (3591,5,301,'Amontay',NULL,NULL,NULL),
 	 (3592,5,301,'Bagroy',NULL,NULL,NULL),
 	 (3593,5,301,'Bi-ao',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3594,5,301,'Canmoros',NULL,NULL,NULL),
 	 (3595,5,301,'Enclaro',NULL,NULL,NULL),
 	 (3596,5,301,'Marina',NULL,NULL,NULL),
@@ -3717,7 +3716,7 @@ export const insertDefaultBarangayValues = [
 	 (3601,5,301,'San Juan',NULL,NULL,NULL),
 	 (3602,5,301,'San Pedro',NULL,NULL,NULL),
 	 (3603,5,301,'San Teodoro',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3604,5,301,'San Vicente',NULL,NULL,NULL),
 	 (3605,5,301,'Santo Rosario',NULL,NULL,NULL),
 	 (3606,5,301,'Santol',NULL,NULL,NULL),
@@ -3728,7 +3727,7 @@ export const insertDefaultBarangayValues = [
 	 (3611,5,306,'Barangay 3 Poblacion',NULL,NULL,NULL),
 	 (3612,5,306,'Barangay 4 Poblacion',NULL,NULL,NULL),
 	 (3613,5,306,'Barangay 5 Poblacion',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3614,5,306,'Barangay 6 Poblacion',NULL,NULL,NULL),
 	 (3615,5,306,'Burgos',NULL,NULL,NULL),
 	 (3616,5,306,'Cabahug',NULL,NULL,NULL),
@@ -3739,7 +3738,7 @@ export const insertDefaultBarangayValues = [
 	 (3621,5,306,'Jerusalem',NULL,NULL,NULL),
 	 (3622,5,306,'Luna',NULL,NULL,NULL),
 	 (3623,5,306,'Mabini',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3624,5,306,'Magsaysay',NULL,NULL,NULL),
 	 (3625,5,306,'Sicaba',NULL,NULL,NULL),
 	 (3626,5,306,'Tiglawigan',NULL,NULL,NULL),
@@ -3750,7 +3749,7 @@ export const insertDefaultBarangayValues = [
 	 (3631,5,302,'Bagacay',NULL,NULL,NULL),
 	 (3632,5,302,'Bantayanon',NULL,NULL,NULL),
 	 (3633,5,302,'Buenavista',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3634,5,302,'Cabungahan',NULL,NULL,NULL),
 	 (3635,5,302,'Calampisawan',NULL,NULL,NULL),
 	 (3636,5,302,'Cambayobo',NULL,NULL,NULL),
@@ -3761,7 +3760,7 @@ export const insertDefaultBarangayValues = [
 	 (3641,5,302,'Hinab-ongan',NULL,NULL,NULL),
 	 (3642,5,302,'Ilaya',NULL,NULL,NULL),
 	 (3643,5,302,'Laga-an',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3644,5,302,'Lalong',NULL,NULL,NULL),
 	 (3645,5,302,'Lemery',NULL,NULL,NULL),
 	 (3646,5,302,'Lipat-on',NULL,NULL,NULL),
@@ -3772,7 +3771,7 @@ export const insertDefaultBarangayValues = [
 	 (3651,5,302,'Malanog',NULL,NULL,NULL),
 	 (3652,5,302,'Malatas',NULL,NULL,NULL),
 	 (3653,5,302,'Marcelo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3654,5,302,'Menchaca',NULL,NULL,NULL),
 	 (3655,5,302,'Mina-utok',NULL,NULL,NULL),
 	 (3656,5,302,'Minapasuk',NULL,NULL,NULL),
@@ -3783,7 +3782,7 @@ export const insertDefaultBarangayValues = [
 	 (3661,5,302,'Refugio',NULL,NULL,NULL),
 	 (3662,5,302,'San Benito',NULL,NULL,NULL),
 	 (3663,5,302,'San Isidro',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3664,5,302,'Suba',NULL,NULL,NULL),
 	 (3665,5,302,'Telim',NULL,NULL,NULL),
 	 (3666,5,302,'Tigbao',NULL,NULL,NULL),
@@ -3794,7 +3793,7 @@ export const insertDefaultBarangayValues = [
 	 (3671,5,303,'Cabia-an',NULL,NULL,NULL),
 	 (3672,5,303,'Caningay',NULL,NULL,NULL),
 	 (3673,5,303,'Gatuslao',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3674,5,303,'Haba',NULL,NULL,NULL),
 	 (3675,5,303,'Payauan',NULL,NULL,NULL),
 	 (3676,5,303,'Poblacion East',NULL,NULL,NULL),
@@ -3805,7 +3804,7 @@ export const insertDefaultBarangayValues = [
 	 (3681,5,304,'Bulata',NULL,NULL,NULL),
 	 (3682,5,304,'Caliling',NULL,NULL,NULL),
 	 (3683,5,304,'Camalanda-an',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3684,5,304,'Camindangan',NULL,NULL,NULL),
 	 (3685,5,304,'Elihan',NULL,NULL,NULL),
 	 (3686,5,304,'Guiljungan',NULL,NULL,NULL),
@@ -3816,7 +3815,7 @@ export const insertDefaultBarangayValues = [
 	 (3691,5,304,'Mambugsay',NULL,NULL,NULL),
 	 (3692,5,304,'Man-Uling',NULL,NULL,NULL),
 	 (3693,5,304,'Masaling',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3694,5,304,'Molobolo',NULL,NULL,NULL),
 	 (3695,5,304,'Poblacion',NULL,NULL,NULL),
 	 (3696,5,304,'Sura',NULL,NULL,NULL),
@@ -3827,7 +3826,7 @@ export const insertDefaultBarangayValues = [
 	 (3701,5,304,'Tuyom',NULL,NULL,NULL),
 	 (3702,5,304,'Yao-yao',NULL,NULL,NULL),
 	 (3703,5,315,'Alacaygan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3704,5,315,'Alicante',NULL,NULL,NULL),
 	 (3705,5,315,'Batea',NULL,NULL,NULL),
 	 (3706,5,315,'Canlusong',NULL,NULL,NULL),
@@ -3838,7 +3837,7 @@ export const insertDefaultBarangayValues = [
 	 (3711,5,315,'Latasan',NULL,NULL,NULL),
 	 (3712,5,315,'Madalag',NULL,NULL,NULL),
 	 (3713,5,315,'Manta-angan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3714,5,315,'Nanca',NULL,NULL,NULL),
 	 (3715,5,315,'Pasil',NULL,NULL,NULL),
 	 (3716,5,315,'Poblacion I',NULL,NULL,NULL),
@@ -3849,7 +3848,7 @@ export const insertDefaultBarangayValues = [
 	 (3721,5,315,'Santo Niño',NULL,NULL,NULL),
 	 (3722,5,315,'Tabigue',NULL,NULL,NULL),
 	 (3723,5,315,'Tanza',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3724,5,315,'Tomongtong',NULL,NULL,NULL),
 	 (3725,5,315,'Tuburan',NULL,NULL,NULL),
 	 (3726,5,307,'Alimango',NULL,NULL,NULL),
@@ -3860,7 +3859,7 @@ export const insertDefaultBarangayValues = [
 	 (3731,5,307,'Dian-ay',NULL,NULL,NULL),
 	 (3732,5,307,'Hacienda Fe',NULL,NULL,NULL),
 	 (3733,5,307,'Japitan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3734,5,307,'Jonobjonob',NULL,NULL,NULL),
 	 (3735,5,307,'Langub',NULL,NULL,NULL),
 	 (3736,5,307,'Libertad',NULL,NULL,NULL),
@@ -3871,7 +3870,7 @@ export const insertDefaultBarangayValues = [
 	 (3741,5,307,'Paitan',NULL,NULL,NULL),
 	 (3742,5,307,'Pinapugasan',NULL,NULL,NULL),
 	 (3743,5,307,'Rizal',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3744,5,307,'Tamlang',NULL,NULL,NULL),
 	 (3745,5,307,'Udtongan',NULL,NULL,NULL),
 	 (3746,5,307,'Washington',NULL,NULL,NULL),
@@ -3882,7 +3881,7 @@ export const insertDefaultBarangayValues = [
 	 (3751,5,308,'Barangay IV',NULL,NULL,NULL),
 	 (3752,5,308,'Buenavista',NULL,NULL,NULL),
 	 (3753,5,308,'Cabadiangan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3754,5,308,'Cabanbanan',NULL,NULL,NULL),
 	 (3755,5,308,'Carabalan',NULL,NULL,NULL),
 	 (3756,5,308,'Caradio-an',NULL,NULL,NULL),
@@ -3893,7 +3892,7 @@ export const insertDefaultBarangayValues = [
 	 (3761,5,308,'San Antonio',NULL,NULL,NULL),
 	 (3762,5,308,'Sara-et',NULL,NULL,NULL),
 	 (3763,5,308,'Su-ay',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3764,5,308,'Talaban',NULL,NULL,NULL),
 	 (3765,5,308,'To-oy',NULL,NULL,NULL),
 	 (3766,5,316,'Anahaw',NULL,NULL,NULL),
@@ -3904,7 +3903,7 @@ export const insertDefaultBarangayValues = [
 	 (3771,5,316,'Barangay III',NULL,NULL,NULL),
 	 (3772,5,316,'Barangay IV',NULL,NULL,NULL),
 	 (3773,5,316,'Bato',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3774,5,316,'Calapi',NULL,NULL,NULL),
 	 (3775,5,316,'Camalobalo',NULL,NULL,NULL),
 	 (3776,5,316,'Camba-og',NULL,NULL,NULL),
@@ -3915,7 +3914,7 @@ export const insertDefaultBarangayValues = [
 	 (3781,5,316,'Miranda',NULL,NULL,NULL),
 	 (3782,5,316,'Nanunga',NULL,NULL,NULL),
 	 (3783,5,316,'Narauis',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3784,5,316,'Palayog',NULL,NULL,NULL),
 	 (3785,5,316,'Paticui',NULL,NULL,NULL),
 	 (3786,5,316,'Pilar',NULL,NULL,NULL),
@@ -3926,7 +3925,7 @@ export const insertDefaultBarangayValues = [
 	 (3791,5,317,'Asia',NULL,NULL,NULL),
 	 (3792,5,317,'Bacuyangan',NULL,NULL,NULL),
 	 (3793,5,317,'Barangay I',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3794,5,317,'Barangay II',NULL,NULL,NULL),
 	 (3795,5,317,'Bulwangan',NULL,NULL,NULL),
 	 (3796,5,317,'Culipapa',NULL,NULL,NULL),
@@ -3937,7 +3936,7 @@ export const insertDefaultBarangayValues = [
 	 (3801,5,317,'Sangke',NULL,NULL,NULL),
 	 (3802,5,317,'Talacagay',NULL,NULL,NULL),
 	 (3803,5,318,'Andulauan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3804,5,318,'Balicotoc',NULL,NULL,NULL),
 	 (3805,5,318,'Barangay I',NULL,NULL,NULL),
 	 (3806,5,318,'Barangay II',NULL,NULL,NULL),
@@ -3948,7 +3947,7 @@ export const insertDefaultBarangayValues = [
 	 (3811,5,318,'Dancalan',NULL,NULL,NULL),
 	 (3812,5,318,'Delicioso',NULL,NULL,NULL),
 	 (3813,5,318,'Galicia',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3814,5,318,'Manalad',NULL,NULL,NULL),
 	 (3815,5,318,'Pinggot',NULL,NULL,NULL),
 	 (3816,5,318,'Tabu',NULL,NULL,NULL),
@@ -3959,7 +3958,7 @@ export const insertDefaultBarangayValues = [
 	 (3821,5,319,'Barangay 2',NULL,NULL,NULL),
 	 (3822,5,319,'Barangay 3',NULL,NULL,NULL),
 	 (3823,5,319,'Barangay 4',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3824,5,319,'Barangay 5',NULL,NULL,NULL),
 	 (3825,5,319,'Barangay 6',NULL,NULL,NULL),
 	 (3826,5,319,'Barangay 7',NULL,NULL,NULL),
@@ -3970,7 +3969,7 @@ export const insertDefaultBarangayValues = [
 	 (3831,5,319,'Cabcab',NULL,NULL,NULL),
 	 (3832,5,319,'Camangcamang',NULL,NULL,NULL),
 	 (3833,5,319,'Camp Clark',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3834,5,319,'Cansalongon',NULL,NULL,NULL),
 	 (3835,5,319,'Guintubhan',NULL,NULL,NULL),
 	 (3836,5,319,'Libas',NULL,NULL,NULL),
@@ -3981,7 +3980,7 @@ export const insertDefaultBarangayValues = [
 	 (3841,5,319,'Panaquiao',NULL,NULL,NULL),
 	 (3842,5,319,'Riverside',NULL,NULL,NULL),
 	 (3843,5,319,'Rumirang',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3844,5,319,'San Agustin',NULL,NULL,NULL),
 	 (3845,5,319,'Sebucawan',NULL,NULL,NULL),
 	 (3846,5,319,'Sikatuna',NULL,NULL,NULL),
@@ -3992,7 +3991,7 @@ export const insertDefaultBarangayValues = [
 	 (3851,5,309,'Barangay 3',NULL,NULL,NULL),
 	 (3852,5,309,'Barangay 4',NULL,NULL,NULL),
 	 (3853,5,309,'Barangay 5',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3854,5,309,'Barangay 6',NULL,NULL,NULL),
 	 (3855,5,309,'Barangay 7',NULL,NULL,NULL),
 	 (3856,5,309,'Barangay 8',NULL,NULL,NULL),
@@ -4003,7 +4002,7 @@ export const insertDefaultBarangayValues = [
 	 (3861,5,309,'Camugao',NULL,NULL,NULL),
 	 (3862,5,309,'Carol-an',NULL,NULL,NULL),
 	 (3863,5,309,'Daan Banua',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3864,5,309,'Hilamonan',NULL,NULL,NULL),
 	 (3865,5,309,'Inapoy',NULL,NULL,NULL),
 	 (3866,5,309,'Linao',NULL,NULL,NULL),
@@ -4014,7 +4013,7 @@ export const insertDefaultBarangayValues = [
 	 (3871,5,309,'Pinaguinpinan',NULL,NULL,NULL),
 	 (3872,5,309,'Salong',NULL,NULL,NULL),
 	 (3873,5,309,'Tabugon',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3874,5,309,'Tagoc',NULL,NULL,NULL),
 	 (3875,5,309,'Tagukon',NULL,NULL,NULL),
 	 (3876,5,309,'Talubangi',NULL,NULL,NULL),
@@ -4025,7 +4024,7 @@ export const insertDefaultBarangayValues = [
 	 (3881,5,310,'Ayungon',NULL,NULL,NULL),
 	 (3882,5,310,'Balabag',NULL,NULL,NULL),
 	 (3883,5,310,'Barangay I',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3884,5,310,'Barangay II',NULL,NULL,NULL),
 	 (3885,5,310,'Barangay III',NULL,NULL,NULL),
 	 (3886,5,310,'Batuan',NULL,NULL,NULL),
@@ -4036,7 +4035,7 @@ export const insertDefaultBarangayValues = [
 	 (3891,5,310,'Roberto S. Benedicto',NULL,NULL,NULL),
 	 (3892,5,310,'San Miguel',NULL,NULL,NULL),
 	 (3893,5,310,'Yubo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3894,5,320,'Biaknabato',NULL,NULL,NULL),
 	 (3895,5,320,'Cabacungan',NULL,NULL,NULL),
 	 (3896,5,320,'Cabagnaan',NULL,NULL,NULL),
@@ -4047,7 +4046,7 @@ export const insertDefaultBarangayValues = [
 	 (3901,5,320,'Masulog',NULL,NULL,NULL),
 	 (3902,5,320,'Nato',NULL,NULL,NULL),
 	 (3903,5,320,'Puso',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3904,5,320,'Robles',NULL,NULL,NULL),
 	 (3905,5,320,'Sag-ang',NULL,NULL,NULL),
 	 (3906,5,320,'Talaptap',NULL,NULL,NULL),
@@ -4058,7 +4057,7 @@ export const insertDefaultBarangayValues = [
 	 (3911,5,321,'Barangay II-A',NULL,NULL,NULL),
 	 (3912,5,321,'Chambery',NULL,NULL,NULL),
 	 (3913,5,321,'Punta Mesa',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3914,5,321,'Punta Salong',NULL,NULL,NULL),
 	 (3915,5,321,'Purisima',NULL,NULL,NULL),
 	 (3916,5,321,'San Pablo',NULL,NULL,NULL),
@@ -4069,7 +4068,7 @@ export const insertDefaultBarangayValues = [
 	 (3921,5,322,'Barangay 3',NULL,NULL,NULL),
 	 (3922,5,322,'Barangay 4',NULL,NULL,NULL),
 	 (3923,5,322,'Barangay 5',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3924,5,322,'Barangay 6',NULL,NULL,NULL),
 	 (3925,5,322,'Barangay 7',NULL,NULL,NULL),
 	 (3926,5,322,'Crossing Magallon',NULL,NULL,NULL),
@@ -4080,7 +4079,7 @@ export const insertDefaultBarangayValues = [
 	 (3931,5,322,'Montilla',NULL,NULL,NULL),
 	 (3932,5,322,'Odiong',NULL,NULL,NULL),
 	 (3933,5,322,'Quintin Remo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3934,5,323,'Abo-abo',NULL,NULL,NULL),
 	 (3935,5,323,'Alegria',NULL,NULL,NULL),
 	 (3936,5,323,'Amayco',NULL,NULL,NULL),
@@ -4091,7 +4090,7 @@ export const insertDefaultBarangayValues = [
 	 (3941,5,323,'Cansilayan',NULL,NULL,NULL),
 	 (3942,5,323,'Damsite',NULL,NULL,NULL),
 	 (3943,5,323,'Iglau-an',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3944,5,323,'Lopez Jaena',NULL,NULL,NULL),
 	 (3945,5,323,'Minoyan',NULL,NULL,NULL),
 	 (3946,5,323,'Pandanon',NULL,NULL,NULL),
@@ -4102,7 +4101,7 @@ export const insertDefaultBarangayValues = [
 	 (3951,5,323,'Talotog',NULL,NULL,NULL),
 	 (3952,5,323,'Zone I',NULL,NULL,NULL),
 	 (3953,5,323,'Zone II',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3954,5,323,'Zone III',NULL,NULL,NULL),
 	 (3955,5,323,'Zone IV',NULL,NULL,NULL),
 	 (3956,5,323,'Zone V',NULL,NULL,NULL),
@@ -4113,7 +4112,7 @@ export const insertDefaultBarangayValues = [
 	 (3961,5,324,'Buenavista Gibong',NULL,NULL,NULL),
 	 (3962,5,324,'Buenavista Rizal',NULL,NULL,NULL),
 	 (3963,5,324,'Burgos',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3964,5,324,'Cambarus',NULL,NULL,NULL),
 	 (3965,5,324,'Canroma',NULL,NULL,NULL),
 	 (3966,5,324,'Don Salvador Benedicto',NULL,NULL,NULL),
@@ -4124,7 +4123,7 @@ export const insertDefaultBarangayValues = [
 	 (3971,5,324,'Miranda',NULL,NULL,NULL),
 	 (3972,5,324,'Pandan',NULL,NULL,NULL),
 	 (3973,5,324,'Recreo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3974,5,324,'San Isidro',NULL,NULL,NULL),
 	 (3975,5,324,'San Juan',NULL,NULL,NULL),
 	 (3976,5,324,'Zamora',NULL,NULL,NULL),
@@ -4135,7 +4134,7 @@ export const insertDefaultBarangayValues = [
 	 (3981,5,325,'Barangay Zone 4',NULL,NULL,NULL),
 	 (3982,5,325,'Barangay Zone 4-A',NULL,NULL,NULL),
 	 (3983,5,325,'Barangay Zone 5',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3984,5,325,'Barangay Zone 6',NULL,NULL,NULL),
 	 (3985,5,325,'Barangay Zone 7',NULL,NULL,NULL),
 	 (3986,5,325,'Canjusa',NULL,NULL,NULL),
@@ -4146,7 +4145,7 @@ export const insertDefaultBarangayValues = [
 	 (3991,5,325,'Palaka Norte',NULL,NULL,NULL),
 	 (3992,5,325,'Palaka Sur',NULL,NULL,NULL),
 	 (3993,5,325,'Patic',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (3994,5,325,'Tapong',NULL,NULL,NULL),
 	 (3995,5,325,'Ubay',NULL,NULL,NULL),
 	 (3996,5,325,'Utod',NULL,NULL,NULL),
@@ -4157,7 +4156,7 @@ export const insertDefaultBarangayValues = [
 	 (4001,5,311,'Campo Himoga-an',NULL,NULL,NULL),
 	 (4002,5,311,'Campo Santiago',NULL,NULL,NULL),
 	 (4003,5,311,'Colonia Divina',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4004,5,311,'Fabrica',NULL,NULL,NULL),
 	 (4005,5,311,'General Luna',NULL,NULL,NULL),
 	 (4006,5,311,'Himoga-an Baybay',NULL,NULL,NULL),
@@ -4168,7 +4167,7 @@ export const insertDefaultBarangayValues = [
 	 (4011,5,311,'Old Sagay',NULL,NULL,NULL),
 	 (4012,5,311,'Paraiso',NULL,NULL,NULL),
 	 (4013,5,311,'Plaridel',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4014,5,311,'Poblacion I',NULL,NULL,NULL),
 	 (4015,5,311,'Poblacion II',NULL,NULL,NULL),
 	 (4016,5,311,'Puey',NULL,NULL,NULL),
@@ -4179,7 +4178,7 @@ export const insertDefaultBarangayValues = [
 	 (4021,5,311,'Vito',NULL,NULL,NULL),
 	 (4022,5,329,'Bago',NULL,NULL,NULL),
 	 (4023,5,329,'Bagong Silang',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4024,5,329,'Bunga',NULL,NULL,NULL),
 	 (4025,5,329,'Igmaya-an',NULL,NULL,NULL),
 	 (4026,5,329,'Kumaliskis',NULL,NULL,NULL),
@@ -4190,7 +4189,7 @@ export const insertDefaultBarangayValues = [
 	 (4031,5,312,'Barangay II',NULL,NULL,NULL),
 	 (4032,5,312,'Barangay III',NULL,NULL,NULL),
 	 (4033,5,312,'Barangay IV',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4034,5,312,'Barangay V',NULL,NULL,NULL),
 	 (4035,5,312,'Barangay VI',NULL,NULL,NULL),
 	 (4036,5,312,'Buluangan',NULL,NULL,NULL),
@@ -4201,7 +4200,7 @@ export const insertDefaultBarangayValues = [
 	 (4041,5,312,'Palampas',NULL,NULL,NULL),
 	 (4042,5,312,'Prosperidad',NULL,NULL,NULL),
 	 (4043,5,312,'Punao',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4044,5,312,'Quezon',NULL,NULL,NULL),
 	 (4045,5,312,'Rizal',NULL,NULL,NULL),
 	 (4046,5,312,'San Juan',NULL,NULL,NULL),
@@ -4212,7 +4211,7 @@ export const insertDefaultBarangayValues = [
 	 (4051,5,326,'Nayon',NULL,NULL,NULL),
 	 (4052,5,326,'Poblacion',NULL,NULL,NULL),
 	 (4053,5,326,'Sibucao',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4054,5,326,'Tabao Baybay',NULL,NULL,NULL),
 	 (4055,5,326,'Tabao Rizal',NULL,NULL,NULL),
 	 (4056,5,326,'Tibsoc',NULL,NULL,NULL),
@@ -4223,7 +4222,7 @@ export const insertDefaultBarangayValues = [
 	 (4061,5,313,'Barangay III',NULL,NULL,NULL),
 	 (4062,5,313,'Barangay IV',NULL,NULL,NULL),
 	 (4063,5,313,'Barangay V',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4064,5,313,'Barangay VI Poblacion',NULL,NULL,NULL),
 	 (4065,5,313,'Eustaquio Lopez',NULL,NULL,NULL),
 	 (4066,5,313,'Guimbala-on',NULL,NULL,NULL),
@@ -4234,7 +4233,7 @@ export const insertDefaultBarangayValues = [
 	 (4071,5,313,'Patag',NULL,NULL,NULL),
 	 (4072,5,313,'Rizal',NULL,NULL,NULL),
 	 (4073,5,314,'Barangay 1',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4074,5,314,'Barangay 2',NULL,NULL,NULL),
 	 (4075,5,314,'Barangay 3',NULL,NULL,NULL),
 	 (4076,5,314,'Barangay 4',NULL,NULL,NULL),
@@ -4245,7 +4244,7 @@ export const insertDefaultBarangayValues = [
 	 (4081,5,314,'Cartagena',NULL,NULL,NULL),
 	 (4082,5,314,'Cayhagan',NULL,NULL,NULL),
 	 (4083,5,314,'Gil Montilla',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4084,5,314,'Mambaroto',NULL,NULL,NULL),
 	 (4085,5,314,'Manlucahoc',NULL,NULL,NULL),
 	 (4086,5,314,'Maricalum',NULL,NULL,NULL),
@@ -4256,7 +4255,7 @@ export const insertDefaultBarangayValues = [
 	 (4091,5,330,'Cabatangan',NULL,NULL,NULL),
 	 (4092,5,330,'Concepcion',NULL,NULL,NULL),
 	 (4093,5,330,'Dos Hermanas',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4094,5,330,'Efigenio Lizares',NULL,NULL,NULL),
 	 (4095,5,330,'Katilingban',NULL,NULL,NULL),
 	 (4096,5,330,'Matab-ang',NULL,NULL,NULL),
@@ -4267,7 +4266,7 @@ export const insertDefaultBarangayValues = [
 	 (4101,5,330,'Zone 12',NULL,NULL,NULL),
 	 (4102,5,330,'Zone 12-A',NULL,NULL,NULL),
 	 (4103,5,330,'Zone 14',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4104,5,330,'Zone 14-A',NULL,NULL,NULL),
 	 (4105,5,330,'Zone 14-B',NULL,NULL,NULL),
 	 (4106,5,330,'Zone 15',NULL,NULL,NULL),
@@ -4278,7 +4277,7 @@ export const insertDefaultBarangayValues = [
 	 (4111,5,330,'Zone 4-A',NULL,NULL,NULL),
 	 (4112,5,330,'Zone 5',NULL,NULL,NULL),
 	 (4113,5,330,'Zone 6',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4114,5,330,'Zone 7',NULL,NULL,NULL),
 	 (4115,5,330,'Zone 8',NULL,NULL,NULL),
 	 (4116,5,330,'Zone 9',NULL,NULL,NULL),
@@ -4289,7 +4288,7 @@ export const insertDefaultBarangayValues = [
 	 (4121,5,327,'Poblacion',NULL,NULL,NULL),
 	 (4122,5,327,'Salamanca',NULL,NULL,NULL),
 	 (4123,5,327,'San Isidro',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4124,5,327,'San Jose',NULL,NULL,NULL),
 	 (4125,5,327,'Tabun-ac',NULL,NULL,NULL),
 	 (4126,5,328,'Alijis',NULL,NULL,NULL),
@@ -4300,7 +4299,7 @@ export const insertDefaultBarangayValues = [
 	 (4131,5,328,'Central Tabao',NULL,NULL,NULL),
 	 (4132,5,328,'Doldol',NULL,NULL,NULL),
 	 (4133,5,328,'Guintorilan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4134,5,328,'Lacaron',NULL,NULL,NULL),
 	 (4135,5,328,'Mabini',NULL,NULL,NULL),
 	 (4136,5,328,'Pacol',NULL,NULL,NULL),
@@ -4311,7 +4310,7 @@ export const insertDefaultBarangayValues = [
 	 (4141,5,328,'Tabao Proper',NULL,NULL,NULL),
 	 (4142,5,331,'Barangay I',NULL,NULL,NULL),
 	 (4143,5,331,'Barangay II',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4144,5,331,'Barangay III',NULL,NULL,NULL),
 	 (4145,5,331,'Barangay IV',NULL,NULL,NULL),
 	 (4146,5,331,'Barangay IX',NULL,NULL,NULL),
@@ -4322,7 +4321,7 @@ export const insertDefaultBarangayValues = [
 	 (4151,5,331,'Barangay VIII',NULL,NULL,NULL),
 	 (4152,5,331,'Barangay X',NULL,NULL,NULL),
 	 (4153,5,331,'Barangay XI',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4154,5,331,'Barangay XII',NULL,NULL,NULL),
 	 (4155,5,331,'Barangay XIII',NULL,NULL,NULL),
 	 (4156,5,331,'Barangay XIV',NULL,NULL,NULL),
@@ -4333,7 +4332,7 @@ export const insertDefaultBarangayValues = [
 	 (4161,5,331,'Barangay XVI',NULL,NULL,NULL),
 	 (4162,5,331,'Barangay XVI-A',NULL,NULL,NULL),
 	 (4163,5,331,'Barangay XVII',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4164,5,331,'Barangay XVIII',NULL,NULL,NULL),
 	 (4165,5,331,'Barangay XVIII-A',NULL,NULL,NULL),
 	 (4166,5,331,'Barangay XX',NULL,NULL,NULL),
@@ -4344,7 +4343,7 @@ export const insertDefaultBarangayValues = [
 	 (4171,5,332,'Barangay 1',NULL,NULL,NULL),
 	 (4172,5,332,'Barangay 2',NULL,NULL,NULL),
 	 (4173,5,332,'Barangay 3',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4174,5,332,'Barangay 4',NULL,NULL,NULL),
 	 (4175,5,332,'Barangay 5',NULL,NULL,NULL),
 	 (4176,5,332,'Barangay 6',NULL,NULL,NULL),
@@ -4355,7 +4354,7 @@ export const insertDefaultBarangayValues = [
 	 (4181,5,332,'Barangay 11',NULL,NULL,NULL),
 	 (4182,5,332,'Barangay 12',NULL,NULL,NULL),
 	 (4183,5,332,'Barangay 13',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4184,5,332,'Barangay 14',NULL,NULL,NULL),
 	 (4185,5,332,'Barangay 15',NULL,NULL,NULL),
 	 (4186,5,332,'Barangay 16',NULL,NULL,NULL),
@@ -4366,7 +4365,7 @@ export const insertDefaultBarangayValues = [
 	 (4191,5,332,'Barangay 21',NULL,NULL,NULL),
 	 (4192,5,332,'Barangay 22',NULL,NULL,NULL),
 	 (4193,5,332,'Barangay 23',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4194,5,332,'Barangay 24',NULL,NULL,NULL),
 	 (4195,5,332,'Barangay 25',NULL,NULL,NULL),
 	 (4196,5,332,'Barangay 26',NULL,NULL,NULL),
@@ -4377,7 +4376,7 @@ export const insertDefaultBarangayValues = [
 	 (4201,5,332,'Barangay 31',NULL,NULL,NULL),
 	 (4202,5,332,'Barangay 32',NULL,NULL,NULL),
 	 (4203,5,332,'Barangay 33',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4204,5,332,'Barangay 34',NULL,NULL,NULL),
 	 (4205,5,332,'Barangay 35',NULL,NULL,NULL),
 	 (4206,5,332,'Barangay 36',NULL,NULL,NULL),
@@ -4388,7 +4387,7 @@ export const insertDefaultBarangayValues = [
 	 (4211,5,332,'Barangay 41',NULL,NULL,NULL),
 	 (4212,5,332,'Bata',NULL,NULL,NULL),
 	 (4213,5,332,'Cabug',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4214,5,332,'Estefania',NULL,NULL,NULL),
 	 (4215,5,332,'Felisa',NULL,NULL,NULL),
 	 (4216,5,332,'Granada',NULL,NULL,NULL),
@@ -4399,7 +4398,7 @@ export const insertDefaultBarangayValues = [
 	 (4221,5,332,'Pahanocoy',NULL,NULL,NULL),
 	 (4222,5,332,'Punta Taytay',NULL,NULL,NULL),
 	 (4223,5,332,'Singcang-Airport',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4224,5,332,'Sum-ag',NULL,NULL,NULL),
 	 (4225,5,332,'Taculing',NULL,NULL,NULL),
 	 (4226,5,332,'Tangub',NULL,NULL,NULL),
@@ -4410,7 +4409,7 @@ export const insertDefaultBarangayValues = [
 	 (4231,7,158,'Jamorawon',NULL,NULL,NULL),
 	 (4232,7,158,'Lo-ok',NULL,NULL,NULL),
 	 (4233,7,158,'Matanga',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4234,7,158,'Pili',NULL,NULL,NULL),
 	 (4235,7,158,'Poblacion',NULL,NULL,NULL),
 	 (4236,7,158,'Pulang Bato',NULL,NULL,NULL),
@@ -4421,7 +4420,7 @@ export const insertDefaultBarangayValues = [
 	 (4241,7,158,'Tamarindo',NULL,NULL,NULL),
 	 (4242,7,159,'Bato',NULL,NULL,NULL),
 	 (4243,7,159,'Burabod',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4244,7,159,'Busali',NULL,NULL,NULL),
 	 (4245,7,159,'Canila',NULL,NULL,NULL),
 	 (4246,7,159,'Hugpa',NULL,NULL,NULL),
@@ -4432,7 +4431,7 @@ export const insertDefaultBarangayValues = [
 	 (4251,7,159,'Sanggalang',NULL,NULL,NULL),
 	 (4252,7,159,'Villa Enage',NULL,NULL,NULL),
 	 (4253,7,160,'Balaquid',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4254,7,160,'Baso',NULL,NULL,NULL),
 	 (4255,7,160,'Bunga',NULL,NULL,NULL),
 	 (4256,7,160,'Caanibongan',NULL,NULL,NULL),
@@ -4443,7 +4442,7 @@ export const insertDefaultBarangayValues = [
 	 (4261,7,160,'Looc',NULL,NULL,NULL),
 	 (4262,7,160,'Magbangon',NULL,NULL,NULL),
 	 (4263,7,160,'Pawikan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4264,7,160,'Salawad',NULL,NULL,NULL),
 	 (4265,7,160,'Talibong',NULL,NULL,NULL),
 	 (4266,7,161,'Alegria',NULL,NULL,NULL),
@@ -4454,7 +4453,7 @@ export const insertDefaultBarangayValues = [
 	 (4271,7,161,'Caulangohan',NULL,NULL,NULL),
 	 (4272,7,161,'Kawayanon',NULL,NULL,NULL),
 	 (4273,7,161,'Looc',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4274,7,161,'Manlabang',NULL,NULL,NULL),
 	 (4275,7,161,'Maurang',NULL,NULL,NULL),
 	 (4276,7,161,'Palanay',NULL,NULL,NULL),
@@ -4465,7 +4464,7 @@ export const insertDefaultBarangayValues = [
 	 (4281,7,161,'Victory',NULL,NULL,NULL),
 	 (4282,7,161,'Villa Vicenta',NULL,NULL,NULL),
 	 (4283,7,162,'Acaban',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4284,7,162,'Bacolod',NULL,NULL,NULL),
 	 (4285,7,162,'Binongtoan',NULL,NULL,NULL),
 	 (4286,7,162,'Bool Central',NULL,NULL,NULL),
@@ -4476,7 +4475,7 @@ export const insertDefaultBarangayValues = [
 	 (4291,7,162,'Guindapunan',NULL,NULL,NULL),
 	 (4292,7,162,'Habuhab',NULL,NULL,NULL),
 	 (4293,7,162,'Looc',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4294,7,162,'Marvel',NULL,NULL,NULL),
 	 (4295,7,162,'Patag',NULL,NULL,NULL),
 	 (4296,7,162,'Pinamihagan',NULL,NULL,NULL),
@@ -4487,7 +4486,7 @@ export const insertDefaultBarangayValues = [
 	 (4301,7,163,'Balacson',NULL,NULL,NULL),
 	 (4302,7,163,'Balite',NULL,NULL,NULL),
 	 (4303,7,163,'Bilwang',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4304,7,163,'Bulalacao',NULL,NULL,NULL),
 	 (4305,7,163,'Burabod',NULL,NULL,NULL),
 	 (4306,7,163,'Buyo',NULL,NULL,NULL),
@@ -4498,7 +4497,7 @@ export const insertDefaultBarangayValues = [
 	 (4311,7,163,'Masagaosao',NULL,NULL,NULL),
 	 (4312,7,163,'Masagongsong',NULL,NULL,NULL),
 	 (4313,7,163,'Poblacion',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4314,7,163,'San Lorenzo',NULL,NULL,NULL),
 	 (4315,7,163,'Tabunan North',NULL,NULL,NULL),
 	 (4316,7,163,'Tubig Guinoo',NULL,NULL,NULL),
@@ -4509,7 +4508,7 @@ export const insertDefaultBarangayValues = [
 	 (4321,7,164,'Banlas',NULL,NULL,NULL),
 	 (4322,7,164,'Bato',NULL,NULL,NULL),
 	 (4323,7,164,'Binalayan East',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4324,7,164,'Binalayan West',NULL,NULL,NULL),
 	 (4325,7,164,'Binongto-an',NULL,NULL,NULL),
 	 (4326,7,164,'Burabod',NULL,NULL,NULL),
@@ -4520,7 +4519,7 @@ export const insertDefaultBarangayValues = [
 	 (4331,7,164,'Ermita',NULL,NULL,NULL),
 	 (4332,7,164,'Ol-og',NULL,NULL,NULL),
 	 (4333,7,164,'Trabugan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4334,7,164,'Viga',NULL,NULL,NULL),
 	 (4335,7,165,'Agpangi',NULL,NULL,NULL),
 	 (4336,7,165,'Anislagan',NULL,NULL,NULL),
@@ -4531,7 +4530,7 @@ export const insertDefaultBarangayValues = [
 	 (4341,7,165,'Capiñahan',NULL,NULL,NULL),
 	 (4342,7,165,'Caraycaray',NULL,NULL,NULL),
 	 (4343,7,165,'Catmon',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4344,7,165,'Haguikhikan',NULL,NULL,NULL),
 	 (4345,7,165,'Imelda',NULL,NULL,NULL),
 	 (4346,7,165,'Larrazabal',NULL,NULL,NULL),
@@ -4542,7 +4541,7 @@ export const insertDefaultBarangayValues = [
 	 (4351,7,165,'Mabini',NULL,NULL,NULL),
 	 (4352,7,165,'Padre Inocentes Garcia',NULL,NULL,NULL),
 	 (4353,7,165,'Padre Sergio Eamiguel',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4354,7,165,'Sabang',NULL,NULL,NULL),
 	 (4355,7,165,'San Pablo',NULL,NULL,NULL),
 	 (4356,7,165,'Santissimo Rosario Poblacion',NULL,NULL,NULL),
@@ -4553,7 +4552,7 @@ export const insertDefaultBarangayValues = [
 	 (4361,8,166,'Alangilan',NULL,NULL,NULL),
 	 (4362,8,166,'Anibongan',NULL,NULL,NULL),
 	 (4363,8,166,'Bagacay',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4364,8,166,'Bahay',NULL,NULL,NULL),
 	 (4365,8,166,'Balinsasayao',NULL,NULL,NULL),
 	 (4366,8,166,'Balocawe',NULL,NULL,NULL),
@@ -4564,7 +4563,7 @@ export const insertDefaultBarangayValues = [
 	 (4371,8,166,'Buaya',NULL,NULL,NULL),
 	 (4372,8,166,'Buenavista',NULL,NULL,NULL),
 	 (4373,8,166,'Bulak',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4374,8,166,'Bunga',NULL,NULL,NULL),
 	 (4375,8,166,'Buntay',NULL,NULL,NULL),
 	 (4376,8,166,'Burubud-an',NULL,NULL,NULL),
@@ -4575,7 +4574,7 @@ export const insertDefaultBarangayValues = [
 	 (4381,8,166,'Canmarating',NULL,NULL,NULL),
 	 (4382,8,166,'Capilian',NULL,NULL,NULL),
 	 (4383,8,166,'Combis',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4384,8,166,'Dingle',NULL,NULL,NULL),
 	 (4385,8,166,'Guintagbucan',NULL,NULL,NULL),
 	 (4386,8,166,'Hampipila',NULL,NULL,NULL),
@@ -4586,7 +4585,7 @@ export const insertDefaultBarangayValues = [
 	 (4391,8,166,'Libertad',NULL,NULL,NULL),
 	 (4392,8,166,'Loyonsawang',NULL,NULL,NULL),
 	 (4393,8,166,'Mag-atubang',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4394,8,166,'Mahagna',NULL,NULL,NULL),
 	 (4395,8,166,'Mahayahay',NULL,NULL,NULL),
 	 (4396,8,166,'Maitum',NULL,NULL,NULL),
@@ -4597,7 +4596,7 @@ export const insertDefaultBarangayValues = [
 	 (4401,8,166,'New Taligue',NULL,NULL,NULL),
 	 (4402,8,166,'Odiongan',NULL,NULL,NULL),
 	 (4403,8,166,'Old Taligue',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4404,8,166,'Pagsang-an',NULL,NULL,NULL),
 	 (4405,8,166,'Paguite',NULL,NULL,NULL),
 	 (4406,8,166,'Parasanon',NULL,NULL,NULL),
@@ -4608,7 +4607,7 @@ export const insertDefaultBarangayValues = [
 	 (4411,8,166,'San Francisco',NULL,NULL,NULL),
 	 (4412,8,166,'San Isidro',NULL,NULL,NULL),
 	 (4413,8,166,'San Roque',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4414,8,166,'Santa Fe',NULL,NULL,NULL),
 	 (4415,8,166,'Santa Lucia',NULL,NULL,NULL),
 	 (4416,8,166,'Santo Niño',NULL,NULL,NULL),
@@ -4619,7 +4618,7 @@ export const insertDefaultBarangayValues = [
 	 (4421,8,166,'Tinocolan',NULL,NULL,NULL),
 	 (4422,8,166,'Tuy-a',NULL,NULL,NULL),
 	 (4423,8,166,'Victory',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4424,8,167,'Aslum',NULL,NULL,NULL),
 	 (4425,8,167,'Astorga',NULL,NULL,NULL),
 	 (4426,8,167,'Bato',NULL,NULL,NULL),
@@ -4630,7 +4629,7 @@ export const insertDefaultBarangayValues = [
 	 (4431,8,167,'Borseth',NULL,NULL,NULL),
 	 (4432,8,167,'Buenavista',NULL,NULL,NULL),
 	 (4433,8,167,'Bugho',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4434,8,167,'Buri',NULL,NULL,NULL),
 	 (4435,8,167,'Cabadsan',NULL,NULL,NULL),
 	 (4436,8,167,'Calaasan',NULL,NULL,NULL),
@@ -4641,7 +4640,7 @@ export const insertDefaultBarangayValues = [
 	 (4441,8,167,'Cavite',NULL,NULL,NULL),
 	 (4442,8,167,'Cogon',NULL,NULL,NULL),
 	 (4443,8,167,'Dapdap',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4444,8,167,'Divisoria',NULL,NULL,NULL),
 	 (4445,8,167,'Ekiran',NULL,NULL,NULL),
 	 (4446,8,167,'Hinapolan',NULL,NULL,NULL),
@@ -4652,7 +4651,7 @@ export const insertDefaultBarangayValues = [
 	 (4451,8,167,'Langit',NULL,NULL,NULL),
 	 (4452,8,167,'Lingayon',NULL,NULL,NULL),
 	 (4453,8,167,'Lourdes',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4454,8,167,'Lukay',NULL,NULL,NULL),
 	 (4455,8,167,'Magsaysay',NULL,NULL,NULL),
 	 (4456,8,167,'Milagrosa',NULL,NULL,NULL),
@@ -4663,7 +4662,7 @@ export const insertDefaultBarangayValues = [
 	 (4461,8,167,'Salvacion',NULL,NULL,NULL),
 	 (4462,8,167,'Salvacion Poblacion',NULL,NULL,NULL),
 	 (4463,8,167,'San Antonio',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4464,8,167,'San Antonio Poblacion',NULL,NULL,NULL),
 	 (4465,8,167,'San Diego',NULL,NULL,NULL),
 	 (4466,8,167,'San Francisco East',NULL,NULL,NULL),
@@ -4674,7 +4673,7 @@ export const insertDefaultBarangayValues = [
 	 (4471,8,167,'San Vicente',NULL,NULL,NULL),
 	 (4472,8,167,'Santiago',NULL,NULL,NULL),
 	 (4473,8,167,'Santo Niño',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4474,8,167,'Santol',NULL,NULL,NULL),
 	 (4475,8,167,'Tabangohay',NULL,NULL,NULL),
 	 (4476,8,167,'Tombo',NULL,NULL,NULL),
@@ -4685,7 +4684,7 @@ export const insertDefaultBarangayValues = [
 	 (4481,8,168,'Cambalading',NULL,NULL,NULL),
 	 (4482,8,168,'Damula-an',NULL,NULL,NULL),
 	 (4483,8,168,'Doña Maria',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4484,8,168,'Mahayag',NULL,NULL,NULL),
 	 (4485,8,168,'Mahayahay',NULL,NULL,NULL),
 	 (4486,8,168,'Poblacion',NULL,NULL,NULL),
@@ -4696,7 +4695,7 @@ export const insertDefaultBarangayValues = [
 	 (4491,8,168,'Tabgas',NULL,NULL,NULL),
 	 (4492,8,168,'Talisayan',NULL,NULL,NULL),
 	 (4493,8,168,'Tinag-an',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4494,8,169,'Bacong',NULL,NULL,NULL),
 	 (4495,8,169,'Bagong Silang',NULL,NULL,NULL),
 	 (4496,8,169,'Biasong',NULL,NULL,NULL),
@@ -4707,7 +4706,7 @@ export const insertDefaultBarangayValues = [
 	 (4501,8,169,'Malibago',NULL,NULL,NULL),
 	 (4502,8,169,'Naga-asan',NULL,NULL,NULL),
 	 (4503,8,169,'Pagsulhugon',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4504,8,169,'Planza',NULL,NULL,NULL),
 	 (4505,8,169,'Poblacion District I',NULL,NULL,NULL),
 	 (4506,8,169,'Poblacion District II',NULL,NULL,NULL),
@@ -4718,7 +4717,7 @@ export const insertDefaultBarangayValues = [
 	 (4511,8,169,'San Agustin',NULL,NULL,NULL),
 	 (4512,8,169,'San Isidro',NULL,NULL,NULL),
 	 (4513,8,169,'San Ricardo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4514,8,169,'Sangputan',NULL,NULL,NULL),
 	 (4515,8,169,'Taguite',NULL,NULL,NULL),
 	 (4516,8,169,'Uban',NULL,NULL,NULL),
@@ -4729,7 +4728,7 @@ export const insertDefaultBarangayValues = [
 	 (4521,8,170,'Balire',NULL,NULL,NULL),
 	 (4522,8,170,'Balud',NULL,NULL,NULL),
 	 (4523,8,170,'Bukid',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4524,8,170,'Bulod',NULL,NULL,NULL),
 	 (4525,8,170,'Busay',NULL,NULL,NULL),
 	 (4526,8,170,'Cabarasan',NULL,NULL,NULL),
@@ -4740,7 +4739,7 @@ export const insertDefaultBarangayValues = [
 	 (4531,8,170,'Cuta',NULL,NULL,NULL),
 	 (4532,8,170,'Domogdog',NULL,NULL,NULL),
 	 (4533,8,170,'Duka',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4534,8,170,'Guindaohan',NULL,NULL,NULL),
 	 (4535,8,170,'Hiagsam',NULL,NULL,NULL),
 	 (4536,8,170,'Hilaba',NULL,NULL,NULL),
@@ -4751,7 +4750,7 @@ export const insertDefaultBarangayValues = [
 	 (4541,8,170,'Pikas',NULL,NULL,NULL),
 	 (4542,8,170,'Pitogo',NULL,NULL,NULL),
 	 (4543,8,170,'Poblacion Dist. I',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4544,8,170,'Poblacion Dist. II',NULL,NULL,NULL),
 	 (4545,8,170,'Poblacion Dist. III',NULL,NULL,NULL),
 	 (4546,8,170,'Poblacion Dist. IV',NULL,NULL,NULL),
@@ -4762,7 +4761,7 @@ export const insertDefaultBarangayValues = [
 	 (4551,8,170,'San Isidro',NULL,NULL,NULL),
 	 (4552,8,170,'San Roque',NULL,NULL,NULL),
 	 (4553,8,170,'Santa Rosa',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4554,8,170,'Santarin',NULL,NULL,NULL),
 	 (4555,8,170,'Tutug-an',NULL,NULL,NULL),
 	 (4556,8,171,'Alegria',NULL,NULL,NULL),
@@ -4773,7 +4772,7 @@ export const insertDefaultBarangayValues = [
 	 (4561,8,171,'Bagong Bayan District',NULL,NULL,NULL),
 	 (4562,8,171,'Buli',NULL,NULL,NULL),
 	 (4563,8,171,'Cebuana',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4564,8,171,'Daan Lungsod',NULL,NULL,NULL),
 	 (4565,8,171,'Dawahon',NULL,NULL,NULL),
 	 (4566,8,171,'Dolho',NULL,NULL,NULL),
@@ -4784,7 +4783,7 @@ export const insertDefaultBarangayValues = [
 	 (4571,8,171,'Iniguihan District',NULL,NULL,NULL),
 	 (4572,8,171,'Kalanggaman District',NULL,NULL,NULL),
 	 (4573,8,171,'Katipunan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4574,8,171,'Liberty',NULL,NULL,NULL),
 	 (4575,8,171,'Mabini',NULL,NULL,NULL),
 	 (4576,8,171,'Marcelo',NULL,NULL,NULL),
@@ -4795,7 +4794,7 @@ export const insertDefaultBarangayValues = [
 	 (4581,8,171,'Rivilla',NULL,NULL,NULL),
 	 (4582,8,171,'San Agustin',NULL,NULL,NULL),
 	 (4583,8,171,'Santo Niño',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4584,8,171,'Tabunok',NULL,NULL,NULL),
 	 (4585,8,171,'Tagaytay',NULL,NULL,NULL),
 	 (4586,8,171,'Tinago District',NULL,NULL,NULL),
@@ -4806,7 +4805,7 @@ export const insertDefaultBarangayValues = [
 	 (4591,8,176,'Ampihanon',NULL,NULL,NULL),
 	 (4592,8,176,'Balao',NULL,NULL,NULL),
 	 (4593,8,176,'Banahao',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4594,8,176,'Biasong',NULL,NULL,NULL),
 	 (4595,8,176,'Bidlinan',NULL,NULL,NULL),
 	 (4596,8,176,'Bitanhuan',NULL,NULL,NULL),
@@ -4817,7 +4816,7 @@ export const insertDefaultBarangayValues = [
 	 (4601,8,176,'Candadam',NULL,NULL,NULL),
 	 (4602,8,176,'Caridad',NULL,NULL,NULL),
 	 (4603,8,176,'Ciabo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4604,8,176,'Cogon',NULL,NULL,NULL),
 	 (4605,8,176,'Ga-as',NULL,NULL,NULL),
 	 (4606,8,176,'Gabas',NULL,NULL,NULL),
@@ -4828,7 +4827,7 @@ export const insertDefaultBarangayValues = [
 	 (4611,8,176,'Higuloan',NULL,NULL,NULL),
 	 (4612,8,176,'Hilapnitan',NULL,NULL,NULL),
 	 (4613,8,176,'Hipusngo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4614,8,176,'Igang',NULL,NULL,NULL),
 	 (4615,8,176,'Imelda',NULL,NULL,NULL),
 	 (4616,8,176,'Jaena',NULL,NULL,NULL),
@@ -4839,7 +4838,7 @@ export const insertDefaultBarangayValues = [
 	 (4621,8,176,'Kambonggan',NULL,NULL,NULL),
 	 (4622,8,176,'Kan-ipa',NULL,NULL,NULL),
 	 (4623,8,176,'Kansungka',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4624,8,176,'Kantagnos',NULL,NULL,NULL),
 	 (4625,8,176,'Kilim',NULL,NULL,NULL),
 	 (4626,8,176,'Lintaon',NULL,NULL,NULL),
@@ -4850,7 +4849,7 @@ export const insertDefaultBarangayValues = [
 	 (4631,8,176,'Makinhas',NULL,NULL,NULL),
 	 (4632,8,176,'Mapgap',NULL,NULL,NULL),
 	 (4633,8,176,'Marcos',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4634,8,176,'Maslug',NULL,NULL,NULL),
 	 (4635,8,176,'Matam-is',NULL,NULL,NULL),
 	 (4636,8,176,'Maybog',NULL,NULL,NULL),
@@ -4861,7 +4860,7 @@ export const insertDefaultBarangayValues = [
 	 (4641,8,176,'Pangasungan',NULL,NULL,NULL),
 	 (4642,8,176,'Pansagan',NULL,NULL,NULL),
 	 (4643,8,176,'Patag',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4644,8,176,'Plaridel',NULL,NULL,NULL),
 	 (4645,8,176,'Poblacion Zone 1',NULL,NULL,NULL),
 	 (4646,8,176,'Poblacion Zone 10',NULL,NULL,NULL),
@@ -4872,7 +4871,7 @@ export const insertDefaultBarangayValues = [
 	 (4651,8,176,'Poblacion Zone 15',NULL,NULL,NULL),
 	 (4652,8,176,'Poblacion Zone 16',NULL,NULL,NULL),
 	 (4653,8,176,'Poblacion Zone 17',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4654,8,176,'Poblacion Zone 18',NULL,NULL,NULL),
 	 (4655,8,176,'Poblacion Zone 19',NULL,NULL,NULL),
 	 (4656,8,176,'Poblacion Zone 2',NULL,NULL,NULL),
@@ -4883,7 +4882,7 @@ export const insertDefaultBarangayValues = [
 	 (4661,8,176,'Poblacion Zone 3',NULL,NULL,NULL),
 	 (4662,8,176,'Poblacion Zone 4',NULL,NULL,NULL),
 	 (4663,8,176,'Poblacion Zone 5',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4664,8,176,'Poblacion Zone 6',NULL,NULL,NULL),
 	 (4665,8,176,'Poblacion Zone 7',NULL,NULL,NULL),
 	 (4666,8,176,'Poblacion Zone 8',NULL,NULL,NULL),
@@ -4894,7 +4893,7 @@ export const insertDefaultBarangayValues = [
 	 (4671,8,176,'San Agustin',NULL,NULL,NULL),
 	 (4672,8,176,'San Isidro',NULL,NULL,NULL),
 	 (4673,8,176,'San Juan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4674,8,176,'Santa Cruz',NULL,NULL,NULL),
 	 (4675,8,176,'Santo Rosario',NULL,NULL,NULL),
 	 (4676,8,176,'Sapa',NULL,NULL,NULL),
@@ -4905,7 +4904,7 @@ export const insertDefaultBarangayValues = [
 	 (4681,8,172,'Anonang',NULL,NULL,NULL),
 	 (4682,8,172,'Arado',NULL,NULL,NULL),
 	 (4683,8,172,'Balao',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4684,8,172,'Balatson',NULL,NULL,NULL),
 	 (4685,8,172,'Balorinay',NULL,NULL,NULL),
 	 (4686,8,172,'Bobon',NULL,NULL,NULL),
@@ -4916,7 +4915,7 @@ export const insertDefaultBarangayValues = [
 	 (4691,8,172,'Cagangon',NULL,NULL,NULL),
 	 (4692,8,172,'Cali',NULL,NULL,NULL),
 	 (4693,8,172,'Calsadahay',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4694,8,172,'Candag-on',NULL,NULL,NULL),
 	 (4695,8,172,'Cansiboy',NULL,NULL,NULL),
 	 (4696,8,172,'Catagbacan',NULL,NULL,NULL),
@@ -4927,7 +4926,7 @@ export const insertDefaultBarangayValues = [
 	 (4701,8,172,'Gamay',NULL,NULL,NULL),
 	 (4702,8,172,'Gitablan',NULL,NULL,NULL),
 	 (4703,8,172,'Hapunan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4704,8,172,'Hibonawan',NULL,NULL,NULL),
 	 (4705,8,172,'Hugpa East',NULL,NULL,NULL),
 	 (4706,8,172,'Hugpa West',NULL,NULL,NULL),
@@ -4938,7 +4937,7 @@ export const insertDefaultBarangayValues = [
 	 (4711,8,172,'Kaparasanan',NULL,NULL,NULL),
 	 (4712,8,172,'Laguiwan',NULL,NULL,NULL),
 	 (4713,8,172,'Libas',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4714,8,172,'Limburan',NULL,NULL,NULL),
 	 (4715,8,172,'Logsongan',NULL,NULL,NULL),
 	 (4716,8,172,'Maabab',NULL,NULL,NULL),
@@ -4949,7 +4948,7 @@ export const insertDefaultBarangayValues = [
 	 (4721,8,172,'Malaihao',NULL,NULL,NULL),
 	 (4722,8,172,'Matin-ao',NULL,NULL,NULL),
 	 (4723,8,172,'Moguing',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4724,8,172,'Paghudlan',NULL,NULL,NULL),
 	 (4725,8,172,'Paitan',NULL,NULL,NULL),
 	 (4726,8,172,'Pangdan',NULL,NULL,NULL),
@@ -4960,7 +4959,7 @@ export const insertDefaultBarangayValues = [
 	 (4731,8,172,'Poblacion District II',NULL,NULL,NULL),
 	 (4732,8,172,'Poblacion District III',NULL,NULL,NULL),
 	 (4733,8,172,'Poblacion District IV',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4734,8,172,'Poblacion District IX',NULL,NULL,NULL),
 	 (4735,8,172,'Poblacion District V',NULL,NULL,NULL),
 	 (4736,8,172,'Poblacion District VI',NULL,NULL,NULL),
@@ -4971,7 +4970,7 @@ export const insertDefaultBarangayValues = [
 	 (4741,8,172,'San Esteban',NULL,NULL,NULL),
 	 (4742,8,172,'San Fernando',NULL,NULL,NULL),
 	 (4743,8,172,'San Jose East',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4744,8,172,'San Jose West',NULL,NULL,NULL),
 	 (4745,8,172,'San Pablo',NULL,NULL,NULL),
 	 (4746,8,172,'Tabuanon',NULL,NULL,NULL),
@@ -4982,7 +4981,7 @@ export const insertDefaultBarangayValues = [
 	 (4751,8,172,'Tambuko',NULL,NULL,NULL),
 	 (4752,8,172,'Toloyao',NULL,NULL,NULL),
 	 (4753,8,172,'Villa Aurora',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4754,8,172,'Villa Corazon',NULL,NULL,NULL),
 	 (4755,8,172,'Villa Patria',NULL,NULL,NULL),
 	 (4756,8,172,'Villa Rosas',NULL,NULL,NULL),
@@ -4993,7 +4992,7 @@ export const insertDefaultBarangayValues = [
 	 (4761,8,173,'Cabalhin',NULL,NULL,NULL),
 	 (4762,8,173,'Cabalquinto',NULL,NULL,NULL),
 	 (4763,8,173,'Cabradilla',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4764,8,173,'Caneja',NULL,NULL,NULL),
 	 (4765,8,173,'Cantonghao',NULL,NULL,NULL),
 	 (4766,8,173,'Caroyocan',NULL,NULL,NULL),
@@ -5004,7 +5003,7 @@ export const insertDefaultBarangayValues = [
 	 (4771,8,173,'Dulao',NULL,NULL,NULL),
 	 (4772,8,173,'Efe',NULL,NULL,NULL),
 	 (4773,8,173,'Enage',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4774,8,173,'Espinosa',NULL,NULL,NULL),
 	 (4775,8,173,'Ferdinand E. Marcos',NULL,NULL,NULL),
 	 (4776,8,173,'Garganera',NULL,NULL,NULL),
@@ -5015,7 +5014,7 @@ export const insertDefaultBarangayValues = [
 	 (4781,8,173,'Inalad',NULL,NULL,NULL),
 	 (4782,8,173,'Jubay',NULL,NULL,NULL),
 	 (4783,8,173,'Juson',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4784,8,173,'Kawayan Bogtong',NULL,NULL,NULL),
 	 (4785,8,173,'Kawayanan',NULL,NULL,NULL),
 	 (4786,8,173,'Kokoy Romualdez',NULL,NULL,NULL),
@@ -5026,7 +5025,7 @@ export const insertDefaultBarangayValues = [
 	 (4791,8,173,'Malobago',NULL,NULL,NULL),
 	 (4792,8,173,'Matagok',NULL,NULL,NULL),
 	 (4793,8,173,'Nipa',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4794,8,173,'Obispo',NULL,NULL,NULL),
 	 (4795,8,173,'Padoga',NULL,NULL,NULL),
 	 (4796,8,173,'Pagatpat',NULL,NULL,NULL),
@@ -5037,7 +5036,7 @@ export const insertDefaultBarangayValues = [
 	 (4801,8,173,'Petrolio',NULL,NULL,NULL),
 	 (4802,8,173,'Poblacion',NULL,NULL,NULL),
 	 (4803,8,173,'Railes',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4804,8,173,'Tabla',NULL,NULL,NULL),
 	 (4805,8,173,'Tagharigue',NULL,NULL,NULL),
 	 (4806,8,173,'Tuburan',NULL,NULL,NULL),
@@ -5048,7 +5047,7 @@ export const insertDefaultBarangayValues = [
 	 (4811,8,174,'Balud',NULL,NULL,NULL),
 	 (4812,8,174,'Balugo',NULL,NULL,NULL),
 	 (4813,8,174,'Cabul-an',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4814,8,174,'Culasian',NULL,NULL,NULL),
 	 (4815,8,174,'Gayad',NULL,NULL,NULL),
 	 (4816,8,174,'Guinadiongan',NULL,NULL,NULL),
@@ -5059,7 +5058,7 @@ export const insertDefaultBarangayValues = [
 	 (4821,8,174,'Pinamopoan',NULL,NULL,NULL),
 	 (4822,8,174,'Poblacion Zone I',NULL,NULL,NULL),
 	 (4823,8,174,'Poblacion Zone II',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4824,8,174,'Potot',NULL,NULL,NULL),
 	 (4825,8,174,'San Joaquin',NULL,NULL,NULL),
 	 (4826,8,174,'Santo Niño',NULL,NULL,NULL),
@@ -5070,7 +5069,7 @@ export const insertDefaultBarangayValues = [
 	 (4831,8,175,'Bagong Lipunan',NULL,NULL,NULL),
 	 (4832,8,175,'Balilit',NULL,NULL,NULL),
 	 (4833,8,175,'Barayong',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4834,8,175,'Barugohay Central',NULL,NULL,NULL),
 	 (4835,8,175,'Barugohay Norte',NULL,NULL,NULL),
 	 (4836,8,175,'Barugohay Sur',NULL,NULL,NULL),
@@ -5081,7 +5080,7 @@ export const insertDefaultBarangayValues = [
 	 (4841,8,175,'Camansi',NULL,NULL,NULL),
 	 (4842,8,175,'Canal',NULL,NULL,NULL),
 	 (4843,8,175,'Candigahub',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4844,8,175,'Canfabi',NULL,NULL,NULL),
 	 (4845,8,175,'Canlampay',NULL,NULL,NULL),
 	 (4846,8,175,'Cogon',NULL,NULL,NULL),
@@ -5092,7 +5091,7 @@ export const insertDefaultBarangayValues = [
 	 (4851,8,175,'Hiluctogan',NULL,NULL,NULL),
 	 (4852,8,175,'Jugaban',NULL,NULL,NULL),
 	 (4853,8,175,'Libo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4854,8,175,'Lower Hiraan',NULL,NULL,NULL),
 	 (4855,8,175,'Lower Sogod',NULL,NULL,NULL),
 	 (4856,8,175,'Macalpi',NULL,NULL,NULL),
@@ -5103,7 +5102,7 @@ export const insertDefaultBarangayValues = [
 	 (4861,8,175,'Parag-um',NULL,NULL,NULL),
 	 (4862,8,175,'Parina',NULL,NULL,NULL),
 	 (4863,8,175,'Piloro',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4864,8,175,'Ponong',NULL,NULL,NULL),
 	 (4865,8,175,'Rizal',NULL,NULL,NULL),
 	 (4866,8,175,'Sagkahan',NULL,NULL,NULL),
@@ -5114,7 +5113,7 @@ export const insertDefaultBarangayValues = [
 	 (4871,8,175,'Sawang',NULL,NULL,NULL),
 	 (4872,8,175,'Tagak',NULL,NULL,NULL),
 	 (4873,8,175,'Tangnan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4874,8,175,'Tigbao',NULL,NULL,NULL),
 	 (4875,8,175,'Tinaguban',NULL,NULL,NULL),
 	 (4876,8,175,'Upper Hiraan',NULL,NULL,NULL),
@@ -5125,7 +5124,7 @@ export const insertDefaultBarangayValues = [
 	 (4881,8,177,'Abre',NULL,NULL,NULL),
 	 (4882,8,177,'Balilit',NULL,NULL,NULL),
 	 (4883,8,177,'Balugo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4884,8,177,'Banayon',NULL,NULL,NULL),
 	 (4885,8,177,'Bayabas',NULL,NULL,NULL),
 	 (4886,8,177,'Bolirao',NULL,NULL,NULL),
@@ -5136,7 +5135,7 @@ export const insertDefaultBarangayValues = [
 	 (4891,8,177,'Cabuloran',NULL,NULL,NULL),
 	 (4892,8,177,'Cabunga-an',NULL,NULL,NULL),
 	 (4893,8,177,'Calipayan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4894,8,177,'Calsadahay',NULL,NULL,NULL),
 	 (4895,8,177,'Caluctogan',NULL,NULL,NULL),
 	 (4896,8,177,'Calutan',NULL,NULL,NULL),
@@ -5147,7 +5146,7 @@ export const insertDefaultBarangayValues = [
 	 (4901,8,177,'Cansamada West',NULL,NULL,NULL),
 	 (4902,8,177,'Capulhan',NULL,NULL,NULL),
 	 (4903,8,177,'Digahongan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4904,8,177,'Guinarona',NULL,NULL,NULL),
 	 (4905,8,177,'Hiabangan',NULL,NULL,NULL),
 	 (4906,8,177,'Hilabago',NULL,NULL,NULL),
@@ -5158,7 +5157,7 @@ export const insertDefaultBarangayValues = [
 	 (4911,8,177,'Lapu-lapu Poblacion',NULL,NULL,NULL),
 	 (4912,8,177,'Lobe-lobe',NULL,NULL,NULL),
 	 (4913,8,177,'Lobe-lobe East',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4914,8,177,'Los Martires',NULL,NULL,NULL),
 	 (4915,8,177,'Lusad Poblacion',NULL,NULL,NULL),
 	 (4916,8,177,'Macaalang',NULL,NULL,NULL),
@@ -5169,7 +5168,7 @@ export const insertDefaultBarangayValues = [
 	 (4921,8,177,'Panda',NULL,NULL,NULL),
 	 (4922,8,177,'Paraiso',NULL,NULL,NULL),
 	 (4923,8,177,'Patoc',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4924,8,177,'Plaridel',NULL,NULL,NULL),
 	 (4925,8,177,'Poponton',NULL,NULL,NULL),
 	 (4926,8,177,'Rizal',NULL,NULL,NULL),
@@ -5180,7 +5179,7 @@ export const insertDefaultBarangayValues = [
 	 (4931,8,177,'San Antonio Poblacion',NULL,NULL,NULL),
 	 (4932,8,177,'San Benito',NULL,NULL,NULL),
 	 (4933,8,177,'San Jose Poblacion',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4934,8,177,'San Roque Poblacion',NULL,NULL,NULL),
 	 (4935,8,177,'Santa Mesa Poblacion',NULL,NULL,NULL),
 	 (4936,8,177,'Santo Domingo',NULL,NULL,NULL),
@@ -5191,7 +5190,7 @@ export const insertDefaultBarangayValues = [
 	 (4941,8,177,'Tin-ao',NULL,NULL,NULL),
 	 (4942,8,177,'Tunga Poblacion',NULL,NULL,NULL),
 	 (4943,8,177,'Tuya',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4944,8,177,'Victoria',NULL,NULL,NULL),
 	 (4945,8,178,'Alegre',NULL,NULL,NULL),
 	 (4946,8,178,'Arado',NULL,NULL,NULL),
@@ -5202,7 +5201,7 @@ export const insertDefaultBarangayValues = [
 	 (4951,8,178,'Buntay',NULL,NULL,NULL),
 	 (4952,8,178,'Cabacungan',NULL,NULL,NULL),
 	 (4953,8,178,'Cabarasan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4954,8,178,'Cabato-an',NULL,NULL,NULL),
 	 (4955,8,178,'Calipayan',NULL,NULL,NULL),
 	 (4956,8,178,'Calubian',NULL,NULL,NULL),
@@ -5213,7 +5212,7 @@ export const insertDefaultBarangayValues = [
 	 (4961,8,178,'Catmonan',NULL,NULL,NULL),
 	 (4962,8,178,'Combis',NULL,NULL,NULL),
 	 (4963,8,178,'Dacay',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4964,8,178,'Del Carmen',NULL,NULL,NULL),
 	 (4965,8,178,'Del Pilar',NULL,NULL,NULL),
 	 (4966,8,178,'Fatima',NULL,NULL,NULL),
@@ -5224,7 +5223,7 @@ export const insertDefaultBarangayValues = [
 	 (4971,8,178,'Maricum',NULL,NULL,NULL),
 	 (4972,8,178,'Market Site',NULL,NULL,NULL),
 	 (4973,8,178,'Rawis',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4974,8,178,'Rizal',NULL,NULL,NULL),
 	 (4975,8,178,'Romualdez',NULL,NULL,NULL),
 	 (4976,8,178,'Sabang Daguitan',NULL,NULL,NULL),
@@ -5235,7 +5234,7 @@ export const insertDefaultBarangayValues = [
 	 (4981,8,178,'San Jose',NULL,NULL,NULL),
 	 (4982,8,178,'San Miguel',NULL,NULL,NULL),
 	 (4983,8,178,'San Rafael',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4984,8,178,'San Vicente',NULL,NULL,NULL),
 	 (4985,8,178,'Serrano',NULL,NULL,NULL),
 	 (4986,8,178,'Sungi',NULL,NULL,NULL),
@@ -5246,7 +5245,7 @@ export const insertDefaultBarangayValues = [
 	 (4991,8,179,'Atabay',NULL,NULL,NULL),
 	 (4992,8,179,'Baas',NULL,NULL,NULL),
 	 (4993,8,179,'Bagong Lipunan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (4994,8,179,'Bagumbayan',NULL,NULL,NULL),
 	 (4995,8,179,'Baliw',NULL,NULL,NULL),
 	 (4996,8,179,'Bantigue',NULL,NULL,NULL),
@@ -5257,7 +5256,7 @@ export const insertDefaultBarangayValues = [
 	 (5001,8,179,'Catandog 1',NULL,NULL,NULL),
 	 (5002,8,179,'Catandog 2',NULL,NULL,NULL),
 	 (5003,8,179,'Central Barangay',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5004,8,179,'Concepcion',NULL,NULL,NULL),
 	 (5005,8,179,'Eastern Barangay',NULL,NULL,NULL),
 	 (5006,8,179,'Hampangan',NULL,NULL,NULL),
@@ -5268,7 +5267,7 @@ export const insertDefaultBarangayValues = [
 	 (5011,8,179,'Kangha-as',NULL,NULL,NULL),
 	 (5012,8,179,'Lamak',NULL,NULL,NULL),
 	 (5013,8,179,'Libertad',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5014,8,179,'Liberty',NULL,NULL,NULL),
 	 (5015,8,179,'Lunang',NULL,NULL,NULL),
 	 (5016,8,179,'Magnangoy',NULL,NULL,NULL),
@@ -5279,7 +5278,7 @@ export const insertDefaultBarangayValues = [
 	 (5021,8,179,'Owak',NULL,NULL,NULL),
 	 (5022,8,179,'Pa-a',NULL,NULL,NULL),
 	 (5023,8,179,'Pontod',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5024,8,179,'Proteccion',NULL,NULL,NULL),
 	 (5025,8,179,'San Agustin',NULL,NULL,NULL),
 	 (5026,8,179,'San Antonio',NULL,NULL,NULL),
@@ -5290,7 +5289,7 @@ export const insertDefaultBarangayValues = [
 	 (5031,8,179,'Santa Margarita',NULL,NULL,NULL),
 	 (5032,8,179,'Santo Niño',NULL,NULL,NULL),
 	 (5033,8,179,'Tabunok',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5034,8,179,'Tagnate',NULL,NULL,NULL),
 	 (5035,8,179,'Talisay',NULL,NULL,NULL),
 	 (5036,8,179,'Tambis',NULL,NULL,NULL),
@@ -5301,7 +5300,7 @@ export const insertDefaultBarangayValues = [
 	 (5041,8,180,'Anahaw',NULL,NULL,NULL),
 	 (5042,8,180,'Anolon',NULL,NULL,NULL),
 	 (5043,8,180,'Baldoza',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5044,8,180,'Bontoc',NULL,NULL,NULL),
 	 (5045,8,180,'Bulacan',NULL,NULL,NULL),
 	 (5046,8,180,'Canha-ayon',NULL,NULL,NULL),
@@ -5312,7 +5311,7 @@ export const insertDefaultBarangayValues = [
 	 (5051,8,180,'Himokilan Island',NULL,NULL,NULL),
 	 (5052,8,180,'Katipunan',NULL,NULL,NULL),
 	 (5053,8,180,'Maasin',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5054,8,180,'Mabagon',NULL,NULL,NULL),
 	 (5055,8,180,'Mahilum',NULL,NULL,NULL),
 	 (5056,8,180,'Poblacion 1',NULL,NULL,NULL),
@@ -5323,7 +5322,7 @@ export const insertDefaultBarangayValues = [
 	 (5061,8,181,'Apid',NULL,NULL,NULL),
 	 (5062,8,181,'Cabulisan',NULL,NULL,NULL),
 	 (5063,8,181,'Caminto',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5064,8,181,'Can-angay',NULL,NULL,NULL),
 	 (5065,8,181,'Caulisihan',NULL,NULL,NULL),
 	 (5066,8,181,'Conalum',NULL,NULL,NULL),
@@ -5334,7 +5333,7 @@ export const insertDefaultBarangayValues = [
 	 (5071,8,181,'Hinabay',NULL,NULL,NULL),
 	 (5072,8,181,'Jubasan',NULL,NULL,NULL),
 	 (5073,8,181,'Linao',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5074,8,181,'Macagoco',NULL,NULL,NULL),
 	 (5075,8,181,'Maljo',NULL,NULL,NULL),
 	 (5076,8,181,'Marao',NULL,NULL,NULL),
@@ -5345,7 +5344,7 @@ export const insertDefaultBarangayValues = [
 	 (5081,8,182,'Anislag',NULL,NULL,NULL),
 	 (5082,8,182,'Antipolo',NULL,NULL,NULL),
 	 (5083,8,182,'Apale',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5084,8,182,'Bantigue',NULL,NULL,NULL),
 	 (5085,8,182,'Benog',NULL,NULL,NULL),
 	 (5086,8,182,'Bilwang',NULL,NULL,NULL),
@@ -5356,7 +5355,7 @@ export const insertDefaultBarangayValues = [
 	 (5091,8,182,'Libertad',NULL,NULL,NULL),
 	 (5092,8,182,'Mahayag',NULL,NULL,NULL),
 	 (5093,8,182,'Marvel',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5094,8,182,'Matlang',NULL,NULL,NULL),
 	 (5095,8,182,'Monte Alegre',NULL,NULL,NULL),
 	 (5096,8,182,'Puting171',NULL,NULL,NULL),
@@ -5367,7 +5366,7 @@ export const insertDefaultBarangayValues = [
 	 (5101,8,182,'Santo Rosario',NULL,NULL,NULL),
 	 (5102,8,182,'Tabunok',NULL,NULL,NULL),
 	 (5103,8,182,'Tolingon',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5104,8,182,'Tubod',NULL,NULL,NULL),
 	 (5105,8,183,'Alahag',NULL,NULL,NULL),
 	 (5106,8,183,'Anibongan',NULL,NULL,NULL),
@@ -5378,7 +5377,7 @@ export const insertDefaultBarangayValues = [
 	 (5111,8,183,'Buenavista',NULL,NULL,NULL),
 	 (5112,8,183,'Bukid',NULL,NULL,NULL),
 	 (5113,8,183,'Burabod',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5114,8,183,'Buri',NULL,NULL,NULL),
 	 (5115,8,183,'Canapuan',NULL,NULL,NULL),
 	 (5116,8,183,'Canhandugan',NULL,NULL,NULL),
@@ -5389,7 +5388,7 @@ export const insertDefaultBarangayValues = [
 	 (5121,8,183,'District III',NULL,NULL,NULL),
 	 (5122,8,183,'District IV',NULL,NULL,NULL),
 	 (5123,8,183,'Hiagsam',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5124,8,183,'Hibucawan',NULL,NULL,NULL),
 	 (5125,8,183,'Hibunawon',NULL,NULL,NULL),
 	 (5126,8,183,'Kaglawaan',NULL,NULL,NULL),
@@ -5400,7 +5399,7 @@ export const insertDefaultBarangayValues = [
 	 (5131,8,183,'Macopa',NULL,NULL,NULL),
 	 (5132,8,183,'Mag-aso',NULL,NULL,NULL),
 	 (5133,8,183,'Malobago',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5134,8,183,'Olotan',NULL,NULL,NULL),
 	 (5135,8,183,'Palanog',NULL,NULL,NULL),
 	 (5136,8,183,'Pange',NULL,NULL,NULL),
@@ -5411,7 +5410,7 @@ export const insertDefaultBarangayValues = [
 	 (5141,8,183,'San Pedro',NULL,NULL,NULL),
 	 (5142,8,183,'San Roque',NULL,NULL,NULL),
 	 (5143,8,183,'Santa Cruz',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5144,8,183,'Santo Niño',NULL,NULL,NULL),
 	 (5145,8,183,'Sari-sari',NULL,NULL,NULL),
 	 (5146,8,183,'Tinambacan',NULL,NULL,NULL),
@@ -5422,7 +5421,7 @@ export const insertDefaultBarangayValues = [
 	 (5151,8,184,'Abuyogay',NULL,NULL,NULL),
 	 (5152,8,184,'Andres Bonifacio',NULL,NULL,NULL),
 	 (5153,8,184,'Batug',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5154,8,184,'Binulho',NULL,NULL,NULL),
 	 (5155,8,184,'Calzada',NULL,NULL,NULL),
 	 (5156,8,184,'Cancayang',NULL,NULL,NULL),
@@ -5433,7 +5432,7 @@ export const insertDefaultBarangayValues = [
 	 (5161,8,184,'Guindapunan',NULL,NULL,NULL),
 	 (5162,8,184,'Inayupan',NULL,NULL,NULL),
 	 (5163,8,184,'Laray',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5164,8,184,'Magsaysay',NULL,NULL,NULL),
 	 (5165,8,184,'Malitbogay',NULL,NULL,NULL),
 	 (5166,8,184,'Manarug',NULL,NULL,NULL),
@@ -5444,7 +5443,7 @@ export const insertDefaultBarangayValues = [
 	 (5171,8,184,'Pinocawan',NULL,NULL,NULL),
 	 (5172,8,184,'Poblacion Zone 1',NULL,NULL,NULL),
 	 (5173,8,184,'Poblacion Zone 2',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5174,8,184,'Rizal',NULL,NULL,NULL),
 	 (5175,8,184,'San Sotero',NULL,NULL,NULL),
 	 (5176,8,184,'Santa Cruz',NULL,NULL,NULL),
@@ -5455,7 +5454,7 @@ export const insertDefaultBarangayValues = [
 	 (5181,8,185,'Aslum',NULL,NULL,NULL),
 	 (5182,8,185,'Balante',NULL,NULL,NULL),
 	 (5183,8,185,'Bongdo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5184,8,185,'Bonifacio',NULL,NULL,NULL),
 	 (5185,8,185,'Bugho',NULL,NULL,NULL),
 	 (5186,8,185,'Calbasag',NULL,NULL,NULL),
@@ -5466,7 +5465,7 @@ export const insertDefaultBarangayValues = [
 	 (5191,8,185,'Hindang',NULL,NULL,NULL),
 	 (5192,8,185,'Inawangan',NULL,NULL,NULL),
 	 (5193,8,185,'Jurao',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5194,8,185,'Poblacion District I',NULL,NULL,NULL),
 	 (5195,8,185,'Poblacion District II',NULL,NULL,NULL),
 	 (5196,8,185,'Poblacion District III',NULL,NULL,NULL),
@@ -5477,7 +5476,7 @@ export const insertDefaultBarangayValues = [
 	 (5201,8,185,'Santo Niño',NULL,NULL,NULL),
 	 (5202,8,185,'Tagkip',NULL,NULL,NULL),
 	 (5203,8,185,'Tolosahay',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5204,8,185,'Villa Hermosa',NULL,NULL,NULL),
 	 (5205,8,186,'Aguiting',NULL,NULL,NULL),
 	 (5206,8,186,'Cacao',NULL,NULL,NULL),
@@ -5488,7 +5487,7 @@ export const insertDefaultBarangayValues = [
 	 (5211,8,186,'Lim-ao',NULL,NULL,NULL),
 	 (5212,8,186,'Lonoy',NULL,NULL,NULL),
 	 (5213,8,186,'Mahawan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5214,8,186,'Masarayao',NULL,NULL,NULL),
 	 (5215,8,186,'Monte Alegre',NULL,NULL,NULL),
 	 (5216,8,186,'Monte Bello',NULL,NULL,NULL),
@@ -5499,7 +5498,7 @@ export const insertDefaultBarangayValues = [
 	 (5221,8,186,'San Ignacio',NULL,NULL,NULL),
 	 (5222,8,186,'San Isidro',NULL,NULL,NULL),
 	 (5223,8,186,'Santo Domingo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5224,8,186,'Santo Niño',NULL,NULL,NULL),
 	 (5225,8,186,'Tagaytay',NULL,NULL,NULL),
 	 (5226,8,186,'Tongonan',NULL,NULL,NULL),
@@ -5510,7 +5509,7 @@ export const insertDefaultBarangayValues = [
 	 (5231,8,187,'Bongtod',NULL,NULL,NULL),
 	 (5232,8,187,'Buracan',NULL,NULL,NULL),
 	 (5233,8,187,'Caabangan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5234,8,187,'Cacao',NULL,NULL,NULL),
 	 (5235,8,187,'Cagngaran',NULL,NULL,NULL),
 	 (5236,8,187,'Calabnian',NULL,NULL,NULL),
@@ -5521,7 +5520,7 @@ export const insertDefaultBarangayValues = [
 	 (5241,8,187,'Duyog',NULL,NULL,NULL),
 	 (5242,8,187,'Gimenarat East',NULL,NULL,NULL),
 	 (5243,8,187,'Gimenarat West',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5244,8,187,'Limba',NULL,NULL,NULL),
 	 (5245,8,187,'Lubi-lubi',NULL,NULL,NULL),
 	 (5246,8,187,'Luneta',NULL,NULL,NULL),
@@ -5532,7 +5531,7 @@ export const insertDefaultBarangayValues = [
 	 (5251,8,187,'Piliway',NULL,NULL,NULL),
 	 (5252,8,187,'Poblacion District 1',NULL,NULL,NULL),
 	 (5253,8,187,'Poblacion District 2',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5254,8,187,'Poblacion District 3',NULL,NULL,NULL),
 	 (5255,8,187,'Poblacion District 4',NULL,NULL,NULL),
 	 (5256,8,187,'Quiong',NULL,NULL,NULL),
@@ -5543,7 +5542,7 @@ export const insertDefaultBarangayValues = [
 	 (5261,8,187,'Tabang',NULL,NULL,NULL),
 	 (5262,8,187,'Tarugan',NULL,NULL,NULL),
 	 (5263,8,188,'Bachao',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5264,8,188,'Baco',NULL,NULL,NULL),
 	 (5265,8,188,'Bagaba-o',NULL,NULL,NULL),
 	 (5266,8,188,'Basud',NULL,NULL,NULL),
@@ -5554,7 +5553,7 @@ export const insertDefaultBarangayValues = [
 	 (5271,8,188,'Culasi',NULL,NULL,NULL),
 	 (5272,8,188,'Danus',NULL,NULL,NULL),
 	 (5273,8,188,'Elizabeth',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5274,8,188,'Kawayan',NULL,NULL,NULL),
 	 (5275,8,188,'Libas',NULL,NULL,NULL),
 	 (5276,8,188,'Maanda',NULL,NULL,NULL),
@@ -5565,7 +5564,7 @@ export const insertDefaultBarangayValues = [
 	 (5281,8,188,'Palid II',NULL,NULL,NULL),
 	 (5282,8,188,'Parasan',NULL,NULL,NULL),
 	 (5283,8,188,'Poblacion',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5284,8,188,'Salog',NULL,NULL,NULL),
 	 (5285,8,188,'Sambulawan',NULL,NULL,NULL),
 	 (5286,8,188,'Tag-abaca',NULL,NULL,NULL),
@@ -5576,7 +5575,7 @@ export const insertDefaultBarangayValues = [
 	 (5291,8,188,'Ugbon',NULL,NULL,NULL),
 	 (5292,8,188,'Wague',NULL,NULL,NULL),
 	 (5293,8,189,'Batug',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5294,8,189,'Burabod',NULL,NULL,NULL),
 	 (5295,8,189,'Capudlosan',NULL,NULL,NULL),
 	 (5296,8,189,'Casuntingan',NULL,NULL,NULL),
@@ -5587,7 +5586,7 @@ export const insertDefaultBarangayValues = [
 	 (5301,8,189,'Kiling',NULL,NULL,NULL),
 	 (5302,8,189,'Lanawan',NULL,NULL,NULL),
 	 (5303,8,189,'Liwayway',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5304,8,189,'Maya',NULL,NULL,NULL),
 	 (5305,8,189,'Oguisan',NULL,NULL,NULL),
 	 (5306,8,189,'Osmeña',NULL,NULL,NULL),
@@ -5598,7 +5597,7 @@ export const insertDefaultBarangayValues = [
 	 (5311,8,189,'Poblacion District 3',NULL,NULL,NULL),
 	 (5312,8,189,'Pongon',NULL,NULL,NULL),
 	 (5313,8,189,'Quezon',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5314,8,189,'Romualdez',NULL,NULL,NULL),
 	 (5315,8,189,'Salvacion',NULL,NULL,NULL),
 	 (5316,8,189,'San Antonio',NULL,NULL,NULL),
@@ -5609,7 +5608,7 @@ export const insertDefaultBarangayValues = [
 	 (5321,8,189,'Tinawan',NULL,NULL,NULL),
 	 (5322,8,189,'Tuyo',NULL,NULL,NULL),
 	 (5323,8,189,'Villa Imelda',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5324,8,190,'Campin',NULL,NULL,NULL),
 	 (5325,8,190,'Cuatro de Agosto',NULL,NULL,NULL),
 	 (5326,8,190,'Hiluctogan',NULL,NULL,NULL),
@@ -5620,7 +5619,7 @@ export const insertDefaultBarangayValues = [
 	 (5331,8,190,'Mabuhay',NULL,NULL,NULL),
 	 (5332,8,190,'Mabunga',NULL,NULL,NULL),
 	 (5333,8,190,'Magsuganao',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5334,8,190,'Mahayag',NULL,NULL,NULL),
 	 (5335,8,190,'Mahayahay',NULL,NULL,NULL),
 	 (5336,8,190,'Maligaya',NULL,NULL,NULL),
@@ -5631,7 +5630,7 @@ export const insertDefaultBarangayValues = [
 	 (5341,8,190,'Pinamonoan',NULL,NULL,NULL),
 	 (5342,8,190,'Poblacion',NULL,NULL,NULL),
 	 (5343,8,190,'Polahongon',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5344,8,190,'San Isidro',NULL,NULL,NULL),
 	 (5345,8,190,'San Juan',NULL,NULL,NULL),
 	 (5346,8,190,'Santa Cruz',NULL,NULL,NULL),
@@ -5642,7 +5641,7 @@ export const insertDefaultBarangayValues = [
 	 (5351,8,190,'Upper190',NULL,NULL,NULL),
 	 (5352,8,191,'Balagtas',NULL,NULL,NULL),
 	 (5353,8,191,'Bonoy',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5354,8,191,'Bulak',NULL,NULL,NULL),
 	 (5355,8,191,'Cambadbad',NULL,NULL,NULL),
 	 (5356,8,191,'Candelaria',NULL,NULL,NULL),
@@ -5653,7 +5652,7 @@ export const insertDefaultBarangayValues = [
 	 (5361,8,191,'Mansalip',NULL,NULL,NULL),
 	 (5362,8,191,'Masaba',NULL,NULL,NULL),
 	 (5363,8,191,'Naulayan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5364,8,191,'Riverside',NULL,NULL,NULL),
 	 (5365,8,191,'San Dionisio',NULL,NULL,NULL),
 	 (5366,8,191,'San Guillermo',NULL,NULL,NULL),
@@ -5664,7 +5663,7 @@ export const insertDefaultBarangayValues = [
 	 (5371,8,191,'Santo Rosario',NULL,NULL,NULL),
 	 (5372,8,191,'Talisay',NULL,NULL,NULL),
 	 (5373,8,192,'Agbanga',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5374,8,192,'Altavista',NULL,NULL,NULL),
 	 (5375,8,192,'Bagong Lipunan',NULL,NULL,NULL),
 	 (5376,8,192,'Cahagnaan',NULL,NULL,NULL),
@@ -5675,7 +5674,7 @@ export const insertDefaultBarangayValues = [
 	 (5381,8,192,'Elevado',NULL,NULL,NULL),
 	 (5382,8,192,'Esperanza',NULL,NULL,NULL),
 	 (5383,8,192,'Hitoog',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5384,8,192,'Itum',NULL,NULL,NULL),
 	 (5385,8,192,'Lowan',NULL,NULL,NULL),
 	 (5386,8,192,'Monte Alegre',NULL,NULL,NULL),
@@ -5686,7 +5685,7 @@ export const insertDefaultBarangayValues = [
 	 (5391,8,192,'San Pedro',NULL,NULL,NULL),
 	 (5392,8,192,'San Salvador',NULL,NULL,NULL),
 	 (5393,8,192,'San Vicente',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5394,8,192,'Santa Fe',NULL,NULL,NULL),
 	 (5395,8,192,'Santa Paz',NULL,NULL,NULL),
 	 (5396,8,192,'Santo Niño',NULL,NULL,NULL),
@@ -5697,7 +5696,7 @@ export const insertDefaultBarangayValues = [
 	 (5401,8,192,'Waterloo',NULL,NULL,NULL),
 	 (5402,8,192,'Zaragoza',NULL,NULL,NULL),
 	 (5403,8,193,'A. Bonifacio',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5404,8,193,'Burgos',NULL,NULL,NULL),
 	 (5405,8,193,'Calipayan',NULL,NULL,NULL),
 	 (5406,8,193,'Camansi',NULL,NULL,NULL),
@@ -5708,7 +5707,7 @@ export const insertDefaultBarangayValues = [
 	 (5411,8,193,'Poblacion Zone 1',NULL,NULL,NULL),
 	 (5412,8,193,'Poblacion Zone 2',NULL,NULL,NULL),
 	 (5413,8,193,'Poblacion Zone 3',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5414,8,193,'San Roque',NULL,NULL,NULL),
 	 (5415,8,193,'Santa Cruz',NULL,NULL,NULL),
 	 (5416,8,193,'Talisay',NULL,NULL,NULL),
@@ -5719,7 +5718,7 @@ export const insertDefaultBarangayValues = [
 	 (5421,8,194,'Calunangan',NULL,NULL,NULL),
 	 (5422,8,194,'Calunasan',NULL,NULL,NULL),
 	 (5423,8,194,'Cambalong',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5424,8,194,'Can-unzo',NULL,NULL,NULL),
 	 (5425,8,194,'Canbantug',NULL,NULL,NULL),
 	 (5426,8,194,'Casilda',NULL,NULL,NULL),
@@ -5730,7 +5729,7 @@ export const insertDefaultBarangayValues = [
 	 (5431,8,194,'Macario',NULL,NULL,NULL),
 	 (5432,8,194,'Mahalit',NULL,NULL,NULL),
 	 (5433,8,194,'Mahayag',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5434,8,194,'Masumbang',NULL,NULL,NULL),
 	 (5435,8,194,'Mat-e',NULL,NULL,NULL),
 	 (5436,8,194,'Poblacion',NULL,NULL,NULL),
@@ -5741,7 +5740,7 @@ export const insertDefaultBarangayValues = [
 	 (5441,8,195,'Airport',NULL,NULL,NULL),
 	 (5442,8,195,'Alegria',NULL,NULL,NULL),
 	 (5443,8,195,'Alta Vista',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5444,8,195,'Bagong',NULL,NULL,NULL),
 	 (5445,8,195,'Bagong Buhay',NULL,NULL,NULL),
 	 (5446,8,195,'Bantigue',NULL,NULL,NULL),
@@ -5752,7 +5751,7 @@ export const insertDefaultBarangayValues = [
 	 (5451,8,195,'Barangay 13',NULL,NULL,NULL),
 	 (5452,8,195,'Barangay 14',NULL,NULL,NULL),
 	 (5453,8,195,'Barangay 15',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5454,8,195,'Barangay 16',NULL,NULL,NULL),
 	 (5455,8,195,'Barangay 17',NULL,NULL,NULL),
 	 (5456,8,195,'Barangay 18',NULL,NULL,NULL),
@@ -5763,7 +5762,7 @@ export const insertDefaultBarangayValues = [
 	 (5461,8,195,'Barangay 22',NULL,NULL,NULL),
 	 (5462,8,195,'Barangay 23',NULL,NULL,NULL),
 	 (5463,8,195,'Barangay 24',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5464,8,195,'Barangay 25',NULL,NULL,NULL),
 	 (5465,8,195,'Barangay 26',NULL,NULL,NULL),
 	 (5466,8,195,'Barangay 27',NULL,NULL,NULL),
@@ -5774,7 +5773,7 @@ export const insertDefaultBarangayValues = [
 	 (5471,8,195,'Barangay 5',NULL,NULL,NULL),
 	 (5472,8,195,'Barangay 6',NULL,NULL,NULL),
 	 (5473,8,195,'Barangay 7',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5474,8,195,'Barangay 8',NULL,NULL,NULL),
 	 (5475,8,195,'Barangay 9',NULL,NULL,NULL),
 	 (5476,8,195,'Batuan',NULL,NULL,NULL),
@@ -5785,7 +5784,7 @@ export const insertDefaultBarangayValues = [
 	 (5481,8,195,'Cabintan',NULL,NULL,NULL),
 	 (5482,8,195,'Cabulihan',NULL,NULL,NULL),
 	 (5483,8,195,'Cagbuhangin',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5484,8,195,'Camp Downes',NULL,NULL,NULL),
 	 (5485,8,195,'Can-ading',NULL,NULL,NULL),
 	 (5486,8,195,'Can-untog',NULL,NULL,NULL),
@@ -5796,7 +5795,7 @@ export const insertDefaultBarangayValues = [
 	 (5491,8,195,'Danao',NULL,NULL,NULL),
 	 (5492,8,195,'Danhug',NULL,NULL,NULL),
 	 (5493,8,195,'Dayhagan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5494,8,195,'Dolores',NULL,NULL,NULL),
 	 (5495,8,195,'Domonar',NULL,NULL,NULL),
 	 (5496,8,195,'Don Felipe Larrazabal',NULL,NULL,NULL),
@@ -5807,7 +5806,7 @@ export const insertDefaultBarangayValues = [
 	 (5501,8,195,'Gaas',NULL,NULL,NULL),
 	 (5502,8,195,'Green Valley',NULL,NULL,NULL),
 	 (5503,8,195,'Guintigui-an',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5504,8,195,'Hibunawon',NULL,NULL,NULL),
 	 (5505,8,195,'Hugpa',NULL,NULL,NULL),
 	 (5506,8,195,'Ipil',NULL,NULL,NULL),
@@ -5818,7 +5817,7 @@ export const insertDefaultBarangayValues = [
 	 (5511,8,195,'Leondoni',NULL,NULL,NULL),
 	 (5512,8,195,'Libertad',NULL,NULL,NULL),
 	 (5513,8,195,'Liberty',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5514,8,195,'Licuma',NULL,NULL,NULL),
 	 (5515,8,195,'Liloan',NULL,NULL,NULL),
 	 (5516,8,195,'Linao',NULL,NULL,NULL),
@@ -5829,7 +5828,7 @@ export const insertDefaultBarangayValues = [
 	 (5521,8,195,'Magaswi',NULL,NULL,NULL),
 	 (5522,8,195,'Mahayag',NULL,NULL,NULL),
 	 (5523,8,195,'Mahayahay',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5524,8,195,'Manlilinao',NULL,NULL,NULL),
 	 (5525,8,195,'Margen',NULL,NULL,NULL),
 	 (5526,8,195,'Mas-in',NULL,NULL,NULL),
@@ -5840,7 +5839,7 @@ export const insertDefaultBarangayValues = [
 	 (5531,8,195,'Naungan',NULL,NULL,NULL),
 	 (5532,8,195,'Nueva Sociedad',NULL,NULL,NULL),
 	 (5533,8,195,'Nueva Vista',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5534,8,195,'Patag',NULL,NULL,NULL),
 	 (5535,8,195,'Punta',NULL,NULL,NULL),
 	 (5536,8,195,'Quezon Jr.',NULL,NULL,NULL),
@@ -5851,7 +5850,7 @@ export const insertDefaultBarangayValues = [
 	 (5541,8,195,'San Isidro',NULL,NULL,NULL),
 	 (5542,8,195,'San Jose',NULL,NULL,NULL),
 	 (5543,8,195,'San Juan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5544,8,195,'San Pablo',NULL,NULL,NULL),
 	 (5545,8,195,'San Vicente',NULL,NULL,NULL),
 	 (5546,8,195,'Santo Niño',NULL,NULL,NULL),
@@ -5862,7 +5861,7 @@ export const insertDefaultBarangayValues = [
 	 (5551,8,196,'Anahaway',NULL,NULL,NULL),
 	 (5552,8,196,'Arado',NULL,NULL,NULL),
 	 (5553,8,196,'Baras',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5554,8,196,'Barayong',NULL,NULL,NULL),
 	 (5555,8,196,'Buri',NULL,NULL,NULL),
 	 (5556,8,196,'Cabarasan Daku',NULL,NULL,NULL),
@@ -5873,7 +5872,7 @@ export const insertDefaultBarangayValues = [
 	 (5561,8,196,'Canhidoc',NULL,NULL,NULL),
 	 (5562,8,196,'Capirawan',NULL,NULL,NULL),
 	 (5563,8,196,'Castilla',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5564,8,196,'Cavite East',NULL,NULL,NULL),
 	 (5565,8,196,'Cavite West',NULL,NULL,NULL),
 	 (5566,8,196,'Cogon',NULL,NULL,NULL),
@@ -5884,7 +5883,7 @@ export const insertDefaultBarangayValues = [
 	 (5571,8,196,'Naga-naga',NULL,NULL,NULL),
 	 (5572,8,196,'Pawing',NULL,NULL,NULL),
 	 (5573,8,196,'Salvacion',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5574,8,196,'San Agustin',NULL,NULL,NULL),
 	 (5575,8,196,'San Antonio',NULL,NULL,NULL),
 	 (5576,8,196,'San Fernando',NULL,NULL,NULL),
@@ -5895,7 +5894,7 @@ export const insertDefaultBarangayValues = [
 	 (5581,8,196,'Santa Cruz',NULL,NULL,NULL),
 	 (5582,8,196,'Tacuranga',NULL,NULL,NULL),
 	 (5583,8,196,'Teraza',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5584,8,197,'Baguinbin',NULL,NULL,NULL),
 	 (5585,8,197,'Belen',NULL,NULL,NULL),
 	 (5586,8,197,'Bitaog Poblacion',NULL,NULL,NULL),
@@ -5906,7 +5905,7 @@ export const insertDefaultBarangayValues = [
 	 (5591,8,197,'Cangcosme',NULL,NULL,NULL),
 	 (5592,8,197,'Cangmuya',NULL,NULL,NULL),
 	 (5593,8,197,'Canipaan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5594,8,197,'Cantandoy',NULL,NULL,NULL),
 	 (5595,8,197,'Cantuhaon',NULL,NULL,NULL),
 	 (5596,8,197,'Catigahan',NULL,NULL,NULL),
@@ -5917,7 +5916,7 @@ export const insertDefaultBarangayValues = [
 	 (5601,8,197,'Guiwan 1',NULL,NULL,NULL),
 	 (5602,8,197,'Guiwan 2',NULL,NULL,NULL),
 	 (5603,8,197,'Himarco',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5604,8,197,'Hinablayan Poblacion',NULL,NULL,NULL),
 	 (5605,8,197,'Hinagbuan',NULL,NULL,NULL),
 	 (5606,8,197,'Lat-osan',NULL,NULL,NULL),
@@ -5928,7 +5927,7 @@ export const insertDefaultBarangayValues = [
 	 (5611,8,197,'Masaba',NULL,NULL,NULL),
 	 (5612,8,197,'Mazawalo Poblacion',NULL,NULL,NULL),
 	 (5613,8,197,'Parilla',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5614,8,197,'Pinagdait Poblacion',NULL,NULL,NULL),
 	 (5615,8,197,'Pinaghi-usa Poblacion',NULL,NULL,NULL),
 	 (5616,8,197,'Plaridel',NULL,NULL,NULL),
@@ -5939,7 +5938,7 @@ export const insertDefaultBarangayValues = [
 	 (5621,8,197,'San Joaquin',NULL,NULL,NULL),
 	 (5622,8,197,'San Juan',NULL,NULL,NULL),
 	 (5623,8,197,'San Miguel',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5624,8,197,'San Pablo',NULL,NULL,NULL),
 	 (5625,8,197,'San Pedro',NULL,NULL,NULL),
 	 (5626,8,197,'San Roque',NULL,NULL,NULL),
@@ -5950,7 +5949,7 @@ export const insertDefaultBarangayValues = [
 	 (5631,8,197,'Tinabilan',NULL,NULL,NULL),
 	 (5632,8,197,'Tinago',NULL,NULL,NULL),
 	 (5633,8,197,'Tinubdan',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5634,8,198,'Arabunog',NULL,NULL,NULL),
 	 (5635,8,198,'Aringit',NULL,NULL,NULL),
 	 (5636,8,198,'Bahay',NULL,NULL,NULL),
@@ -5961,7 +5960,7 @@ export const insertDefaultBarangayValues = [
 	 (5641,8,198,'Capilla',NULL,NULL,NULL),
 	 (5642,8,198,'Colawen',NULL,NULL,NULL),
 	 (5643,8,198,'District 1',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5644,8,198,'District 2',NULL,NULL,NULL),
 	 (5645,8,198,'District 3',NULL,NULL,NULL),
 	 (5646,8,198,'District 4',NULL,NULL,NULL),
@@ -5972,7 +5971,7 @@ export const insertDefaultBarangayValues = [
 	 (5651,8,198,'Lanawan',NULL,NULL,NULL),
 	 (5652,8,198,'Lima',NULL,NULL,NULL),
 	 (5653,8,198,'Lourdes',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5654,8,198,'Macalpiay',NULL,NULL,NULL),
 	 (5655,8,198,'Malitbogay',NULL,NULL,NULL),
 	 (5656,8,198,'Manaybanay',NULL,NULL,NULL),
@@ -5983,7 +5982,7 @@ export const insertDefaultBarangayValues = [
 	 (5661,8,198,'Tingib',NULL,NULL,NULL),
 	 (5662,8,198,'Yapad',NULL,NULL,NULL),
 	 (5663,8,199,'Banat-e',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5664,8,199,'Basud',NULL,NULL,NULL),
 	 (5665,8,199,'Bawod',NULL,NULL,NULL),
 	 (5666,8,199,'Biasong',NULL,NULL,NULL),
@@ -5994,7 +5993,7 @@ export const insertDefaultBarangayValues = [
 	 (5671,8,199,'Crossing',NULL,NULL,NULL),
 	 (5672,8,199,'Daja-daku',NULL,NULL,NULL),
 	 (5673,8,199,'Daja-diot',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5674,8,199,'Hacienda Maria',NULL,NULL,NULL),
 	 (5675,8,199,'Linao',NULL,NULL,NULL),
 	 (5676,8,199,'Matungao',NULL,NULL,NULL),
@@ -6005,7 +6004,7 @@ export const insertDefaultBarangayValues = [
 	 (5681,8,199,'Tinago',NULL,NULL,NULL),
 	 (5682,8,200,'Bagacay',NULL,NULL,NULL),
 	 (5683,8,200,'Bahay',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5684,8,200,'Bairan',NULL,NULL,NULL),
 	 (5685,8,200,'Cabatianuhan',NULL,NULL,NULL),
 	 (5686,8,200,'Canap',NULL,NULL,NULL),
@@ -6016,7 +6015,7 @@ export const insertDefaultBarangayValues = [
 	 (5691,8,200,'Impo',NULL,NULL,NULL),
 	 (5692,8,200,'Kinalumsan',NULL,NULL,NULL),
 	 (5693,8,200,'Libtong',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5694,8,200,'Lukay',NULL,NULL,NULL),
 	 (5695,8,200,'Malaguinabot',NULL,NULL,NULL),
 	 (5696,8,200,'Malpag',NULL,NULL,NULL),
@@ -6027,7 +6026,7 @@ export const insertDefaultBarangayValues = [
 	 (5701,8,200,'Santa Cruz',NULL,NULL,NULL),
 	 (5702,8,200,'Santol',NULL,NULL,NULL),
 	 (5703,8,201,'Baculanad',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5704,8,201,'Badiangay',NULL,NULL,NULL),
 	 (5705,8,201,'Bulod',NULL,NULL,NULL),
 	 (5706,8,201,'Catoogan',NULL,NULL,NULL),
@@ -6038,7 +6037,7 @@ export const insertDefaultBarangayValues = [
 	 (5711,8,201,'Pilit',NULL,NULL,NULL),
 	 (5712,8,201,'Pitogo',NULL,NULL,NULL),
 	 (5713,8,201,'San Isidro',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5714,8,201,'San Juan',NULL,NULL,NULL),
 	 (5715,8,201,'San Miguelay',NULL,NULL,NULL),
 	 (5716,8,201,'San Roque',NULL,NULL,NULL),
@@ -6049,7 +6048,7 @@ export const insertDefaultBarangayValues = [
 	 (5721,8,201,'Zone 3',NULL,NULL,NULL),
 	 (5722,8,201,'Zone 4 Poblacion',NULL,NULL,NULL),
 	 (5723,8,202,'Butason I',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5724,8,202,'Butason II',NULL,NULL,NULL),
 	 (5725,8,202,'Campokpok',NULL,NULL,NULL),
 	 (5726,8,202,'Catmon',NULL,NULL,NULL),
@@ -6060,7 +6059,7 @@ export const insertDefaultBarangayValues = [
 	 (5731,8,202,'Omaganhan',NULL,NULL,NULL),
 	 (5732,8,202,'Poblacion',NULL,NULL,NULL),
 	 (5733,8,202,'Santa Rosa',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5734,8,202,'Tabing',NULL,NULL,NULL),
 	 (5735,8,202,'Tugas',NULL,NULL,NULL),
 	 (5736,8,203,'Amandangay',NULL,NULL,NULL),
@@ -6071,7 +6070,7 @@ export const insertDefaultBarangayValues = [
 	 (5741,8,203,'Capahuan',NULL,NULL,NULL),
 	 (5742,8,203,'District I Poblacion',NULL,NULL,NULL),
 	 (5743,8,203,'District II Poblacion',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5744,8,203,'District III Poblacion',NULL,NULL,NULL),
 	 (5745,8,203,'District IV Poblacion',NULL,NULL,NULL),
 	 (5746,8,203,'Guingawan',NULL,NULL,NULL),
@@ -6082,7 +6081,7 @@ export const insertDefaultBarangayValues = [
 	 (5751,8,203,'San Pablo',NULL,NULL,NULL),
 	 (5752,8,205,'Ada',NULL,NULL,NULL),
 	 (5753,8,205,'Amanluran',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5754,8,205,'Arado',NULL,NULL,NULL),
 	 (5755,8,205,'Atipolo',NULL,NULL,NULL),
 	 (5756,8,205,'Balud',NULL,NULL,NULL),
@@ -6093,7 +6092,7 @@ export const insertDefaultBarangayValues = [
 	 (5761,8,205,'Binongto-an',NULL,NULL,NULL),
 	 (5762,8,205,'Bislig',NULL,NULL,NULL),
 	 (5763,8,205,'Buntay',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5764,8,205,'Cabalagnan',NULL,NULL,NULL),
 	 (5765,8,205,'Cabarasan Guti',NULL,NULL,NULL),
 	 (5766,8,205,'Cabonga-an',NULL,NULL,NULL),
@@ -6104,7 +6103,7 @@ export const insertDefaultBarangayValues = [
 	 (5771,8,205,'Camire',NULL,NULL,NULL),
 	 (5772,8,205,'Canbalisara',NULL,NULL,NULL),
 	 (5773,8,205,'Canramos',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5774,8,205,'Catigbian',NULL,NULL,NULL),
 	 (5775,8,205,'Catmon',NULL,NULL,NULL),
 	 (5776,8,205,'Cogon',NULL,NULL,NULL),
@@ -6115,7 +6114,7 @@ export const insertDefaultBarangayValues = [
 	 (5781,8,205,'Lapay',NULL,NULL,NULL),
 	 (5782,8,205,'Licod',NULL,NULL,NULL),
 	 (5783,8,205,'Limbuhan Daku',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5784,8,205,'Limbuhan Guti',NULL,NULL,NULL),
 	 (5785,8,205,'Linao',NULL,NULL,NULL),
 	 (5786,8,205,'Magay',NULL,NULL,NULL),
@@ -6126,7 +6125,7 @@ export const insertDefaultBarangayValues = [
 	 (5791,8,205,'Pago',NULL,NULL,NULL),
 	 (5792,8,205,'Pasil',NULL,NULL,NULL),
 	 (5793,8,205,'Pikas',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5794,8,205,'Sacme',NULL,NULL,NULL),
 	 (5795,8,205,'Salvador',NULL,NULL,NULL),
 	 (5796,8,205,'San Isidro',NULL,NULL,NULL),
@@ -6137,7 +6136,7 @@ export const insertDefaultBarangayValues = [
 	 (5801,8,205,'Santa Elena',NULL,NULL,NULL),
 	 (5802,8,205,'Santo Niño Poblacion',NULL,NULL,NULL),
 	 (5803,8,205,'Solano',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5804,8,205,'Talolora',NULL,NULL,NULL),
 	 (5805,8,205,'Tugop',NULL,NULL,NULL),
 	 (5806,8,206,'Burak',NULL,NULL,NULL),
@@ -6148,7 +6147,7 @@ export const insertDefaultBarangayValues = [
 	 (5811,8,206,'Imelda',NULL,NULL,NULL),
 	 (5812,8,206,'Malbog',NULL,NULL,NULL),
 	 (5813,8,206,'Olot',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5814,8,206,'Opong',NULL,NULL,NULL),
 	 (5815,8,206,'Poblacion',NULL,NULL,NULL),
 	 (5816,8,206,'Quilao',NULL,NULL,NULL),
@@ -6159,7 +6158,7 @@ export const insertDefaultBarangayValues = [
 	 (5821,8,207,'Astorga',NULL,NULL,NULL),
 	 (5822,8,207,'Balire',NULL,NULL,NULL),
 	 (5823,8,207,'Banawang',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5824,8,207,'San Antonio',NULL,NULL,NULL),
 	 (5825,8,207,'San Pedro',NULL,NULL,NULL),
 	 (5826,8,207,'San Roque',NULL,NULL,NULL),
@@ -6170,7 +6169,7 @@ export const insertDefaultBarangayValues = [
 	 (5831,8,208,'Bangcal',NULL,NULL,NULL),
 	 (5832,8,208,'Bugabuga',NULL,NULL,NULL),
 	 (5833,8,208,'Cabunga-an',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5834,8,208,'Cabungahan',NULL,NULL,NULL),
 	 (5835,8,208,'Cagnocot',NULL,NULL,NULL),
 	 (5836,8,208,'Cahigan',NULL,NULL,NULL),
@@ -6181,7 +6180,7 @@ export const insertDefaultBarangayValues = [
 	 (5841,8,208,'Casili-on',NULL,NULL,NULL),
 	 (5842,8,208,'Catagbacan',NULL,NULL,NULL),
 	 (5843,8,208,'Fatima',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5844,8,208,'Hibulangan',NULL,NULL,NULL),
 	 (5845,8,208,'Hinabuyan',NULL,NULL,NULL),
 	 (5846,8,208,'Iligay',NULL,NULL,NULL),
@@ -6192,7 +6191,7 @@ export const insertDefaultBarangayValues = [
 	 (5851,8,208,'Payao',NULL,NULL,NULL),
 	 (5852,8,208,'Poblacion Norte',NULL,NULL,NULL),
 	 (5853,8,208,'Poblacion Sur',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5854,8,208,'Sambulawan',NULL,NULL,NULL),
 	 (5855,8,208,'San Francisco',NULL,NULL,NULL),
 	 (5856,8,208,'San Vicente',NULL,NULL,NULL),
@@ -6203,7 +6202,7 @@ export const insertDefaultBarangayValues = [
 	 (5861,8,208,'Tabunok',NULL,NULL,NULL),
 	 (5862,8,208,'Tagbubunga',NULL,NULL,NULL),
 	 (5863,8,208,'Tinghub',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5864,8,204,'Barangay 2',NULL,NULL,NULL),
 	 (5865,8,204,'Nula-tula',NULL,NULL,NULL),
 	 (5866,8,204,'Libertad',NULL,NULL,NULL),
@@ -6214,7 +6213,7 @@ export const insertDefaultBarangayValues = [
 	 (5871,8,204,'Barangay 8',NULL,NULL,NULL),
 	 (5872,8,204,'Barangay 100',NULL,NULL,NULL),
 	 (5873,8,204,'Barangay 101',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5874,8,204,'Barangay 102',NULL,NULL,NULL),
 	 (5875,8,204,'Barangay 103',NULL,NULL,NULL),
 	 (5876,8,204,'Barangay 103-A',NULL,NULL,NULL),
@@ -6225,7 +6224,7 @@ export const insertDefaultBarangayValues = [
 	 (5881,8,204,'Barangay 108',NULL,NULL,NULL),
 	 (5882,8,204,'Barangay 12',NULL,NULL,NULL),
 	 (5883,8,204,'Barangay 13',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5884,8,204,'Barangay 14',NULL,NULL,NULL),
 	 (5885,8,204,'Barangay 15',NULL,NULL,NULL),
 	 (5886,8,204,'Barangay 16',NULL,NULL,NULL),
@@ -6236,7 +6235,7 @@ export const insertDefaultBarangayValues = [
 	 (5891,8,204,'Barangay 21',NULL,NULL,NULL),
 	 (5892,8,204,'Barangay 21-A',NULL,NULL,NULL),
 	 (5893,8,204,'Barangay 22',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5894,8,204,'Barangay 23',NULL,NULL,NULL),
 	 (5895,8,204,'Barangay 24',NULL,NULL,NULL),
 	 (5896,8,204,'Barangay 25',NULL,NULL,NULL),
@@ -6247,7 +6246,7 @@ export const insertDefaultBarangayValues = [
 	 (5901,8,204,'Barangay 30',NULL,NULL,NULL),
 	 (5902,8,204,'Barangay 31',NULL,NULL,NULL),
 	 (5903,8,204,'Barangay 32',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5904,8,204,'Barangay 33',NULL,NULL,NULL),
 	 (5905,8,204,'Barangay 34',NULL,NULL,NULL),
 	 (5906,8,204,'Barangay 35',NULL,NULL,NULL),
@@ -6258,7 +6257,7 @@ export const insertDefaultBarangayValues = [
 	 (5911,8,204,'Barangay 38',NULL,NULL,NULL),
 	 (5912,8,204,'Barangay 39',NULL,NULL,NULL),
 	 (5913,8,204,'Barangay 40',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5914,8,204,'Barangay 41',NULL,NULL,NULL),
 	 (5915,8,204,'Barangay 42',NULL,NULL,NULL),
 	 (5916,8,204,'Barangay 43',NULL,NULL,NULL),
@@ -6269,7 +6268,7 @@ export const insertDefaultBarangayValues = [
 	 (5921,8,204,'Barangay 45',NULL,NULL,NULL),
 	 (5922,8,204,'Barangay 46',NULL,NULL,NULL),
 	 (5923,8,204,'Barangay 47',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5924,8,204,'Barangay 48',NULL,NULL,NULL),
 	 (5925,8,204,'Barangay 49',NULL,NULL,NULL),
 	 (5926,8,204,'Barangay 50',NULL,NULL,NULL),
@@ -6280,7 +6279,7 @@ export const insertDefaultBarangayValues = [
 	 (5931,8,204,'Barangay 53',NULL,NULL,NULL),
 	 (5932,8,204,'Barangay 54',NULL,NULL,NULL),
 	 (5933,8,204,'El Reposo',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5934,8,204,'Barangay 56',NULL,NULL,NULL),
 	 (5935,8,204,'Barangay 57',NULL,NULL,NULL),
 	 (5936,8,204,'Barangay 58',NULL,NULL,NULL),
@@ -6291,7 +6290,7 @@ export const insertDefaultBarangayValues = [
 	 (5941,8,204,'Barangay 62',NULL,NULL,NULL),
 	 (5942,8,204,'Barangay 63',NULL,NULL,NULL),
 	 (5943,8,204,'Barangay 64',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5944,8,204,'Barangay 65',NULL,NULL,NULL),
 	 (5945,8,204,'Barangay 66',NULL,NULL,NULL),
 	 (5946,8,204,'Barangay 66-A',NULL,NULL,NULL),
@@ -6302,7 +6301,7 @@ export const insertDefaultBarangayValues = [
 	 (5951,8,204,'Barangay 71',NULL,NULL,NULL),
 	 (5952,8,204,'Barangay 72',NULL,NULL,NULL),
 	 (5953,8,204,'Barangay 73',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5954,8,204,'Barangay 74',NULL,NULL,NULL),
 	 (5955,8,204,'Barangay 75',NULL,NULL,NULL),
 	 (5956,8,204,'Barangay 76',NULL,NULL,NULL),
@@ -6313,7 +6312,7 @@ export const insertDefaultBarangayValues = [
 	 (5961,8,204,'Barangay 81',NULL,NULL,NULL),
 	 (5962,8,204,'Barangay 82',NULL,NULL,NULL),
 	 (5963,8,204,'Barangay 83',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5964,8,204,'Barangay 83-A',NULL,NULL,NULL),
 	 (5965,8,204,'Barangay 84',NULL,NULL,NULL),
 	 (5966,8,204,'Barangay 85',NULL,NULL,NULL),
@@ -6324,7 +6323,7 @@ export const insertDefaultBarangayValues = [
 	 (5971,8,204,'Barangay 90',NULL,NULL,NULL),
 	 (5972,8,204,'Barangay 91',NULL,NULL,NULL),
 	 (5973,8,204,'Barangay 92',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5974,8,204,'Barangay 93',NULL,NULL,NULL),
 	 (5975,8,204,'Barangay 94',NULL,NULL,NULL),
 	 (5976,8,204,'Barangay 95',NULL,NULL,NULL),
@@ -6335,7 +6334,7 @@ export const insertDefaultBarangayValues = [
 	 (5981,8,204,'Barangay 109',NULL,NULL,NULL),
 	 (5982,8,204,'Barangay 109-A',NULL,NULL,NULL),
 	 (5983,8,204,'Barangay 110',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5984,8,204,'Barangay 5-A',NULL,NULL,NULL),
 	 (5985,8,204,'Barangay 36-A',NULL,NULL,NULL),
 	 (5986,8,204,'Barangay 42-A',NULL,NULL,NULL),
@@ -6346,7 +6345,7 @@ export const insertDefaultBarangayValues = [
 	 (5991,8,204,'Barangay 56-A',NULL,NULL,NULL),
 	 (5992,8,204,'Barangay 59-A',NULL,NULL,NULL),
 	 (5993,8,204,'Barangay 59-B',NULL,NULL,NULL)`,
-`INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
+  `INSERT INTO ${TableNames.BARANGAY_TABLE}(brgy_id,province_id,muncity_id,brgy_name,old_target,target,target_2022) VALUES
 	 (5994,8,204,'Barangay 62-A',NULL,NULL,NULL),
 	 (5995,8,204,'Barangay 62-B',NULL,NULL,NULL),
 	 (5996,8,204,'Barangay 83-B',NULL,NULL,NULL),
@@ -6354,5 +6353,5 @@ export const insertDefaultBarangayValues = [
 	 (5998,8,204,'Barangay 95-A',NULL,NULL,NULL),
 	 (5999,8,204,'Barangay 8-A',NULL,NULL,NULL),
 	 (6000,8,204,'Barangay 23-A',NULL,NULL,NULL),
-	 (6001,8,204,'Barangay 94-A',NULL,NULL,NULL)`
+	 (6001,8,204,'Barangay 94-A',NULL,NULL,NULL)`,
 ];

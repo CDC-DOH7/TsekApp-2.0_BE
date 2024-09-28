@@ -12,7 +12,7 @@ import superadminRouter from "./routes/SuperadminRouter";
 import dotenv from "dotenv";
 
 // Import the database initialization function
-import initializeDatabase from "./models/database-models-creation/databaseInititialization";
+import initializeDatabase from "./models/database-models-creation/DatabaseInititialization";
 
 dotenv.config();
 
@@ -36,7 +36,7 @@ eTsekApp.use("/v1/supervisor", supervisorRouter);
 eTsekApp.use("/v1/officer", officerRouter);
 eTsekApp.use("/v1/superadmin", superadminRouter);
 
-eTsekApp.get("/", (req: Request, res: Response) => {
+eTsekApp.get("/", (res: Response) => {
   res.send("Hello, world!");
 });
 

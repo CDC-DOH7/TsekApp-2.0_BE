@@ -1,7 +1,12 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 import { createTablesScripts } from "./initialization-scripts/DatabaseTableModelsCreation";
-import { insertDefaultAgeGroupValues, insertDefaultBarangayValues, insertDefaultMuncityValues, insertDefaultProvinceValues } from "./initialization-scripts/DatabaseTableDefaultValueInsertion";
+import {
+  insertDefaultAgeGroupValues,
+  insertDefaultBarangayValues,
+  insertDefaultMuncityValues,
+  insertDefaultProvinceValues,
+} from "./initialization-scripts/DatabaseTableDefaultValueInsertion";
 dotenv.config();
 
 const disableForeignKeyChecksCmd = `SET FOREIGN_KEY_CHECKS=0`;
@@ -26,6 +31,11 @@ const initializeDatabase = async () => {
       console.log(`Age group values inserted successfully.`);
     }
 
+    for (const script of insertDefaultProvinceValues) {
+      await connection.query(script);
+      console.log(`Province values inserted successfully.`);
+    }
+
     for (const script of insertDefaultBarangayValues) {
       await connection.query(script);
       console.log(`Barangay values inserted successfully.`);
@@ -34,11 +44,6 @@ const initializeDatabase = async () => {
     for (const script of insertDefaultMuncityValues) {
       await connection.query(script);
       console.log(`Muncity values inserted successfully.`);
-    }
-
-    for (const script of insertDefaultProvinceValues) {
-      await connection.query(script);
-      console.log(`Province values inserted successfully.`);
     }
 
     console.log(`Re-enabling foreign key checks.`);
@@ -57,7 +62,9 @@ const connectToDatabase = async () => {
     password: process.env.SUPERADMIN_PASS,
     database: process.env.DATABASE_NAME,
   });
-  console.log(`Superadmin is successfully connected. Beginning database initialization...`);
+  console.log(
+    `Superadmin is successfully connected. Beginning database initialization...`
+  );
   return connection;
 };
 
