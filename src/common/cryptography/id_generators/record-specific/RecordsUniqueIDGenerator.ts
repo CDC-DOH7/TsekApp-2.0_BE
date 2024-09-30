@@ -37,7 +37,8 @@ class RecordsUniqueIDGenerator {
 
   public static generateCompactUniqueID(
     patientId: string,
-    facilityId: string
+    facilityId: string,
+    idType: number
   ): string {
     const currentDate = this.getCurrentDate();
     const randomBits = this.getRandomBits(32);
@@ -46,7 +47,57 @@ class RecordsUniqueIDGenerator {
     const hash = this.hashString(combinedString);
     const uniqueSuffix = this.base36encode(parseInt(hash.slice(0, 4), 16));
 
-    let uniqueID = `${currentDate}-CON-${patientId.toUpperCase()}-${facilityId
+    let identifier: string = ""; // string that defines the ID's purpose
+
+    // choose what type of ID is generated
+    switch (idType) {
+      // for ARD id
+      case 0:
+        identifier = "ARD"
+        break;
+
+      // for consultation id
+      case 1:
+        identifier = "CON";
+        break;
+
+      // for family id
+      case 2:
+        identifier = "FAM";
+        break;
+
+      // for family id
+      case 3:
+        identifier = "MNG";
+        break;
+
+      // for NCD factor
+      case 4:
+        identifier = "NCD";
+        break;
+
+      // for Past Medical History
+      case 5:
+        identifier = "PMH";
+        break;
+
+      // for referrals
+      case 6:
+        identifier = "REF";
+        break;
+
+      // for risk screening
+      case 7:
+        identifier = "RSK";
+        break;
+
+      // default to random generation
+      default:
+        identifier = "RAND";
+        break;
+    }
+
+    let uniqueID = `${currentDate}-${identifier}-${patientId.toUpperCase()}-${facilityId
       .slice(13, 18)
       .toUpperCase()}-${uniqueSuffix}`;
 

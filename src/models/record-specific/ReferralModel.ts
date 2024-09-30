@@ -7,9 +7,8 @@ import officerDb from "../user-specific/OfficerModel";
 import supervisorDb from "../user-specific/SupervisorModel";
 
 // # --- Begin Operations for Past Medical Records Models --- #
-const officerSearchReferral = (
-  searchFilter: ReferralSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
+const officerSearchReferral = async (
+  searchFilter: ReferralSearchFilterInterface
 ) => {
   const { ref_id, patient_id, hf_id } = searchFilter;
 
@@ -30,27 +29,30 @@ const officerSearchReferral = (
   query += " ORDER BY ref_date DESC";
 
   // officer-specific
-  officerDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  try {
+    const [results] = await (await officerDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Create consultation record
-const officerCreateReferral = (
-  referral: ReferralParamsInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+const officerCreateReferral = async (referral: ReferralParamsInterface) => {
   const query = `INSERT INTO ${TableNames.REFERRAL_TABLE}
-  (ref_id, patient_id, officer_id, hf_id,
-  ref_date, ref_reason, ref_destination) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  (ref_id, 
+  patient_id, 
+  officer_id, 
+  hf_id,
+  ref_date, 
+  ref_reason, 
+  ref_destination) VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
-  officerDb.query(
-    query,
-    [
+  try {
+    const [result] = await (
+      await officerDb
+    ).query(query, [
       referral.ref_id,
       referral.patient_id,
       referral.officer_id,
@@ -58,18 +60,28 @@ const officerCreateReferral = (
       referral.ref_date,
       referral.ref_reason,
       referral.ref_destination,
-    ],
-    callback
-  );
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
-// # ---- Supervisor Functions ---- #
-const supervisorSearchReferral = (
-  searchFilter: ReferralSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
+// # ---- Supervisor Functions ---- # //
+
+const supervisorSearchReferral = async (
+  searchFilter: ReferralSearchFilterInterface
 ) => {
-  const { ref_id, patient_id, hf_id, ref_date_startDate, ref_date_endDate } =
-    searchFilter;
+  const {
+    ref_date_startdate,
+    ref_date_enddate,
+    ref_id,
+    patient_id,
+    officer_id,
+    hf_id,
+    ref_reason,
+    ref_destination,
+  } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.REFERRAL_TABLE} WHERE hf_id = ?`;
   const queryParams: any[] = [hf_id]; // Initial wildcard for hf_id
@@ -80,59 +92,80 @@ const supervisorSearchReferral = (
     queryParams.push(ref_id);
   }
   if (patient_id) {
-    query += " AND patient_id LIKE ?";
+    query += " and patient_id like ?";
     queryParams.push(patient_id);
   }
-  if (ref_date_startDate) {
-    query += " AND ref_date >= ?";
-    queryParams.push(ref_date_startDate);
+  if (officer_id) {
+    query += " and officer_id like ?";
+    queryParams.push(officer_id);
   }
-  if (ref_date_endDate) {
+  if (ref_date_startdate) {
+    query += " AND ref_date >= ?";
+    queryParams.push(ref_date_startdate);
+  }
+  if (ref_date_enddate) {
     query += " AND ref_date <= ?";
-    queryParams.push(ref_date_endDate);
+    queryParams.push(ref_date_enddate);
+  }
+  if (ref_reason) {
+    query += " and ref_reason like ?";
+    queryParams.push(ref_reason);
+  }
+  if (ref_destination) {
+    query += " and ref_destination like ?";
+    queryParams.push(ref_destination);
   }
 
   // sort the results from latest
   query += " ORDER BY ref_date DESC";
 
   // supervisor-specific
-  supervisorDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  try {
+    const [results] = await (await supervisorDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Update consultation record
-const supervisorUpdateReferral = (
-  referral: ReferralParamsInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
-  const query = `UPDATE ${TableNames.REFERRAL_TABLE} SET officer_id,
-  ref_date = ?, ref_reason = ?, ref_destination = ? WHERE ref_id = ?`;
+const supervisorUpdateReferral = async (referral: ReferralParamsInterface) => {
+  const query = `UPDATE ${TableNames.REFERRAL_TABLE} SET 
+  officer_id = ?,
+  ref_date = ?, 
+  ref_reason = ?, 
+  ref_destination = ? 
+  WHERE patient_id = ? AND ref_id = ? AND hf_id = ?`;
 
   // supervisor-specific
-  supervisorDb.query(
-    query,
-    [
+  try {
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [
       referral.officer_id,
       referral.ref_date,
       referral.ref_reason,
       referral.ref_destination,
+      referral.patient_id,
       referral.ref_id,
-    ],
-    callback
-  );
+      referral.hf_id,
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Delete consultation record
-const supervisorDeleteReferral = (
-  ref_id: string,
-  callback: (err: Error | null, results?: any) => void
-) => {
+const supervisorDeleteReferral = async (ref_id: string) => {
   const query = `DELETE FROM ${TableNames.REFERRAL_TABLE} WHERE ref_id = ?`;
-  supervisorDb.query(query, [ref_id], callback);
+
+  try {
+    const [result] = await (await supervisorDb).query(query, [ref_id]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 export default {

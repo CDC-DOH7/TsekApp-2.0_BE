@@ -1,16 +1,16 @@
-import ConsultationParamsInterface from "../../interfaces/misc/ConsultationParamsInterface";
+import ConsultationParamsInterface from "../../interfaces/misc/ConsultationLogParamsInterface";
 import ConsultationLogSearchFilterInterface from "../../interfaces/search_filters/ConsultationLogSearchFilterInterface";
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
 import officerDb from "../user-specific/OfficerModel";
 import supervisorDb from "../user-specific/SupervisorModel";
+import { QueryResult } from "mysql2";
 
 // # --- Begin Operations for Consultation Log Models --- #
-const officerSearchConsultationLog = (
+const officerSearchConsultationLog = async(
   searchFilter: ConsultationLogSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+): Promise<QueryResult> => {
   const {
     cl_date_startDate,
     cl_date_endDate,
@@ -51,25 +51,33 @@ const officerSearchConsultationLog = (
   }
 
   // officer-specific
-  officerDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  try {
+    const [results] = await (await officerDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Create consultation record
-const officerCreateConsultationLog = (
+const officerCreateConsultationLog = async(
   consultation: ConsultationParamsInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
-  const query = `INSERT INTO ${TableNames.CONSULTATION_LOGS_TABLE}(cl_id, cl_description, cl_date, patient_id, officer_id, hf_id, ref_id) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+): Promise<QueryResult> => {
+  const query = `INSERT INTO ${TableNames.CONSULTATION_LOGS_TABLE}
+  (cl_id, 
+  cl_description, 
+  cl_date, 
+  patient_id, 
+  officer_id, 
+  hf_id, 
+  ref_id) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+
 
   // officer-specific
-  officerDb.query(
-    query,
-    [
+  try {
+    const [result] = await (
+      await officerDb
+    ).query(query, [
       consultation.cl_id,
       consultation.cl_description,
       consultation.cl_date,
@@ -77,16 +85,17 @@ const officerCreateConsultationLog = (
       consultation.officer_id,
       consultation.hf_id,
       consultation.ref_id,
-    ],
-    callback
-  );
+    ]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // # ---- Supervisor Functions ---- # //
-const supervisorSearchConsultationLog = (
+const supervisorSearchConsultationLog = async(
   searchFilter: ConsultationLogSearchFilterInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+): Promise<QueryResult> => {
   const {
     cl_date_startDate,
     cl_date_endDate,
@@ -127,46 +136,56 @@ const supervisorSearchConsultationLog = (
   }
 
   // supervisor-specific
-  supervisorDb.query(query, queryParams, (err, results) => {
-    if (err) {
-      return callback(err);
-    }
-    callback(null, results);
-  });
+  try {
+    const [results] = await (await supervisorDb).query(query, queryParams);
+    return results;
+  } catch (err) {
+    throw err;
+  }
 };
 
 // Update consultation record
-const supervisorUpdateConsultationLog = (
+const supervisorUpdateConsultationLog = async(
   consultation: ConsultationParamsInterface,
-  callback: (err: Error | null, results?: any) => void
-) => {
+): Promise<QueryResult> => {
   const query = `UPDATE ${TableNames.CONSULTATION_LOGS_TABLE} 
-  SET cl_description = ?, cl_date = ?, officer_id = ?, 
-  ref_id = ? WHERE cl_id = ?`;
+  SET cl_description = ?, 
+  cl_date = ?, 
+  officer_id = ?, 
+  ref_id = ? 
+  WHERE cl_id = ? AND patient_id = ? AND hf_id = ?`;
 
-  // supervisor-specific
-  supervisorDb.query(
-    query,
-    [
-      consultation.cl_description,
-      consultation.cl_date,
-      consultation.officer_id,
-      consultation.ref_id,
-      consultation.cl_id,
-    ],
-    callback
-  );
+    // supervisor-specific
+    try {
+      const [result] = await (await supervisorDb).query(query, [
+        consultation.cl_description,
+        consultation.cl_date,
+        consultation.officer_id,
+        consultation.ref_id,
+        consultation.cl_id,
+        consultation.patient_id,
+        consultation.hf_id
+      ]);
+      return result;
+    } catch (err) {
+      throw err;
+    }
 };
 
 // Delete consultation record
-const supervisorDeleteConsultationLog = (
+const supervisorDeleteConsultationLog = async(
   cl_id: string,
-  callback: (err: Error | null, results?: any) => void
-) => {
+): Promise<QueryResult> => {
   const query = `DELETE FROM ${TableNames.CONSULTATION_LOGS_TABLE} 
   WHERE cl_id = ?`;
-
-  supervisorDb.query(query, [cl_id], callback);
+  
+  // supervisor-specific
+  try {
+    const [result] = await (await supervisorDb).query(query, [cl_id]);
+    return result;
+  } catch (err) {
+    throw err;
+  }
 };
 
 export default {

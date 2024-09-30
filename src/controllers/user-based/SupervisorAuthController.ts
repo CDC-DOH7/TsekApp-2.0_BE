@@ -1,3 +1,4 @@
+// controllers/SupervisorController.ts
 import { Request, Response } from "express";
 import db from "../../models/user-specific/SupervisorModel";
 import bcrypt from "bcryptjs";
@@ -19,8 +20,8 @@ const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN_ENCODED
 
 const COOKIE_MAX_AGE = Number(process.env.JWT_EXPIRES_IN) || 604800000; // One week in milliseconds
 
-// function for registration
-export const register = (req: Request, res: Response) => {
+// Function for registration
+export const register = async (req: Request, res: Response) => {
   const {
     supervisor_email,
     supervisor_username,
@@ -30,17 +31,12 @@ export const register = (req: Request, res: Response) => {
     supervisor_lname,
     supervisor_designation,
     supervisor_contact_no,
-    supervisor_is_verified,
     hf_id,
   } = req.body;
 
-  bcrypt.hash(supervisor_password, 10, (err, hash) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
-    // query to be called to the database
-    const query = `INSERT INTO a_supervisor_info(supervisor_id, supervisor_email, supervisor_username, supervisor_password, supervisor_fname, supervisor_mname, supervisor_lname, supervisor_contact_no, supervisor_designation, supervisor_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?); `;
-
+  try {
+    const hash = await bcrypt.hash(supervisor_password, 10);
+    
     const supervisor_id = UniqueIDGenerator.generateCompactUniqueID(
       supervisor_fname,
       supervisor_mname,
@@ -48,6 +44,19 @@ export const register = (req: Request, res: Response) => {
       supervisor_designation,
       hf_id
     );
+
+    const query = `INSERT INTO a_supervisor_info
+      (supervisor_id, 
+      supervisor_email,
+      supervisor_username, 
+      supervisor_password,
+      supervisor_fname, 
+      supervisor_mname,
+      supervisor_lname, 
+      supervisor_contact_no, 
+      supervisor_designation, 
+      supervisor_is_verified, 
+      hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`;
 
     const procedureParams: SupervisorRegistrationProcedureParamsInterface[] = [
       supervisor_id,
@@ -59,64 +68,68 @@ export const register = (req: Request, res: Response) => {
       supervisor_lname,
       supervisor_contact_no,
       supervisor_designation,
-      supervisor_is_verified,
+      true, // set true as default
       hf_id,
     ];
 
-    // execute the query
-    db.query<ResultSetHeader>(query, procedureParams, (err, results) => {
-      if (err) {
-        return res.status(500).send(err);
-      }
-      res.status(201).send("supervisor registered");
-    });
-  });
+    await (await db).query<ResultSetHeader>(query, procedureParams);
+    res.status(201).send("Supervisor registered");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
 };
 
-// function for login
-export const login = (req: Request, res: Response) => {
+// Function for login
+export const login = async (req: Request, res: Response) => {
   const { supervisor_username, supervisor_password } = req.body;
-  console.log(req.body);
-  const query = `SELECT * FROM a_supervisor_info WHERE supervisor_username = ?`;
-  db.query<Supervisor[]>(query, [supervisor_username], (err, results) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
+
+  try {
+    const query = `SELECT * FROM a_supervisor_info WHERE supervisor_username = ?`;
+    const [results] = await (await db).query<Supervisor[]>(query, [supervisor_username]);
+
     if (results.length === 0) {
       return res.status(401).send("Invalid credentials");
     }
+
     const supervisor = results[0];
-    bcrypt.compare(
-      supervisor_password,
-      supervisor.supervisor_password,
-      (err, isMatch) => {
-        if (err) {
-          return res.status(500).send(err);
-        }
-        if (!isMatch) {
-          return res.status(401).send("Invalid credentials");
-        }
+    const isMatch = await bcrypt.compare(supervisor_password, supervisor.supervisor_password);
+    
+    if (!isMatch) {
+      return res.status(401).send("Invalid credentials");
+    }
 
-        const token = jwt.sign({ id: supervisor.supervisor_id }, JWT_SECRET, {
-          expiresIn: JWT_EXPIRES_IN,
-        });
+    const token = jwt.sign({ id: supervisor.supervisor_id }, JWT_SECRET, {
+      expiresIn: JWT_EXPIRES_IN,
+    });
 
-        const messageString = `Logged in! Welcome ${supervisor.supervisor_lname.toUpperCase()}, ${
-          supervisor.supervisor_fname
-        }`;
+    const messageString = `Logged in! Welcome ${supervisor.supervisor_lname.toUpperCase()}, ${supervisor.supervisor_fname}`;
+    
+    // Exclude the password field from the supervisor info
+    const {
+      supervisor_password: _, // Exclude
+      supervisor_username: __, // Exclude
+      supervisor_is_verified,
+      supervisor_email,
+      ...supervisor_info
+    } = supervisor;
 
-        // Exclude the password field from the supervisor info
-        const { supervisor_password, ...supervisor_info } = supervisor;
-
-        res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
-        res.status(200).json({ message: messageString, supervisor_info });
-      }
-    );
-  });
+    res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
+    res.status(200).json({ message: messageString, supervisor_info });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send(err);
+  }
 };
 
-// function for logout
+// Function for logout
 export const logout = (req: Request, res: Response) => {
   res.clearCookie("token");
   res.status(200).send("Logged out");
+};
+
+// Function for deletion of officer accounts
+export const deleteAccount = async (req: Request, res: Response) => {
+  // Implement deletion logic if needed
+  res.status(200).send("Deleted account.");
 };

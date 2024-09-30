@@ -1,10 +1,11 @@
 import { Router } from "express";
+import { authMiddleware } from "../middleware/authMiddleware";
+import RecordPaths from "../common/constants/RoutePathNames";
 import {
   register,
   login,
   logout,
 } from "../controllers/user-based/SuperadminAuthController";
-import { authMiddleware } from "../middleware/authMiddleware";
 
 const superadminRouter: Router = Router();
 
