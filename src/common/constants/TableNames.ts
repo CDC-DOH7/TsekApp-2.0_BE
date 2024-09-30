@@ -1,5 +1,6 @@
 enum TableNames {
   // Primary tables
+  BARANGAY_TABLE = "a_barangay_info",
   SUPERADMIN_INFO_TABLE = "a_superadmin_info",
   SUPERVISOR_INFO_TABLE = "a_supervisor_info",
   OFFICER_INFO_TABLE = "a_officer_info",
@@ -16,7 +17,6 @@ enum TableNames {
   REFERRAL_TABLE = "a_referral",
   MUNCITY_TABLE = "a_muncity_info",
   PROVINCE_TABLE = "a_province_info",
-  BARANGAY_TABLE = "a_barangay_info",
 
   // Default tables
   AGE_BRACKET = "age_bracket",

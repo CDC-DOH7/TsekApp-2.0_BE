@@ -11,7 +11,6 @@ const connectToDatabase = async () => {
     database: process.env.DATABASE_NAME,
   });
 
-  console.log(`Supervisor is successfully connected.`);
   return db;
 };
 

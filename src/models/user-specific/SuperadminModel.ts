@@ -13,7 +13,6 @@ const connectToDatabase = async () => {
     database: process.env.DATABASE_NAME,
   });
 
-  console.log(`Superadmin is successfully connected.`);
   return connection;
 };
 

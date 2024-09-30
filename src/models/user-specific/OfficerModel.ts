@@ -11,10 +11,8 @@ const connectToDatabase = async () => {
     database: process.env.DATABASE_NAME,
   });
 
-  console.log(`Officer is successfully connected.`);
   return db;
 };
 
 const dbPromise = connectToDatabase();
-
 export default dbPromise;

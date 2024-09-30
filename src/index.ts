@@ -13,6 +13,7 @@ import dotenv from "dotenv";
 
 // Import the database initialization function
 import initializeDatabase from "./models/database-models-creation/DatabaseInititialization";
+import calculateCurrentDateTime from "./common/calc/CalcDateTime";
 
 dotenv.config();
 
@@ -48,12 +49,12 @@ const startServer = async () => {
 
     return new Promise((resolve, reject) => {
       const server = eTsekApp.listen(PORT, () => {
-        console.log(`eTsekApp v1 API is running at: http://localhost:${PORT}`);
+        console.info(`\n${calculateCurrentDateTime()} >>> eTsekApp v1 API is running at: http://localhost:${PORT}`);
         resolve(server);
       });
 
       server.on("error", (err) => {
-        console.error(`Error starting server: ${err}`);
+        console.error(`${calculateCurrentDateTime()} >> Error starting server: ${err}`);
         reject(err);
       });
     });
