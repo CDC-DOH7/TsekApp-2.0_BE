@@ -17,10 +17,8 @@ export const createTablesScripts = [
       )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.MUNCITY_TABLE} (
       muncity_id INT NOT NULL PRIMARY KEY,
-      muncity_name VARCHAR(50) NOT NULL,
       province_id INT NOT NULL,
-      province_name VARCHAR(50) NOT NULL,
-
+      muncity_name VARCHAR(50) NOT NULL, 
       FOREIGN KEY (province_id) REFERENCES a_province_info(province_id)
     )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.PROVINCE_TABLE} (
@@ -36,15 +34,15 @@ export const createTablesScripts = [
   `,
   `CREATE TABLE IF NOT EXISTS ${TableNames.HEALTH_FACILITY_INFO_TABLE} (
       hf_id VARCHAR(50) NOT NULL PRIMARY KEY,
-      hf_name VARCHAR(64) NOT NULL,
+      hf_name TEXT NOT NULL,
       hf_phic_accreditation VARCHAR(50),
-      hf_brgy VARCHAR(50) NOT NULL,
-      brgy_id INT NOT NULL,
-      hf_muncity VARCHAR(50) NOT NULL, 
-      muncity_id INT NOT NULL,
-      hf_province VARCHAR(50) NOT NULL,
-      province_id INT NOT NULL,
-      hf_region VARCHAR(50) NOT NULL,
+      hf_brgy VARCHAR(50),
+      brgy_id INT,
+      hf_muncity VARCHAR(50), 
+      muncity_id INT,
+      hf_province VARCHAR(50),
+      province_id INT,
+      hf_region VARCHAR(50),
     
       FOREIGN KEY (brgy_id) REFERENCES a_barangay_info(brgy_id),
       FOREIGN KEY (muncity_id) REFERENCES a_muncity_info(muncity_id),
@@ -113,7 +111,7 @@ export const createTablesScripts = [
       patient_pwd_no VARCHAR(50),
       patient_emp_status VARCHAR(50),
       patient_ip VARCHAR(50),
-      patient_ip_ethinicity VARCHAR(50),
+      patient_ip_ethnicity VARCHAR(50),
       hf_id VARCHAR(50),
      
       FOREIGN KEY (patient_age_group_id) REFERENCES a_age_group(ag_id),
