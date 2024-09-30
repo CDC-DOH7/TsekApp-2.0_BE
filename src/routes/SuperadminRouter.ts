@@ -5,7 +5,7 @@ import {
   register,
   login,
   logout,
-} from "../controllers/user-based/SuperadminAuthController";
+} from "../controllers/user-based/user-controllers/SuperadminAuthController";
 
 const superadminRouter: Router = Router();
 
