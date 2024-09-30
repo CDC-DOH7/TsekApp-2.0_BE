@@ -1,20 +1,28 @@
 import express, { Request, Response } from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import swagger from "./swagger/swagger"; // Adjust path if necessary
 
-// Network configuration
-import NetworkConfig from "./common/constants/NetworkConfig";
+// Route imports
+import officerRouter from "./routes/OfficerRouter";
+import supervisorRouter from "./routes/SupervisorRouter";
+import superadminRouter from "./routes/SuperadminRouter";
 
-// route imports
-import officerRouter from "./routes/officerRouter";
-import supervisorRouter from "./routes/supervisorRouter";
-import superadminRouter from "./routes/superadminRouter";
+// Dotenv
+import dotenv from "dotenv";
+
+// Import the database initialization function
+import initializeDatabase from "./models/database-models-creation/DatabaseInititialization";
+import calculateCurrentDateTime from "./common/calc/CalcDateTime";
+
+dotenv.config();
 
 const eTsekApp: express.Application = express();
-const PORT = NetworkConfig.DEFAULT_REACT_PORT || 3000;
+const PORT = process.env.DEFAULT_PORT || 3000;
+const REACT_PORT = process.env.DEFAULT_REACT_PORT || 5173;
 
 const corsOptions = {
-  origin: `http://localhost:${PORT}`, // Replace with your React app's URL
+  origin: `http://localhost:${REACT_PORT}`, // Replace with your React app's URL
   credentials: true, // Allow credentials (cookies)
 };
 
@@ -22,19 +30,41 @@ eTsekApp.use(cookieParser());
 eTsekApp.use(cors(corsOptions));
 eTsekApp.use(express.json());
 
-// routes
-eTsekApp.use("/supervisor", supervisorRouter);
-eTsekApp.use("/officer", officerRouter);
-eTsekApp.use("/superadmin", superadminRouter);
+swagger(eTsekApp); // Set up Swagger
 
-eTsekApp.get("/", (req: Request, res: Response) => {
+// Routes
+eTsekApp.use("/v1/supervisor", supervisorRouter);
+eTsekApp.use("/v1/officer", officerRouter);
+eTsekApp.use("/v1/superadmin", superadminRouter);
+
+eTsekApp.get("/", (res: Response) => {
   res.send("Hello, world!");
 });
 
-eTsekApp.listen(PORT, () => {
+// Async function to start the server
+const startServer = async () => {
   try {
-    console.log(`eTsekApp Server is running at http://localhost:${PORT}`);
-  } catch (Exception) {
-    console.error(Exception);
+    // Initialize the database
+    await initializeDatabase();
+
+    return new Promise((resolve, reject) => {
+      const server = eTsekApp.listen(PORT, () => {
+        console.info(`\n${calculateCurrentDateTime()} >>> eTsekApp v1 API is running at: http://localhost:${PORT}`);
+        resolve(server);
+      });
+
+      server.on("error", (err) => {
+        console.error(`${calculateCurrentDateTime()} >> Error starting server: ${err}`);
+        reject(err);
+      });
+    });
+  } catch (err: any) {
+    console.error(`Database initialization failed: ${err.message}`);
+    throw err; // Rethrow the error to handle it in the catch block
   }
+};
+
+// Initialize the server
+startServer().catch((err) => {
+  console.error(`Server initialization failed: ${err.message}`);
 });
