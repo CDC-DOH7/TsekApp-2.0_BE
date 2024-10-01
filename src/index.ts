@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import swagger from "./swagger/swagger"; // Adjust path if necessary
@@ -7,6 +7,7 @@ import swagger from "./swagger/swagger"; // Adjust path if necessary
 import officerRouter from "./routes/OfficerRouter";
 import supervisorRouter from "./routes/SupervisorRouter";
 import superadminRouter from "./routes/SuperadminRouter";
+import guestRouter from "./routes/GuestRouter";
 
 // Dotenv
 import dotenv from "dotenv";
@@ -22,7 +23,7 @@ const PORT = process.env.DEFAULT_PORT || 3000;
 const REACT_PORT = process.env.DEFAULT_REACT_PORT || 5173;
 
 const corsOptions = {
-  origin: `http://localhost:${REACT_PORT}`, // Replace with your React app's URL
+  // origin: `http://localhost:${REACT_PORT}`, // Replace with your React app's URL
   credentials: true, // Allow credentials (cookies)
 };
 
@@ -33,13 +34,10 @@ eTsekApp.use(express.json());
 swagger(eTsekApp); // Set up Swagger
 
 // Routes
+eTsekApp.use("/v1/guest", guestRouter)
 eTsekApp.use("/v1/supervisor", supervisorRouter);
 eTsekApp.use("/v1/officer", officerRouter);
 eTsekApp.use("/v1/superadmin", superadminRouter);
-
-eTsekApp.get("/", (res: Response) => {
-  res.send("Hello, world!");
-});
 
 // Async function to start the server
 const startServer = async () => {

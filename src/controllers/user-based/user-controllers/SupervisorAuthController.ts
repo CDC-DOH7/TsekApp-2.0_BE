@@ -1,12 +1,12 @@
 // controllers/SupervisorController.ts
 import { Request, Response } from "express";
-import db from "../../models/user-specific/SupervisorModel";
+import db from "../../../models/user-specific/SupervisorModel";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";
-import { Supervisor } from "../../types/user-based/supervisor.d ";
-import SupervisorRegistrationProcedureParamsInterface from "../../interfaces/user_specific_parameters/SupervisorRegistrationProcedureParamsInterface";
-import UniqueIDGenerator from "../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
+import { Supervisor } from "../../../types/user-based/supervisor.d ";
+import SupervisorRegistrationProcedureParamsInterface from "../../../interfaces/user_specific_parameters/SupervisorRegistrationProcedureParamsInterface";
+import UniqueIDGenerator from "../../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
 import dotenv from "dotenv";
 
 dotenv.config();

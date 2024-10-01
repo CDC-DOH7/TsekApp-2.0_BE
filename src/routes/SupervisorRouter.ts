@@ -5,7 +5,7 @@ import {
   register,
   login,
   logout,
-} from "../controllers/user-based/SupervisorAuthController";
+} from "../controllers/user-based/user-controllers/SupervisorAuthController";
 
 // update functions
 import { 
