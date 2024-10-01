@@ -199,7 +199,7 @@ export const supervisorDeletePastMedicalHistory = [
     }
 
     try {
-      const results = await PastMedicalHistoryModel.supervisorUpdatePastMedicalHistory(pmh_id);
+      const results = await PastMedicalHistoryModel.supervisorDeletePastMedicalHistory(pmh_id);
       res.status(200).json({ message: "Deleted definitions.", results });
     } catch (err) {
       return res.status(500).send(err);

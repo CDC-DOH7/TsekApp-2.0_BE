@@ -1,12 +1,12 @@
 // controllers/OfficerController.ts
 import { Request, Response } from "express";
-import db from "../../models/user-specific/OfficerModel";
+import db from "../../../models/user-specific/OfficerModel";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";
-import { Officer } from "../../types/user-based/officer";
-import OfficerRegistrationProcedureParamsInterface from "../../interfaces/user_specific_parameters/OfficerRegistrationProcedureParamsInterface";
-import UniqueIDGenerator from "../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
+import { Officer } from "../../../types/user-based/officer";
+import OfficerRegistrationProcedureParamsInterface from "../../../interfaces/user_specific_parameters/OfficerRegistrationProcedureParamsInterface";
+import UniqueIDGenerator from "../../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
 import dotenv from "dotenv";
 
 dotenv.config();

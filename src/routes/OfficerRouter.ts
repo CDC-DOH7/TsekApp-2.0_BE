@@ -5,7 +5,7 @@ import {
   register,
   login,
   logout,
-} from "../controllers/user-based/OfficerAuthController";
+} from "../controllers/user-based/user-controllers/OfficerAuthController";
 
 // creation functions
 import {
