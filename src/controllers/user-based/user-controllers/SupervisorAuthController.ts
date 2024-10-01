@@ -1,6 +1,6 @@
 // controllers/SupervisorController.ts
 import { Request, Response } from "express";
-import db from "../../../models/user-specific/SupervisorModel";
+import db from "../../../connections/SupervisorConnection";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";

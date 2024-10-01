@@ -10,4 +10,5 @@ export default interface OfficerRegistrationProcedureParamsInterface {
   officer_designation: string;
   officer_is_verified: boolean;
   officer_facility_code: string;
+  hf_id: string;
 }

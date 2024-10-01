@@ -1,6 +1,6 @@
 // controllers/OfficerController.ts
 import { Request, Response } from "express";
-import db from "../../../models/user-specific/OfficerModel";
+import db from "../../../connections/OfficerConnection";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";

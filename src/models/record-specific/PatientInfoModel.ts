@@ -3,8 +3,8 @@ import PatientInfoSearchFilterInterface from "../../interfaces/search_filters/Pa
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-specific/OfficerModel";
-import supervisorDb from "../user-specific/SupervisorModel";
+import officerDb from "../../connections/OfficerConnection";
+import supervisorDb from "../../connections/SupervisorConnection";
 import PatientInfoDeletionInterface from "../../interfaces/misc/PatientInfoDeletionInterface";
 
 // # --- Begin Operations for Past Medical Records Models --- #

@@ -1,6 +1,6 @@
 // controllers/SuperadminController.ts
 import { Request, Response } from "express";
-import db from "../../../models/user-specific/SuperadminModel";
+import db from "../../../connections/SuperadminConnection";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";

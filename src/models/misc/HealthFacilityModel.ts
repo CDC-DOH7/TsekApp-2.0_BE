@@ -1,6 +1,6 @@
 import { QueryResult } from "mysql2";
 import TableNames from "../../common/constants/TableNames";
-import guestDb from "../user-specific/GuestModel";
+import guestDb from "../../connections/GuestConnection"
 
 export const retrieveHealthFacility = async(): Promise<QueryResult> => {
   let query = `SELECT hf_id, hf_name from ${TableNames.HEALTH_FACILITY_INFO_TABLE};`;

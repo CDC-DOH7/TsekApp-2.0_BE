@@ -3,8 +3,8 @@ import ReferralSearchFilterInterface from "../../interfaces/search_filters/Refer
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-specific/OfficerModel";
-import supervisorDb from "../user-specific/SupervisorModel";
+import officerDb from "../../connections/OfficerConnection";
+import supervisorDb from "../../connections/SupervisorConnection";
 
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchReferral = async (
