@@ -6,7 +6,6 @@ import {
   authenticateOfficer,
   authenticateSupervisor,
 } from "../../../middleware/authMiddleware";
-import ArdParamsInterface from "../../../interfaces/misc/ArdParamsInterface";
 
 // (Officer) Add/create a new Ard log
 export const officerCreateArd = [
