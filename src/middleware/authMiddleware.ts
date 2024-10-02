@@ -4,7 +4,7 @@ import officerDb from "../connections/OfficerConnection";
 import supervisorDb from "../connections/SupervisorConnection";
 import superadminDb from "../connections/SuperadminConnection";
 import { Officer } from "../types/user-based/officer.d";
-import { Supervisor } from "../types/user-based/supervisor.d ";
+import { Supervisor } from "../types/user-based/supervisor";
 import { Superadmin } from "../types/user-based/superadmin";
 import dotenv from "dotenv";
 import TableNames from "../common/constants/TableNames";
@@ -57,7 +57,9 @@ export const authenticateOfficer = async (
     req.body.officer_id = decoded.id;
 
     const query = `SELECT * FROM ${TableNames.OFFICER_INFO_TABLE} WHERE officer_is_verified = true AND officer_id = ?`;
-    const [results] = await (await officerDb).query<Officer[]>(query, [req.body.officer_id]);
+    const [results] = await (
+      await officerDb
+    ).query<Officer[]>(query, [req.body.officer_id]);
 
     if (results.length === 0) {
       return res.status(401).send("Invalid login.");
@@ -94,7 +96,9 @@ export const authenticateSupervisor = async (
     req.body.supervisor_id = decoded.id;
 
     const query = `SELECT * FROM ${TableNames.SUPERVISOR_INFO_TABLE} WHERE supervisor_id = ?`;
-    const [results] = await (await supervisorDb).query<Supervisor[]>(query, [req.body.supervisor_id]);
+    const [results] = await (
+      await supervisorDb
+    ).query<Supervisor[]>(query, [req.body.supervisor_id]);
 
     if (results.length === 0) {
       return res.status(401).send("Invalid login.");
@@ -131,7 +135,9 @@ export const authenticateSuperadmin = async (
     req.body.superadmin_id = decoded.id;
 
     const query = `SELECT * FROM ${TableNames.SUPERADMIN_INFO_TABLE} WHERE superadmin_id = ?`;
-    const [results] = await (await superadminDb).query<Superadmin[]>(query, [req.body.superadmin_id]);
+    const [results] = await (
+      await superadminDb
+    ).query<Superadmin[]>(query, [req.body.superadmin_id]);
 
     if (results.length === 0) {
       return res.status(401).send("Invalid login.");

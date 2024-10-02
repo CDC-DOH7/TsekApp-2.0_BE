@@ -1,4 +1,4 @@
 export default interface SuperadminLoginParamsInterface {
-  supervisor_username: string;
-  supervisor_password: string;
+  superadmin_username: string;
+  superadmin_password: string;
 }

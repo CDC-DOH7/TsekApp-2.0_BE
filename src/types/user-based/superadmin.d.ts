@@ -8,5 +8,4 @@ export interface Superadmin extends RowDataPacket {
   superadmin_fname: string;
   superadmin_mname: string | null;
   superadmin_lname: string;
-  superadmin_contact_no: string;
 }

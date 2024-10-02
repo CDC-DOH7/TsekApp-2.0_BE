@@ -6358,7 +6358,8 @@ export const insertDefaultBarangayValues = [
 
 export const insertDefaultHealthFacilityValues = [
   `INSERT INTO ${TableNames.HEALTH_FACILITY_INFO_TABLE} (hf_id,hf_name,hf_phic_accreditation,hf_brgy,brgy_id,hf_muncity,muncity_id,hf_province,province_id,hf_region) VALUES
-	 ('DOH000000000000002','CEBU CITY MEDICAL CENTER',NULL,'Pahina Central (pob.)',1466,'Cebu City (Capital)',63,'Cebu',2,'7'),
+	 ('DOH000000000000001','DOH CVCHD',NULL,'Sambag II (pob.)',1479,'Cebu City (Capital)',63,'Cebu',2,'7'),
+  	 ('DOH000000000000002','CEBU CITY MEDICAL CENTER',NULL,'Pahina Central (pob.)',1466,'Cebu City (Capital)',63,'Cebu',2,'7'),
 	 ('DOH000000000000015','CALAPE MAIN HEALTH TB DOTS AND BIRTHING CENTER',NULL,'Desamparados (pob.)',208,'Calape',11,'Bohol',1,'7'),
 	 ('DOH000000000000016','DAGOHOY RURAL HEALTH UNIT',NULL,'Poblacion',357,'Dagohoy',18,'Bohol',1,'7'),
 	 ('DOH000000000000062','GUINDULMAN RURAL HEALTH UNIT ANAKANAN CENTER',NULL,'Sawang (pob.)',492,'Guindulman',24,'Bohol',1,'7'),
@@ -6522,18 +6523,18 @@ export const insertDefaultHealthFacilityValues = [
 	 ('DOH000000000004618','MALABUYOC RURAL HEALTH UNIT',NULL,'Barangay Ii (Pob.)',1853,'Malabuyoc',79,'Cebu',2,'7'),
 	 ('DOH000000000004632','DEIPARINE COMMUNITY HOSPITAL',NULL,'Poblacion',2154,'Sibonga',95,'Cebu',2,'7'),
 	 ('DOH000000000004662','TABOGON RURAL HEALTH UNIT',NULL,'Poblacion',2194,'Tabogon',97,'Cebu',2,'7')`,
-//   `INSERT INTO ${TableNames.HEALTH_FACILITY_INFO_TABLE} (hf_id,hf_name,hf_phic_accreditation,hf_brgy,brgy_id,hf_muncity,muncity_id,hf_province,province_id,hf_region) VALUES
-// 	 ('DOH000000000004667','DR. LIM''S CLINIC AND HOSPITAL',NULL,'Poblacion Occidental',1103,'Valencia',48,'Bohol',1,'7'),
-// 	 ('DOH000000000004705','CEBU NORTH GENERAL HOSPITAL',NULL,'Talamban',1495,'Cebu City (Capital)',63,'Cebu',2,'7'),
-// 	 ('DOH000000000004707','ADELA SERRA TY MEMORIAL MEDICAL CENTER',NULL,'Telaje',0,'Tandag',0,'Surigao del Sur',13,'13'),
-// 	 ('DOH000000000004734','OSLOB RURAL HEALTH UNIT',NULL,'Poblacion',1962,'Oslob',84,'Cebu',2,'7'),
-// 	 ('DOH000000000004780','BUENAVISTA RURAL HEALTH UNIT',NULL,'Poblacion',191,'Buenavista',10,'Bohol',1,'7'),
-// 	 ('DOH000000000004899','ANTEQUERA RURAL HEALTH UNIT',NULL,'Poblacion',55,'Antequera',4,'Bohol',1,'7'),
-// 	 ('DOH000000000004950','BAIS CITY HEALTH OFFICE',NULL,'Barangay I (Pob.)',3063,'Bais City',136,'Negros Oriental',3,'18'),
-// 	 ('DOH000000000004951','PINAMUNGAHAN RURAL HEALTH UNIT',NULL,'Poblacion',1994,'Pinamungahan',86,'Cebu',2,'7'),
-// 	 ('DOH000000000004953','SIBONGA RURAL HEALTH UNIT',NULL,'Poblacion',2154,'Sibonga',95,'Cebu',2,'7'),
-// 	 ('DOH000000000005001','ALICIA RURAL HEALTH UNIT AND BIRTHING CENTER',NULL,'Poblacion (Calingganay)',22,'Alicia',2,'Bohol',1,'7')`,
-`INSERT INTO ${TableNames.HEALTH_FACILITY_INFO_TABLE} (hf_id,hf_name,hf_phic_accreditation,hf_brgy,brgy_id,hf_muncity,muncity_id,hf_province,province_id,hf_region) VALUES
+  //   `INSERT INTO ${TableNames.HEALTH_FACILITY_INFO_TABLE} (hf_id,hf_name,hf_phic_accreditation,hf_brgy,brgy_id,hf_muncity,muncity_id,hf_province,province_id,hf_region) VALUES
+  // 	 ('DOH000000000004667','DR. LIM''S CLINIC AND HOSPITAL',NULL,'Poblacion Occidental',1103,'Valencia',48,'Bohol',1,'7'),
+  // 	 ('DOH000000000004705','CEBU NORTH GENERAL HOSPITAL',NULL,'Talamban',1495,'Cebu City (Capital)',63,'Cebu',2,'7'),
+  // 	 ('DOH000000000004707','ADELA SERRA TY MEMORIAL MEDICAL CENTER',NULL,'Telaje',0,'Tandag',0,'Surigao del Sur',13,'13'),
+  // 	 ('DOH000000000004734','OSLOB RURAL HEALTH UNIT',NULL,'Poblacion',1962,'Oslob',84,'Cebu',2,'7'),
+  // 	 ('DOH000000000004780','BUENAVISTA RURAL HEALTH UNIT',NULL,'Poblacion',191,'Buenavista',10,'Bohol',1,'7'),
+  // 	 ('DOH000000000004899','ANTEQUERA RURAL HEALTH UNIT',NULL,'Poblacion',55,'Antequera',4,'Bohol',1,'7'),
+  // 	 ('DOH000000000004950','BAIS CITY HEALTH OFFICE',NULL,'Barangay I (Pob.)',3063,'Bais City',136,'Negros Oriental',3,'18'),
+  // 	 ('DOH000000000004951','PINAMUNGAHAN RURAL HEALTH UNIT',NULL,'Poblacion',1994,'Pinamungahan',86,'Cebu',2,'7'),
+  // 	 ('DOH000000000004953','SIBONGA RURAL HEALTH UNIT',NULL,'Poblacion',2154,'Sibonga',95,'Cebu',2,'7'),
+  // 	 ('DOH000000000005001','ALICIA RURAL HEALTH UNIT AND BIRTHING CENTER',NULL,'Poblacion (Calingganay)',22,'Alicia',2,'Bohol',1,'7')`,
+  `INSERT INTO ${TableNames.HEALTH_FACILITY_INFO_TABLE} (hf_id,hf_name,hf_phic_accreditation,hf_brgy,brgy_id,hf_muncity,muncity_id,hf_province,province_id,hf_region) VALUES
 	 ('DOH000000000004667','DR. LIM''S CLINIC AND HOSPITAL',NULL,'Poblacion Occidental',1103,'Valencia',48,'Bohol',1,'7'),
 	 ('DOH000000000004705','CEBU NORTH GENERAL HOSPITAL',NULL,'Talamban',1495,'Cebu City (Capital)',63,'Cebu',2,'7'),
 	 ('DOH000000000004734','OSLOB RURAL HEALTH UNIT',NULL,'Poblacion',1962,'Oslob',84,'Cebu',2,'7'),

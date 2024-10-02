@@ -31,18 +31,10 @@ export const register = async (req: Request, res: Response) => {
     officer_contact_no,
     officer_is_verified,
     hf_id,
-  }: OfficerRegistrationParamsInterface = req.body;
+  } = req.body;
 
   try {
-    // Check for duplicate email or username
-    const duplicateCount = await OfficerModel.officerCheckAccountDuplicate(officer_email, officer_username);
-    
-    if (duplicateCount > 0) {
-      console.log(duplicateCount);
-      return res.status(409).send("Email or Username already exists");
-    }
-    
-    // If no duplicates, proceed with registration
+    // this function will automatically hash the entered_password into the user's password
     const officer_password = await bcrypt.hash(officer_entered_password, 10);
     const officer_id = UniqueIDGenerator.generateCompactUniqueID(
       officer_fname,
@@ -52,31 +44,43 @@ export const register = async (req: Request, res: Response) => {
       hf_id
     );
 
-    const procedureParams: OfficerRegistrationParamsInterface[] = [{
-      officer_id,
-      officer_email,
-      officer_username,
-      officer_password,
-      officer_fname,
-      officer_mname,
-      officer_lname,
-      officer_designation,
-      officer_contact_no,
-      officer_is_verified,
-      hf_id,
-      officer_entered_password: "",
-    }];
+    const procedureParams: OfficerRegistrationParamsInterface[] = [
+      {
+        officer_id,
+        officer_email,
+        officer_username,
+        officer_password,
+        officer_fname,
+        officer_mname,
+        officer_lname,
+        officer_designation,
+        officer_contact_no,
+        officer_is_verified,
+        hf_id,
+      },
+    ];
 
-    await OfficerModel.officerRegister(procedureParams);
-    res.status(200).send(`Welcome to e-tsekapp ${officer_lname.toUpperCase()}, ${officer_fname}`);
+    await OfficerModel.officerRegister(procedureParams)
+      .then((message) => {
+        res.status(200).send(message);
+      })
+      .catch((err) => {
+        console.error(err);
+        res
+          .status(500)
+          .send("An error occurred during registration. Please try again.");
+      });
   } catch (err) {
     console.error(err);
-    res.status(500).send("An error occurred during registration. Please try again.");
+    res
+      .status(500)
+      .send("An error occurred during registration. Please try again.");
   }
 };
 
 export const login = async (req: Request, res: Response) => {
-  const { officer_username, officer_password }: OfficerLoginParamsInterface = req.body;
+  const { officer_username, officer_password }: OfficerLoginParamsInterface =
+    req.body;
 
   try {
     // Call the officerLogin function
@@ -93,7 +97,10 @@ export const login = async (req: Request, res: Response) => {
     }
 
     // Compare the provided password with the stored password
-    const isMatch = await bcrypt.compare(officer_password, officer.officer_password);
+    const isMatch = await bcrypt.compare(
+      officer_password,
+      officer.officer_password
+    );
 
     if (!isMatch) {
       return res.status(401).send("Invalid credentials");
@@ -103,8 +110,12 @@ export const login = async (req: Request, res: Response) => {
       expiresIn: JWT_EXPIRES_IN,
     });
 
-    const lastName = officer.officer_lname != null ? officer.officer_lname.toUpperCase() : "Officer";
-    const firstName = officer.officer_fname != null ? officer.officer_fname : "Name"; 
+    const lastName =
+      officer.officer_lname != null
+        ? officer.officer_lname.toUpperCase()
+        : "Officer";
+    const firstName =
+      officer.officer_fname != null ? officer.officer_fname : "Name";
     const messageString = `Logged in! Welcome ${lastName}, ${firstName}`;
 
     // Exclude the password field from the officer info
@@ -123,7 +134,6 @@ export const login = async (req: Request, res: Response) => {
     res.status(500).send("An error occurred during login. Please try again.");
   }
 };
-
 
 // Function for logout
 export const logout = (res: Response) => {

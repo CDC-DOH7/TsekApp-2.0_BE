@@ -3,7 +3,6 @@ export default interface OfficerRegistrationParamsInterface {
   officer_email: string;
   officer_username: string;
   officer_password: string;
-  officer_entered_password: string;
   officer_fname: string;
   officer_mname: string | null;
   officer_lname: string;
