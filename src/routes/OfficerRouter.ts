@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { authMiddleware } from "../middleware/authMiddleware";
-import RecordPaths from "../common/constants/RoutePathNames";
+import {RecordPaths, MiscPaths} from "../common/constants/RoutePathNames";
 import {
   register,
   login,
@@ -32,12 +32,24 @@ import {
   officerSearchReferral,
   officerSearchRiskScreening,
 } from "../controllers/record-based/RecordSearchController";
+import { officerRetrieveBarangayList } from "../controllers/record-based/misc-controllers/BarangayController";
+import { officerRetrieveHealthFacilityList } from "../controllers/record-based/misc-controllers/HealthFacilityController";
+import { officerRetrieveProvinceList } from "../controllers/record-based/misc-controllers/ProvinceController";
+import { officerRetrieveMuncityList } from "../controllers/record-based/misc-controllers/MuncityController";
 
 const officerRouter: Router = Router();
 
 officerRouter.post("/register", register);
 officerRouter.post("/login", login);
 officerRouter.post("/logout", authMiddleware, logout);
+
+// form-related info querying functions (e.g. barangay, muncity, and province)
+const infoQueryingRoutes = [
+  {path: `${MiscPaths.BARANGAY_PATH}`, handler: officerRetrieveBarangayList}, 
+  {path: `${MiscPaths.MUNCITY_PATH}`, handler: officerRetrieveMuncityList},
+  {path: `${MiscPaths.PROVINCE_PATH}`, handler: officerRetrieveProvinceList},
+  {path: `${MiscPaths.HEALTH_FACILITY_PATH}`, handler: officerRetrieveHealthFacilityList},
+];
 
 // record-creation functions
 const recordCreatingRoutes = [
@@ -67,6 +79,10 @@ const recordSearchingRoutes = [
 
 
 // deploy endpoints
+infoQueryingRoutes.forEach(route => {
+  officerRouter.post(route.path, route.handler);
+});
+
 recordCreatingRoutes.forEach(route => {
   officerRouter.post(route.path, route.handler);
 });

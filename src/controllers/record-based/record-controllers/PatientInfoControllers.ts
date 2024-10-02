@@ -6,7 +6,6 @@ import {
   authenticateOfficer,
   authenticateSupervisor,
 } from "../../../middleware/authMiddleware";
-import PatientInfoParamsInterface from "../../../interfaces/misc/PatientInfoParamsInterface";
 import { calculateAgeGroup } from "../../../common/calc/CalcPatientAgeGroup";
 
 // (Officer) Add/create a new consultation log
@@ -77,11 +76,8 @@ export const officerCreatePatientInfo = [
         patient_purok,
         patient_sitio,
         brgy_id,
-        patient_brgy,
         muncity_id,
-        patient_muncity,
         province_id,
-        patient_province,
         patient_phic_no,
         patient_pwd_no,
         patient_emp_status,
@@ -89,7 +85,7 @@ export const officerCreatePatientInfo = [
         patient_ip_ethinicity,
         hf_id,
       });
-      res.status(201).json({ message: "Patient Info added successfully", results });
+      res.status(201).json({ patient_id: patient_id, message: "Patient Info added successfully", results});
     } catch (err) {
       return res.status(500).send(err);
     }
@@ -193,11 +189,8 @@ export const supervisorUpdatePatientInfo = [
       patient_purok,
       patient_sitio,
       brgy_id,
-      patient_brgy,
       muncity_id,
-      patient_muncity,
       province_id,
-      patient_province,
       patient_phic_no,
       patient_pwd_no,
       patient_emp_status,
@@ -232,11 +225,8 @@ export const supervisorUpdatePatientInfo = [
         patient_purok,
         patient_sitio,
         brgy_id,
-        patient_brgy,
         muncity_id,
-        patient_muncity,
         province_id,
-        patient_province,
         patient_phic_no,
         patient_pwd_no,
         patient_emp_status,

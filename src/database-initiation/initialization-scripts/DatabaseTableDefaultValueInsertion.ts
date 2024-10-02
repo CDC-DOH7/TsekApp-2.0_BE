@@ -1,4 +1,4 @@
-import TableNames from "../../../common/constants/TableNames";
+import TableNames from "../../common/constants/TableNames";
 // default province values
 export const insertDefaultProvinceValues = [
   `INSERT INTO ${TableNames.PROVINCE_TABLE}(province_id, province_name) VALUES

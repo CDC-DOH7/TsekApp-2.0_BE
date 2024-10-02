@@ -1,4 +1,4 @@
-export default interface SupervisorRegistrationProcedureParamsInterface {
+export default interface SupervisorRegistrationParamsInterface {
     supervisor_id: string;
     supervisor_email: string;
     supervisor_username: string;
@@ -10,4 +10,5 @@ export default interface SupervisorRegistrationProcedureParamsInterface {
     supervisor_designation: string;
     supervisor_is_verified: boolean;
     supervisor_facility_code: string;
+    hf_id: string;
 }

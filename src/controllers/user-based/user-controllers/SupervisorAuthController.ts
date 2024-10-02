@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { ResultSetHeader } from "mysql2";
 import { Supervisor } from "../../../types/user-based/supervisor.d ";
-import SupervisorRegistrationProcedureParamsInterface from "../../../interfaces/user_specific_parameters/SupervisorRegistrationProcedureParamsInterface";
+import SupervisorRegistrationProcedureParamsInterface from "../../../interfaces/user_specific_parameters/registration-parameters/SupervisorRegistrationParamsInterface";
 import UniqueIDGenerator from "../../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
 import dotenv from "dotenv";
 
