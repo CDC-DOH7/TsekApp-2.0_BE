@@ -9,6 +9,7 @@ enum TableNames {
   PATIENT_INFO_TABLE = "a_patient_info",
   AGE_GROUP_TABLE = "a_age_group",
   ASSESS_RED_FLAG_TABLE = "a_assess_red_flags",
+  ASSESS_RED_FLAG_SUMMARY_TABLE = "a_ard_summary",
   PAST_MEDICAL_HISTORY_TABLE = "a_past_medical_history",
   FAMILY_HISTORY_TABLE = "a_family_history",
   NCD_RISK_FACTORS_TABLE = "a_ncd_risk_factors",
