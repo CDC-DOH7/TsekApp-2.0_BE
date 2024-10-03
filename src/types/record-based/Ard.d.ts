@@ -1,4 +1,6 @@
-export default interface ArdParamsInterface {
+import { RowDataPacket } from "mysql2";
+
+export interface Ard extends RowDataPacket {
   ard_id: string | null;
   patient_id: string | null;
   ard_chest_pain: string | null;

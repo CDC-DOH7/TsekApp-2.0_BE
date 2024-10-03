@@ -12,4 +12,5 @@ export default interface FamilyHistoryParamsInterface {
   fh_tb: string | null;
   fh_disorders: string | null;
   fh_copd: string | null;
+  hf_id: string;
 }

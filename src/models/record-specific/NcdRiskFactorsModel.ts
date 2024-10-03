@@ -6,6 +6,7 @@ import TableNames from "../../common/constants/TableNames";
 import officerDb from "../../connections/OfficerConnection";
 import supervisorDb from "../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
+import NcdRiskFactorsDeletionInterface from "../../interfaces/deletion_params/NcdRiskFactorsDeletionInterface";
 
 // # --- Begin Operations for NCD Risk Factors Models --- #
 const officerSearchNcdRiskFactors = async (
@@ -47,8 +48,10 @@ const officerCreateNcdRiskFactors = async (
   rf_cm_height,
   rf_bmi, 
   rf_waist_circumference, 
-  rf_bp) 
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  rf_bp,
+  hf_id
+  ) 
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
   try {
@@ -67,6 +70,7 @@ const officerCreateNcdRiskFactors = async (
       ncdRiskFactors.rf_bmi,
       ncdRiskFactors.rf_waist_circumference,
       ncdRiskFactors.rf_bp,
+      ncdRiskFactors.hf_id,
     ]);
     return result;
   } catch (err) {
@@ -75,8 +79,8 @@ const officerCreateNcdRiskFactors = async (
 };
 
 // # ---- Supervisor Functions ---- #
-const supervisorSearchNcdRiskFactors = async(
-  searchFilter: NcdRiskFactorsSearchFilterInterface,
+const supervisorSearchNcdRiskFactors = async (
+  searchFilter: NcdRiskFactorsSearchFilterInterface
 ): Promise<QueryResult> => {
   const { rf_id, patient_id } = searchFilter;
 
@@ -99,8 +103,8 @@ const supervisorSearchNcdRiskFactors = async(
 };
 
 // Update consultation record
-const supervisorUpdateNcdRiskFactors = async(
-  ncdRiskFactors: NcdRiskFactorsParamsInterface,
+const supervisorUpdateNcdRiskFactors = async (
+  ncdRiskFactors: NcdRiskFactorsParamsInterface
 ): Promise<QueryResult> => {
   const query = `UPDATE ${TableNames.NCD_RISK_FACTORS_TABLE} SET 
   rf_tobacco_use = ?,
@@ -113,11 +117,13 @@ const supervisorUpdateNcdRiskFactors = async(
   rf_bmi = ?, 
   rf_waist_circumference = ?,
   rf_bp = ? 
-  WHERE rf_id = ? AND patient_id = ?`;
+  WHERE rf_id = ? AND patient_id = ? AND hf_id = ?`;
 
   // supervisor-specific
   try {
-    const [result] = await (await supervisorDb).query(query, [
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [
       ncdRiskFactors.rf_tobacco_use,
       ncdRiskFactors.rf_alcohol_intake,
       ncdRiskFactors.rf_binge_drinker,
@@ -130,6 +136,7 @@ const supervisorUpdateNcdRiskFactors = async(
       ncdRiskFactors.rf_bp,
       ncdRiskFactors.rf_id,
       ncdRiskFactors.patient_id,
+      ncdRiskFactors.hf_id,
     ]);
     return result;
   } catch (err) {
@@ -138,14 +145,16 @@ const supervisorUpdateNcdRiskFactors = async(
 };
 
 // Delete consultation record
-const supervisorDeleteNcdRiskFactors = async(
-  rf_id: string,
+const supervisorDeleteNcdRiskFactors = async (
+  ncdRiskFactorsDeletion: NcdRiskFactorsDeletionInterface
 ): Promise<QueryResult> => {
-  const query = `DELETE FROM ${TableNames.NCD_RISK_FACTORS_TABLE} WHERE rf_id = ?`;
-  
+  const query = `DELETE FROM ${TableNames.NCD_RISK_FACTORS_TABLE} WHERE rf_id = ? AND patient_id = ? AND hf_id = ?`;
+  const { rf_id, patient_id, hf_id } = ncdRiskFactorsDeletion;
   // supervisor-specific
   try {
-    const [result] = await (await supervisorDb).query(query, [rf_id]);
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [rf_id, patient_id, hf_id]);
     return result;
   } catch (err) {
     throw err;

@@ -6,10 +6,11 @@ import TableNames from "../../common/constants/TableNames";
 import officerDb from "../../connections/OfficerConnection";
 import supervisorDb from "../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
+import PastMedicalHistoryDeletionInterface from "../../interfaces/deletion_params/PastMedicalHistoryDeletionInterface";
 
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchPastMedicalHistory = async (
-  searchFilter: PastMedicalHistorySearchFilterInterface,
+  searchFilter: PastMedicalHistorySearchFilterInterface
 ): Promise<QueryResult> => {
   const { pmh_id, patient_id } = searchFilter;
 
@@ -26,17 +27,17 @@ const officerSearchPastMedicalHistory = async (
   query += " ORDER BY patient_id DESC";
 
   // officer-specific
-  try{
+  try {
     const [results] = await (await officerDb).query(query, queryParams);
-    return results; 
-  }catch(err){
+    return results;
+  } catch (err) {
     throw err;
   }
 };
 
 // Create consultation record
-const officerCreatePastMedicalHistory = async(
-  pastMedicalHistory: PastMedicalHistoryParamsInterface,
+const officerCreatePastMedicalHistory = async (
+  pastMedicalHistory: PastMedicalHistoryParamsInterface
 ): Promise<QueryResult> => {
   const query = `INSERT INTO ${TableNames.PAST_MEDICAL_HISTORY_TABLE}
   (pmh_id, 
@@ -61,8 +62,10 @@ const officerCreatePastMedicalHistory = async(
   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ?)`;
 
   // officer-specific
-  try{
-    const [result] = await (await officerDb).query(query, [
+  try {
+    const [result] = await (
+      await officerDb
+    ).query(query, [
       pastMedicalHistory.pmh_id,
       pastMedicalHistory.patient_id,
       pastMedicalHistory.pmh_hypertension,
@@ -84,16 +87,15 @@ const officerCreatePastMedicalHistory = async(
       pastMedicalHistory.pmh_kidney_disorder,
     ]);
     return result;
-  }catch(err){
+  } catch (err) {
     throw err;
   }
-
 };
 
 // # ---- Supervisor Functions ---- #
 
-const supervisorSearchPastMedicalHistory = async(
-  searchFilter: PastMedicalHistorySearchFilterInterface,
+const supervisorSearchPastMedicalHistory = async (
+  searchFilter: PastMedicalHistorySearchFilterInterface
 ): Promise<QueryResult> => {
   const { pmh_id, patient_id } = searchFilter;
 
@@ -119,8 +121,8 @@ const supervisorSearchPastMedicalHistory = async(
 };
 
 // Update consultation record
-const supervisorUpdatePastMedicalHistory = async(
-  pastMedicalHistory: PastMedicalHistoryParamsInterface,
+const supervisorUpdatePastMedicalHistory = async (
+  pastMedicalHistory: PastMedicalHistoryParamsInterface
 ): Promise<QueryResult> => {
   const query = `UPDATE ${TableNames.PAST_MEDICAL_HISTORY_TABLE} SET 
   pmh_hypertension = ?,
@@ -143,8 +145,10 @@ const supervisorUpdatePastMedicalHistory = async(
   WHERE pmh_id = ? AND patient_id = ?`;
 
   // supervisor-specific
-  try{
-    const [result] = await (await supervisorDb).query(query, [ 
+  try {
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [
       pastMedicalHistory.pmh_hypertension,
       pastMedicalHistory.pmh_heart_disease,
       pastMedicalHistory.pmh_diabetes,
@@ -166,20 +170,22 @@ const supervisorUpdatePastMedicalHistory = async(
       pastMedicalHistory.patient_id,
     ]);
     return result;
-  }catch(err){
+  } catch (err) {
     throw err;
   }
 };
 
 // Delete consultation record
-const supervisorDeletePastMedicalHistory = async(
-  pmh_id: string,
+const supervisorDeletePastMedicalHistory = async (
+  pastMedicalHistoryDeletion: PastMedicalHistoryDeletionInterface
 ): Promise<QueryResult> => {
-  const query = `DELETE FROM ${TableNames.PAST_MEDICAL_HISTORY_TABLE} WHERE pmh_id = ?`;
-  
+  const query = `DELETE FROM ${TableNames.PAST_MEDICAL_HISTORY_TABLE} WHERE pmh_id = ? AND patient_id = ? AND hf_id = ?`;
+  const { pmh_id, patient_id, hf_id } = pastMedicalHistoryDeletion;
   // supervisor-specific
   try {
-    const [result] = await (await supervisorDb).query(query, [pmh_id]);
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [pmh_id, patient_id, hf_id]);
     return result;
   } catch (err) {
     throw err;

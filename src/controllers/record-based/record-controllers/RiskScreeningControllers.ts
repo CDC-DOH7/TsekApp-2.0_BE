@@ -7,11 +7,12 @@ import {
   authenticateSupervisor,
 } from "../../../middleware/authMiddleware";
 import RiskScreeningParamsInterface from "../../../interfaces/misc/RiskScreeningParamsInterface";
+import RiskScreeningDeletionInterface from "../../../interfaces/deletion_params/RiskScreeningDeletionInterface";
 
 // (Officer) Add/create a new RiskScreening log
 export const officerCreateRiskScreening = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  async(req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       patient_id,
       rs_blood_sugar_fbs,
@@ -63,8 +64,11 @@ export const officerCreateRiskScreening = [
         rs_urine_ketones,
         rs_urine_ketones_date_taken,
         rs_respiratory,
+        hf_id,
       });
-      res.status(201).json({ message: "Risk screening added successfully", results });
+      res
+        .status(201)
+        .json({ message: "Risk screening added successfully", results });
     } catch (err) {
       return res.status(500).send(err);
     }
@@ -74,8 +78,8 @@ export const officerCreateRiskScreening = [
 // (Officer) Read/Search a RiskScreening log
 export const officerSearchRiskScreening = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  async(req: Request, res: Response) => {
-    const { rs_id, patient_id, officer_id } = req.body;
+  async (req: Request, res: Response) => {
+    const { rs_id, patient_id, officer_id, hf_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
@@ -86,7 +90,8 @@ export const officerSearchRiskScreening = [
       const results = await RiskScreeningModel.officerSearchRiskScreening({
         rs_id,
         patient_id,
-    });
+        hf_id,
+      });
       res.status(200).json({ message: "Found Results!", results });
     } catch (err) {
       return res.status(500).send(err);
@@ -97,8 +102,8 @@ export const officerSearchRiskScreening = [
 // (Supervisor) Read/Search a RiskScreening log
 export const supervisorSearchRiskScreening = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  async(req: Request, res: Response) => {
-    const { rs_id, patient_id, supervisor_id } = req.body;
+  async (req: Request, res: Response) => {
+    const { rs_id, patient_id, supervisor_id, hf_id } = req.body;
 
     // Ensure the supervisor_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
@@ -109,7 +114,8 @@ export const supervisorSearchRiskScreening = [
       const results = await RiskScreeningModel.supervisorSearchRiskScreening({
         rs_id,
         patient_id,
-    });
+        hf_id,
+      });
       res.status(200).json({ message: "Found Results!", results });
     } catch (err) {
       return res.status(500).send(err);
@@ -120,7 +126,7 @@ export const supervisorSearchRiskScreening = [
 // (Supervisor) Read/Search a RiskScreening log
 export const supervisorUpdateRiskScreening = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  async(req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       rs_blood_sugar_fbs,
       rs_blood_sugar_rbs,
@@ -140,6 +146,7 @@ export const supervisorUpdateRiskScreening = [
       rs_id,
       patient_id,
       supervisor_id,
+      hf_id,
     } = req.body;
 
     // Ensure the supervisor_id in the body matches the authenticated officer
@@ -166,6 +173,7 @@ export const supervisorUpdateRiskScreening = [
         rs_respiratory,
         rs_id,
         patient_id,
+        hf_id,
       });
       res.status(200).json({ message: "Updated definitions.", results });
     } catch (err) {
@@ -177,16 +185,24 @@ export const supervisorUpdateRiskScreening = [
 // (Supervisor) Delete a RiskScreening log
 export const supervisorDeleteRiskScreening = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  async(req: Request, res: Response) => {
-    const { rs_id, supervisor_id } = req.body;
+  async (req: Request, res: Response) => {
+    const { rs_id, patient_id, supervisor_id, hf_id } = req.body;
 
     // Ensure the supervisor_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
       return res.status(403).send("Access denied. Invalid ID.");
     }
 
+    const rsDeletion: RiskScreeningDeletionInterface = {
+      rs_id,
+      patient_id,
+      hf_id,
+    };
+
     try {
-      const results = await RiskScreeningModel.supervisorUpdateRiskScreening(rs_id);
+      const results = await RiskScreeningModel.supervisorDeleteRiskScreening(
+        rsDeletion
+      );
       res.status(200).json({ message: "Deleted definitions.", results });
     } catch (err) {
       return res.status(500).send(err);
