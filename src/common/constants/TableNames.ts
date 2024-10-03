@@ -1,6 +1,6 @@
 enum TableNames {
   // Primary tables
-  BARANGAY_TABLE = "a_barangay_info",
+  BARANGAY_TABLE = "a_brgy_info",
   SUPERADMIN_INFO_TABLE = "a_superadmin_info",
   SUPERVISOR_INFO_TABLE = "a_supervisor_info",
   OFFICER_INFO_TABLE = "a_officer_info",
