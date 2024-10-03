@@ -49,7 +49,7 @@ const officerCreateFamilyHistory = async (
   fh_vascular_disease, 
   fh_tb, 
   fh_disorders, 
-  fh_copd) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  fh_copd, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
   try {
@@ -69,6 +69,7 @@ const officerCreateFamilyHistory = async (
       familyHistory.fh_tb,
       familyHistory.fh_disorders,
       familyHistory.fh_copd,
+      familyHistory.hf_id,
     ]);
     return result;
   } catch (err) {

@@ -58,8 +58,9 @@ const officerCreatePastMedicalHistory = async (
   pmh_previous_surgical_history, 
   pmh_specify_surgical_history,
   pmh_thyroid_disorder, 
-  pmh_kidney_disorder) 
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ?)`;
+  pmh_kidney_disorder,
+  hf_id) 
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? , ?, ?)`;
 
   // officer-specific
   try {
@@ -85,6 +86,7 @@ const officerCreatePastMedicalHistory = async (
       pastMedicalHistory.pmh_specify_surgical_history,
       pastMedicalHistory.pmh_thyroid_disorder,
       pastMedicalHistory.pmh_kidney_disorder,
+      pastMedicalHistory.hf_id,
     ]);
     return result;
   } catch (err) {

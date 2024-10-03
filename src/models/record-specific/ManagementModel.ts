@@ -60,7 +60,7 @@ const officerCreateManagement = async (
   mngm_remarks,
   hf_id
   ) 
-  VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
   try {

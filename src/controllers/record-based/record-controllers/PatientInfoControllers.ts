@@ -84,15 +84,13 @@ export const officerCreatePatientInfo = [
         patient_ethnicity,
         hf_id,
       });
-      res
-        .status(201)
-        .json({
-          patient_id: patient_id,
-          message: "Patient Info added successfully",
-          results,
-        });
-    } catch (err: any) {
-      return res.status(500).json({ message: err.message });
+      res.status(201).json({
+        patient_id: patient_id,
+        message: "Patient Info added successfully",
+        results,
+      });
+    } catch (err) {
+      return res.status(500).send(err);
     }
   },
 ];
@@ -259,7 +257,7 @@ export const supervisorDeletePatientInfo = [
     }
 
     const patientDeletion: PatientInfoDeletionInterface = { patient_id, hf_id };
-    
+
     try {
       const results = await PatientInfoModel.supervisorDeletePatientInfo(
         patientDeletion

@@ -2,10 +2,8 @@
 import { Request, Response } from "express";
 import ArdModel from "../../../models/record-specific/ArdModel";
 import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
-import {
-  authenticateOfficer,
-  authenticateSupervisor,
-} from "../../../middleware/authMiddleware";
+import { authenticateOfficer } from "../../../middleware/authMiddleware";
+import { authenticateSupervisor } from "../../../middleware/authMiddleware";
 import ArdDeletionInterface from "../../../interfaces/deletion_params/ArdDeletionInterface";
 
 // (Officer) Add/create a new Ard log
@@ -59,9 +57,9 @@ export const officerCreateArd = [
         ard_aggressive_behavior,
         ard_eye_injury,
         ard_severe_injuries,
-        hf_id
+        hf_id,
       });
-      
+
       res.status(201).json({ message: "Ard added successfully", results });
     } catch (err) {
       return res.status(500).send(err);
@@ -81,7 +79,11 @@ export const officerSearchArd = [
     }
 
     try {
-      const results = await ArdModel.officerSearchArd({ hf_id, ard_id, patient_id });
+      const results = await ArdModel.officerSearchArd({
+        hf_id,
+        ard_id,
+        patient_id,
+      });
       res.status(200).json({ message: "Found Results!", results });
     } catch (err) {
       return res.status(500).send(err);
@@ -101,7 +103,11 @@ export const supervisorSearchArd = [
     }
 
     try {
-      const results = await ArdModel.supervisorSearchArd({ hf_id, ard_id, patient_id });
+      const results = await ArdModel.supervisorSearchArd({
+        hf_id,
+        ard_id,
+        patient_id,
+      });
       res.status(200).json({ message: "Found Results!", results });
     } catch (err) {
       return res.status(500).send(err);
@@ -130,7 +136,7 @@ export const supervisorUpdateArd = [
       ard_id,
       patient_id,
       supervisor_id,
-      hf_id
+      hf_id,
     } = req.body;
 
     // Ensure the supervisor_id in the body matches the authenticated supervisor
@@ -155,7 +161,7 @@ export const supervisorUpdateArd = [
         ard_severe_injuries,
         ard_id,
         patient_id,
-        hf_id
+        hf_id,
       });
       res.status(200).json({ message: "Updated definitions.", results });
     } catch (err) {
@@ -168,14 +174,14 @@ export const supervisorUpdateArd = [
 export const supervisorDeleteArd = [
   authenticateSupervisor, // Use the middleware to authenticate the supervisor
   async (req: Request, res: Response) => {
-    const { ard_id, patient_id, supervisor_id, hf_id} = req.body;
+    const { ard_id, patient_id, supervisor_id, hf_id } = req.body;
 
     // Ensure the supervisor_id in the body matches the authenticated supervisor
     if (req.body.supervisor_id !== supervisor_id) {
       return res.status(403).send("Access denied. Invalid supervisor ID.");
     }
 
-    const ardDeletion: ArdDeletionInterface = {ard_id, patient_id, hf_id};
+    const ardDeletion: ArdDeletionInterface = { ard_id, patient_id, hf_id };
 
     try {
       const results = await ArdModel.supervisorDeleteArd(ardDeletion);
