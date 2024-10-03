@@ -1,4 +1,4 @@
-import TableNames from "../../../common/constants/TableNames";
+import TableNames from "../../common/constants/TableNames";
 
 // -- create e-tsekapp database if non-existent--
 // -- create tables for the database --
@@ -43,7 +43,7 @@ export const createTablesScripts = [
       hf_province VARCHAR(50),
       province_id INT,
       hf_region VARCHAR(50),
-    
+
       FOREIGN KEY (brgy_id) REFERENCES a_barangay_info(brgy_id),
       FOREIGN KEY (muncity_id) REFERENCES a_muncity_info(muncity_id),
       FOREIGN KEY (province_id) REFERENCES a_province_info(province_id)
@@ -102,11 +102,8 @@ export const createTablesScripts = [
       patient_purok VARCHAR(50),
       patient_sitio VARCHAR(50),
       brgy_id INT NOT NULL,
-      patient_brgy VARCHAR(50),       
       muncity_id INT NOT NULL,
-      patient_muncity VARCHAR(50),
       province_id INT NOT NULL, 
-      patient_province VARCHAR(50),
       patient_phic_no VARCHAR(50),
       patient_pwd_no VARCHAR(50),
       patient_emp_status VARCHAR(50),

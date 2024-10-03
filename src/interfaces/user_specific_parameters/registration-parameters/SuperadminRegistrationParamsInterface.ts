@@ -1,6 +1,4 @@
-import { RowDataPacket } from "mysql2";
-
-export interface Superadmin extends RowDataPacket {
+export default interface SuperadminRegistrationParamsInterface {
   superadmin_id: string;
   superadmin_email: string;
   superadmin_username: string;

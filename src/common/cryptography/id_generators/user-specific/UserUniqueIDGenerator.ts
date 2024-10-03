@@ -31,7 +31,7 @@ class UserUniqueIDGenerator {
 
   public static generateCompactUniqueID(
     userFirstName: string,
-    userMiddleName: string,
+    userMiddleName: string | null,
     userLastName: string,
     designation: string,
     facilityCode: string

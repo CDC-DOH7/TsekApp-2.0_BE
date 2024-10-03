@@ -8,8 +8,8 @@ import {
   insertDefaultMuncityValues,
   insertDefaultProvinceValues,
 } from "./initialization-scripts/DatabaseTableDefaultValueInsertion";
-import calculateCurrentDateTime from "../../common/calc/CalcDateTime";
-import TableNames from "../../common/constants/TableNames";
+import calculateCurrentDateTime from "../common/calc/CalcDateTime";
+import TableNames from "../common/constants/TableNames";
 
 dotenv.config();
 

@@ -1,4 +1,4 @@
-export default interface OfficerRegistrationProcedureParamsInterface {
+export default interface OfficerRegistrationParamsInterface {
   officer_id: string;
   officer_email: string;
   officer_username: string;
@@ -9,5 +9,5 @@ export default interface OfficerRegistrationProcedureParamsInterface {
   officer_contact_no: string;
   officer_designation: string;
   officer_is_verified: boolean;
-  officer_facility_code: string;
+  hf_id: string;
 }

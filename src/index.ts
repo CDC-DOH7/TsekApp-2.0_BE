@@ -13,7 +13,7 @@ import guestRouter from "./routes/GuestRouter";
 import dotenv from "dotenv";
 
 // Import the database initialization function
-import initializeDatabase from "./models/database-models-creation/DatabaseInititialization";
+import initializeDatabase from "./database-initiation/DatabaseInititialization";
 import calculateCurrentDateTime from "./common/calc/CalcDateTime";
 
 dotenv.config();
