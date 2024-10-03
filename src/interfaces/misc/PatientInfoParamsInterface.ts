@@ -1,7 +1,7 @@
 export default interface PatientInfoParamsInterface {
   patient_id: string;
   patient_fname: string;
-  patient_mname: string;
+  patient_mname: string | null;
   patient_lname: string;
   patient_date_assess: Date;
   patient_age: number;
@@ -11,17 +11,14 @@ export default interface PatientInfoParamsInterface {
   patient_civil_status: string;
   patient_religion: string;
   patient_contact_no: string;
-  patient_street: string;
-  patient_purok: string;
-  patient_sitio: string;
+  patient_street: string | null;
+  patient_purok: string | null;
+  patient_sitio: string | null;
   brgy_id: number;
-  patient_brgy: string;
   muncity_id: number;
-  patient_muncity: string;
   province_id: number;
-  patient_province: string;
-  patient_phic_no: string;
-  patient_pwd_no: string;
+  patient_phic_no: string | null;
+  patient_pwd_no: string | null;
   patient_emp_status: string;
   patient_ip: string;
   patient_ip_ethinicity: string;

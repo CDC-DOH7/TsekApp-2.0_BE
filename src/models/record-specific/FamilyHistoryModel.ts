@@ -3,8 +3,8 @@ import FamilyHistorySearchFilterInterface from "../../interfaces/search_filters/
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-specific/OfficerModel";
-import supervisorDb from "../user-specific/SupervisorModel";
+import officerDb from "../../connections/OfficerConnection";
+import supervisorDb from "../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
 
 // # --- Begin Operations for Family History Models --- #

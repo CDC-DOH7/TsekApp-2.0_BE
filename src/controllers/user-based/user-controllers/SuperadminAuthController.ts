@@ -1,13 +1,12 @@
 // controllers/SuperadminController.ts
 import { Request, Response } from "express";
-import db from "../../../models/user-specific/SuperadminModel";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { ResultSetHeader } from "mysql2";
-import { Superadmin } from "../../../types/user-based/superadmin";
-import SuperadminRegistrationProcedureParamsInterface from "../../../interfaces/user_specific_parameters/SuperadminRegistrationProcedureParamsInterface";
 import UniqueIDGenerator from "../../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
 import dotenv from "dotenv";
+import SuperadminModel from "../../../models/user-specific/SuperadminModel";
+import SuperadminRegistrationParamsInterface from "../../../interfaces/user_specific_parameters/registration-parameters/SuperadminRegistrationParamsInterface";
+import SuperadminLoginParamsInterface from "../../../interfaces/user_specific_parameters/login-parameters/SuperadminLoginParamsInterface";
 
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET_ENCODED
@@ -18,71 +17,94 @@ const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN_ENCODED
   ? Buffer.from(process.env.JWT_EXPIRES_IN_ENCODED, "base64").toString("utf-8")
   : "";
 
-const COOKIE_MAX_AGE = Number(process.env.JWT_EXPIRES_IN) || 604800000; // One week in milliseconds
+const COOKIE_MAX_AGE = Number(process.env.JWT_EXPIRES_IN);
 
-// Function for registration
 export const register = async (req: Request, res: Response) => {
   const {
     superadmin_email,
     superadmin_username,
-    superadmin_password,
+    superadmin_entered_password,
     superadmin_fname,
     superadmin_mname,
     superadmin_lname,
   } = req.body;
 
   try {
-    const hash = await bcrypt.hash(superadmin_password, 10);
-    const query = `INSERT INTO a_superadmin_info
-    (superadmin_id, 
-    superadmin_email, 
-    superadmin_username, 
-    superadmin_password, 
-    superadmin_fname, 
-    superadmin_mname, 
-    superadmin_lname) 
-    VALUES (?, ?, ?, ?, ?, ?, ?);`;
+    // this function will automatically hash the entered_password into the user's password
+    const superadmin_password = await bcrypt.hash(
+      superadmin_entered_password,
+      10
+    );
+
+    // override details for superadmin
+    const superadmin_designation = "superadmin";
+    const hf_id = "DOH000000000000001";
 
     const superadmin_id = UniqueIDGenerator.generateCompactUniqueID(
       superadmin_fname,
       superadmin_mname,
       superadmin_lname,
-      "ADMIN", // constant
-      "E_TSEKAPP" // constant
+      superadmin_designation,
+      hf_id
     );
 
-    const procedureParams: SuperadminRegistrationProcedureParamsInterface[] = [
-      superadmin_id,
-      superadmin_email,
-      superadmin_username,
-      hash,
-      superadmin_fname,
-      superadmin_mname,
-      superadmin_lname,
+    const procedureParams: SuperadminRegistrationParamsInterface[] = [
+      {
+        superadmin_id,
+        superadmin_email,
+        superadmin_username,
+        superadmin_password,
+        superadmin_fname,
+        superadmin_mname,
+        superadmin_lname,
+      },
     ];
 
-    await (await db).query<ResultSetHeader>(query, procedureParams);
-    res.status(201).send({ message: "Superadmin registered" });
+    await SuperadminModel.superadminRegister(procedureParams)
+      .then((message) => {
+        res.status(200).send(message);
+      })
+      .catch((err) => {
+        console.error(err);
+        res
+          .status(500)
+          .send("An error occurred during registration. Please try again.");
+      });
   } catch (err) {
     console.error(err);
-    res.status(500).send(err);
+    res
+      .status(500)
+      .send("An error occurred during registration. Please try again.");
   }
 };
 
-// Function for login
 export const login = async (req: Request, res: Response) => {
-  const { superadmin_username, superadmin_password } = req.body;
+  const {
+    superadmin_username,
+    superadmin_password,
+  }: SuperadminLoginParamsInterface = req.body;
 
   try {
-    const query = `SELECT * FROM a_superadmin_info WHERE superadmin_username = ?`;
-    const [results] = await (await db).query<Superadmin[]>(query, [superadmin_username]);
+    // Call the superadminLogin function
+    const superadmin = await SuperadminModel.superadminLogin(
+      superadmin_username
+    );
 
-    if (results.length === 0) {
-      return res.status(401).send("Invalid credentials");
+    // Check if superadmin is null
+    if (!superadmin) {
+      return res.status(404).send("Superadmin not found");
     }
 
-    const superadmin = results[0];
-    const isMatch = await bcrypt.compare(superadmin_password, superadmin.superadmin_password);
+    // Ensure superadmin_password is defined
+    if (!superadmin.superadmin_password) {
+      return res.status(500).send("Internal server error: Password not found");
+    }
+
+    // Compare the provided password with the stored password
+    const isMatch = await bcrypt.compare(
+      superadmin_password,
+      superadmin.superadmin_password
+    );
 
     if (!isMatch) {
       return res.status(401).send("Invalid credentials");
@@ -92,7 +114,15 @@ export const login = async (req: Request, res: Response) => {
       expiresIn: JWT_EXPIRES_IN,
     });
 
-    const messageString = `Logged in! Welcome ${superadmin.superadmin_lname.toUpperCase()}, ${superadmin.superadmin_fname}`;
+    const lastName =
+      superadmin.superadmin_lname != null
+        ? superadmin.superadmin_lname.toUpperCase()
+        : "Superadmin";
+    const firstName =
+      superadmin.superadmin_fname != null
+        ? superadmin.superadmin_fname
+        : "Name";
+    const messageString = `Logged in! Welcome ${lastName}, ${firstName}`;
 
     // Exclude the password field from the superadmin info
     const {
@@ -106,12 +136,12 @@ export const login = async (req: Request, res: Response) => {
     res.status(200).json({ message: messageString, superadmin_info });
   } catch (err) {
     console.error(err);
-    res.status(500).send(err);
+    res.status(500).send("An error occurred during login. Please try again.");
   }
 };
 
 // Function for logout
-export const logout = async (req: Request, res: Response) => {
+export const logout = (res: Response) => {
   res.clearCookie("token");
   res.status(200).send("Logged out");
 };

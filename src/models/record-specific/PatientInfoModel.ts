@@ -3,8 +3,8 @@ import PatientInfoSearchFilterInterface from "../../interfaces/search_filters/Pa
 import TableNames from "../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../user-specific/OfficerModel";
-import supervisorDb from "../user-specific/SupervisorModel";
+import officerDb from "../../connections/OfficerConnection";
+import supervisorDb from "../../connections/SupervisorConnection";
 import PatientInfoDeletionInterface from "../../interfaces/misc/PatientInfoDeletionInterface";
 
 // # --- Begin Operations for Past Medical Records Models --- #
@@ -121,11 +121,8 @@ const officerCreatePatientInfo = async (
       patientInfo.patient_purok,
       patientInfo.patient_sitio,
       patientInfo.brgy_id,
-      patientInfo.patient_brgy,
       patientInfo.muncity_id,
-      patientInfo.patient_muncity,
       patientInfo.province_id,
-      patientInfo.patient_province,
       patientInfo.patient_phic_no,
       patientInfo.patient_pwd_no,
       patientInfo.patient_emp_status,
@@ -246,11 +243,8 @@ const supervisorUpdatePatientInfo = async (
       patientInfo.patient_purok,
       patientInfo.patient_sitio,
       patientInfo.brgy_id,
-      patientInfo.patient_brgy,
       patientInfo.muncity_id,
-      patientInfo.patient_muncity,
       patientInfo.province_id,
-      patientInfo.patient_province,
       patientInfo.patient_phic_no,
       patientInfo.patient_pwd_no,
       patientInfo.patient_emp_status,
