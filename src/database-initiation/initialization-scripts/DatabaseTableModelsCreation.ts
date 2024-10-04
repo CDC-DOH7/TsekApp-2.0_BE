@@ -192,8 +192,8 @@ export const createTablesScripts = [
     )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.NCD_RISK_FACTORS_TABLE}(
       rf_id VARCHAR(75) NOT NULL PRIMARY KEY,
-      patient_id VARCHAR(57) NOT NULL,
-      rf_tobacco_use VARCHAR(15),
+      patient_id VARCHAR(75) NOT NULL,
+      rf_tobacco_use TEXT,
       rf_alcohol_intake VARCHAR(7),
       rf_binge_drinker VARCHAR(7),
       rf_physical_activity VARCHAR(7),
@@ -214,7 +214,7 @@ export const createTablesScripts = [
       rs_blood_sugar_fbs FLOAT,
       rs_blood_sugar_rbs FLOAT,
       rs_blood_sugar_date_taken DATE,
-      rs_blood_sugar_symptoms VARCHAR(7),
+      rs_blood_sugar_symptoms TEXT,
       rs_lipid_cholesterol FLOAT,
       rs_lipid_hdl FLOAT,
       rs_lipid_ldl FLOAT,
@@ -225,7 +225,7 @@ export const createTablesScripts = [
       rs_urine_protein_date_taken DATE,
       rs_urine_ketones FLOAT,
       rs_urine_ketones_date_taken DATE,
-      rs_respiratory VARCHAR(50),
+      rs_respiratory TEXT,
       hf_id VARCHAR(18) NOT NULL,
 
       FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id),
@@ -236,7 +236,7 @@ export const createTablesScripts = [
       patient_id VARCHAR(75) NOT NULL,
       mngm_lifestyle_mod TEXT,
       mngm_med_antihypertensive TEXT,
-      mngm_med_antidiabetes TEXT NOT NULL,
+      mngm_med_antidiabetes TEXT,
       mngm_date_followup DATE,
       mngm_remarks TEXT,
       hf_id VARCHAR(18) NOT NULL,
@@ -248,14 +248,16 @@ export const createTablesScripts = [
       ref_id VARCHAR(75) NOT NULL PRIMARY KEY,
       patient_id VARCHAR(75) NOT NULL,
       officer_id VARCHAR(50),
-      hf_id VARCHAR(18) NOT NULL,
+      physician_name TEXT NOT NULL, 
       ref_date DATE NOT NULL,
       ref_reason TEXT NOT NULL,
       ref_destination VARCHAR(50) NOT NULL,
 
+      hf_id VARCHAR(18) NOT NULL,
       FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id),
       FOREIGN KEY (officer_id) REFERENCES a_officer_info(officer_id),
       FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id)
+      FOREIGN KEY (ref_destination) REFERENCES a_health_facility_info(hf_id)
     )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.CONSULTATION_LOGS_TABLE} (
       cl_id VARCHAR(75) PRIMARY KEY,
