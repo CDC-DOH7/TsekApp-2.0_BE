@@ -5,7 +5,8 @@ import TableNames from "../../common/constants/TableNames";
 // Decide on who can access
 import officerDb from "../../connections/OfficerConnection";
 import supervisorDb from "../../connections/SupervisorConnection";
-import PatientInfoDeletionInterface from "../../interfaces/misc/PatientInfoDeletionInterface";
+import { PatientInfo } from "../../types/record-based/PatientInfo";
+import PatientInfoDeletionInterface from "../../interfaces/deletion_params/PatientInfoDeletionInterface";
 
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchPatientInfo = async (
@@ -66,51 +67,73 @@ const officerSearchPatientInfo = async (
 const officerCreatePatientInfo = async (
   patientInfo: PatientInfoParamsInterface
 ) => {
-  const query = `INSERT INTO ${TableNames.PATIENT_INFO_TABLE}
-  (patient_id,
-  patient_fname,
-  patient_mname,
-  patient_lname,
-  patient_date_assess, 
-  patient_age, 
-  patient_age_group_id,
-  patient_sex,
-  patient_dob,
-  patient_civil_status,
-  patient_religion,
-  patient_contact_no,
-  patient_street,
-  patient_purok,
-  patient_sitio,
-  brgy_id,
-  patient_brgy,
-  muncity_id,
-  patient_muncity,
-  province_id,
-  patient_province,
-  patient_phic_no,
-  patient_pwd_no,
-  patient_emp_status,
-  patient_ip,
-  patient_ip_ethinicity,
-  hf_id,
-  ) VALUES (?, ?, ?, ?, ?, 
-   ?, ?, ?, ?, ?,
-   ?, ?, ?, ?, ?, 
-   ?, ?, ?, ?, ?, 
-   ?, ?, ?, ?, ?, ?, ?)`;
+  // Query to check if the patient already exists with the same name and birthdate and hf_id
+  const checkQuery = `SELECT COUNT(*) as count FROM ${TableNames.PATIENT_INFO_TABLE}
+    WHERE patient_fname = ? AND patient_mname = ? AND patient_lname = ? AND patient_dob = ? AND hf_id = ?`;
 
   // officer-specific
   try {
-    const [result] = await (
+    const [checkResult] = await (
       await officerDb
-    ).query(query, [
+    ).query<PatientInfo[]>(checkQuery, [
+      patientInfo.patient_fname,
+      patientInfo.patient_mname,
+      patientInfo.patient_lname,
+      patientInfo.patient_dob, // Include birthdate in the check
+      patientInfo.hf_id, // Check against hf_id
+    ]);
+
+    // Check if a record exists
+    const recordExists = checkResult[0].count > 0;
+
+    if (recordExists) {
+      // If a record exists, do not insert
+      throw new Error(
+        "Patient with this name, birthdate, and hf_id already exists."
+      );
+    }
+
+    // Proceed with insert if no record exists
+    const insertQuery = `INSERT INTO ${TableNames.PATIENT_INFO_TABLE}
+    (patient_id,
+    patient_fname,
+    patient_mname,
+    patient_lname,
+    patient_date_assess, 
+    patient_age, 
+    patient_age_group_id,
+    patient_sex,
+    patient_dob,
+    patient_civil_status,
+    patient_religion,
+    patient_contact_no,
+    patient_street,
+    patient_purok,
+    patient_sitio,
+    brgy_id,
+    muncity_id,
+    province_id,
+    patient_phic_no,
+    patient_pwd_no,
+    patient_emp_status,
+    patient_ip,
+    patient_ethnicity,
+    hf_id) VALUES (
+     ?, ?, ?, ?, ?, 
+     ?, ?, ?, ?, ?,
+     ?, ?, ?, ?, ?, 
+     ?, ?, ?, ?, ?, 
+     ?, ?, ?, ?)`;
+
+    const [insertResult] = await (
+      await officerDb
+    ).query(insertQuery, [
       patientInfo.patient_id,
       patientInfo.patient_fname,
       patientInfo.patient_mname,
       patientInfo.patient_lname,
-      patientInfo.patient_date_assess, 
-      patientInfo.patient_age, 
+      patientInfo.patient_date_assess,
+      patientInfo.patient_age,
       patientInfo.patient_age_group_id,
       patientInfo.patient_sex,
       patientInfo.patient_dob,
@@ -127,10 +150,11 @@ const officerCreatePatientInfo = async (
       patientInfo.patient_pwd_no,
       patientInfo.patient_emp_status,
       patientInfo.patient_ip,
-      patientInfo.patient_ip_ethinicity,
+      patientInfo.patient_ethnicity,
       patientInfo.hf_id,
     ]);
-    return result;
+
+    return insertResult;
   } catch (err) {
     throw err;
   }
@@ -193,7 +217,7 @@ const supervisorSearchPatientInfo = async (
 
 // Update consultation record
 const supervisorUpdatePatientInfo = async (
-  patientInfo: PatientInfoParamsInterface,
+  patientInfo: PatientInfoParamsInterface
 ) => {
   const query = `UPDATE ${TableNames.PATIENT_INFO_TABLE} SET 
   patient_fname = ?,
@@ -220,7 +244,7 @@ const supervisorUpdatePatientInfo = async (
   patient_pwd_no = ?, 
   patient_emp_status = ?, 
   patient_ip = ?, 
-  patient_ip_ethinicity = ?
+  patient_ethinicity = ?
   WHERE patient_id = ? AND hf_id = ?`;
 
   // supervisor-specific
@@ -249,7 +273,7 @@ const supervisorUpdatePatientInfo = async (
       patientInfo.patient_pwd_no,
       patientInfo.patient_emp_status,
       patientInfo.patient_ip,
-      patientInfo.patient_ip_ethinicity,
+      patientInfo.patient_ethnicity,
       patientInfo.patient_id,
       patientInfo.hf_id,
     ]);
@@ -261,16 +285,15 @@ const supervisorUpdatePatientInfo = async (
 
 // Delete consultation record
 const supervisorDeletePatientInfo = async (
-  deletionParameters: PatientInfoDeletionInterface
+  patientInfoDeletion: PatientInfoDeletionInterface
 ) => {
-  const query = `DELETE FROM ${TableNames.PATIENT_INFO_TABLE} 
-  WHERE patient_id = ? AND hf_id = ?`;
-
+  const query = `DELETE FROM ${TableNames.PATIENT_INFO_TABLE} WHERE patient_id = ? AND hf_id = ?`;
+  const { patient_id, hf_id} = patientInfoDeletion;
   // supervisor-specific
   try {
     const [result] = await (
       await supervisorDb
-    ).query(query, [deletionParameters.patient_id, deletionParameters.hf_id]);
+    ).query(query, [patient_id, hf_id]);
     return result;
   } catch (err) {
     throw err;

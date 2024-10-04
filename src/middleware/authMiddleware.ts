@@ -54,6 +54,8 @@ export const authenticateOfficer = async (
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as { id: string };
+
+    console.log(req.body.officer_id);
     req.body.officer_id = decoded.id;
 
     const query = `SELECT * FROM ${TableNames.OFFICER_INFO_TABLE} WHERE officer_is_verified = true AND officer_id = ?`;

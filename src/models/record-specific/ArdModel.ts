@@ -6,14 +6,15 @@ import TableNames from "../../common/constants/TableNames";
 import officerDb from "../../connections/OfficerConnection";
 import supervisorDb from "../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
+import ArdDeletionInterface from "../../interfaces/deletion_params/ArdDeletionInterface";
 
 // # --- Begin Operations for ARD Models --- #
 
 const officerSearchArd = async (searchFilter: ArdSearchFilterInterface): Promise<QueryResult> => {
-  const { ard_id, patient_id } = searchFilter;
+  const { hf_id, ard_id, patient_id } = searchFilter;
 
-  let query = `SELECT * FROM ${TableNames.ASSESS_RED_FLAG_TABLE} WHERE ard_id = ?`;
-  const queryParams: any[] = [ard_id];
+  let query = `SELECT * FROM ${TableNames.ASSESS_RED_FLAG_TABLE} WHERE hf_id = ? AND ard_id = ?`;
+  const queryParams: any[] = [hf_id,ard_id];
 
   if (patient_id) {
     query += " AND patient_id LIKE ?";
@@ -46,8 +47,9 @@ const officerCreateArd = async (ard: ArdParamsInterface): Promise<QueryResult> =
   ard_selfharm_or_suicide, 
   ard_aggressive_behavior, 
   ard_eye_injury, 
-  ard_severe_injuries) 
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  ard_severe_injuries,
+  hf_id) 
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
   try {
@@ -67,6 +69,7 @@ const officerCreateArd = async (ard: ArdParamsInterface): Promise<QueryResult> =
       ard.ard_aggressive_behavior,
       ard.ard_eye_injury,
       ard.ard_severe_injuries,
+      ard.hf_id
     ]);
     return result;
   } catch (err) {
@@ -77,10 +80,10 @@ const officerCreateArd = async (ard: ArdParamsInterface): Promise<QueryResult> =
 // # ---- Supervisor Functions ---- # //
 
 const supervisorSearchArd = async (searchFilter: ArdSearchFilterInterface): Promise<QueryResult> => {
-  const { ard_id, patient_id } = searchFilter;
+  const { hf_id, ard_id, patient_id } = searchFilter;
 
-  let query = `SELECT * FROM ${TableNames.ASSESS_RED_FLAG_TABLE} WHERE ard_id = ?`;
-  const queryParams: any[] = [ard_id];
+  let query = `SELECT * FROM ${TableNames.ASSESS_RED_FLAG_TABLE} WHERE hf_id = ? AND ard_id = ?`;
+  const queryParams: any[] = [hf_id, ard_id];
 
   if (patient_id) {
     query += " AND patient_id LIKE ?";
@@ -112,7 +115,7 @@ const supervisorUpdateArd = async (ard: ArdParamsInterface): Promise<QueryResult
     ard_aggressive_behavior = ?, 
     ard_eye_injury = ?, 
     ard_severe_injuries = ? 
-    WHERE ard_id = ? AND patient_id = ?`;
+    WHERE ard_id = ? AND patient_id = ? AND hf_id = ?`;
 
   // supervisor-specific
   try {
@@ -132,6 +135,7 @@ const supervisorUpdateArd = async (ard: ArdParamsInterface): Promise<QueryResult
       ard.ard_severe_injuries,
       ard.ard_id,
       ard.patient_id,
+      ard.hf_id
     ]);
     return result;
   } catch (err) {
@@ -140,12 +144,12 @@ const supervisorUpdateArd = async (ard: ArdParamsInterface): Promise<QueryResult
 };
 
 // Delete consultation record
-const supervisorDeleteArd = async (ard_id: string): Promise<QueryResult> => {
-  const query = `DELETE FROM ${TableNames.ASSESS_RED_FLAG_TABLE} WHERE ard_id = ?`;
-
+const supervisorDeleteArd = async (ardDeletion: ArdDeletionInterface): Promise<QueryResult> => {
+  const query = `DELETE FROM ${TableNames.ASSESS_RED_FLAG_TABLE} WHERE ard_id = ? AND patient_id = ? AND hf_id = ?`;
+  const {ard_id, patient_id, hf_id} = ardDeletion;
   // supervisor-specific
   try {
-    const [result] = await (await supervisorDb).query(query, [ard_id]);
+    const [result] = await (await supervisorDb).query(query, [ard_id, patient_id, hf_id]);
     return result;
   } catch (err) {
     throw err;

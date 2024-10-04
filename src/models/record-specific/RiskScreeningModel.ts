@@ -6,15 +6,16 @@ import TableNames from "../../common/constants/TableNames";
 import officerDb from "../../connections/OfficerConnection";
 import supervisorDb from "../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
+import RiskScreeningDeletionInterface from "../../interfaces/deletion_params/RiskScreeningDeletionInterface";
 
 // # --- Begin Operations for Risk Screening Models --- #
 const officerSearchRiskScreening = async (
   searchFilter: RiskScreeningSearchFilterInterface
 ): Promise<QueryResult> => {
-  const { rs_id, patient_id } = searchFilter;
+  const { hf_id, rs_id, patient_id } = searchFilter;
 
-  let query = `SELECT * FROM ${TableNames.RISK_SCREENING_TABLE} WHERE rs_id = ?`;
-  const queryParams: any[] = [rs_id]; // Initial wildcard for rs_id
+  let query = `SELECT * FROM ${TableNames.RISK_SCREENING_TABLE} WHERE hf_id = ? AND rs_id = ?`;
+  const queryParams: any[] = [hf_id, rs_id]; // Initial wildcard for rs_id
 
   // Add wildcard searches for each field
   if (patient_id) {
@@ -36,7 +37,8 @@ const officerSearchRiskScreening = async (
 
 // Create consultation record
 const officerCreateRiskScreening = async (
-  riskScreening: RiskScreeningParamsInterface): Promise<QueryResult> => {
+  riskScreening: RiskScreeningParamsInterface
+): Promise<QueryResult> => {
   const query = `INSERT INTO ${TableNames.RISK_SCREENING_TABLE}
   (rs_id, 
   patient_id, 
@@ -54,8 +56,9 @@ const officerCreateRiskScreening = async (
   rs_urine_protein_date_taken, 
   rs_urine_ketones,
   rs_urine_ketones_date_taken, 
-  rs_respiratory) 
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  rs_respiratory,
+  hf_id) 
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   try {
     const [result] = await (
@@ -78,6 +81,7 @@ const officerCreateRiskScreening = async (
       riskScreening.rs_urine_ketones,
       riskScreening.rs_urine_ketones_date_taken,
       riskScreening.rs_respiratory,
+      riskScreening.hf_id,
     ]);
     return result;
   } catch (err) {
@@ -132,7 +136,7 @@ const supervisorUpdateRiskScreening = async (
   rs_urine_ketones = ?, 
   rs_urine_ketones_date_taken = ?,
   rs_respiratory = ?, 
-  WHERE rs_id = ? AND patient_id = ?`;
+  WHERE rs_id = ? AND patient_id = ? AND hf_id = ?`;
 
   // supervisor-specific
   try {
@@ -156,6 +160,7 @@ const supervisorUpdateRiskScreening = async (
       riskScreening.rs_respiratory,
       riskScreening.rs_id,
       riskScreening.patient_id,
+      riskScreening.hf_id,
     ]);
     return result;
   } catch (err) {
@@ -165,13 +170,16 @@ const supervisorUpdateRiskScreening = async (
 
 // Delete consultation record
 const supervisorDeleteRiskScreening = async (
-  rs_id: string): Promise<QueryResult> => {
-  const query = `DELETE FROM ${TableNames.RISK_SCREENING_TABLE} WHERE rs_id = ?`;
-  
-  try{
-    const[result] = await (await supervisorDb).query(query, [rs_id]); 
+  riskScreeningDeletion: RiskScreeningDeletionInterface
+): Promise<QueryResult> => {
+  const query = `DELETE FROM ${TableNames.RISK_SCREENING_TABLE} WHERE hf_id = ? AND patient_id = ? AND rs_id = ?`;
+  const { hf_id, patient_id, rs_id } = riskScreeningDeletion;
+  try {
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [hf_id, patient_id, rs_id]);
     return result;
-  }catch(err){
+  } catch (err) {
     throw err;
   }
 };

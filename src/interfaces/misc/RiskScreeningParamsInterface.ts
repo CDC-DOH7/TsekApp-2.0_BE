@@ -16,4 +16,5 @@ export default interface RiskScreeningParamsInterface {
   rs_urine_ketones: number | null;
   rs_urine_ketones_date_taken: Date | null;
   rs_respiratory: string | null;
+  hf_id: string;
 }

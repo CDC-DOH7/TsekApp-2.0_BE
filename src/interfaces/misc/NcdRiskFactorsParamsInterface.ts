@@ -11,4 +11,5 @@ export default interface NcdRiskFactorsParamsInterface {
   rf_bmi: number | null;
   rf_waist_circumference: number | null;
   rf_bp: string | null;
+  hf_id: string;
 }
