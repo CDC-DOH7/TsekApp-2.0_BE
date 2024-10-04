@@ -256,7 +256,7 @@ export const createTablesScripts = [
       hf_id VARCHAR(18) NOT NULL,
       FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id),
       FOREIGN KEY (officer_id) REFERENCES a_officer_info(officer_id),
-      FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id)
+      FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id),
       FOREIGN KEY (ref_destination) REFERENCES a_health_facility_info(hf_id)
     )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.CONSULTATION_LOGS_TABLE} (

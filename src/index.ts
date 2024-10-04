@@ -1,7 +1,9 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import swagger from "./swagger/swagger"; // Adjust path if necessary
+import https from "https";
+import dotenv from "dotenv";
+import fs from "fs";
 
 // Route imports
 import officerRouter from "./routes/OfficerRouter";
@@ -9,21 +11,28 @@ import supervisorRouter from "./routes/SupervisorRouter";
 import superadminRouter from "./routes/SuperadminRouter";
 import guestRouter from "./routes/GuestRouter";
 
-// Dotenv
-import dotenv from "dotenv";
-
 // Import the database initialization function
 import initializeDatabase from "./database-initiation/DatabaseInititialization";
 import calculateCurrentDateTime from "./common/calc/CalcDateTime";
 
 dotenv.config();
 
-const eTsekApp: express.Application = express();
+const eTsekApp = express();
 const PORT = process.env.DEFAULT_PORT || 3000;
-const REACT_PORT = process.env.DEFAULT_REACT_PORT || 5173;
+const CACERT_PATH = process.env.CA_CERTIFICATE_PATH;
+
+
+if (!CACERT_PATH) {
+  throw new Error("CA_CERTIFICATE_PATH and CA_KEY_PATH must be defined in the .env file");
+}
+
+console.log(fs.readFileSync(CACERT_PATH));
+
+const options = {
+  cert: fs.readFileSync(CACERT_PATH as string),
+};
 
 const corsOptions = {
-  // origin: `http://localhost:${REACT_PORT}`, // Replace with your React app's URL
   credentials: true, // Allow credentials (cookies)
 };
 
@@ -31,10 +40,8 @@ eTsekApp.use(cookieParser());
 eTsekApp.use(cors(corsOptions));
 eTsekApp.use(express.json());
 
-swagger(eTsekApp); // Set up Swagger
-
 // Routes
-eTsekApp.use("/v1/guest", guestRouter)
+eTsekApp.use("/v1/guest", guestRouter);
 eTsekApp.use("/v1/supervisor", supervisorRouter);
 eTsekApp.use("/v1/officer", officerRouter);
 eTsekApp.use("/v1/superadmin", superadminRouter);
@@ -46,8 +53,8 @@ const startServer = async () => {
     await initializeDatabase();
 
     return new Promise((resolve, reject) => {
-      const server = eTsekApp.listen(PORT, () => {
-        console.info(`\n${calculateCurrentDateTime()} >>> eTsekApp v1 API is running at: http://localhost:${PORT}`);
+      const server = https.createServer(options, eTsekApp).listen(PORT, () => {
+        console.info(`\n${calculateCurrentDateTime()} >>> eTsekApp v1 API is running at: https://localhost:${PORT}`);
         resolve(server);
       });
 
