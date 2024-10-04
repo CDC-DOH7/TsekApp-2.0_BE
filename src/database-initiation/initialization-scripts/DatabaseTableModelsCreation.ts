@@ -247,7 +247,7 @@ export const createTablesScripts = [
   `CREATE TABLE IF NOT EXISTS ${TableNames.REFERRAL_TABLE} (
       ref_id VARCHAR(75) NOT NULL PRIMARY KEY,
       patient_id VARCHAR(75) NOT NULL,
-      officer_id VARCHAR(50),
+      officer_id VARCHAR(50) NOT NULL,
       physician_name TEXT NOT NULL, 
       ref_date DATE NOT NULL,
       ref_reason TEXT NOT NULL,

@@ -1,11 +1,12 @@
 import { RowDataPacket } from "mysql2";
 
-export interface ConsultationLog extends RowDataPacket {
-  cl_id: string | null;
-  cl_description: string;
-  cl_date: Date | null;
-  patient_id: string;
-  officer_id: string;
-  hf_id: string;
-  ref_id: string;
+export interface Referral extends RowDataPacket {
+  ref_id: string | null;
+  patient_id: string | null;
+  officer_id: string | null;
+  physician_name: string | null;
+  hf_id: string | null;
+  ref_date: Date | null;
+  ref_reason: string | null;
+  ref_destination: string | null;
 }
