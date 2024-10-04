@@ -7,6 +7,7 @@ import {
   authenticateSupervisor,
 } from "../../../middleware/authMiddleware";
 import ConsultationParamsInterface from "../../../interfaces/misc/ConsultationLogParamsInterface";
+import ConsultationLogDeletionInterface from "../../../interfaces/deletion_params/ConsultationLogDeletionInterface";
 
 // (Officer) Add/create a new consultation log
 export const officerCreateConsultation = [
@@ -133,8 +134,8 @@ export const supervisorUpdateConsultation = [
       ref_id,
       cl_id,
       patient_id,
-      hf_id,
       supervisor_id,
+      hf_id,
     } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -163,18 +164,26 @@ export const supervisorUpdateConsultation = [
 export const supervisorDeleteConsultation = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   async (req: Request, res: Response) => {
-    const { cl_id, supervisor_id } = req.body;
+    const { cl_id, patient_id, supervisor_id, hf_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.supervisor_id !== supervisor_id) {
       return res.status(403).send("Access denied. Invalid ID.");
     }
 
-      try {
-        const results = await ConsultationModel.supervisorUpdateConsultationLog(cl_id);
-        res.status(200).json({ message: "Deleted definitions.", results });
-      } catch (err) {
-        return res.status(500).send(err);
-      }
+    const consultationLogDeletion: ConsultationLogDeletionInterface = {
+      cl_id,
+      patient_id,
+      hf_id,
+    };
+
+    try {
+      const results = await ConsultationModel.supervisorDeleteConsultationLog(
+        consultationLogDeletion
+      );
+      res.status(200).json({ message: "Deleted definitions.", results });
+    } catch (err) {
+      return res.status(500).send(err);
+    }
   },
 ];

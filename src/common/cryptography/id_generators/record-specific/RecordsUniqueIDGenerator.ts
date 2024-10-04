@@ -53,7 +53,7 @@ class RecordsUniqueIDGenerator {
     switch (idType) {
       // for ARD id
       case 0:
-        identifier = "ARD"
+        identifier = "ARD";
         break;
 
       // for consultation id
@@ -102,7 +102,9 @@ class RecordsUniqueIDGenerator {
       .toUpperCase()}-${uniqueSuffix}`;
 
     const suffix = this.calculateSuffix(uniqueID);
-    return `${uniqueID}-${suffix}`;
+    const generatedId = `${uniqueID}-${suffix}`;
+    console.log(generatedId);
+    return generatedId;
   }
 }
 

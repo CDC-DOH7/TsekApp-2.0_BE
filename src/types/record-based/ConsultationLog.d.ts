@@ -1,6 +1,6 @@
 import { RowDataPacket } from "mysql2";
 
-export interface Consultation extends RowDataPacket {
+export interface ConsultationLog extends RowDataPacket {
   cl_id: string | null;
   cl_description: string;
   cl_date: Date | null;

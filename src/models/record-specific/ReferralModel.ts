@@ -5,6 +5,7 @@ import TableNames from "../../common/constants/TableNames";
 // Decide on who can access
 import officerDb from "../../connections/OfficerConnection";
 import supervisorDb from "../../connections/SupervisorConnection";
+import ReferralDeletionInterface from "../../interfaces/deletion_params/ReferralDeletionInterface";
 
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchReferral = async (
@@ -157,11 +158,15 @@ const supervisorUpdateReferral = async (referral: ReferralParamsInterface) => {
 };
 
 // Delete consultation record
-const supervisorDeleteReferral = async (ref_id: string) => {
-  const query = `DELETE FROM ${TableNames.REFERRAL_TABLE} WHERE ref_id = ?`;
-
+const supervisorDeleteReferral = async (
+  referralDeletion: ReferralDeletionInterface
+) => {
+  const query = `DELETE FROM ${TableNames.REFERRAL_TABLE} WHERE ref_id = ? AND patient_id = ? AND hf_id = ?`;
+  const { ref_id, patient_id, hf_id } = referralDeletion;
   try {
-    const [result] = await (await supervisorDb).query(query, [ref_id]);
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [ref_id, patient_id, hf_id]);
     return result;
   } catch (err) {
     throw err;

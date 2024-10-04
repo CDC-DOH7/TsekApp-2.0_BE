@@ -1,4 +1,6 @@
-export default interface PatientInfoParamsInterface {
+import { RowDataPacket } from "mysql2";
+
+export interface PatientInfo extends RowDataPacket {
   patient_id: string;
   patient_fname: string;
   patient_mname: string | null;

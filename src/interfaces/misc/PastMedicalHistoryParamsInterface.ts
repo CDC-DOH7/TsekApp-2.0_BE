@@ -18,4 +18,5 @@ export default interface PastMedicalHistoryParamsInterface {
   pmh_specify_surgical_history: string;
   pmh_thyroid_disorder: string | null;
   pmh_kidney_disorder: string | null;
+  hf_id: string;
 }

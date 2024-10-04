@@ -12,11 +12,10 @@ class PatientUniqueIDGenerator {
     return base36 || alphabet[0];
   }
 
-  private static getCurrentDate(): string {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, "0");
-    const day = String(now.getDate()).padStart(2, "0");
+  private static formatDate(date: Date): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
     return `${year}${month}${day}`;
   }
 
@@ -39,20 +38,23 @@ class PatientUniqueIDGenerator {
     firstName: string,
     middleName: string,
     lastName: string,
-    barangay: string,
-    city: string,
-    province: string
+    birthdate: string, // new parameter for birthdate
+    barangayId: string,
+    muncityId: string,
+    provinceId: string
   ): string {
-
-    // check if no middle name, if none, substitute it to last name, hence, repeating the initials
+    // Check if no middle name, if none, substitute it to last name
     if (!middleName || middleName.trim() === "") {
       middleName = lastName;
     }
 
-    const currentDate = this.getCurrentDate();
+    // Parse and format the birthdate
+    const birthDateObject = new Date(birthdate);
+    const formattedBirthdate = this.formatDate(birthDateObject);
+
     const randomBits = this.getRandomBits(32);
     const name = firstName + middleName + lastName;
-    const combinedString = `${currentDate}-${name}-${randomBits}`;
+    const combinedString = `${formattedBirthdate}-${name}-${randomBits}`;
     const hash = this.hashString(combinedString);
     const uniqueSuffix = this.base36encode(parseInt(hash.slice(0, 8), 16));
 
@@ -62,13 +64,9 @@ class PatientUniqueIDGenerator {
       lastName.charAt(0)
     ).toUpperCase();
 
-    let uniqueID = `${currentDate}-${combinedInitials
+    let uniqueID = `${formattedBirthdate}-${combinedInitials
       .slice(0, 3)
-      .toUpperCase()}-${barangay.slice(0, 3).toUpperCase()}-${city
-      .slice(0, 3)
-      .toUpperCase()}${province
-      .slice(0, 3)
-      .toUpperCase()}-${uniqueSuffix.slice(0,6)}`;
+      .toUpperCase()}-${barangayId}-${muncityId}-${provinceId}-${uniqueSuffix.slice(0, 6)}`;
 
     const suffix = this.calculateSuffix(uniqueID);
     return `${uniqueID}-${suffix}`;

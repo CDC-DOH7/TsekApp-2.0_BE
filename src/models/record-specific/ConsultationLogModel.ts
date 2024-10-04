@@ -6,6 +6,7 @@ import TableNames from "../../common/constants/TableNames";
 import officerDb from "../../connections/OfficerConnection";
 import supervisorDb from "../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
+import ConsultationLogDeletionInterface from "../../interfaces/deletion_params/ConsultationLogDeletionInterface";
 
 // # --- Begin Operations for Consultation Log Models --- #
 const officerSearchConsultationLog = async(
@@ -174,14 +175,14 @@ const supervisorUpdateConsultationLog = async(
 
 // Delete consultation record
 const supervisorDeleteConsultationLog = async(
-  cl_id: string,
+  consultationLogDeletion: ConsultationLogDeletionInterface,
 ): Promise<QueryResult> => {
-  const query = `DELETE FROM ${TableNames.CONSULTATION_LOGS_TABLE} 
-  WHERE cl_id = ?`;
-  
+  const query = `DELETE FROM ${TableNames.CONSULTATION_LOGS_TABLE} WHERE cl_id = ?`;
+  const {cl_id, patient_id, hf_id} = consultationLogDeletion;
+
   // supervisor-specific
   try {
-    const [result] = await (await supervisorDb).query(query, [cl_id]);
+    const [result] = await (await supervisorDb).query(query, [cl_id, patient_id, hf_id]);
     return result;
   } catch (err) {
     throw err;

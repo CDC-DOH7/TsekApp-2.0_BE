@@ -7,11 +7,12 @@ import {
   authenticateSupervisor,
 } from "../../../middleware/authMiddleware";
 import { calculateAgeGroup } from "../../../common/calc/CalcPatientAgeGroup";
+import PatientInfoDeletionInterface from "../../../interfaces/deletion_params/PatientInfoDeletionInterface";
 
 // (Officer) Add/create a new consultation log
 export const officerCreatePatientInfo = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  async(req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       patient_fname,
       patient_mname,
@@ -27,16 +28,13 @@ export const officerCreatePatientInfo = [
       patient_purok,
       patient_sitio,
       brgy_id,
-      patient_brgy,
       muncity_id,
-      patient_muncity,
       province_id,
-      patient_province,
       patient_phic_no,
       patient_pwd_no,
       patient_emp_status,
       patient_ip,
-      patient_ip_ethinicity,
+      patient_ethnicity,
       hf_id,
       officer_id,
     } = req.body;
@@ -51,9 +49,10 @@ export const officerCreatePatientInfo = [
       patient_fname,
       patient_mname,
       patient_lname,
-      patient_brgy,
-      patient_muncity,
-      patient_province
+      patient_dob,
+      brgy_id,
+      muncity_id,
+      province_id
     );
 
     const patient_age_group_id: number = calculateAgeGroup(patient_age);
@@ -82,10 +81,14 @@ export const officerCreatePatientInfo = [
         patient_pwd_no,
         patient_emp_status,
         patient_ip,
-        patient_ip_ethinicity,
+        patient_ethnicity,
         hf_id,
       });
-      res.status(201).json({ patient_id: patient_id, message: "Patient Info added successfully", results});
+      res.status(201).json({
+        patient_id: patient_id,
+        message: "Patient Info added successfully",
+        results,
+      });
     } catch (err) {
       return res.status(500).send(err);
     }
@@ -95,7 +98,7 @@ export const officerCreatePatientInfo = [
 // (Officer) Read/Search a consultation log
 export const officerSearchPatientInfo = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  async(req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       patient_date_assess_startdate,
       patient_date_assess_enddate,
@@ -110,7 +113,7 @@ export const officerSearchPatientInfo = [
 
     // Ensure the officer_id in the body matches the authenticated officer
     if (req.body.officer_id !== officer_id) {
-      return res.status(403).send("Access denied. Invalid ID.");
+      return res.status(403).json({ message: "Access denied. Invalid ID." });
     }
 
     try {
@@ -134,7 +137,7 @@ export const officerSearchPatientInfo = [
 // (Supervisor) Read/Search a consultation log
 export const supervisorSearchPatientInfo = [
   authenticateOfficer, // Use the middleware to authenticate the officer
-  async(req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       patient_date_assess_startdate,
       patient_date_assess_enddate,
@@ -173,7 +176,7 @@ export const supervisorSearchPatientInfo = [
 // (Supervisor) Read/Search a consultation log
 export const supervisorUpdatePatientInfo = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  async(req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const {
       patient_fname,
       patient_mname,
@@ -195,7 +198,7 @@ export const supervisorUpdatePatientInfo = [
       patient_pwd_no,
       patient_emp_status,
       patient_ip,
-      patient_ip_ethinicity,
+      patient_ethnicity,
       patient_id,
       hf_id,
       supervisor_id,
@@ -206,10 +209,10 @@ export const supervisorUpdatePatientInfo = [
       return res.status(403).send("Access denied. Invalid ID.");
     }
 
-    const patient_age_group_id = calculateAgeGroup(patient_age); 
+    const patient_age_group_id = calculateAgeGroup(patient_age);
 
     try {
-      const results = await PatientInfoModel.supervisorUpdatePatientInfo(      {
+      const results = await PatientInfoModel.supervisorUpdatePatientInfo({
         patient_fname,
         patient_mname,
         patient_lname,
@@ -231,7 +234,7 @@ export const supervisorUpdatePatientInfo = [
         patient_pwd_no,
         patient_emp_status,
         patient_ip,
-        patient_ip_ethinicity,
+        patient_ethnicity,
         patient_id,
         hf_id,
       });
@@ -245,7 +248,7 @@ export const supervisorUpdatePatientInfo = [
 // (Supervisor) Delete a consultation log
 export const supervisorDeletePatientInfo = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
-  async(req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const { patient_id, hf_id, supervisor_id } = req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -253,8 +256,12 @@ export const supervisorDeletePatientInfo = [
       return res.status(403).send("Access denied. Invalid ID.");
     }
 
+    const patientDeletion: PatientInfoDeletionInterface = { patient_id, hf_id };
+
     try {
-      const results = await PatientInfoModel.supervisorDeletePatientInfo({patient_id, hf_id});
+      const results = await PatientInfoModel.supervisorDeletePatientInfo(
+        patientDeletion
+      );
       res.status(200).json({ message: "Deleted definitions.", results });
     } catch (err) {
       return res.status(500).send(err);

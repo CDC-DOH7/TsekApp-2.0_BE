@@ -6,4 +6,5 @@ export default interface ManagementParamsInterface {
   mngm_med_antidiabetes: string | null;
   mngm_date_followup: Date | null;
   mngm_remarks: string | null;
+  hf_id: string;
 }

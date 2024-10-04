@@ -6,6 +6,7 @@ import TableNames from "../../common/constants/TableNames";
 import officerDb from "../../connections/OfficerConnection";
 import supervisorDb from "../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
+import ManagementDeletionInterface from "../../interfaces/deletion_params/ManagementDeletionInterface";
 
 // # --- Begin Operations for Management Models --- #
 const officerSearchManagement = async (
@@ -16,10 +17,11 @@ const officerSearchManagement = async (
     patient_id,
     mngm_date_followup_startdate,
     mngm_date_followup_enddate,
+    hf_id,
   } = searchFilter;
 
-  let query = `SELECT * FROM ${TableNames.MANAGEMENT_TABLE} WHERE mgm_id = ?`;
-  const queryParams: any[] = [mngm_id]; // Initial wildcard for cl_id
+  let query = `SELECT * FROM ${TableNames.MANAGEMENT_TABLE} WHERE mngm_id = ? AND hf_id = ?`;
+  const queryParams: any[] = [mngm_id, hf_id]; // Initial wildcard for cl_id
 
   // Add wildcard searches for each field
   if (patient_id) {
@@ -55,8 +57,10 @@ const officerCreateManagement = async (
   mngm_med_antihypertensive,
   mngm_med_antidiabetes, 
   mngm_date_followup, 
-  mngm_remarks) 
-  VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  mngm_remarks,
+  hf_id
+  ) 
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
   try {
@@ -70,6 +74,7 @@ const officerCreateManagement = async (
       management.mngm_med_antidiabetes,
       management.mngm_date_followup,
       management.mngm_remarks,
+      management.hf_id,
     ]);
     return result;
   } catch (err) {
@@ -86,10 +91,11 @@ const supervisorSearchManagement = async (
     patient_id,
     mngm_date_followup_startdate,
     mngm_date_followup_enddate,
+    hf_id,
   } = searchFilter;
 
-  let query = `SELECT * FROM ${TableNames.MANAGEMENT_TABLE} WHERE mngm_id = ?`;
-  const queryParams: any[] = [mngm_id]; // Initial wildcard for mngm_id
+  let query = `SELECT * FROM ${TableNames.MANAGEMENT_TABLE} WHERE hf_id = ? AND mngm_id = ?`;
+  const queryParams: any[] = [hf_id, mngm_id]; // Initial wildcard for mngm_id
 
   // Add wildcard searches for each field
   if (patient_id) {
@@ -124,7 +130,7 @@ const supervisorUpdateManagement = async (
   mngm_med_antidiabetes = ?, 
   mngm_date_followup = ?, 
   mngm_remarks = ? 
-  WHERE mngm_id = ? AND patient_id = ?`;
+  WHERE mngm_id = ? AND patient_id = ? AND hf_id = ?`;
 
   // supervisor-specific
   try {
@@ -138,6 +144,7 @@ const supervisorUpdateManagement = async (
       management.mngm_remarks,
       management.mngm_id,
       management.patient_id,
+      management.hf_id,
     ]);
     return result;
   } catch (err) {
@@ -147,12 +154,15 @@ const supervisorUpdateManagement = async (
 
 // Delete consultation record
 const supervisorDeleteManagement = async (
-  mngm_id: string
+  managementDeletion: ManagementDeletionInterface
 ): Promise<QueryResult> => {
-  const query = `DELETE FROM ${TableNames.MANAGEMENT_TABLE} WHERE mngm_id = ?`;
+  const { mngm_id, patient_id, hf_id } = managementDeletion;
+  const query = `DELETE FROM ${TableNames.MANAGEMENT_TABLE} WHERE mngm_id = ? AND patient_id = ? AND hf_id =?`;
   // supervisor-specific
   try {
-    const [result] = await (await supervisorDb).query(query, [mngm_id]);
+    const [result] = await (
+      await supervisorDb
+    ).query(query, [mngm_id, patient_id, hf_id]);
     return result;
   } catch (err) {
     throw err;

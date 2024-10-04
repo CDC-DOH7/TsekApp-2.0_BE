@@ -50,60 +50,63 @@ const identifyTableName = (index: number) => {
       tableName = TableNames.ASSESS_RED_FLAG_TABLE;
       break;
     case 10:
-      tableName = TableNames.PAST_MEDICAL_HISTORY_TABLE;
+      tableName = TableNames.ASSESS_RED_FLAG_SUMMARY_TABLE;
       break;
     case 11:
-      tableName = TableNames.FAMILY_HISTORY_TABLE;
+      tableName = TableNames.PAST_MEDICAL_HISTORY_TABLE;
       break;
     case 12:
-      tableName = TableNames.NCD_RISK_FACTORS_TABLE;
+      tableName = TableNames.FAMILY_HISTORY_TABLE;
       break;
     case 13:
-      tableName = TableNames.RISK_SCREENING_TABLE;
+      tableName = TableNames.NCD_RISK_FACTORS_TABLE;
       break;
     case 14:
-      tableName = TableNames.MANAGEMENT_TABLE;
+      tableName = TableNames.RISK_SCREENING_TABLE;
       break;
     case 15:
-      tableName = TableNames.REFERRAL_TABLE;
+      tableName = TableNames.MANAGEMENT_TABLE;
       break;
     case 16:
-      tableName = TableNames.CONSULTATION_LOGS_TABLE;
+      tableName = TableNames.REFERRAL_TABLE;
       break;
     case 17:
-      tableName = TableNames.AGE_BRACKET;
+      tableName = TableNames.CONSULTATION_LOGS_TABLE;
       break;
     case 18:
-      tableName = TableNames.AVAILABLE_SERVICES;
+      tableName = TableNames.AGE_BRACKET;
       break;
     case 19:
-      tableName = TableNames.BRACKET_SERVICES;
+      tableName = TableNames.AVAILABLE_SERVICES;
       break;
     case 20:
-      tableName = TableNames.CASES;
+      tableName = TableNames.BRACKET_SERVICES;
       break;
     case 21:
-      tableName = TableNames.FEEDBACK;
+      tableName = TableNames.CASES;
       break;
     case 22:
-      tableName = TableNames.GENERAL_INFORMATION;
+      tableName = TableNames.FEEDBACK;
       break;
     case 23:
-      tableName = TableNames.IMMUSTAT;
+      tableName = TableNames.GENERAL_INFORMATION;
       break;
     case 24:
-      tableName = TableNames.MEDICATION;
+      tableName = TableNames.IMMUSTAT;
       break;
     case 25:
-      tableName = TableNames.PHIC_MEMBERSHIP;
+      tableName = TableNames.MEDICATION;
       break;
     case 26:
-      tableName = TableNames.PROFILE;
+      tableName = TableNames.PHIC_MEMBERSHIP;
       break;
     case 27:
-      tableName = TableNames.SERVICES;
+      tableName = TableNames.PROFILE;
       break;
     case 28:
+      tableName = TableNames.SERVICES;
+      break;
+    case 29:
       tableName = TableNames.TUBERCULOSIS;
       break;
     default:
@@ -240,7 +243,9 @@ const insertDefaultValues = async (valueScripts: string[][]): Promise<void> => {
       `${calculateCurrentDateTime()} >> Insertion completed with ${duplicateCount} duplicate entries ignored.`
     );
   } else {
-    console.log(`${calculateCurrentDateTime()} >> Successfully inserted default values!`);
+    console.log(
+      `${calculateCurrentDateTime()} >> Successfully inserted default values!`
+    );
   }
 };
 
