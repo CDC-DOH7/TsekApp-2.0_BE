@@ -1,11 +1,18 @@
 import { RowDataPacket } from "mysql2";
 
-export interface ConsultationLog extends RowDataPacket {
-  cl_id: string | null;
-  cl_description: string;
-  cl_date: Date | null;
+export interface FamilyHistory extends RowDataPacket {
+  fh_id: string;
   patient_id: string;
-  officer_id: string;
+  fh_hypertension: string | null;
+  fh_stroke: string | null;
+  fh_heart_disease: string | null;
+  fh_diabetes_mellitus: string | null;
+  fh_asthma: string | null;
+  fh_cancer: string | null;
+  fh_kidney_disease: string | null;
+  fh_vascular_disease: string | null;
+  fh_tb: string | null;
+  fh_disorders: string | null;
+  fh_copd: string | null;
   hf_id: string;
-  ref_id: string;
 }

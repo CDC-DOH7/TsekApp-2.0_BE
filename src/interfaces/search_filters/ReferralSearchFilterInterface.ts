@@ -5,6 +5,7 @@ export default interface ReferralSearchFilterInterface {
   patient_id: string | null;
   officer_id: string | null;
   hf_id: string | null;
+  physician_name: string | null;
   // ref_date: Date | null;
   ref_reason: string | null;
   ref_destination: string | null;
