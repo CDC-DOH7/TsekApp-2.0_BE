@@ -21,11 +21,11 @@ export const insertDefaultProvinceValues = [
 export const insertDefaultAgeGroupValues = [
   `INSERT INTO ${TableNames.AGE_GROUP_TABLE} 
   (ag_id, ag_range, ag_description) VALUES
-    (1, "20-29 years old", "Young Adult"),
-    (2, "30-39 years old", "Young Adult"),
-    (3, "40-49 years old", "Middle-aged Adult"),
-    (4, "50-59 years old", "Middle-aged Adult"),
-    (5, "60+ years old", "Senior Citizen")`,
+    (1, '20-29 years old', 'Young Adult'),
+    (2, '30-39 years old', 'Young Adult'),
+    (3, '40-49 years old', 'Middle-aged Adult'),
+    (4, '50-59 years old', 'Middle-aged Adult'),
+    (5, '60+ years old', 'Senior Citizen')`,
 ];
 
 // default muncity values

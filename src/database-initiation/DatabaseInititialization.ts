@@ -10,6 +10,7 @@ import {
 } from "./initialization-scripts/DatabaseTableDefaultValueInsertion";
 import calculateCurrentDateTime from "../common/calc/CalcDateTime";
 import TableNames from "../common/constants/TableNames";
+import fs from "fs";
 
 dotenv.config();
 
@@ -119,7 +120,10 @@ const identifyTableName = (index: number) => {
 
 const initializeDatabase = async (): Promise<void> => {
   const connection = await connectToDatabase();
+  const isProduction: boolean =
+    process.env.IS_PRODUCTION?.toLowerCase() === "true";
 
+  console.log(isProduction);
   console.log(`\n${calculateCurrentDateTime()} >> Initializing System...`);
   try {
     console.log(`\n${calculateCurrentDateTime()} >> Initializing Database ...`);
@@ -128,7 +132,7 @@ const initializeDatabase = async (): Promise<void> => {
       "SELECT VERSION() AS version"
     )) as [Array<{ version: string }>, mysql.ResultSetHeader];
     console.log(
-      `${calculateCurrentDateTime()} >> MariaDB Database version: ${
+      `${calculateCurrentDateTime()} >> MySQL/MariaDB Database version: ${
         versionRows[0].version
       }`
     );
@@ -250,12 +254,29 @@ const insertDefaultValues = async (valueScripts: string[][]): Promise<void> => {
 };
 
 const connectToDatabase = async (): Promise<any> => {
-  const connection = await mysql.createConnection({
-    host: process.env.SUPERADMIN_HOSTNAME,
-    user: process.env.SUPERADMIN_USER,
-    password: process.env.SUPERADMIN_PASS,
-    database: process.env.DATABASE_NAME,
-  });
+  const isProduction: boolean =
+    process.env.IS_PRODUCTION?.toLowerCase() === "true";
+
+  let connection: mysql.Connection;
+
+  if (!isProduction) {
+    connection = await mysql.createConnection({
+      host: process.env.DEV_HOSTNAME,
+      user: process.env.DEV_GUEST_USER,
+      password: process.env.DEV_GUEST_PASS,
+      database: process.env.DATABASE_NAME,
+      port: Number(process.env.LOCAL_MYSQL_PORT),
+    });
+  } else {
+    connection = await mysql.createConnection({
+      host: process.env.PROD_HOSTNAME,
+      user: process.env.PROD_GUEST_USER,
+      password: process.env.PROD_GUEST_PASS,
+      database: process.env.DATABASE_NAME,
+      port: Number(process.env.REMOTE_MYSQL_PORT),
+      ssl: { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) },
+    });
+  }
 
   return connection;
 };
