@@ -25,13 +25,11 @@ export const createTablesScripts = [
       province_id INT NOT NULL PRIMARY KEY,
       province_name VARCHAR(50) NOT NULL
     )`,
-  `
-  CREATE TABLE IF NOT EXISTS ${TableNames.AGE_GROUP_TABLE} (
+  `CREATE TABLE IF NOT EXISTS ${TableNames.AGE_GROUP_TABLE} (
       ag_id INT NOT NULL PRIMARY KEY,
       ag_range VARCHAR(50) NOT NULL,
       ag_description VARCHAR(50) NOT NULL
-    )
-  `,
+    )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.HEALTH_FACILITY_INFO_TABLE} (
       hf_id VARCHAR(50) NOT NULL PRIMARY KEY,
       hf_name TEXT NOT NULL,

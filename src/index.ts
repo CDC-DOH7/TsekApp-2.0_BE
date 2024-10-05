@@ -1,9 +1,8 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import https from "https";
+import http from "http";
 import dotenv from "dotenv";
-import fs from "fs";
 
 // Route imports
 import officerRouter from "./routes/OfficerRouter";
@@ -18,19 +17,9 @@ import calculateCurrentDateTime from "./common/calc/CalcDateTime";
 dotenv.config();
 
 const eTsekApp = express();
-const PORT = process.env.DEFAULT_PORT || 3000;
-const CACERT_PATH = process.env.CA_CERTIFICATE_PATH;
-
-
-if (!CACERT_PATH) {
-  throw new Error("CA_CERTIFICATE_PATH and CA_KEY_PATH must be defined in the .env file");
-}
-
-console.log(fs.readFileSync(CACERT_PATH));
-
-const options = {
-  cert: fs.readFileSync(CACERT_PATH as string),
-};
+const PORT = process.env.PORT || 3000;
+const isProduction: boolean =
+  process.env.IS_PRODUCTION?.toLowerCase() === "true";
 
 const corsOptions = {
   credentials: true, // Allow credentials (cookies)
@@ -52,16 +41,20 @@ const startServer = async () => {
     // Initialize the database
     await initializeDatabase();
 
-    return new Promise((resolve, reject) => {
-      const server = https.createServer(options, eTsekApp).listen(PORT, () => {
-        console.info(`\n${calculateCurrentDateTime()} >>> eTsekApp v1 API is running at: https://localhost:${PORT}`);
-        resolve(server);
-      });
+    // Create the HTTP server instead of HTTPS
+    const server = http.createServer(eTsekApp);
 
-      server.on("error", (err) => {
-        console.error(`${calculateCurrentDateTime()} >> Error starting server: ${err}`);
-        reject(err);
-      });
+    server.listen(PORT, () => {
+      console.info(`Production mode: ${isProduction}`);
+      console.info(
+        `\n${calculateCurrentDateTime()} >>> eTsekApp v1 API is running at: http://localhost:${PORT}`
+      );
+    });
+
+    server.on("error", (err) => {
+      console.error(
+        `${calculateCurrentDateTime()} >> Error starting server: ${err}`
+      );
     });
   } catch (err: any) {
     console.error(`Database initialization failed: ${err.message}`);
