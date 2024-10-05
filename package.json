@@ -6,7 +6,12 @@
     "start": "node dist/index.js",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci"
+  },
+  "engines": {
+    "node": "18.x",
+    "npm": "10.8.2"
   },
   "keywords": [],
   "author": "",
