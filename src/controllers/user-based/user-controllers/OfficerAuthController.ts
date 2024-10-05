@@ -136,7 +136,7 @@ export const login = async (req: Request, res: Response) => {
 };
 
 // Function for logout
-export const logout = (res: Response) => {
+export const logout = async (req: Request, res: Response) => {
   res.clearCookie("token");
   res.status(200).send("Logged out");
 };

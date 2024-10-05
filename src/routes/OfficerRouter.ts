@@ -1,8 +1,5 @@
 import { Router } from "express";
-import {
-  authenticateOfficer,
-  authMiddleware,
-} from "../middleware/authMiddleware";
+import { authMiddleware } from "../middleware/authMiddleware";
 import { RecordPaths, MiscPaths } from "../common/constants/RoutePathNames";
 import {
   register,

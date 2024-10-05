@@ -1,7 +1,8 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import swagger from "./swagger/swagger"; // Adjust path if necessary
+import http from "http";
+import dotenv from "dotenv";
 
 // Route imports
 import officerRouter from "./routes/OfficerRouter";
@@ -9,21 +10,18 @@ import supervisorRouter from "./routes/SupervisorRouter";
 import superadminRouter from "./routes/SuperadminRouter";
 import guestRouter from "./routes/GuestRouter";
 
-// Dotenv
-import dotenv from "dotenv";
-
 // Import the database initialization function
 import initializeDatabase from "./database-initiation/DatabaseInititialization";
 import calculateCurrentDateTime from "./common/calc/CalcDateTime";
 
 dotenv.config();
 
-const eTsekApp: express.Application = express();
-const PORT = process.env.DEFAULT_PORT || 3000;
-const REACT_PORT = process.env.DEFAULT_REACT_PORT || 5173;
+const eTsekApp = express();
+const PORT = process.env.PORT || 3000;
+const isProduction: boolean =
+  process.env.IS_PRODUCTION?.toLowerCase() === "true";
 
 const corsOptions = {
-  // origin: `http://localhost:${REACT_PORT}`, // Replace with your React app's URL
   credentials: true, // Allow credentials (cookies)
 };
 
@@ -31,10 +29,8 @@ eTsekApp.use(cookieParser());
 eTsekApp.use(cors(corsOptions));
 eTsekApp.use(express.json());
 
-swagger(eTsekApp); // Set up Swagger
-
 // Routes
-eTsekApp.use("/v1/guest", guestRouter)
+eTsekApp.use("/v1/guest", guestRouter);
 eTsekApp.use("/v1/supervisor", supervisorRouter);
 eTsekApp.use("/v1/officer", officerRouter);
 eTsekApp.use("/v1/superadmin", superadminRouter);
@@ -45,16 +41,20 @@ const startServer = async () => {
     // Initialize the database
     await initializeDatabase();
 
-    return new Promise((resolve, reject) => {
-      const server = eTsekApp.listen(PORT, () => {
-        console.info(`\n${calculateCurrentDateTime()} >>> eTsekApp v1 API is running at: http://localhost:${PORT}`);
-        resolve(server);
-      });
+    // Create the HTTP server instead of HTTPS
+    const server = http.createServer(eTsekApp);
 
-      server.on("error", (err) => {
-        console.error(`${calculateCurrentDateTime()} >> Error starting server: ${err}`);
-        reject(err);
-      });
+    server.listen(PORT, () => {
+      console.info(`Production mode: ${isProduction}`);
+      console.info(
+        `\n${calculateCurrentDateTime()} >>> eTsekApp v1 API is running at: http://localhost:${PORT}`
+      );
+    });
+
+    server.on("error", (err) => {
+      console.error(
+        `${calculateCurrentDateTime()} >> Error starting server: ${err}`
+      );
     });
   } catch (err: any) {
     console.error(`Database initialization failed: ${err.message}`);
