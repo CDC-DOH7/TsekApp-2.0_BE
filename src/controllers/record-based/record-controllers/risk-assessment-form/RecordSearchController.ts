@@ -1,3 +1,6 @@
+import AdvancedSearchFilterInterface from "../../../../interfaces/search_filters/advanced-search/risk-assessment-form/RecordAdvancedSearchFilterInterface";
+import SoftSearchFilterInterface from "../../../../interfaces/search_filters/soft-search/risk-assessment-form/RecordSoftSearchFilterInterface";
+
 // all officer-related record querying functions here:
 export { officerSearchArd } from "./records/ArdControllers";
 export { officerSearchConsultation } from "./records/ConsultationLogControllers";
@@ -20,6 +23,10 @@ export { supervisorSearchPatientInfo } from "./records/PatientInfoControllers";
 export { supervisorSearchReferral } from "./records/ReferralControllers";
 export { supervisorSearchRiskScreening } from "./records/RiskScreeningControllers";
 
-const softSearch = async({}) => {
-    
-} 
+export const softSearch = async (
+  softSearchParams: SoftSearchFilterInterface
+) => [];
+
+export const advancedSearch = async (
+  advancedSearchParams: AdvancedSearchFilterInterface
+) => {};
