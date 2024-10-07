@@ -22,7 +22,16 @@ const isProduction: boolean =
   process.env.IS_PRODUCTION?.toLowerCase() === "true";
 
 const corsOptions = {
-  credentials: true, // Allow credentials (cookies)
+  origin: function (origin: any, callback: (arg0: null, arg1: string) => void) {
+    if (origin) {
+      // Allow the origin that is making the request
+      callback(null, origin);
+    } else {
+      // Handle cases where there's no origin (such as curl requests or similar)
+      callback(null, "*");
+    }
+  },
+  credentials: true, // Allow credentials like cookies
 };
 
 eTsekApp.use(cookieParser());
