@@ -1,13 +1,13 @@
 // controllers/RiskScreeningController.ts
 import { Request, Response } from "express";
-import RiskScreeningModel from "../../../models/record-specific/RiskScreeningModel";
-import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import RiskScreeningModel from "../../../../../models/record-specific/risk-assessment-form/RiskScreeningModel";
+import RecordsUniqueIDGenerator from "../../../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../../middleware/authMiddleware";
-import RiskScreeningParamsInterface from "../../../interfaces/misc/RiskScreeningParamsInterface";
-import RiskScreeningDeletionInterface from "../../../interfaces/deletion_params/RiskScreeningDeletionInterface";
+} from "../../../../../middleware/authMiddleware";
+import RiskScreeningParamsInterface from "../../../../../interfaces/misc/risk-assessment-form/RiskScreeningParamsInterface";
+import RiskScreeningDeletionInterface from "../../../../../interfaces/deletion_params/risk-assessment-form/RiskScreeningDeletionInterface";
 
 // (Officer) Add/create a new RiskScreening log
 export const officerCreateRiskScreening = [

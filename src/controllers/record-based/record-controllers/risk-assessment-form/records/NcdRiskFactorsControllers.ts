@@ -1,13 +1,13 @@
 // controllers/NcdRiskFactorsController.ts
 import { Request, Response } from "express";
-import NcdRiskFactorsModel from "../../../models/record-specific/NcdRiskFactorsModel";
-import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import NcdRiskFactorsModel from "../../../../../models/record-specific/risk-assessment-form/NcdRiskFactorsModel";
+import RecordsUniqueIDGenerator from "../../../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../../middleware/authMiddleware";
-import NcdRiskFactorsParamsInterface from "../../../interfaces/misc/NcdRiskFactorsParamsInterface";
-import NcdRiskFactorsDeletionInterface from "../../../interfaces/deletion_params/NcdRiskFactorsDeletionInterface";
+} from "../../../../../middleware/authMiddleware";
+import NcdRiskFactorsParamsInterface from "../../../../../interfaces/misc/risk-assessment-form/NcdRiskFactorsParamsInterface";
+import NcdRiskFactorsDeletionInterface from "../../../../../interfaces/deletion_params/risk-assessment-form/NcdRiskFactorsDeletionInterface";
 
 // (Officer) Add/create a new NcdRiskFactors
 export const officerCreateNcdRiskFactors = [

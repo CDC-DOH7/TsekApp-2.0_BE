@@ -1,12 +1,12 @@
-import NcdRiskFactorsParamsInterface from "../../interfaces/misc/NcdRiskFactorsParamsInterface";
-import NcdRiskFactorsSearchFilterInterface from "../../interfaces/search_filters/NcdRiskFactorsSearchFilterInterface";
-import TableNames from "../../common/constants/TableNames";
+import NcdRiskFactorsParamsInterface from "../../../interfaces/misc/risk-assessment-form/NcdRiskFactorsParamsInterface";
+import NcdRiskFactorsSearchFilterInterface from "../../../interfaces/search_filters/specific-search/risk-assessment-form/NcdRiskFactorsSearchFilterInterface";
+import TableNames from "../../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../../connections/OfficerConnection";
-import supervisorDb from "../../connections/SupervisorConnection";
+import officerDb from "../../../connections/OfficerConnection";
+import supervisorDb from "../../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
-import NcdRiskFactorsDeletionInterface from "../../interfaces/deletion_params/NcdRiskFactorsDeletionInterface";
+import NcdRiskFactorsDeletionInterface from "../../../interfaces/deletion_params/risk-assessment-form/NcdRiskFactorsDeletionInterface";
 
 // # --- Begin Operations for NCD Risk Factors Models --- #
 const officerSearchNcdRiskFactors = async (

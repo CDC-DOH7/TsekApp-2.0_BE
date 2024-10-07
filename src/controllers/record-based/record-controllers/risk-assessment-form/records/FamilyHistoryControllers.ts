@@ -1,13 +1,13 @@
 // controllers/FamilyHistoryController.ts
 import { Request, Response } from "express";
-import FamilyHistoryModel from "../../../models/record-specific/FamilyHistoryModel";
-import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import FamilyHistoryModel from "../../../../../models/record-specific/risk-assessment-form/FamilyHistoryModel";
+import RecordsUniqueIDGenerator from "../../../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../../middleware/authMiddleware";
-import FamilyHistoryParamsInterface from "../../../interfaces/misc/FamilyHistoryParamsInterface";
-import FamilyHistoryDeletionInterface from "../../../interfaces/deletion_params/FamilyHistoryDeletionInterface";
+} from "../../../../../middleware/authMiddleware";
+import FamilyHistoryParamsInterface from "../../../../../interfaces/misc/risk-assessment-form/FamilyHistoryParamsInterface";
+import FamilyHistoryDeletionInterface from "../../../../../interfaces/deletion_params/risk-assessment-form/FamilyHistoryDeletionInterface";
 
 // (Officer) Add/create a new FamilyHistory log
 export const officerCreateFamilyHistory = [

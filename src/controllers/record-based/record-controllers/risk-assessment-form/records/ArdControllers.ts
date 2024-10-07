@@ -1,10 +1,10 @@
 // controllers/ArdController.ts
 import { Request, Response } from "express";
-import ArdModel from "../../../models/record-specific/ArdModel";
-import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
-import { authenticateOfficer } from "../../../middleware/authMiddleware";
-import { authenticateSupervisor } from "../../../middleware/authMiddleware";
-import ArdDeletionInterface from "../../../interfaces/deletion_params/ArdDeletionInterface";
+import ArdModel from "../../../../../models/record-specific/risk-assessment-form/ArdModel";
+import RecordsUniqueIDGenerator from "../../../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import { authenticateOfficer } from "../../../../../middleware/authMiddleware";
+import { authenticateSupervisor } from "../../../../../middleware/authMiddleware";
+import ArdDeletionInterface from "../../../../../interfaces/deletion_params/risk-assessment-form/ArdDeletionInterface";
 
 // (Officer) Add/create a new Ard log
 export const officerCreateArd = [

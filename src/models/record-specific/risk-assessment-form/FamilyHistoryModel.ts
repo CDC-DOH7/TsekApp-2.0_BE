@@ -1,12 +1,12 @@
-import FamilyHistoryParamsInterface from "../../interfaces/misc/FamilyHistoryParamsInterface";
-import FamilyHistorySearchFilterInterface from "../../interfaces/search_filters/FamilyHistorySearchFilterInterface";
-import TableNames from "../../common/constants/TableNames";
+import FamilyHistoryParamsInterface from "../../../interfaces/misc/risk-assessment-form/FamilyHistoryParamsInterface";
+import FamilyHistorySearchFilterInterface from "../../../interfaces/search_filters/specific-search/risk-assessment-form/FamilyHistorySearchFilterInterface";
+import TableNames from "../../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../../connections/OfficerConnection";
-import supervisorDb from "../../connections/SupervisorConnection";
+import officerDb from "../../../connections/OfficerConnection";
+import supervisorDb from "../../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
-import FamilyHistoryDeletionInterface from "../../interfaces/deletion_params/FamilyHistoryDeletionInterface";
+import FamilyHistoryDeletionInterface from "../../../interfaces/deletion_params/risk-assessment-form/FamilyHistoryDeletionInterface";
 
 // # --- Begin Operations for Family History Models --- #
 const officerSearchFamilyHistory = async (

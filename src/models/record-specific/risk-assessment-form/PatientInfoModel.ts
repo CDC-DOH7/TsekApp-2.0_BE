@@ -1,12 +1,12 @@
-import PatientInfoParamsInterface from "../../interfaces/misc/PatientInfoParamsInterface";
-import PatientInfoSearchFilterInterface from "../../interfaces/search_filters/PatientInfoSearchFilterInterface";
-import TableNames from "../../common/constants/TableNames";
+import PatientInfoParamsInterface from "../../../interfaces/misc/risk-assessment-form/PatientInfoParamsInterface";
+import PatientInfoSearchFilterInterface from "../../../interfaces/search_filters/specific-search/risk-assessment-form/PatientInfoSearchFilterInterface";
+import TableNames from "../../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../../connections/OfficerConnection";
-import supervisorDb from "../../connections/SupervisorConnection";
-import { PatientInfo } from "../../types/record-based/PatientInfo";
-import PatientInfoDeletionInterface from "../../interfaces/deletion_params/PatientInfoDeletionInterface";
+import officerDb from "../../../connections/OfficerConnection";
+import supervisorDb from "../../../connections/SupervisorConnection";
+import { PatientInfo } from "../../../types/record-based/PatientInfo";
+import PatientInfoDeletionInterface from "../../../interfaces/deletion_params/risk-assessment-form/PatientInfoDeletionInterface";
 
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchPatientInfo = async (
