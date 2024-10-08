@@ -92,7 +92,9 @@ export const login = async (req: Request, res: Response) => {
 
     // Check if superadmin is null
     if (!superadmin) {
-      return res.status(404).send("Superadmin not found");
+      return res
+        .status(401)
+        .send("Login failed. Please check your username and password.");
     }
 
     // Ensure superadmin_password is defined
@@ -107,7 +109,9 @@ export const login = async (req: Request, res: Response) => {
     );
 
     if (!isMatch) {
-      return res.status(401).send("Invalid credentials");
+      return res
+        .status(401)
+        .send("Login failed. Please check your username and password.");
     }
 
     const token = jwt.sign({ id: superadmin.superadmin_id }, JWT_SECRET, {
@@ -132,7 +136,12 @@ export const login = async (req: Request, res: Response) => {
       ...superadmin_info
     } = superadmin;
 
-    res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
+    res.cookie("token", token, {
+      maxAge: COOKIE_MAX_AGE,
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
     res.status(200).json({ message: messageString, superadmin_info });
   } catch (err) {
     console.error(err);
