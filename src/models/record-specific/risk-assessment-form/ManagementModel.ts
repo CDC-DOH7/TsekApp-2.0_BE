@@ -1,12 +1,12 @@
-import ManagementParamsInterface from "../../interfaces/misc/ManagementParamsInterface";
-import ManagementSearchFilterInterface from "../../interfaces/search_filters/ManagementSearchFilterInterface";
-import TableNames from "../../common/constants/TableNames";
+import ManagementParamsInterface from "../../../interfaces/misc/risk-assessment-form/ManagementParamsInterface";
+import ManagementSearchFilterInterface from "../../../interfaces/search_filters/specific-search/risk-assessment-form/ManagementSearchFilterInterface";
+import TableNames from "../../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../../connections/OfficerConnection";
-import supervisorDb from "../../connections/SupervisorConnection";
+import officerDb from "../../../connections/OfficerConnection";
+import supervisorDb from "../../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
-import ManagementDeletionInterface from "../../interfaces/deletion_params/ManagementDeletionInterface";
+import ManagementDeletionInterface from "../../../interfaces/deletion_params/risk-assessment-form/ManagementDeletionInterface";
 
 // # --- Begin Operations for Management Models --- #
 const officerSearchManagement = async (

@@ -18,7 +18,7 @@ import {
   officerCreatePatientInfo,
   officerCreateReferral,
   officerCreateRiskScreening,
-} from "../controllers/record-based/RecordCreationController";
+} from "../controllers/record-based/record-controllers/risk-assessment-form/RecordCreationController";
 
 // searching functions
 import {
@@ -31,7 +31,7 @@ import {
   officerSearchPatientInfo,
   officerSearchReferral,
   officerSearchRiskScreening,
-} from "../controllers/record-based/RecordSearchController";
+} from "../controllers/record-based/record-controllers/risk-assessment-form/RecordSearchController";
 import { officerRetrieveBarangayList } from "../controllers/record-based/misc-controllers/BarangayController";
 import { officerRetrieveHealthFacilityList } from "../controllers/record-based/misc-controllers/HealthFacilityController";
 import { officerRetrieveProvinceList } from "../controllers/record-based/misc-controllers/ProvinceController";

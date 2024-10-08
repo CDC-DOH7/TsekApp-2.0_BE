@@ -1,12 +1,12 @@
-import ConsultationParamsInterface from "../../interfaces/misc/ConsultationLogParamsInterface";
-import ConsultationLogSearchFilterInterface from "../../interfaces/search_filters/ConsultationLogSearchFilterInterface";
-import TableNames from "../../common/constants/TableNames";
+import ConsultationParamsInterface from "../../../interfaces/misc/risk-assessment-form/ConsultationLogParamsInterface";
+import ConsultationLogSearchFilterInterface from "../../../interfaces/search_filters/specific-search/risk-assessment-form/ConsultationLogSearchFilterInterface";
+import TableNames from "../../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../../connections/OfficerConnection";
-import supervisorDb from "../../connections/SupervisorConnection";
+import officerDb from "../../../connections/OfficerConnection";
+import supervisorDb from "../../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
-import ConsultationLogDeletionInterface from "../../interfaces/deletion_params/ConsultationLogDeletionInterface";
+import ConsultationLogDeletionInterface from "../../../interfaces/deletion_params/risk-assessment-form/ConsultationLogDeletionInterface";
 
 // # --- Begin Operations for Consultation Log Models --- #
 const officerSearchConsultationLog = async(

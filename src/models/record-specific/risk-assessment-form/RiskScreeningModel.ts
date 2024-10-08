@@ -1,12 +1,12 @@
-import RiskScreeningParamsInterface from "../../interfaces/misc/RiskScreeningParamsInterface";
-import RiskScreeningSearchFilterInterface from "../../interfaces/search_filters/RiskScreeningFilterInterface";
-import TableNames from "../../common/constants/TableNames";
+import RiskScreeningParamsInterface from "../../../interfaces/misc/risk-assessment-form/RiskScreeningParamsInterface";
+import RiskScreeningSearchFilterInterface from "../../../interfaces/search_filters/specific-search/risk-assessment-form/RiskScreeningFilterInterface";
+import TableNames from "../../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../../connections/OfficerConnection";
-import supervisorDb from "../../connections/SupervisorConnection";
+import officerDb from "../../../connections/OfficerConnection";
+import supervisorDb from "../../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
-import RiskScreeningDeletionInterface from "../../interfaces/deletion_params/RiskScreeningDeletionInterface";
+import RiskScreeningDeletionInterface from "../../../interfaces/deletion_params/risk-assessment-form/RiskScreeningDeletionInterface";
 
 // # --- Begin Operations for Risk Screening Models --- #
 const officerSearchRiskScreening = async (

@@ -1,13 +1,13 @@
 // controllers/ManagementController.ts
 import { Request, Response } from "express";
-import ManagementModel from "../../../models/record-specific/ManagementModel";
-import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import ManagementModel from "../../../../../models/record-specific/risk-assessment-form/ManagementModel";
+import RecordsUniqueIDGenerator from "../../../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../../middleware/authMiddleware";
-import ManagementParamsInterface from "../../../interfaces/misc/ManagementParamsInterface";
-import ManagementDeletionInterface from "../../../interfaces/deletion_params/ManagementDeletionInterface";
+} from "../../../../../middleware/authMiddleware";
+import ManagementParamsInterface from "../../../../../interfaces/misc/risk-assessment-form/ManagementParamsInterface";
+import ManagementDeletionInterface from "../../../../../interfaces/deletion_params/risk-assessment-form/ManagementDeletionInterface";
 
 // (Officer) Add/create a new Management
 export const officerCreateManagement = [

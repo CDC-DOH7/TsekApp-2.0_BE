@@ -1,13 +1,13 @@
 // controllers/consultationController.ts
 import { Request, Response } from "express";
-import PatientInfoModel from "../../../models/record-specific/PatientInfoModel";
-import PatientUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/PatientUniqueIDGenerator";
+import PatientInfoModel from "../../../../../models/record-specific/risk-assessment-form/PatientInfoModel";
+import PatientUniqueIDGenerator from "../../../../../common/cryptography/id_generators/record-specific/PatientUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../../middleware/authMiddleware";
-import { calculateAgeGroup } from "../../../common/calc/CalcPatientAgeGroup";
-import PatientInfoDeletionInterface from "../../../interfaces/deletion_params/PatientInfoDeletionInterface";
+} from "../../../../../middleware/authMiddleware";
+import { calculateAgeGroup } from "../../../../../common/calc/CalcPatientAgeGroup";
+import PatientInfoDeletionInterface from "../../../../../interfaces/deletion_params/risk-assessment-form/PatientInfoDeletionInterface";
 
 // (Officer) Add/create a new consultation log
 export const officerCreatePatientInfo = [

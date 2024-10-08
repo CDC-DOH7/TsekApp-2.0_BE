@@ -1,12 +1,12 @@
-import PastMedicalHistoryParamsInterface from "../../interfaces/misc/PastMedicalHistoryParamsInterface";
-import PastMedicalHistorySearchFilterInterface from "../../interfaces/search_filters/PastMedicalHistorySearchFilterInterface";
-import TableNames from "../../common/constants/TableNames";
+import PastMedicalHistoryParamsInterface from "../../../interfaces/misc/risk-assessment-form/PastMedicalHistoryParamsInterface";
+import PastMedicalHistorySearchFilterInterface from "../../../interfaces/search_filters/specific-search/risk-assessment-form/PastMedicalHistorySearchFilterInterface";
+import TableNames from "../../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../../connections/OfficerConnection";
-import supervisorDb from "../../connections/SupervisorConnection";
+import officerDb from "../../../connections/OfficerConnection";
+import supervisorDb from "../../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
-import PastMedicalHistoryDeletionInterface from "../../interfaces/deletion_params/PastMedicalHistoryDeletionInterface";
+import PastMedicalHistoryDeletionInterface from "../../../interfaces/deletion_params/risk-assessment-form/PastMedicalHistoryDeletionInterface";
 
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchPastMedicalHistory = async (

@@ -1,13 +1,13 @@
 // controllers/consultationController.ts
 import { Request, Response } from "express";
-import ReferralModel from "../../../models/record-specific/ReferralModel";
-import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import ReferralModel from "../../../../../models/record-specific/risk-assessment-form/ReferralModel";
+import RecordsUniqueIDGenerator from "../../../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../../middleware/authMiddleware";
-import ReferralParamsInterface from "../../../interfaces/misc/ReferralParamsInterface";
-import ReferralDeletionInterface from "../../../interfaces/deletion_params/ReferralDeletionInterface";
+} from "../../../../../middleware/authMiddleware";
+import ReferralParamsInterface from "../../../../../interfaces/misc/risk-assessment-form/ReferralParamsInterface";
+import ReferralDeletionInterface from "../../../../../interfaces/deletion_params/risk-assessment-form/ReferralDeletionInterface";
 
 // (Officer) Add/create a new Referral
 export const officerCreateReferral = [

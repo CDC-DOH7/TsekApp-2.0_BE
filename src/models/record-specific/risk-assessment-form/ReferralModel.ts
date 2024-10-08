@@ -1,11 +1,11 @@
-import ReferralParamsInterface from "../../interfaces/misc/ReferralParamsInterface";
-import ReferralSearchFilterInterface from "../../interfaces/search_filters/ReferralSearchFilterInterface";
-import TableNames from "../../common/constants/TableNames";
+import ReferralParamsInterface from "../../../interfaces/misc/risk-assessment-form/ReferralParamsInterface";
+import ReferralSearchFilterInterface from "../../../interfaces/search_filters/specific-search/risk-assessment-form/ReferralSearchFilterInterface";
+import TableNames from "../../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../../connections/OfficerConnection";
-import supervisorDb from "../../connections/SupervisorConnection";
-import ReferralDeletionInterface from "../../interfaces/deletion_params/ReferralDeletionInterface";
+import officerDb from "../../../connections/OfficerConnection";
+import supervisorDb from "../../../connections/SupervisorConnection";
+import ReferralDeletionInterface from "../../../interfaces/deletion_params/risk-assessment-form/ReferralDeletionInterface";
 
 // # --- Begin Operations for Past Medical Records Models --- #
 const officerSearchReferral = async (
