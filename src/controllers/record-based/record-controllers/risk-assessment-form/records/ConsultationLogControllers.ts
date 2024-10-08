@@ -1,13 +1,13 @@
 // controllers/consultationController.ts
 import { Request, Response } from "express";
-import ConsultationModel from "../../../models/record-specific/ConsultationLogModel";
-import RecordsUniqueIDGenerator from "../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
+import ConsultationModel from "../../../../../models/record-specific/risk-assessment-form/ConsultationLogModel";
+import RecordsUniqueIDGenerator from "../../../../../common/cryptography/id_generators/record-specific/RecordsUniqueIDGenerator";
 import {
   authenticateOfficer,
   authenticateSupervisor,
-} from "../../../middleware/authMiddleware";
-import ConsultationParamsInterface from "../../../interfaces/misc/ConsultationLogParamsInterface";
-import ConsultationLogDeletionInterface from "../../../interfaces/deletion_params/ConsultationLogDeletionInterface";
+} from "../../../../../middleware/authMiddleware";
+import ConsultationParamsInterface from "../../../../../interfaces/misc/risk-assessment-form/ConsultationLogParamsInterface";
+import ConsultationLogDeletionInterface from "../../../../../interfaces/deletion_params/risk-assessment-form/ConsultationLogDeletionInterface";
 
 // (Officer) Add/create a new consultation log
 export const officerCreateConsultation = [

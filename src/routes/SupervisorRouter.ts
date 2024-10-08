@@ -18,7 +18,7 @@ import {
   supervisorUpdatePatientInfo,
   supervisorUpdateReferral,
   supervisorUpdateRiskScreening
-} from "../controllers/record-based/RecordUpdateController";
+} from "../controllers/record-based/record-controllers/risk-assessment-form/RecordUpdateController";
 
 // searching functions
 import { 
@@ -31,7 +31,7 @@ import {
   supervisorSearchPatientInfo,
   supervisorSearchReferral,
   supervisorSearchRiskScreening
-} from "../controllers/record-based/RecordSearchController";
+} from "../controllers/record-based/record-controllers/risk-assessment-form/RecordSearchController";
 
 // deletion functions
 import { 
@@ -44,7 +44,7 @@ import {
   supervisorDeletePatientInfo,
   supervisorDeleteReferral,
   supervisorDeleteRiskScreening
-} from "../controllers/record-based/RecordDeleteController";
+} from "../controllers/record-based/record-controllers/risk-assessment-form/RecordDeleteController";
 
 const supervisorRouter: Router = Router();
 

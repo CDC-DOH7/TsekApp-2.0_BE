@@ -1,37 +1,32 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
-import fs from "fs";
 
 dotenv.config();
 
-const connectToDatabase = async () => {
-  // check if production or not
-  const isProduction: boolean =
-    process.env.IS_PRODUCTION?.toLowerCase() === "true";
+const createDatabasePool = async () => {
+  // Check if in production or not
+  const isProduction = process.env.IS_PRODUCTION?.toLowerCase() === "true";
 
-  let db: mysql.Connection;
+  const pool = mysql.createPool({
+    host: isProduction ? process.env.PROD_HOSTNAME : process.env.DEV_HOSTNAME,
+    user: isProduction
+      ? process.env.PROD_OFFICER_USER
+      : process.env.DEV_OFFICER_USER,
+    password: isProduction
+      ? process.env.PROD_OFFICER_PASS
+      : process.env.DEV_OFFICER_PASS,
+    database: process.env.DATABASE_NAME,
+    port: isProduction
+      ? Number(process.env.REMOTE_MYSQL_PORT)
+      : Number(process.env.LOCAL_MYSQL_PORT),
+    // ssl: isProduction ? { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) } : undefined,
+    waitForConnections: true,
+    connectionLimit: 10, // Adjust as needed
+    queueLimit: 0,
+  });
 
-  if (!isProduction) {
-    db = await mysql.createConnection({
-      host: process.env.DEV_HOSTNAME,
-      user: process.env.DEV_OFFICER_USER,
-      password: process.env.DEV_OFFICER_PASS,
-      database: process.env.DATABASE_NAME,
-      port: Number(process.env.LOCAL_MYSQL_PORT),
-    });
-  } else {
-    db = await mysql.createConnection({
-      host: process.env.PROD_HOSTNAME,
-      user: process.env.PROD_OFFICER_USER,
-      password: process.env.PROD_OFFICER_PASS,
-      database: process.env.DATABASE_NAME,
-      port: Number(process.env.REMOTE_MYSQL_PORT),
-      ssl: { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) },
-    });
-  }
-
-  return db;
+  return pool;
 };
 
-const dbPromise = connectToDatabase();
-export default dbPromise;
+const dbPool = createDatabasePool();
+export default dbPool;

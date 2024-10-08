@@ -1,12 +1,12 @@
-import ArdParamsInterface from "../../interfaces/misc/ArdParamsInterface";
-import ArdSearchFilterInterface from "../../interfaces/search_filters/ArdSearchFilterInterface";
-import TableNames from "../../common/constants/TableNames";
+import ArdParamsInterface from "../../../interfaces/misc/risk-assessment-form/ArdParamsInterface";
+import ArdSearchFilterInterface from "../../../interfaces/search_filters/specific-search/risk-assessment-form/ArdSearchFilterInterface";
+import TableNames from "../../../common/constants/TableNames";
 
 // Decide on who can access
-import officerDb from "../../connections/OfficerConnection";
-import supervisorDb from "../../connections/SupervisorConnection";
+import officerDb from "../../../connections/OfficerConnection";
+import supervisorDb from "../../../connections/SupervisorConnection";
 import { QueryResult } from "mysql2";
-import ArdDeletionInterface from "../../interfaces/deletion_params/ArdDeletionInterface";
+import ArdDeletionInterface from "../../../interfaces/deletion_params/risk-assessment-form/ArdDeletionInterface";
 
 // # --- Begin Operations for ARD Models --- #
 
