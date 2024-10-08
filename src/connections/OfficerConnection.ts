@@ -10,11 +10,17 @@ const createDatabasePool = async () => {
 
   const pool = mysql.createPool({
     host: isProduction ? process.env.PROD_HOSTNAME : process.env.DEV_HOSTNAME,
-    user: isProduction ? process.env.PROD_OFFICER_USER : process.env.DEV_OFFICER_USER,
-    password: isProduction ? process.env.PROD_OFFICER_PASS : process.env.DEV_OFFICER_PASS,
+    user: isProduction
+      ? process.env.PROD_OFFICER_USER
+      : process.env.DEV_OFFICER_USER,
+    password: isProduction
+      ? process.env.PROD_OFFICER_PASS
+      : process.env.DEV_OFFICER_PASS,
     database: process.env.DATABASE_NAME,
-    port: isProduction ? Number(process.env.REMOTE_MYSQL_PORT) : Number(process.env.LOCAL_MYSQL_PORT),
-    ssl: isProduction ? { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) } : undefined,
+    port: isProduction
+      ? Number(process.env.REMOTE_MYSQL_PORT)
+      : Number(process.env.LOCAL_MYSQL_PORT),
+    // ssl: isProduction ? { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) } : undefined,
     waitForConnections: true,
     connectionLimit: 10, // Adjust as needed
     queueLimit: 0,

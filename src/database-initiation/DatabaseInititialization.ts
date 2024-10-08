@@ -274,7 +274,7 @@ const connectToDatabase = async (): Promise<any> => {
       password: process.env.PROD_GUEST_PASS,
       database: process.env.DATABASE_NAME,
       port: Number(process.env.REMOTE_MYSQL_PORT),
-      ssl: { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) },
+      // ssl: { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) },
     });
   }
 
