@@ -1,6 +1,6 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
-import fs from "fs";
+import { PoolConnection } from "mysql2/typings/mysql/lib/PoolConnection";
 
 dotenv.config();
 
@@ -26,6 +26,7 @@ const createDatabasePool = async () => {
     queueLimit: 0,
   });
 
+  console.log(pool);
   return pool;
 };
 

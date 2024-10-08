@@ -262,16 +262,16 @@ const connectToDatabase = async (): Promise<any> => {
   if (!isProduction) {
     connection = await mysql.createConnection({
       host: process.env.DEV_HOSTNAME,
-      user: process.env.DEV_GUEST_USER,
-      password: process.env.DEV_GUEST_PASS,
+      user: process.env.DEV_SUPERADMIN_USER,
+      password: process.env.DEV_SUPERADMIN_PASS,
       database: process.env.DATABASE_NAME,
       port: Number(process.env.LOCAL_MYSQL_PORT),
     });
   } else {
     connection = await mysql.createConnection({
       host: process.env.PROD_HOSTNAME,
-      user: process.env.PROD_GUEST_USER,
-      password: process.env.PROD_GUEST_PASS,
+      user: process.env.PROD_SUPERADMIN_USER,
+      password: process.env.PROD_SUPERADMIN_PASS,
       database: process.env.DATABASE_NAME,
       port: Number(process.env.REMOTE_MYSQL_PORT),
       // ssl: { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) },
