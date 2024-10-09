@@ -82,13 +82,20 @@ export const login = async (req: Request, res: Response) => {
   const { officer_username, officer_password }: OfficerLoginParamsInterface =
     req.body;
 
+  // Validate request body
+  if (!officer_username || !officer_password) {
+    return res.status(400).send("Username and password are required.");
+  }
+
   try {
     // Call the officerLogin function
     const officer = await OfficerModel.officerLogin(officer_username);
 
     // Check if officer is null
     if (!officer) {
-      return res.status(404).send("Officer not found");
+      return res
+        .status(401)
+        .send("Login failed. Please check your username and password.");
     }
 
     // Ensure officer_password is defined
@@ -103,19 +110,19 @@ export const login = async (req: Request, res: Response) => {
     );
 
     if (!isMatch) {
-      return res.status(401).send("Invalid credentials");
+      return res
+        .status(401)
+        .send("Login failed. Please check your username and password.");
     }
 
     const token = jwt.sign({ id: officer.officer_id }, JWT_SECRET, {
       expiresIn: JWT_EXPIRES_IN,
     });
 
-    const lastName =
-      officer.officer_lname != null
-        ? officer.officer_lname.toUpperCase()
-        : "Officer";
-    const firstName =
-      officer.officer_fname != null ? officer.officer_fname : "Name";
+    const lastName = officer.officer_lname
+      ? officer.officer_lname.toUpperCase()
+      : "Officer";
+    const firstName = officer.officer_fname || "Name";
     const messageString = `Logged in! Welcome ${lastName}, ${firstName}`;
 
     // Exclude the password field from the officer info
@@ -127,7 +134,12 @@ export const login = async (req: Request, res: Response) => {
       ...officer_info
     } = officer;
 
-    res.cookie("token", token, { maxAge: COOKIE_MAX_AGE });
+    res.cookie("token", token, {
+      maxAge: COOKIE_MAX_AGE,
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    }); // Ensure secure cookie
     res.status(200).json({ message: messageString, officer_info });
   } catch (err) {
     console.error(err);

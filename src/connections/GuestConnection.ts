@@ -1,7 +1,6 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
-import { PoolConnection } from "mysql2/typings/mysql/lib/PoolConnection";
-
+import fs from "fs";
 dotenv.config();
 
 const createDatabasePool = async () => {
@@ -20,7 +19,9 @@ const createDatabasePool = async () => {
     port: isProduction
       ? Number(process.env.REMOTE_MYSQL_PORT)
       : Number(process.env.LOCAL_MYSQL_PORT),
-    // ssl: isProduction ? { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) } : undefined,
+    ssl: isProduction
+      ? { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) }
+      : undefined,
     waitForConnections: true,
     connectionLimit: 10, // Adjust as needed
     queueLimit: 0,
