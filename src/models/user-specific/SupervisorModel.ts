@@ -1,16 +1,17 @@
 import supervisorDb from "../../connections/SupervisorConnection";
 import { ResultSetHeader } from "mysql2";
 import { Supervisor } from "../../types/user-based/supervisor";
-import SupervisorRegistrationParamsInterface from "../../interfaces/user_specific_parameters/registration-parameters/SupervisorRegistrationParamsInterface";
+import SupervisorRegistrationParamsInterface from "../../interfaces/user_specific_parameters/registration-parameters/registration-inputs/SupervisorRegistrationParamsInterface";
 import dotenv from "dotenv";
 import TableNames from "../../common/constants/TableNames";
+import UserRegistrationResultInterface from "../../interfaces/user_specific_parameters/registration-parameters/registration-result/UserRegistrationResultInterface";
 
 // # --- Begin Operations for Supervisor Models --- #
 dotenv.config();
 
 export const supervisorRegister = async (
   supervisorDetails: SupervisorRegistrationParamsInterface[]
-): Promise<string> => {
+): Promise<UserRegistrationResultInterface> => {
   const [
     {
       supervisor_id,
@@ -36,7 +37,10 @@ export const supervisorRegister = async (
   ]);
 
   if (duplicateResults.length > 0) {
-    return "Email or Username already exists";
+    return {
+      message: "Email or Username already exists",
+      duplicates: duplicateResults.length,
+    };
   }
 
   try {
@@ -62,7 +66,10 @@ export const supervisorRegister = async (
     ];
 
     await (await supervisorDb).query<ResultSetHeader>(query, procedureParams);
-    return `Welcome to e-tsekapp ${supervisor_lname.toUpperCase()}, ${supervisor_fname}`;
+    return {
+      message: `Welcome to e-tsekapp ${supervisor_lname.toUpperCase()}, ${supervisor_fname}`,
+      duplicates: duplicateResults.length,
+    };
   } catch (err) {
     console.error("Registration error:", err);
     throw new Error("An error occurred during registration. Please try again.");
