@@ -70,7 +70,13 @@ export const officerRegister = async (
 const officerLogin = async (
   officerUsername: string
 ): Promise<Partial<Officer> | null> => {
-  const query: string = `SELECT * FROM ${TableNames.OFFICER_INFO_TABLE} WHERE officer_username = ?`;
+  const query: string = `SELECT officer_id, officer_email, officer_password, officer_username, 
+  officer_fname, officer_mname, officer_lname,
+  officer_contact_no, officer_designation, officer_is_verified,
+  aoi.hf_id, hf_name
+  FROM a_officer_info aoi 
+  LEFT JOIN a_health_facility_info ahfi ON ahfi.hf_id = aoi.hf_id 
+  WHERE officer_username = ?`;
 
   try {
     const [results] = await (

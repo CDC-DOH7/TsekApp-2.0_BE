@@ -12,4 +12,5 @@ export interface Officer extends RowDataPacket {
   officer_designation: string;
   officer_is_verified: boolean;
   hf_id: string;
+  hf_name: string;
 }

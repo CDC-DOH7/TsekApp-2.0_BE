@@ -73,7 +73,13 @@ export const supervisorRegister = async (
 const supervisorLogin = async (
   supervisorUsername: string
 ): Promise<Partial<Supervisor> | null> => {
-  const query: string = `SELECT * FROM ${TableNames.SUPERVISOR_INFO_TABLE} WHERE supervisor_username = ?`;
+  const query: string = `SELECT supervisor_id, supervisor_email, supervisor_password, supervisor_username, 
+  supervisor_fname, supervisor_mname, supervisor_lname,
+  supervisor_contact_no, supervisor_designation, supervisor_is_verified,
+  asi.hf_id, hf_name
+  FROM a_supervisor_info asi 
+  LEFT JOIN a_health_facility_info ahfi ON ahfi.hf_id = asi.hf_id 
+  WHERE supervisor_username = ?`;
 
   try {
     const [results] = await (

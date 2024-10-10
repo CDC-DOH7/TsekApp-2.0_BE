@@ -22,6 +22,7 @@ import {
 
 // searching functions
 import {
+  officerAdvancedSearch,
   officerSearchArd,
   officerSearchConsultation,
   officerSearchFamilyHistory,
@@ -31,6 +32,7 @@ import {
   officerSearchPatientInfo,
   officerSearchReferral,
   officerSearchRiskScreening,
+  officerSoftSearch,
 } from "../controllers/record-based/record-controllers/risk-assessment-form/RecordSearchController";
 import { officerRetrieveBarangayList } from "../controllers/record-based/misc-controllers/BarangayController";
 import { officerRetrieveHealthFacilityList } from "../controllers/record-based/misc-controllers/HealthFacilityController";
@@ -93,37 +95,48 @@ const recordCreatingRoutes = [
 
 // record-searching functions
 const recordSearchingRoutes = [
-  { path: `${RecordPaths.SEARCH_PATH}/ard`, handler: officerSearchArd },
   {
-    path: `${RecordPaths.SEARCH_PATH}/consultation`,
+    path: `${RecordPaths.SEARCH_PATH}/softsearch/`,
+    handler: officerSoftSearch,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/advancedsearch/`,
+    handler: officerAdvancedSearch,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/ard`,
+    handler: officerSearchArd,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/consultation`,
     handler: officerSearchConsultation,
   },
   {
-    path: `${RecordPaths.SEARCH_PATH}/famhist`,
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/famhist`,
     handler: officerSearchFamilyHistory,
   },
   {
-    path: `${RecordPaths.SEARCH_PATH}/management`,
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/management`,
     handler: officerSearchManagement,
   },
   {
-    path: `${RecordPaths.SEARCH_PATH}/ncdrisk`,
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/ncdrisk`,
     handler: officerSearchNcdRiskFactors,
   },
   {
-    path: `${RecordPaths.SEARCH_PATH}/pastmedhist`,
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/pastmedhist`,
     handler: officerSearchPastMedicalHistory,
   },
   {
-    path: `${RecordPaths.SEARCH_PATH}/patientinfo`,
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/patientinfo`,
     handler: officerSearchPatientInfo,
   },
   {
-    path: `${RecordPaths.SEARCH_PATH}/referral`,
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/referral`,
     handler: officerSearchReferral,
   },
   {
-    path: `${RecordPaths.SEARCH_PATH}/riskscreening`,
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/riskscreening`,
     handler: officerSearchRiskScreening,
   },
 ];
