@@ -41,9 +41,10 @@ export const officerCreateConsultation = [
       const results = await ConsultationModel.officerCreateConsultationLog(
         newConsultation
       );
-      res
-        .status(201)
-        .json({ message: "Consultation added successfully", results });
+      res.status(201).json({
+        message: "Consultation added successfully",
+        results,
+      });
     } catch (err) {
       return res.status(500).send(err);
     }
