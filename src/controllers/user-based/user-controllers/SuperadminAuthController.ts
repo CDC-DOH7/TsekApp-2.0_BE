@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import UniqueIDGenerator from "../../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
 import dotenv from "dotenv";
 import SuperadminModel from "../../../models/user-specific/SuperadminModel";
-import SuperadminRegistrationParamsInterface from "../../../interfaces/user_specific_parameters/registration-parameters/SuperadminRegistrationParamsInterface";
+import SuperadminRegistrationParamsInterface from "../../../interfaces/user_specific_parameters/registration-parameters/registration-inputs/SuperadminRegistrationParamsInterface";
 import SuperadminLoginParamsInterface from "../../../interfaces/user_specific_parameters/login-parameters/SuperadminLoginParamsInterface";
 
 dotenv.config();
@@ -61,8 +61,10 @@ export const register = async (req: Request, res: Response) => {
     ];
 
     await SuperadminModel.superadminRegister(procedureParams)
-      .then((message) => {
-        res.status(200).send(message);
+      .then((result) => {
+        result.duplicates > 0
+          ? res.status(403).send(result)
+          : res.status(200).send(result);
       })
       .catch((err) => {
         console.error(err);
@@ -99,7 +101,7 @@ export const login = async (req: Request, res: Response) => {
 
     // Ensure superadmin_password is defined
     if (!superadmin.superadmin_password) {
-      return res.status(500).send("Internal server error: Password not found");
+      return res.status(500).send("Internal Server Error!");
     }
 
     // Compare the provided password with the stored password

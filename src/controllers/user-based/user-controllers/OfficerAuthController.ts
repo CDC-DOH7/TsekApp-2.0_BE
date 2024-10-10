@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import UniqueIDGenerator from "../../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
 import dotenv from "dotenv";
 import OfficerModel from "../../../models/user-specific/OfficerModel";
-import OfficerRegistrationParamsInterface from "../../../interfaces/user_specific_parameters/registration-parameters/OfficerRegistrationParamsInterface";
+import OfficerRegistrationParamsInterface from "../../../interfaces/user_specific_parameters/registration-parameters/registration-inputs/OfficerRegistrationParamsInterface";
 import OfficerLoginParamsInterface from "../../../interfaces/user_specific_parameters/login-parameters/OfficerLoginParamsInterface";
 
 dotenv.config();
@@ -61,8 +61,10 @@ export const register = async (req: Request, res: Response) => {
     ];
 
     await OfficerModel.officerRegister(procedureParams)
-      .then((message) => {
-        res.status(200).send(message);
+      .then((result) => {
+        result.duplicates > 0
+          ? res.status(403).send(result)
+          : res.status(200).send(result);
       })
       .catch((err) => {
         console.error(err);
@@ -95,12 +97,12 @@ export const login = async (req: Request, res: Response) => {
     if (!officer) {
       return res
         .status(401)
-        .send("Login failed. Please check your username and password.");
+        .send("Login failed. Please check your credentials.");
     }
 
-    // Ensure officer_password is defined
+    // ensure officer_password is defined
     if (!officer.officer_password) {
-      return res.status(500).send("Internal server error: Password not found");
+      return res.status(500).send("Internal Server Error!");
     }
 
     // Compare the provided password with the stored password
@@ -112,7 +114,11 @@ export const login = async (req: Request, res: Response) => {
     if (!isMatch) {
       return res
         .status(401)
-        .send("Login failed. Please check your username and password.");
+        .send("Login failed. Please check your credentials.");
+    }
+
+    if (!officer.officer_is_verified) {
+      return res.status(401).send("Login failed. Please try again.");
     }
 
     const token = jwt.sign({ id: officer.officer_id }, JWT_SECRET, {

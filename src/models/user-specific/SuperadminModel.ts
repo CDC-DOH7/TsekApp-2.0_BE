@@ -1,16 +1,17 @@
 import superadminDb from "../../connections/SuperadminConnection";
 import { ResultSetHeader } from "mysql2";
 import { Superadmin } from "../../types/user-based/superadmin";
-import SuperadminRegistrationParamsInterface from "../../interfaces/user_specific_parameters/registration-parameters/SuperadminRegistrationParamsInterface";
+import SuperadminRegistrationParamsInterface from "../../interfaces/user_specific_parameters/registration-parameters/registration-inputs/SuperadminRegistrationParamsInterface";
 import dotenv from "dotenv";
 import TableNames from "../../common/constants/TableNames";
+import UserRegistrationResultInterface from "../../interfaces/user_specific_parameters/registration-parameters/registration-result/UserRegistrationResultInterface";
 
 // # --- Begin Operations for Superadmin Models --- #
 dotenv.config();
 
 export const superadminRegister = async (
   superadminDetails: SuperadminRegistrationParamsInterface[]
-): Promise<string> => {
+): Promise<UserRegistrationResultInterface> => {
   const [
     {
       superadmin_id,
@@ -32,7 +33,10 @@ export const superadminRegister = async (
   ]);
 
   if (duplicateResults.length > 0) {
-    return "Email or Username already exists";
+    return {
+      message: "Email or Username already exists",
+      duplicates: duplicateResults.length,
+    };
   }
 
   try {
@@ -53,7 +57,10 @@ export const superadminRegister = async (
     ];
 
     await (await superadminDb).query<ResultSetHeader>(query, procedureParams);
-    return `Welcome to e-tsekapp ${superadmin_lname.toUpperCase()}, ${superadmin_fname}`;
+    return {
+      message: `Welcome to e-tsekapp ${superadmin_lname.toUpperCase()}, ${superadmin_fname}`,
+      duplicates: duplicateResults.length,
+    };
   } catch (err) {
     console.error("Registration error:", err);
     throw new Error("An error occurred during registration. Please try again.");

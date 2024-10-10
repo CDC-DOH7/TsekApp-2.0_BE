@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import UniqueIDGenerator from "../../../common/cryptography/id_generators/user-specific/UserUniqueIDGenerator";
 import dotenv from "dotenv";
 import SupervisorModel from "../../../models/user-specific/SupervisorModel";
-import SupervisorRegistrationParamsInterface from "../../../interfaces/user_specific_parameters/registration-parameters/SupervisorRegistrationParamsInterface";
+import SupervisorRegistrationParamsInterface from "../../../interfaces/user_specific_parameters/registration-parameters/registration-inputs/SupervisorRegistrationParamsInterface";
 import SupervisorLoginParamsInterface from "../../../interfaces/user_specific_parameters/login-parameters/SupervisorLoginParamsInterface";
 
 dotenv.config();
@@ -64,8 +64,10 @@ export const register = async (req: Request, res: Response) => {
     ];
 
     await SupervisorModel.supervisorRegister(procedureParams)
-      .then((message) => {
-        res.status(200).send(message);
+      .then((result) => {
+        result.duplicates > 0
+          ? res.status(403).send(result)
+          : res.status(200).send(result);
       })
       .catch((err) => {
         console.error(err);
@@ -87,6 +89,11 @@ export const login = async (req: Request, res: Response) => {
     supervisor_password,
   }: SupervisorLoginParamsInterface = req.body;
 
+  // Validate request body
+  if (!supervisor_username || !supervisor_password) {
+    return res.status(400).send("Username and password are required.");
+  }
+
   try {
     // Call the supervisorLogin function
     const supervisor = await SupervisorModel.supervisorLogin(
@@ -97,12 +104,12 @@ export const login = async (req: Request, res: Response) => {
     if (!supervisor) {
       return res
         .status(401)
-        .send("Login failed. Please check your username and password.");
+        .send("Login failed. Please check your credentials.");
     }
 
     // Ensure supervisor_password is defined
     if (!supervisor.supervisor_password) {
-      return res.status(500).send("Internal server error: Password not found");
+      return res.status(500).send("Internal Server Error!");
     }
 
     // Compare the provided password with the stored password
@@ -114,7 +121,11 @@ export const login = async (req: Request, res: Response) => {
     if (!isMatch) {
       return res
         .status(401)
-        .send("Login failed. Please check your username and password.");
+        .send("Login failed. Please check your credentials.");
+    }
+
+    if (!supervisor.supervisor_is_verified) {
+      return res.status(401).send("Login failed. Please try again.");
     }
 
     const token = jwt.sign({ id: supervisor.supervisor_id }, JWT_SECRET, {
