@@ -250,8 +250,8 @@ export const createTablesScripts = [
       ref_date DATE NOT NULL,
       ref_reason TEXT NOT NULL,
       ref_destination VARCHAR(50) NOT NULL,
-
       hf_id VARCHAR(18) NOT NULL,
+
       FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id),
       FOREIGN KEY (officer_id) REFERENCES a_officer_info(officer_id),
       FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id),
