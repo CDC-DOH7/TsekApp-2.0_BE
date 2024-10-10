@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { authMiddleware } from "../middleware/authMiddleware";
-import { RecordPaths } from "../common/constants/RoutePathNames";
 import {
   register,
   login,

@@ -12,4 +12,5 @@ export interface Supervisor extends RowDataPacket {
   supervisor_designation: string;
   supervisor_is_verified: boolean;
   hf_id: string;
+  hf_name: string;
 }

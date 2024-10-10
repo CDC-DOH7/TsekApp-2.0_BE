@@ -1,6 +1,6 @@
 import express from "express";
 import cookieParser from "cookie-parser";
-import cors from "cors";
+import cors, { CorsOptions } from "cors";
 import https from "https";
 import http from "http";
 import fs from "fs";
@@ -23,9 +23,23 @@ const PORT = process.env.PORT || 3000;
 const isProduction: boolean =
   process.env.IS_PRODUCTION?.toLowerCase() === "true";
 
-// Define CORS options to allow all origins when using HTTPS
-const corsOptions = {
-  origin: "*", // Allow all origins
+const allowedOrigins = [
+  "https://tsekap-2-0.vercel.app", // Add more allowed origins here if needed
+];
+
+// Define CORS options
+const corsOptions: CorsOptions = {
+  origin: (
+    origin: string | undefined,
+    callback: (error: Error | null, allowed?: boolean) => void
+  ) => {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true, // Allow credentials like cookies
 };
 
@@ -47,8 +61,8 @@ const startServer = async () => {
     const server = isProduction
       ? https.createServer(
           {
-            cert: fs.readFileSync(process.env.SERVER_CERT as string),
-            key: fs.readFileSync(process.env.SERVER_KEY as string), // Ensure you include the key
+            cert: fs.readFileSync(process.env.SERVER_CERT as string, "utf-8"),
+            key: fs.readFileSync(process.env.SERVER_KEY as string, "utf-8"), // Ensure you include the key
           },
           eTsekApp
         )

@@ -3,6 +3,6 @@ import { retrieveHealthFacilityList } from "../controllers/record-based/misc-con
 
 const guestRouter: Router = Router();
 
-guestRouter.post("/listhf", retrieveHealthFacilityList);
+guestRouter.get("/listhf", retrieveHealthFacilityList);
 
 export default guestRouter;
