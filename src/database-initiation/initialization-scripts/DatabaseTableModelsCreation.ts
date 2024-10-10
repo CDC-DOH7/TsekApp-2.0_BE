@@ -264,7 +264,7 @@ export const createTablesScripts = [
       patient_id VARCHAR(50),
       officer_id VARCHAR(50),
       hf_id VARCHAR(50),
-      ref_id VARCHAR(50)
+      ref_id VARCHAR(75)
     )`,
 
   // generate default tables for the previous data records

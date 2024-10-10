@@ -6,7 +6,6 @@ import {
   authenticateOfficer,
   authenticateSupervisor,
 } from "../../../../../middleware/authMiddleware";
-import ReferralParamsInterface from "../../../../../interfaces/misc/risk-assessment-form/ReferralParamsInterface";
 import ReferralDeletionInterface from "../../../../../interfaces/deletion_params/risk-assessment-form/ReferralDeletionInterface";
 
 // (Officer) Add/create a new Referral
@@ -45,7 +44,11 @@ export const officerCreateReferral = [
         ref_reason,
         ref_destination,
       });
-      res.status(201).json({ message: "Referral added successfully", results });
+      res.status(201).json({
+        ref_id: ref_id,
+        message: "Referral added successfully",
+        results,
+      });
     } catch (err) {
       return res.status(500).send(err);
     }
