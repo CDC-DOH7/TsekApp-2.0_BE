@@ -11,7 +11,17 @@ import ReferralDeletionInterface from "../../../interfaces/deletion_params/risk-
 const officerSearchReferral = async (
   searchFilter: ReferralSearchFilterInterface
 ) => {
-  const { ref_id, patient_id, hf_id } = searchFilter;
+  const {
+    ref_date_startdate,
+    ref_date_enddate,
+    ref_id,
+    patient_id,
+    officer_id,
+    physician_name,
+    ref_reason,
+    ref_destination,
+    hf_id,
+  } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.REFERRAL_TABLE} WHERE hf_id = ?`;
   const queryParams: any[] = [hf_id]; // Initial wildcard for hf_id
@@ -22,8 +32,32 @@ const officerSearchReferral = async (
     queryParams.push(ref_id);
   }
   if (patient_id) {
-    query += " AND patient_id LIKE ?";
+    query += " AND patient_id like ?";
     queryParams.push(patient_id);
+  }
+  if (officer_id) {
+    query += " AND officer_id like ?";
+    queryParams.push(officer_id);
+  }
+  if (ref_date_startdate) {
+    query += " AND ref_date >= ?";
+    queryParams.push(ref_date_startdate);
+  }
+  if (ref_date_enddate) {
+    query += " AND ref_date <= ?";
+    queryParams.push(ref_date_enddate);
+  }
+  if (physician_name) {
+    query += " AND physician_name like ?";
+    queryParams.push(physician_name);
+  }
+  if (ref_reason) {
+    query += " AND ref_reason like ?";
+    queryParams.push(ref_reason);
+  }
+  if (ref_destination) {
+    query += " AND ref_destination like ?";
+    queryParams.push(ref_destination);
   }
 
   // sort the results from latest
@@ -43,11 +77,12 @@ const officerCreateReferral = async (referral: ReferralParamsInterface) => {
   const query = `INSERT INTO ${TableNames.REFERRAL_TABLE}
   (ref_id, 
   patient_id, 
-  officer_id, 
-  hf_id,
-  ref_date, 
-  ref_reason, 
-  ref_destination) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  officer_id,
+  physician_name,
+  ref_date,
+  ref_reason,
+  ref_destination, 
+  hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
   try {
@@ -57,10 +92,11 @@ const officerCreateReferral = async (referral: ReferralParamsInterface) => {
       referral.ref_id,
       referral.patient_id,
       referral.officer_id,
-      referral.hf_id,
+      referral.physician_name,
       referral.ref_date,
       referral.ref_reason,
       referral.ref_destination,
+      referral.hf_id,
     ]);
     return result;
   } catch (err) {
@@ -79,9 +115,10 @@ const supervisorSearchReferral = async (
     ref_id,
     patient_id,
     officer_id,
-    hf_id,
+    physician_name,
     ref_reason,
     ref_destination,
+    hf_id,
   } = searchFilter;
 
   let query = `SELECT * FROM ${TableNames.REFERRAL_TABLE} WHERE hf_id = ?`;
@@ -93,11 +130,11 @@ const supervisorSearchReferral = async (
     queryParams.push(ref_id);
   }
   if (patient_id) {
-    query += " and patient_id like ?";
+    query += " AND patient_id like ?";
     queryParams.push(patient_id);
   }
   if (officer_id) {
-    query += " and officer_id like ?";
+    query += " AND officer_id like ?";
     queryParams.push(officer_id);
   }
   if (ref_date_startdate) {
@@ -108,12 +145,16 @@ const supervisorSearchReferral = async (
     query += " AND ref_date <= ?";
     queryParams.push(ref_date_enddate);
   }
+  if (physician_name) {
+    query += " AND physician_name like ?";
+    queryParams.push(physician_name);
+  }
   if (ref_reason) {
-    query += " and ref_reason like ?";
+    query += " AND ref_reason like ?";
     queryParams.push(ref_reason);
   }
   if (ref_destination) {
-    query += " and ref_destination like ?";
+    query += " AND ref_destination like ?";
     queryParams.push(ref_destination);
   }
 
@@ -135,7 +176,8 @@ const supervisorUpdateReferral = async (referral: ReferralParamsInterface) => {
   officer_id = ?,
   ref_date = ?, 
   ref_reason = ?, 
-  ref_destination = ? 
+  ref_destination = ?,
+  physician_name = ?, 
   WHERE patient_id = ? AND ref_id = ? AND hf_id = ?`;
 
   // supervisor-specific
@@ -147,6 +189,7 @@ const supervisorUpdateReferral = async (referral: ReferralParamsInterface) => {
       referral.ref_date,
       referral.ref_reason,
       referral.ref_destination,
+      referral.physician_name,
       referral.patient_id,
       referral.ref_id,
       referral.hf_id,
