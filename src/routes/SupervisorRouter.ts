@@ -8,7 +8,7 @@ import {
 } from "../controllers/user-based/user-controllers/SupervisorAuthController";
 
 // update functions
-import { 
+import {
   supervisorUpdateArd,
   supervisorUpdateConsultation,
   supervisorUpdateFamilyHistory,
@@ -17,11 +17,12 @@ import {
   supervisorUpdatePastMedicalHistory,
   supervisorUpdatePatientInfo,
   supervisorUpdateReferral,
-  supervisorUpdateRiskScreening
+  supervisorUpdateRiskScreening,
 } from "../controllers/record-based/record-controllers/risk-assessment-form/RecordUpdateController";
 
 // searching functions
-import { 
+import {
+  supervisorAdvancedSearch,
   supervisorSearchArd,
   supervisorSearchConsultation,
   supervisorSearchFamilyHistory,
@@ -30,11 +31,12 @@ import {
   supervisorSearchPastMedicalHistory,
   supervisorSearchPatientInfo,
   supervisorSearchReferral,
-  supervisorSearchRiskScreening
+  supervisorSearchRiskScreening,
+  supervisorSoftSearch,
 } from "../controllers/record-based/record-controllers/risk-assessment-form/RecordSearchController";
 
 // deletion functions
-import { 
+import {
   supervisorDeleteArd,
   supervisorDeleteConsultation,
   supervisorDeleteFamilyHistory,
@@ -43,7 +45,7 @@ import {
   supervisorDeletePastMedicalHistory,
   supervisorDeletePatientInfo,
   supervisorDeleteReferral,
-  supervisorDeleteRiskScreening
+  supervisorDeleteRiskScreening,
 } from "../controllers/record-based/record-controllers/risk-assessment-form/RecordDeleteController";
 
 const supervisorRouter: Router = Router();
@@ -55,40 +57,123 @@ supervisorRouter.post("/logout", authMiddleware, logout);
 // record-creation functions
 const recordUpdatingRoutes = [
   { path: `${RecordPaths.UPDATE_PATH}/ard`, handler: supervisorUpdateArd },
-  { path: `${RecordPaths.UPDATE_PATH}/consultation`, handler: supervisorUpdateConsultation },
-  { path: `${RecordPaths.UPDATE_PATH}/famhist`, handler: supervisorUpdateFamilyHistory },
-  { path: `${RecordPaths.UPDATE_PATH}/management`, handler: supervisorUpdateManagement },
-  { path: `${RecordPaths.UPDATE_PATH}/ncdrisk`, handler: supervisorUpdateNcdRiskFactors },
-  { path: `${RecordPaths.UPDATE_PATH}/pastmedhist`, handler: supervisorUpdatePastMedicalHistory },
-  { path: `${RecordPaths.UPDATE_PATH}/patientinfo`, handler: supervisorUpdatePatientInfo },
-  { path: `${RecordPaths.UPDATE_PATH}/referral`, handler: supervisorUpdateReferral },
-  { path: `${RecordPaths.UPDATE_PATH}/riskscreening`, handler: supervisorUpdateRiskScreening }
-];
-
-// record-searching functions
-const recordSearchingRoutes = [
-  { path: `${RecordPaths.DELETE_PATH}/ard`, handler: supervisorDeleteArd },
-  { path: `${RecordPaths.DELETE_PATH}/consultation`, handler: supervisorDeleteConsultation },
-  { path: `${RecordPaths.DELETE_PATH}/famhist`, handler: supervisorDeleteFamilyHistory },
-  { path: `${RecordPaths.DELETE_PATH}/management`, handler: supervisorDeleteManagement },
-  { path: `${RecordPaths.DELETE_PATH}/ncdrisk`, handler: supervisorDeleteNcdRiskFactors },
-  { path: `${RecordPaths.DELETE_PATH}/pastmedhist`, handler: supervisorDeletePastMedicalHistory },
-  { path: `${RecordPaths.DELETE_PATH}/patientinfo`, handler: supervisorDeletePatientInfo },
-  { path: `${RecordPaths.DELETE_PATH}/referral`, handler: supervisorDeleteReferral },
-  { path: `${RecordPaths.DELETE_PATH}/riskscreening`, handler: supervisorDeleteRiskScreening }
+  {
+    path: `${RecordPaths.UPDATE_PATH}/consultation`,
+    handler: supervisorUpdateConsultation,
+  },
+  {
+    path: `${RecordPaths.UPDATE_PATH}/famhist`,
+    handler: supervisorUpdateFamilyHistory,
+  },
+  {
+    path: `${RecordPaths.UPDATE_PATH}/management`,
+    handler: supervisorUpdateManagement,
+  },
+  {
+    path: `${RecordPaths.UPDATE_PATH}/ncdrisk`,
+    handler: supervisorUpdateNcdRiskFactors,
+  },
+  {
+    path: `${RecordPaths.UPDATE_PATH}/pastmedhist`,
+    handler: supervisorUpdatePastMedicalHistory,
+  },
+  {
+    path: `${RecordPaths.UPDATE_PATH}/patientinfo`,
+    handler: supervisorUpdatePatientInfo,
+  },
+  {
+    path: `${RecordPaths.UPDATE_PATH}/referral`,
+    handler: supervisorUpdateReferral,
+  },
+  {
+    path: `${RecordPaths.UPDATE_PATH}/riskscreening`,
+    handler: supervisorUpdateRiskScreening,
+  },
 ];
 
 // record-deletion functions
+const recordSearchingRoutes = [
+  { path: `${RecordPaths.DELETE_PATH}/ard`, handler: supervisorDeleteArd },
+  {
+    path: `${RecordPaths.DELETE_PATH}/consultation`,
+    handler: supervisorDeleteConsultation,
+  },
+  {
+    path: `${RecordPaths.DELETE_PATH}/famhist`,
+    handler: supervisorDeleteFamilyHistory,
+  },
+  {
+    path: `${RecordPaths.DELETE_PATH}/management`,
+    handler: supervisorDeleteManagement,
+  },
+  {
+    path: `${RecordPaths.DELETE_PATH}/ncdrisk`,
+    handler: supervisorDeleteNcdRiskFactors,
+  },
+  {
+    path: `${RecordPaths.DELETE_PATH}/pastmedhist`,
+    handler: supervisorDeletePastMedicalHistory,
+  },
+  {
+    path: `${RecordPaths.DELETE_PATH}/patientinfo`,
+    handler: supervisorDeletePatientInfo,
+  },
+  {
+    path: `${RecordPaths.DELETE_PATH}/referral`,
+    handler: supervisorDeleteReferral,
+  },
+  {
+    path: `${RecordPaths.DELETE_PATH}/riskscreening`,
+    handler: supervisorDeleteRiskScreening,
+  },
+];
+
+// record-searching functions
 const recordDeletingRoutes = [
-  { path: `${RecordPaths.SEARCH_PATH}/ard`, handler: supervisorSearchArd },
-  { path: `${RecordPaths.SEARCH_PATH}/consultation`, handler: supervisorSearchConsultation },
-  { path: `${RecordPaths.SEARCH_PATH}/famhist`, handler: supervisorSearchFamilyHistory },
-  { path: `${RecordPaths.SEARCH_PATH}/management`, handler: supervisorSearchManagement },
-  { path: `${RecordPaths.SEARCH_PATH}/ncdrisk`, handler: supervisorSearchNcdRiskFactors },
-  { path: `${RecordPaths.SEARCH_PATH}/pastmedhist`, handler: supervisorSearchPastMedicalHistory },
-  { path: `${RecordPaths.SEARCH_PATH}/patientinfo`, handler: supervisorSearchPatientInfo },
-  { path: `${RecordPaths.SEARCH_PATH}/referral`, handler: supervisorSearchReferral },
-  { path: `${RecordPaths.SEARCH_PATH}/riskscreening`, handler: supervisorSearchRiskScreening }
+  {
+    path: `${RecordPaths.SEARCH_PATH}/softsearch/`,
+    handler: supervisorSoftSearch,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/advancedsearch/`,
+    handler: supervisorAdvancedSearch,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/ard`,
+    handler: supervisorSearchArd,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/consultation`,
+    handler: supervisorSearchConsultation,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/famhist`,
+    handler: supervisorSearchFamilyHistory,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/management`,
+    handler: supervisorSearchManagement,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/ncdrisk`,
+    handler: supervisorSearchNcdRiskFactors,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/pastmedhist`,
+    handler: supervisorSearchPastMedicalHistory,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/patientinfo`,
+    handler: supervisorSearchPatientInfo,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/referral`,
+    handler: supervisorSearchReferral,
+  },
+  {
+    path: `${RecordPaths.SEARCH_PATH}/specificsearch/riskscreening`,
+    handler: supervisorSearchRiskScreening,
+  },
 ];
 
 // --- To Follow --- //
@@ -100,17 +185,16 @@ supervisorRouter.post("/management/officer/delete");
 supervisorRouter.post("/management/records/update");
 supervisorRouter.post("/management/records/delete");
 
-
 // deploy endpoints
-recordUpdatingRoutes.forEach(route => {
+recordUpdatingRoutes.forEach((route) => {
   supervisorRouter.post(route.path, route.handler);
 });
 
-recordSearchingRoutes.forEach(route => {
+recordSearchingRoutes.forEach((route) => {
   supervisorRouter.post(route.path, route.handler);
 });
 
-recordDeletingRoutes.forEach(route => {
+recordDeletingRoutes.forEach((route) => {
   supervisorRouter.post(route.path, route.handler);
 });
 

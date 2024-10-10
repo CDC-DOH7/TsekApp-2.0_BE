@@ -21,7 +21,10 @@ const createDatabasePool = async () => {
       ? Number(process.env.REMOTE_MYSQL_PORT)
       : Number(process.env.LOCAL_MYSQL_PORT),
     ssl: isProduction
-      ? { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) }
+      ? {
+          ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)),
+          rejectUnauthorized: false,
+        }
       : undefined,
     waitForConnections: true,
     connectionLimit: 10, // Adjust as needed
