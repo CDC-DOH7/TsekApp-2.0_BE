@@ -123,7 +123,6 @@ const initializeDatabase = async (): Promise<void> => {
   const isProduction: boolean =
     process.env.IS_PRODUCTION?.toLowerCase() === "true";
 
-  console.log(isProduction);
   console.log(`\n${calculateCurrentDateTime()} >> Initializing System...`);
   try {
     console.log(`\n${calculateCurrentDateTime()} >> Initializing Database ...`);

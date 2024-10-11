@@ -5,6 +5,7 @@ export interface PatientInfo extends RowDataPacket {
   patient_fname: string;
   patient_mname: string | null;
   patient_lname: string;
+  patient_suffix: string | null;
   patient_date_assess: Date;
   patient_age: number;
   patient_age_group_id: number;
