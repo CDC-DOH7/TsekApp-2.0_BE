@@ -21,6 +21,7 @@ export const superadminRegister = async (
       superadmin_fname,
       superadmin_mname,
       superadmin_lname,
+      superadmin_suffix,
     },
   ] = superadminDetails;
 
@@ -44,7 +45,7 @@ export const superadminRegister = async (
     const query = `INSERT INTO ${TableNames.SUPERADMIN_INFO_TABLE}
       (superadmin_id, superadmin_email, superadmin_username,
       superadmin_password, superadmin_fname, superadmin_mname,
-      superadmin_lname) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+      superadmin_lname, superadmin_suffix) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
     const procedureParams = [
       superadmin_id,
@@ -54,6 +55,7 @@ export const superadminRegister = async (
       superadmin_fname,
       superadmin_mname,
       superadmin_lname,
+      superadmin_suffix,
     ];
 
     await (await superadminDb).query<ResultSetHeader>(query, procedureParams);

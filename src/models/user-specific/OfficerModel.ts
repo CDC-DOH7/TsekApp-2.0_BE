@@ -21,6 +21,7 @@ export const officerRegister = async (
       officer_fname,
       officer_mname,
       officer_lname,
+      officer_suffix,
       officer_designation,
       officer_contact_no,
       officer_is_verified,
@@ -45,8 +46,8 @@ export const officerRegister = async (
     const query = `INSERT INTO ${TableNames.OFFICER_INFO_TABLE}
       (officer_id, officer_email, officer_username,
       officer_password, officer_fname, officer_mname,
-      officer_lname, officer_designation, officer_contact_no,
-      officer_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      officer_lname, officer_suffix, officer_designation, officer_contact_no,
+      officer_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
     const procedureParams = [
       officer_id,
@@ -56,6 +57,7 @@ export const officerRegister = async (
       officer_fname,
       officer_mname,
       officer_lname,
+      officer_suffix,
       officer_designation,
       officer_contact_no,
       officer_is_verified,
@@ -78,7 +80,7 @@ const officerLogin = async (
   officerUsername: string
 ): Promise<Partial<Officer> | null> => {
   const query: string = `SELECT officer_id, officer_email, officer_password, officer_username, 
-  officer_fname, officer_mname, officer_lname,
+  officer_fname, officer_mname, officer_lname, officer_suffix,
   officer_contact_no, officer_designation, officer_is_verified,
   aoi.hf_id, hf_name
   FROM a_officer_info aoi 
