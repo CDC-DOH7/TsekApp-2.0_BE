@@ -27,6 +27,7 @@ export const register = async (req: Request, res: Response) => {
     superadmin_fname,
     superadmin_mname,
     superadmin_lname,
+    superadmin_suffix,
   } = req.body;
 
   try {
@@ -57,6 +58,7 @@ export const register = async (req: Request, res: Response) => {
         superadmin_fname,
         superadmin_mname,
         superadmin_lname,
+        superadmin_suffix,
       },
     ];
 

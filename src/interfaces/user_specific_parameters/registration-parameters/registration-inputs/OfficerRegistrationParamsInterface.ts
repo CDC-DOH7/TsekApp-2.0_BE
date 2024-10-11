@@ -6,6 +6,7 @@ export default interface OfficerRegistrationParamsInterface {
   officer_fname: string;
   officer_mname: string | null;
   officer_lname: string;
+  officer_suffix: string | null;
   officer_contact_no: string;
   officer_designation: string;
   officer_is_verified: boolean;

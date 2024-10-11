@@ -53,8 +53,9 @@ export const createTablesScripts = [
       superadmin_password TEXT NOT NULL,
       superadmin_fname VARCHAR(50) NOT NULL,
       superadmin_mname VARCHAR(50),
-      superadmin_lname VARCHAR(50) NOT NULL
-    )`,
+      superadmin_lname VARCHAR(50) NOT NULL,
+      superadmin_suffix VARCHAR(10),
+      )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.SUPERVISOR_INFO_TABLE} (
       supervisor_id VARCHAR(50) PRIMARY KEY,
       supervisor_email VARCHAR(50) NOT NULL,
@@ -63,6 +64,7 @@ export const createTablesScripts = [
       supervisor_fname VARCHAR(50) NOT NULL,
       supervisor_mname VARCHAR(50),
       supervisor_lname VARCHAR(50) NOT NULL,
+      supervisor_suffix VARCHAR(10),
       supervisor_contact_no VARCHAR(11) NOT NULL,
       supervisor_designation VARCHAR(50) NOT NULL,
       supervisor_is_verified BOOLEAN NOT NULL,
@@ -78,6 +80,7 @@ export const createTablesScripts = [
       officer_fname VARCHAR(50) NOT NULL,
       officer_mname VARCHAR(50),
       officer_lname VARCHAR(50) NOT NULL,
+      officer_suffix VARCHAR(10),
       officer_contact_no VARCHAR(11) NOT NULL,
       officer_designation VARCHAR(50) NOT NULL,
       officer_is_verified BOOLEAN NOT NULL,

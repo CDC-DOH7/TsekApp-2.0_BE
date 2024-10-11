@@ -17,6 +17,7 @@ const officerSearchPatientInfo = async (
     patient_fname,
     patient_mname,
     patient_lname,
+    patient_suffix,
     patient_date_assess_startdate,
     patient_date_assess_enddate,
     hf_id,
@@ -41,6 +42,10 @@ const officerSearchPatientInfo = async (
   if (patient_lname) {
     query += " AND patient_lname LIKE ?";
     queryParams.push(patient_lname);
+  }
+  if (patient_suffix) {
+    query += " AND patient_suffix LIKE ?";
+    queryParams.push(patient_suffix);
   }
   if (patient_date_assess_startdate) {
     query += " AND patient_date_assess >= ?";
@@ -69,7 +74,7 @@ const officerCreatePatientInfo = async (
 ) => {
   // Query to check if the patient already exists with the same name and birthdate and hf_id
   const checkQuery = `SELECT COUNT(*) as count FROM ${TableNames.PATIENT_INFO_TABLE}
-    WHERE patient_fname = ? AND patient_mname = ? AND patient_lname = ? AND patient_dob = ? AND hf_id = ?`;
+    WHERE patient_fname = ? AND patient_mname = ? AND patient_lname = ? AND patient_suffix = ? AND patient_dob = ? AND hf_id = ?`;
 
   // officer-specific
   try {
@@ -99,6 +104,7 @@ const officerCreatePatientInfo = async (
     patient_fname,
     patient_mname,
     patient_lname,
+    patient_suffix,
     patient_date_assess, 
     patient_age, 
     patient_age_group_id,
@@ -123,7 +129,7 @@ const officerCreatePatientInfo = async (
      ?, ?, ?, ?, ?,
      ?, ?, ?, ?, ?, 
      ?, ?, ?, ?, ?, 
-     ?, ?, ?, ?)`;
+     ?, ?, ?, ?, ?)`;
 
     const [insertResult] = await (
       await officerDb
@@ -132,6 +138,7 @@ const officerCreatePatientInfo = async (
       patientInfo.patient_fname,
       patientInfo.patient_mname,
       patientInfo.patient_lname,
+      patientInfo.patient_suffix,
       patientInfo.patient_date_assess,
       patientInfo.patient_age,
       patientInfo.patient_age_group_id,
@@ -169,6 +176,7 @@ const supervisorSearchPatientInfo = async (
     patient_fname,
     patient_mname,
     patient_lname,
+    patient_suffix,
     patient_date_assess_startdate,
     patient_date_assess_enddate,
     hf_id,
@@ -193,6 +201,10 @@ const supervisorSearchPatientInfo = async (
   if (patient_lname) {
     query += " AND patient_lname LIKE ?";
     queryParams.push(patient_lname);
+  }
+  if (patient_suffix) {
+    query += " AND patient_suffix LIKE ?";
+    queryParams.push(patient_suffix);
   }
   if (patient_date_assess_startdate) {
     query += " AND patient_date_assess >= ?";
@@ -222,7 +234,8 @@ const supervisorUpdatePatientInfo = async (
   const query = `UPDATE ${TableNames.PATIENT_INFO_TABLE} SET 
   patient_fname = ?,
   patient_mname = ?, 
-  patient_lname = ?, 
+  patient_lname = ?,
+  patient_suffix = ?, 
   patient_date_assess = ?,
   patient_age = ?, 
   patient_age_group = ?,
@@ -255,6 +268,7 @@ const supervisorUpdatePatientInfo = async (
       patientInfo.patient_fname,
       patientInfo.patient_mname,
       patientInfo.patient_lname,
+      patientInfo.patient_suffix,
       patientInfo.patient_date_assess,
       patientInfo.patient_age,
       patientInfo.patient_age_group_id,
@@ -288,7 +302,7 @@ const supervisorDeletePatientInfo = async (
   patientInfoDeletion: PatientInfoDeletionInterface
 ) => {
   const query = `DELETE FROM ${TableNames.PATIENT_INFO_TABLE} WHERE patient_id = ? AND hf_id = ?`;
-  const { patient_id, hf_id} = patientInfoDeletion;
+  const { patient_id, hf_id } = patientInfoDeletion;
   // supervisor-specific
   try {
     const [result] = await (

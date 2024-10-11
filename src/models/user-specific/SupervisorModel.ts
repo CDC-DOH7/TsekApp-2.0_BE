@@ -21,6 +21,7 @@ export const supervisorRegister = async (
       supervisor_fname,
       supervisor_mname,
       supervisor_lname,
+      supervisor_suffix,
       supervisor_designation,
       supervisor_contact_no,
       supervisor_is_verified,
@@ -48,7 +49,7 @@ export const supervisorRegister = async (
     const query = `INSERT INTO ${TableNames.SUPERVISOR_INFO_TABLE}
       (supervisor_id, supervisor_email, supervisor_username,
       supervisor_password, supervisor_fname, supervisor_mname,
-      supervisor_lname, supervisor_designation, supervisor_contact_no,
+      supervisor_lname, supervisor_suffix, supervisor_designation, supervisor_contact_no,
       supervisor_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
     const procedureParams = [
@@ -59,6 +60,7 @@ export const supervisorRegister = async (
       supervisor_fname,
       supervisor_mname,
       supervisor_lname,
+      supervisor_suffix,
       supervisor_designation,
       supervisor_contact_no,
       supervisor_is_verified,
@@ -81,7 +83,7 @@ const supervisorLogin = async (
   supervisorUsername: string
 ): Promise<Partial<Supervisor> | null> => {
   const query: string = `SELECT supervisor_id, supervisor_email, supervisor_password, supervisor_username, 
-  supervisor_fname, supervisor_mname, supervisor_lname,
+  supervisor_fname, supervisor_mname, supervisor_lname, supervisor_suffix,
   supervisor_contact_no, supervisor_designation, supervisor_is_verified,
   asi.hf_id, hf_name
   FROM a_supervisor_info asi 
