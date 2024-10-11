@@ -46,8 +46,8 @@ export const officerRegister = async (
     const query = `INSERT INTO ${TableNames.OFFICER_INFO_TABLE}
       (officer_id, officer_email, officer_username,
       officer_password, officer_fname, officer_mname,
-      officer_lname, officer_suffix, officer_designation, officer_contact_no,
-      officer_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      officer_lname, officer_suffix, officer_suffix, officer_designation, officer_contact_no,
+      officer_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
     const procedureParams = [
       officer_id,
