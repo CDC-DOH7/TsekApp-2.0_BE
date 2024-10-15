@@ -5,7 +5,7 @@ import officerDb from "../../connections/OfficerConnection";
 import supervisorDb from "../../connections/SupervisorConnection";
 import superadminDb from "../../connections/SuperadminConnection";
 
-export const officerRetrieveEthnicityList = async (): Promise<QueryResult> => {
+export const officerRetrieveEthnicity = async (): Promise<QueryResult> => {
   let query = `SELECT ethnic_id, ethnic_name from ${TableNames.ETHNICITY_TABLE};`;
 
   try {
@@ -16,26 +16,24 @@ export const officerRetrieveEthnicityList = async (): Promise<QueryResult> => {
   }
 };
 
-export const supervisorRetrieveEthnicityList =
-  async (): Promise<QueryResult> => {
-    let query = `SELECT ethnic_id, ethnic_name from ${TableNames.ETHNICITY_TABLE};`;
+export const supervisorRetrieveEthnicity = async (): Promise<QueryResult> => {
+  let query = `SELECT ethnic_id, ethnic_name from ${TableNames.ETHNICITY_TABLE};`;
 
-    try {
-      const [results] = await (await supervisorDb).query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  };
+  try {
+    const [results] = await (await supervisorDb).query(query);
+    return results;
+  } catch (err) {
+    throw err;
+  }
+};
 
-export const superadminRetrieveEthnicityList =
-  async (): Promise<QueryResult> => {
-    let query = `SELECT ethnic_id, ethnic_name from ${TableNames.ETHNICITY_TABLE};`;
+export const superadminRetrieveEthnicity = async (): Promise<QueryResult> => {
+  let query = `SELECT ethnic_id, ethnic_name from ${TableNames.ETHNICITY_TABLE};`;
 
-    try {
-      const [results] = await (await superadminDb).query(query);
-      return results;
-    } catch (err) {
-      throw err;
-    }
-  };
+  try {
+    const [results] = await (await superadminDb).query(query);
+    return results;
+  } catch (err) {
+    throw err;
+  }
+};

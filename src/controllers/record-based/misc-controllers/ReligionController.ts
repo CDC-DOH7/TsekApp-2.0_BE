@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import {
-  officerRetrieveReligionList,
-  superadminRetrieveReligionList,
-  supervisorRetrieveReligionList,
+  officerRetrieveReligion,
+  superadminRetrieveReligion,
+  supervisorRetrieveReligion,
 } from "../../../models/misc/ReligionModel";
 import {
   authenticateOfficer,
@@ -14,7 +14,7 @@ export const officerRetrieveReligionList = [
   authenticateOfficer,
   async (req: Request, res: Response) => {
     try {
-      const results = await officerRetrieveReligionList();
+      const results = await officerRetrieveReligion();
       res.status(200).json({ message: "All Religions:", results });
     } catch (err) {
       return res.status(500).send(err);
@@ -26,7 +26,7 @@ export const supervisorRetrieveReligionList = [
   authenticateSupervisor,
   async (req: Request, res: Response) => {
     try {
-      const results = await supervisorRetrieveReligionList();
+      const results = await supervisorRetrieveReligion();
       res.status(200).json({ message: "All Religions:", results });
     } catch (err) {
       return res.status(500).send(err);
@@ -38,7 +38,7 @@ export const superadminRetrieveReligionList = [
   authenticateSuperadmin,
   async (req: Request, res: Response) => {
     try {
-      const results = await superadminRetrieveReligionList();
+      const results = await superadminRetrieveReligion();
       res.status(200).json({ message: "All Religions:", results });
     } catch (err) {
       return res.status(500).send(err);

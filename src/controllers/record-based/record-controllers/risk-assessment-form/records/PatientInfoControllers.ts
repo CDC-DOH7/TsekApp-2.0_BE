@@ -110,6 +110,8 @@ export const officerSearchPatientInfo = [
       patient_lname,
       patient_suffix,
       patient_age,
+      patient_religion_id,
+      patient_ethnicity_id,
       officer_id,
       hf_id,
     } = req.body;
@@ -129,6 +131,8 @@ export const officerSearchPatientInfo = [
         patient_lname,
         patient_suffix,
         patient_age,
+        patient_religion_id,
+        patient_ethnicity_id,
         hf_id,
       });
       res.status(200).json({ message: "Found Results!", results });
@@ -151,6 +155,8 @@ export const supervisorSearchPatientInfo = [
       patient_lname,
       patient_suffix,
       patient_age,
+      patient_religion_id,
+      patient_ethnicity_id,
       supervisor_id,
       hf_id,
     } = req.body;
@@ -170,6 +176,8 @@ export const supervisorSearchPatientInfo = [
         patient_lname,
         patient_suffix,
         patient_age,
+        patient_religion_id,
+        patient_ethnicity_id,
         hf_id,
       });
       res.status(200).json({ message: "Found Results!", results });
