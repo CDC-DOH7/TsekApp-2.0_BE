@@ -10,6 +10,8 @@ const officerSoftSearchRecords = async (
 ): Promise<QueryResult> => {
   const {
     patient_id,
+    ethnic_id,
+    religion_id,
     ard_id,
     cl_id,
     fh_id,
@@ -22,6 +24,8 @@ const officerSoftSearchRecords = async (
 
   let query = `SELECT * FROM a_patient_info api
     LEFT JOIN a_age_group aag ON api.patient_age_group_id = aag.ag_id
+    LEFT JOIN a_religion arl ON api.patient_religion_id = arl.religion_id
+    LEFT JOIN a_ethnicity ae ON api.patient_ethnicity_id = ae.ethnic_id
     LEFT JOIN a_assess_red_flags aarf ON api.patient_id = aarf.patient_id
     LEFT JOIN a_family_history afh ON api.patient_id = afh.patient_id
     LEFT JOIN a_management am ON api.patient_id = am.patient_id 
@@ -29,17 +33,22 @@ const officerSoftSearchRecords = async (
     LEFT JOIN a_past_medical_history apmh ON api.patient_id = apmh.patient_id
     LEFT JOIN a_referral ar ON api.patient_id = ar.patient_id 
     LEFT JOIN a_risk_screening ars ON api.patient_id = ars.patient_id 
-    LEFT JOIN a_consultation_logs acl ON api.patient_id = aarf.patient_id;`;
+    LEFT JOIN a_consultation_logs acl ON api.patient_id = aarf.patient_id
+    WHERE api.hf_id = ?`;
 
-  const queryParams: any[] = [hf_id, ard_id];
+  const queryParams: any[] = [hf_id];
 
-  if (hf_id) {
-    query += " AND api.hf_id = ?";
-    queryParams.push(hf_id);
-  }
   if (patient_id) {
     query += " AND api.patient_id LIKE ?";
     queryParams.push(`%${patient_id}%`);
+  }
+  if (ethnic_id) {
+    query += " AND api.patient_ethnicity_id = ?";
+    queryParams.push(ethnic_id);
+  }
+  if (religion_id) {
+    query += " AND api.patient_religion_id = ?";
+    queryParams.push(religion_id);
   }
   if (ard_id) {
     query += " AND aarf.ard_id LIKE ?";
@@ -66,7 +75,7 @@ const officerSoftSearchRecords = async (
     queryParams.push(`%${pmh_id}%`);
   }
   if (rs_id) {
-    query += " AND ars.rs_id LIKE ?";
+    query += " AND ars.rs_id LIKE ?;";
     queryParams.push(`%${rs_id}%`);
   }
 
@@ -84,6 +93,8 @@ const supervisorSoftSearchRecords = async (
 ): Promise<QueryResult> => {
   const {
     patient_id,
+    ethnic_id,
+    religion_id,
     ard_id,
     cl_id,
     fh_id,
@@ -94,9 +105,10 @@ const supervisorSoftSearchRecords = async (
     hf_id,
   } = searchFilter;
 
-  let query = `
-    SELECT * FROM a_patient_info api
+  let query = `SELECT * FROM a_patient_info api
     LEFT JOIN a_age_group aag ON api.patient_age_group_id = aag.ag_id
+    LEFT JOIN a_religion arl ON api.patient_religion_id = arl.religion_id
+    LEFT JOIN a_ethnicity ae ON api.patient_ethnicity_id = ae.ethnic_id
     LEFT JOIN a_assess_red_flags aarf ON api.patient_id = aarf.patient_id
     LEFT JOIN a_family_history afh ON api.patient_id = afh.patient_id
     LEFT JOIN a_management am ON api.patient_id = am.patient_id 
@@ -104,18 +116,22 @@ const supervisorSoftSearchRecords = async (
     LEFT JOIN a_past_medical_history apmh ON api.patient_id = apmh.patient_id
     LEFT JOIN a_referral ar ON api.patient_id = ar.patient_id 
     LEFT JOIN a_risk_screening ars ON api.patient_id = ars.patient_id 
-    LEFT JOIN a_consultation_logs acl ON api.patient_id = acl.patient_id
-    WHERE 1=1`;
+    LEFT JOIN a_consultation_logs acl ON api.patient_id = aarf.patient_id
+    WHERE api.hf_id = ?`;
 
-  const queryParams: any[] = [];
+  const queryParams: any[] = [hf_id];
 
-  if (hf_id) {
-    query += " AND api.hf_id = ?";
-    queryParams.push(hf_id);
-  }
   if (patient_id) {
     query += " AND api.patient_id LIKE ?";
     queryParams.push(`%${patient_id}%`);
+  }
+  if (ethnic_id) {
+    query += " AND api.patient_ethnicity_id = ?";
+    queryParams.push(ethnic_id);
+  }
+  if (religion_id) {
+    query += " AND api.patient_religion_id = ?";
+    queryParams.push(religion_id);
   }
   if (ard_id) {
     query += " AND aarf.ard_id LIKE ?";
@@ -142,11 +158,11 @@ const supervisorSoftSearchRecords = async (
     queryParams.push(`%${pmh_id}%`);
   }
   if (rs_id) {
-    query += " AND ars.rs_id LIKE ?";
+    query += " AND ars.rs_id LIKE ?;";
     queryParams.push(`%${rs_id}%`);
   }
 
-  // officer-specific
+  // supervisor-specific
   try {
     const [results] = await (await supervisorDb).query(query, queryParams);
     return results;
@@ -160,6 +176,8 @@ const superadminSoftSearchRecords = async (
 ): Promise<QueryResult> => {
   const {
     patient_id,
+    ethnic_id,
+    religion_id,
     ard_id,
     cl_id,
     fh_id,
@@ -170,9 +188,10 @@ const superadminSoftSearchRecords = async (
     hf_id,
   } = searchFilter;
 
-  let query = `
-    SELECT * FROM a_patient_info api
+  let query = `SELECT * FROM a_patient_info api
     LEFT JOIN a_age_group aag ON api.patient_age_group_id = aag.ag_id
+    LEFT JOIN a_religion arl ON api.patient_religion_id = arl.religion_id
+    LEFT JOIN a_ethnicity ae ON api.patient_ethnicity_id = ae.ethnic_id
     LEFT JOIN a_assess_red_flags aarf ON api.patient_id = aarf.patient_id
     LEFT JOIN a_family_history afh ON api.patient_id = afh.patient_id
     LEFT JOIN a_management am ON api.patient_id = am.patient_id 
@@ -180,17 +199,22 @@ const superadminSoftSearchRecords = async (
     LEFT JOIN a_past_medical_history apmh ON api.patient_id = apmh.patient_id
     LEFT JOIN a_referral ar ON api.patient_id = ar.patient_id 
     LEFT JOIN a_risk_screening ars ON api.patient_id = ars.patient_id 
-    LEFT JOIN a_consultation_logs acl ON api.patient_id = acl.patient_id`;
+    LEFT JOIN a_consultation_logs acl ON api.patient_id = aarf.patient_id
+    WHERE api.hf_id = ?`;
 
-  const queryParams: any[] = [];
+  const queryParams: any[] = [hf_id];
 
-  if (hf_id) {
-    query += " AND api.hf_id = ?";
-    queryParams.push(hf_id);
-  }
   if (patient_id) {
     query += " AND api.patient_id LIKE ?";
     queryParams.push(`%${patient_id}%`);
+  }
+  if (ethnic_id) {
+    query += " AND api.patient_ethnicity_id = ?";
+    queryParams.push(ethnic_id);
+  }
+  if (religion_id) {
+    query += " AND api.patient_religion_id = ?";
+    queryParams.push(religion_id);
   }
   if (ard_id) {
     query += " AND aarf.ard_id LIKE ?";
@@ -217,7 +241,7 @@ const superadminSoftSearchRecords = async (
     queryParams.push(`%${pmh_id}%`);
   }
   if (rs_id) {
-    query += " AND ars.rs_id LIKE ?";
+    query += " AND ars.rs_id LIKE ?;";
     queryParams.push(`%${rs_id}%`);
   }
 
@@ -237,6 +261,8 @@ const supervisorAdvancedSearchRecords = async (
 ): Promise<QueryResult> => {
   const {
     patient_id,
+    ethnic_id,
+    religion_id,
     ard_id,
     cl_id,
     cl_start_date,
@@ -257,6 +283,8 @@ const supervisorAdvancedSearchRecords = async (
   let query = `
     SELECT * FROM a_patient_info api
     LEFT JOIN a_age_group aag ON api.patient_age_group_id = aag.ag_id
+    LEFT JOIN a_religion arl ON api.patient_religion_id = arl.religion_id
+    LEFT JOIN a_ethnicity ae ON api.patient_ethnicity_id = ae.ethnic_id
     LEFT JOIN a_assess_red_flags aarf ON api.patient_id = aarf.patient_id
     LEFT JOIN a_family_history afh ON api.patient_id = afh.patient_id
     LEFT JOIN a_management am ON api.patient_id = am.patient_id 
@@ -264,17 +292,22 @@ const supervisorAdvancedSearchRecords = async (
     LEFT JOIN a_past_medical_history apmh ON api.patient_id = apmh.patient_id
     LEFT JOIN a_referral ar ON api.patient_id = ar.patient_id 
     LEFT JOIN a_risk_screening ars ON api.patient_id = ars.patient_id 
-    LEFT JOIN a_consultation_logs acl ON api.patient_id = acl.patient_id`;
+    LEFT JOIN a_consultation_logs acl ON api.patient_id = acl.patient_id
+    WHERE api.hf_id = ?`;
 
-  const queryParams: any[] = [];
+  const queryParams: any[] = [hf_id];
 
-  if (hf_id) {
-    query += " AND api.hf_id = ?";
-    queryParams.push(hf_id);
-  }
   if (patient_id) {
     query += " AND api.patient_id LIKE ?";
     queryParams.push(`%${patient_id}%`);
+  }
+  if (ethnic_id) {
+    query += " AND api.patient_ethnicity_id = ?";
+    queryParams.push(ethnic_id);
+  }
+  if (religion_id) {
+    query += " AND api.patient_religion_id = ?";
+    queryParams.push(religion_id);
   }
   if (ard_id) {
     query += " AND aarf.ard_id LIKE ?";
@@ -346,6 +379,8 @@ const officerAdvancedSearchRecords = async (
 ): Promise<QueryResult> => {
   const {
     patient_id,
+    ethnic_id,
+    religion_id,
     ard_id,
     cl_id,
     cl_start_date,
@@ -366,6 +401,8 @@ const officerAdvancedSearchRecords = async (
   let query = `
     SELECT * FROM a_patient_info api
     LEFT JOIN a_age_group aag ON api.patient_age_group_id = aag.ag_id
+    LEFT JOIN a_religion arl ON api.patient_religion_id = arl.religion_id
+    LEFT JOIN a_ethnicity ae ON api.patient_ethnicity_id = ae.ethnic_id
     LEFT JOIN a_assess_red_flags aarf ON api.patient_id = aarf.patient_id
     LEFT JOIN a_family_history afh ON api.patient_id = afh.patient_id
     LEFT JOIN a_management am ON api.patient_id = am.patient_id 
@@ -373,17 +410,22 @@ const officerAdvancedSearchRecords = async (
     LEFT JOIN a_past_medical_history apmh ON api.patient_id = apmh.patient_id
     LEFT JOIN a_referral ar ON api.patient_id = ar.patient_id 
     LEFT JOIN a_risk_screening ars ON api.patient_id = ars.patient_id 
-    LEFT JOIN a_consultation_logs acl ON api.patient_id = acl.patient_id`;
+    LEFT JOIN a_consultation_logs acl ON api.patient_id = acl.patient_id
+    WHERE api.hf_id = ?`;
 
-  const queryParams: any[] = [];
+  const queryParams: any[] = [hf_id];
 
-  if (hf_id) {
-    query += " AND api.hf_id = ?";
-    queryParams.push(hf_id);
-  }
   if (patient_id) {
     query += " AND api.patient_id LIKE ?";
     queryParams.push(`%${patient_id}%`);
+  }
+  if (ethnic_id) {
+    query += " AND api.patient_ethnicity_id = ?";
+    queryParams.push(ethnic_id);
+  }
+  if (religion_id) {
+    query += " AND api.patient_religion_id = ?";
+    queryParams.push(religion_id);
   }
   if (ard_id) {
     query += " AND aarf.ard_id LIKE ?";
@@ -455,6 +497,8 @@ const superadminAdvancedSearchRecords = async (
 ): Promise<QueryResult> => {
   const {
     patient_id,
+    ethnic_id,
+    religion_id,
     ard_id,
     cl_id,
     cl_start_date,
@@ -475,6 +519,8 @@ const superadminAdvancedSearchRecords = async (
   let query = `
     SELECT * FROM a_patient_info api
     LEFT JOIN a_age_group aag ON api.patient_age_group_id = aag.ag_id
+    LEFT JOIN a_religion arl ON api.patient_religion_id = arl.religion_id
+    LEFT JOIN a_ethnicity ae ON api.patient_ethnicity_id = ae.ethnic_id
     LEFT JOIN a_assess_red_flags aarf ON api.patient_id = aarf.patient_id
     LEFT JOIN a_family_history afh ON api.patient_id = afh.patient_id
     LEFT JOIN a_management am ON api.patient_id = am.patient_id 
@@ -482,17 +528,22 @@ const superadminAdvancedSearchRecords = async (
     LEFT JOIN a_past_medical_history apmh ON api.patient_id = apmh.patient_id
     LEFT JOIN a_referral ar ON api.patient_id = ar.patient_id 
     LEFT JOIN a_risk_screening ars ON api.patient_id = ars.patient_id 
-    LEFT JOIN a_consultation_logs acl ON api.patient_id = acl.patient_id`;
+    LEFT JOIN a_consultation_logs acl ON api.patient_id = acl.patient_id
+    WHERE api.hf_id = ?`;
 
-  const queryParams: any[] = [];
+  const queryParams: any[] = [hf_id];
 
-  if (hf_id) {
-    query += " AND api.hf_id = ?";
-    queryParams.push(hf_id);
-  }
   if (patient_id) {
     query += " AND api.patient_id LIKE ?";
     queryParams.push(`%${patient_id}%`);
+  }
+  if (ethnic_id) {
+    query += " AND api.patient_ethnicity_id = ?";
+    queryParams.push(ethnic_id);
+  }
+  if (religion_id) {
+    query += " AND api.patient_religion_id = ?";
+    queryParams.push(religion_id);
   }
   if (ard_id) {
     query += " AND aarf.ard_id LIKE ?";

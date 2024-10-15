@@ -3,6 +3,14 @@ import TableNames from "../../common/constants/TableNames";
 // -- create e-tsekapp database if non-existent--
 // -- create tables for the database --
 export const createTablesScripts = [
+  `CREATE TABLE IF NOT EXISTS ${TableNames.RELIGION_TABLE} (
+      religion_id INT PRIMARY KEY,
+		  religion_name VARCHAR(50) NOT NULL
+		  )`,
+  `CREATE TABLE IF NOT EXISTS ${TableNames.ETHNICITY_TABLE} (
+      ethnic_id INT PRIMARY KEY,
+		  ethnic_name VARCHAR(100) NOT NULL
+		  )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.BARANGAY_TABLE} (
       brgy_id INT NOT NULL PRIMARY KEY,
       province_id INT NOT NULL,
@@ -54,7 +62,7 @@ export const createTablesScripts = [
       superadmin_fname VARCHAR(50) NOT NULL,
       superadmin_mname VARCHAR(50),
       superadmin_lname VARCHAR(50) NOT NULL,
-      superadmin_suffix VARCHAR(10),
+      superadmin_suffix VARCHAR(10)
       )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.SUPERVISOR_INFO_TABLE} (
       supervisor_id VARCHAR(50) PRIMARY KEY,
@@ -100,7 +108,7 @@ export const createTablesScripts = [
       patient_sex VARCHAR(10) NOT NULL,
       patient_dob DATE NOT NULL,
       patient_civil_status VARCHAR(20) NOT NULL,
-      patient_religion VARCHAR(50),
+      patient_religion_id INT NOT NULL,
       patient_contact_no VARCHAR(15),
       patient_street TEXT,
       patient_purok VARCHAR(50),
@@ -112,15 +120,17 @@ export const createTablesScripts = [
       patient_pwd_no VARCHAR(50),
       patient_emp_status VARCHAR(50),
       patient_ip VARCHAR(50),
-      patient_ethnicity VARCHAR(50),
+      patient_ethnicity_id INT NOT NULL,
       hf_id VARCHAR(18) NOT NULL,
      
       FOREIGN KEY (patient_age_group_id) REFERENCES a_age_group(ag_id),
+      FOREIGN KEY (patient_religion_id) REFERENCES a_religion(religion_id),
+      FOREIGN KEY (patient_ethnicity_id) REFERENCES a_ethnicity(ethnic_id),
       FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id),
       FOREIGN KEY (brgy_id) REFERENCES a_brgy_info(brgy_id),
       FOREIGN KEY (muncity_id) REFERENCES a_muncity_info(muncity_id),
-      FOREIGN KEY (province_id) REFERENCES a_province_info(province_id)
-    )`,
+      FOREIGN KEY (province_id) REFERENCES a_province_info(province_id) 
+      )`,
   `CREATE TABLE IF NOT EXISTS ${TableNames.ASSESS_RED_FLAG_TABLE}(
       ard_id VARCHAR(75) NOT NULL PRIMARY KEY,
       patient_id VARCHAR(75) NOT NULL,

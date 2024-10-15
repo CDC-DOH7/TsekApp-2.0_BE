@@ -1,5 +1,7 @@
 enum TableNames {
   // Primary tables
+  RELIGION_TABLE = "a_religion",
+  ETHNICITY_TABLE = "a_ethnicity",
   BARANGAY_TABLE = "a_brgy_info",
   SUPERADMIN_INFO_TABLE = "a_superadmin_info",
   SUPERVISOR_INFO_TABLE = "a_supervisor_info",
@@ -29,7 +31,7 @@ enum TableNames {
   IMMUSTAT = "immu_stat",
   MEDICATION = "medication",
   PHIC_MEMBERSHIP = "phic_membership",
-  PROFILE = "profile", 
+  PROFILE = "profile",
   SERVICES = "services",
   TUBERCULOSIS = "tuberculosis",
 }

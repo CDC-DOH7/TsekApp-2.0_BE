@@ -24,6 +24,7 @@ const isProduction: boolean =
   process.env.IS_PRODUCTION?.toLowerCase() === "true";
 
 const allowedOrigins = [
+  "http://localhost:5173",
   "https://tsekap-2-0.vercel.app", // Add more allowed origins here if needed
 ];
 

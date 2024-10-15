@@ -38,6 +38,8 @@ import { officerRetrieveBarangayList } from "../controllers/record-based/misc-co
 import { officerRetrieveHealthFacilityList } from "../controllers/record-based/misc-controllers/HealthFacilityController";
 import { officerRetrieveProvinceList } from "../controllers/record-based/misc-controllers/ProvinceController";
 import { officerRetrieveMuncityList } from "../controllers/record-based/misc-controllers/MuncityController";
+import { officerRetrieveReligionList } from "../models/misc/ReligionModel";
+import { officerRetrieveEthnicityList } from "../models/misc/EthnicityModel";
 
 const officerRouter: Router = Router();
 
@@ -53,6 +55,14 @@ const infoQueryingRoutes = [
   {
     path: `${MiscPaths.HEALTH_FACILITY_PATH}`,
     handler: officerRetrieveHealthFacilityList,
+  },
+  {
+    path: `${MiscPaths.RELIGION_PATH}`,
+    handler: officerRetrieveReligionList,
+  },
+  {
+    path: `${MiscPaths.ETHNICITY_PATH}`,
+    handler: officerRetrieveEthnicityList,
   },
 ];
 

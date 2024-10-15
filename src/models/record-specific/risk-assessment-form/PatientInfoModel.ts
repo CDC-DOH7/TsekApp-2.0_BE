@@ -112,7 +112,7 @@ const officerCreatePatientInfo = async (
     patient_sex,
     patient_dob,
     patient_civil_status,
-    patient_religion,
+    patient_religion_id,
     patient_contact_no,
     patient_street,
     patient_purok,
@@ -124,7 +124,7 @@ const officerCreatePatientInfo = async (
     patient_pwd_no,
     patient_emp_status,
     patient_ip,
-    patient_ethnicity,
+    patient_ethnicity_id,
     hf_id) VALUES (
      ?, ?, ?, ?, ?, 
      ?, ?, ?, ?, ?,
@@ -146,7 +146,7 @@ const officerCreatePatientInfo = async (
       patientInfo.patient_sex,
       patientInfo.patient_dob,
       patientInfo.patient_civil_status,
-      patientInfo.patient_religion,
+      patientInfo.patient_religion_id,
       patientInfo.patient_contact_no,
       patientInfo.patient_street,
       patientInfo.patient_purok,
@@ -158,7 +158,7 @@ const officerCreatePatientInfo = async (
       patientInfo.patient_pwd_no,
       patientInfo.patient_emp_status,
       patientInfo.patient_ip,
-      patientInfo.patient_ethnicity,
+      patientInfo.patient_ethnicity_id,
       patientInfo.hf_id,
     ]);
 
@@ -243,7 +243,7 @@ const supervisorUpdatePatientInfo = async (
   patient_sex = ?,
   patient_dob = ?,
   patient_civil_status = ?,
-  patient_religion = ?,
+  patient_religion_id = ?,
   patient_contact_no = ?,
   patient_street = ?,
   patient_purok = ?, 
@@ -258,7 +258,7 @@ const supervisorUpdatePatientInfo = async (
   patient_pwd_no = ?, 
   patient_emp_status = ?, 
   patient_ip = ?, 
-  patient_ethinicity = ?
+  patient_ethinicity_id = ?
   WHERE patient_id = ? AND hf_id = ?`;
 
   // supervisor-specific
@@ -276,7 +276,7 @@ const supervisorUpdatePatientInfo = async (
       patientInfo.patient_sex,
       patientInfo.patient_dob,
       patientInfo.patient_civil_status,
-      patientInfo.patient_religion,
+      patientInfo.patient_religion_id,
       patientInfo.patient_contact_no,
       patientInfo.patient_street,
       patientInfo.patient_purok,
@@ -288,7 +288,7 @@ const supervisorUpdatePatientInfo = async (
       patientInfo.patient_pwd_no,
       patientInfo.patient_emp_status,
       patientInfo.patient_ip,
-      patientInfo.patient_ethnicity,
+      patientInfo.patient_ethnicity_id,
       patientInfo.patient_id,
       patientInfo.hf_id,
     ]);

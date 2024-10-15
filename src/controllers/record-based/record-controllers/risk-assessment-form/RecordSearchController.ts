@@ -38,6 +38,8 @@ export const officerSoftSearch = [
     const {
       patient_id,
       officer_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       fh_id,
@@ -54,6 +56,8 @@ export const officerSoftSearch = [
 
     const searchParams: SoftSearchFilterInterface = {
       patient_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       fh_id,
@@ -81,6 +85,8 @@ export const supervisorSoftSearch = [
     const {
       patient_id,
       supervisor_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       fh_id,
@@ -97,6 +103,8 @@ export const supervisorSoftSearch = [
 
     const searchParams: SoftSearchFilterInterface = {
       patient_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       fh_id,
@@ -124,6 +132,8 @@ export const superadminSoftSearch = [
     const {
       patient_id,
       superadmin_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       fh_id,
@@ -140,6 +150,8 @@ export const superadminSoftSearch = [
 
     const searchParams: SoftSearchFilterInterface = {
       patient_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       fh_id,
@@ -168,6 +180,8 @@ export const officerAdvancedSearch = [
     const {
       patient_id,
       officer_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       cl_start_date,
@@ -191,6 +205,8 @@ export const officerAdvancedSearch = [
 
     const searchParams: AdvancedSearchFilterInterface = {
       patient_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       cl_start_date,
@@ -225,6 +241,8 @@ export const supervisorAdvancedSearch = [
     const {
       patient_id,
       supervisor_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       cl_start_date,
@@ -248,6 +266,8 @@ export const supervisorAdvancedSearch = [
 
     const searchParams: AdvancedSearchFilterInterface = {
       patient_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       cl_start_date,
@@ -282,6 +302,8 @@ export const superadminAdvancedSearch = [
     const {
       patient_id,
       superadmin_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       cl_start_date,
@@ -305,6 +327,8 @@ export const superadminAdvancedSearch = [
 
     const searchParams: AdvancedSearchFilterInterface = {
       patient_id,
+      ethnic_id,
+      religion_id,
       ard_id,
       cl_id,
       cl_start_date,

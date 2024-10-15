@@ -49,8 +49,12 @@ export const supervisorRegister = async (
     const query = `INSERT INTO ${TableNames.SUPERVISOR_INFO_TABLE}
       (supervisor_id, supervisor_email, supervisor_username,
       supervisor_password, supervisor_fname, supervisor_mname,
-      supervisor_lname, supervisor_suffix, supervisor_designation, supervisor_contact_no,
-      supervisor_is_verified, hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      supervisor_lname, supervisor_suffix, supervisor_designation,
+      supervisor_contact_no, supervisor_is_verified, hf_id) VALUES 
+      (?, ?, ?,
+      ?, ?, ?,
+      ?, ?, ?,
+      ?, ?, ?)`;
 
     const procedureParams = [
       supervisor_id,

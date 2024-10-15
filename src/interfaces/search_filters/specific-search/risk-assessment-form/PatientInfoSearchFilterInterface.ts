@@ -8,5 +8,7 @@ export default interface PatientInfoSearchFilterInterface {
   patient_suffix: string | null;
   // patient_date_assess: Date | null;
   patient_age: number | null;
+  patient_religion_id: number | null;
+  patient_ethnicity_id: number | null;
   hf_id: string | null;
 }
