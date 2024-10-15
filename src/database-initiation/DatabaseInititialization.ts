@@ -90,10 +90,17 @@ const initializeDatabase = async (): Promise<void> => {
     // Check if any of the tables exist
     const tableNames = Object.values(TableNames);
     const existingTables = await Promise.all(
-      tableNames.map(async (tableName) => {
+      tableNames.map(async (tableName, index) => {
         const [rows] = await connection.query(`SHOW TABLES LIKE ?`, [
           tableName,
         ]);
+        if (rows.length > 0) {
+          console.log(
+            `${calculateCurrentDateTime()} >> Table ${identifyTableName(
+              index
+            )} already exists.`
+          );
+        }
         return rows.length > 0;
       })
     );
