@@ -74,7 +74,7 @@ const officerCreatePatientInfo = async (
 ) => {
   // Query to check if the patient already exists with the same name and birthdate and hf_id
   const checkQuery = `SELECT COUNT(*) as count FROM ${TableNames.PATIENT_INFO_TABLE}
-    WHERE patient_fname = ? AND patient_mname = ? AND patient_lname = ? AND patient_suffix = ? AND patient_dob = ? AND hf_id = ?`;
+    WHERE patient_fname = ? AND patient_mname = ? AND patient_lname = ? AND patient_dob = ? AND hf_id = ?`;
 
   // officer-specific
   try {
