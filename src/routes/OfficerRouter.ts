@@ -38,7 +38,8 @@ import { officerRetrieveBarangayList } from "../controllers/record-based/misc-co
 import { officerRetrieveHealthFacilityList } from "../controllers/record-based/misc-controllers/HealthFacilityController";
 import { officerRetrieveProvinceList } from "../controllers/record-based/misc-controllers/ProvinceController";
 import { officerRetrieveMuncityList } from "../controllers/record-based/misc-controllers/MuncityController";
-
+import { officerRetrieveReligionList } from "../controllers/record-based/misc-controllers/ReligionController";
+import { officerRetrieveEthnicityList } from "../controllers/record-based/misc-controllers/EthnicityController";
 const officerRouter: Router = Router();
 
 officerRouter.post("/register", register);
@@ -53,6 +54,14 @@ const infoQueryingRoutes = [
   {
     path: `${MiscPaths.HEALTH_FACILITY_PATH}`,
     handler: officerRetrieveHealthFacilityList,
+  },
+  {
+    path: `${MiscPaths.RELIGION_PATH}`,
+    handler: officerRetrieveReligionList,
+  },
+  {
+    path: `${MiscPaths.ETHNICITY_PATH}`,
+    handler: officerRetrieveEthnicityList,
   },
 ];
 

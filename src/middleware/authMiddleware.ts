@@ -14,7 +14,16 @@ dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET_ENCODED
   ? Buffer.from(process.env.JWT_SECRET_ENCODED, "base64").toString("utf-8")
   : "";
-const COOKIE_MAX_AGE = Number(process.env.JWT_EXPIRES_IN) || 604800000; // One week in milliseconds
+const COOKIE_MAX_AGE = Number(process.env.JWT_EXPIRES_IN) || 2592000; // 30 days in seconds
+
+const setCookieWithExpiry = (res: Response, token: string) => {
+  const expiryDate = new Date(Date.now() + COOKIE_MAX_AGE * 1000);
+  res.cookie("token", token, {
+    maxAge: COOKIE_MAX_AGE * 1000, 
+    expires: expiryDate,
+    httpOnly: true
+  });
+};
 
 // Middleware for universal checking
 export const authMiddleware = async (
@@ -32,7 +41,7 @@ export const authMiddleware = async (
     req.user = verified;
 
     // Refresh the cookie
-    res.cookie("token", token, { maxAge: COOKIE_MAX_AGE, httpOnly: true });
+    setCookieWithExpiry(res, token);
     next();
   } catch (err) {
     console.error(err);
@@ -55,7 +64,6 @@ export const authenticateOfficer = async (
   try {
     const decoded = jwt.verify(token, JWT_SECRET) as { id: string };
 
-    console.log(req.body.officer_id);
     req.body.officer_id = decoded.id;
 
     const query = `SELECT * FROM ${TableNames.OFFICER_INFO_TABLE} WHERE officer_is_verified = true AND officer_id = ?`;

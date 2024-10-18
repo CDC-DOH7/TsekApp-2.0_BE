@@ -1,13 +1,16 @@
 enum TableNames {
   // Primary tables
+  RELIGION_TABLE = "a_religion",
+  ETHNICITY_TABLE = "a_ethnicity",
   BARANGAY_TABLE = "a_brgy_info",
+  MUNCITY_TABLE = "a_muncity_info",
+  PROVINCE_TABLE = "a_province_info",
+  AGE_GROUP_TABLE = "a_age_group",
+  HEALTH_FACILITY_INFO_TABLE = "a_health_facility_info",
   SUPERADMIN_INFO_TABLE = "a_superadmin_info",
   SUPERVISOR_INFO_TABLE = "a_supervisor_info",
   OFFICER_INFO_TABLE = "a_officer_info",
-  CONSULTATION_LOGS_TABLE = "a_consultation_logs",
-  HEALTH_FACILITY_INFO_TABLE = "a_health_facility_info",
   PATIENT_INFO_TABLE = "a_patient_info",
-  AGE_GROUP_TABLE = "a_age_group",
   ASSESS_RED_FLAG_TABLE = "a_assess_red_flags",
   ASSESS_RED_FLAG_SUMMARY_TABLE = "a_ard_summary",
   PAST_MEDICAL_HISTORY_TABLE = "a_past_medical_history",
@@ -16,8 +19,7 @@ enum TableNames {
   RISK_SCREENING_TABLE = "a_risk_screening",
   MANAGEMENT_TABLE = "a_management",
   REFERRAL_TABLE = "a_referral",
-  MUNCITY_TABLE = "a_muncity_info",
-  PROVINCE_TABLE = "a_province_info",
+  CONSULTATION_LOGS_TABLE = "a_consultation_logs",
 
   // Default tables
   AGE_BRACKET = "age_bracket",
@@ -29,7 +31,7 @@ enum TableNames {
   IMMUSTAT = "immu_stat",
   MEDICATION = "medication",
   PHIC_MEMBERSHIP = "phic_membership",
-  PROFILE = "profile", 
+  PROFILE = "profile",
   SERVICES = "services",
   TUBERCULOSIS = "tuberculosis",
 }

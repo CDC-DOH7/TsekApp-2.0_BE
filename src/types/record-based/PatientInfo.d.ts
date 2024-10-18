@@ -12,7 +12,7 @@ export interface PatientInfo extends RowDataPacket {
   patient_sex: string;
   patient_dob: Date;
   patient_civil_status: string;
-  patient_religion: string;
+  patient_religion_id: string;
   patient_contact_no: string;
   patient_street: string | null;
   patient_purok: string | null;
@@ -24,6 +24,6 @@ export interface PatientInfo extends RowDataPacket {
   patient_pwd_no: string | null;
   patient_emp_status: string;
   patient_ip: string;
-  patient_ethnicity: string;
+  patient_ethnicity_id: string;
   hf_id: string;
 }

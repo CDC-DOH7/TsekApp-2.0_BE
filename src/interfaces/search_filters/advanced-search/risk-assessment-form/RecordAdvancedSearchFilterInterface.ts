@@ -1,5 +1,7 @@
 export default interface AdvancedSearchFilterInterface {
   patient_id: string | null;
+  ethnic_id: string | null;
+  religion_id: string | null;
   ard_id: string | null;
   cl_id: string | null;
   cl_start_date: Date | null;

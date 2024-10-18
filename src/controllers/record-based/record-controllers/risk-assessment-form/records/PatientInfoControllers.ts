@@ -23,7 +23,7 @@ export const officerCreatePatientInfo = [
       patient_sex,
       patient_dob,
       patient_civil_status,
-      patient_religion,
+      patient_religion_id,
       patient_contact_no,
       patient_street,
       patient_purok,
@@ -35,7 +35,7 @@ export const officerCreatePatientInfo = [
       patient_pwd_no,
       patient_emp_status,
       patient_ip,
-      patient_ethnicity,
+      patient_ethnicity_id,
       hf_id,
       officer_id,
     } = req.body;
@@ -71,7 +71,7 @@ export const officerCreatePatientInfo = [
         patient_sex,
         patient_dob,
         patient_civil_status,
-        patient_religion,
+        patient_religion_id,
         patient_contact_no,
         patient_street,
         patient_purok,
@@ -83,7 +83,7 @@ export const officerCreatePatientInfo = [
         patient_pwd_no,
         patient_emp_status,
         patient_ip,
-        patient_ethnicity,
+        patient_ethnicity_id,
         hf_id,
       });
       res.status(201).json({
@@ -110,6 +110,8 @@ export const officerSearchPatientInfo = [
       patient_lname,
       patient_suffix,
       patient_age,
+      patient_religion_id,
+      patient_ethnicity_id,
       officer_id,
       hf_id,
     } = req.body;
@@ -129,6 +131,8 @@ export const officerSearchPatientInfo = [
         patient_lname,
         patient_suffix,
         patient_age,
+        patient_religion_id,
+        patient_ethnicity_id,
         hf_id,
       });
       res.status(200).json({ message: "Found Results!", results });
@@ -151,6 +155,8 @@ export const supervisorSearchPatientInfo = [
       patient_lname,
       patient_suffix,
       patient_age,
+      patient_religion_id,
+      patient_ethnicity_id,
       supervisor_id,
       hf_id,
     } = req.body;
@@ -170,6 +176,8 @@ export const supervisorSearchPatientInfo = [
         patient_lname,
         patient_suffix,
         patient_age,
+        patient_religion_id,
+        patient_ethnicity_id,
         hf_id,
       });
       res.status(200).json({ message: "Found Results!", results });
@@ -193,7 +201,7 @@ export const supervisorUpdatePatientInfo = [
       patient_sex,
       patient_dob,
       patient_civil_status,
-      patient_religion,
+      patient_religion_id,
       patient_contact_no,
       patient_street,
       patient_purok,
@@ -205,7 +213,7 @@ export const supervisorUpdatePatientInfo = [
       patient_pwd_no,
       patient_emp_status,
       patient_ip,
-      patient_ethnicity,
+      patient_ethnicity_id,
       patient_id,
       hf_id,
       supervisor_id,
@@ -230,7 +238,7 @@ export const supervisorUpdatePatientInfo = [
         patient_sex,
         patient_dob,
         patient_civil_status,
-        patient_religion,
+        patient_religion_id,
         patient_contact_no,
         patient_street,
         patient_purok,
@@ -242,7 +250,7 @@ export const supervisorUpdatePatientInfo = [
         patient_pwd_no,
         patient_emp_status,
         patient_ip,
-        patient_ethnicity,
+        patient_ethnicity_id,
         patient_id,
         hf_id,
       });

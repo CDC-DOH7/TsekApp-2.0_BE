@@ -2,6 +2,8 @@ import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 import { createTablesScripts } from "./initialization-scripts/DatabaseTableModelsCreation";
 import {
+  insertDefaultEthnicityValues,
+  insertDefaultReligionValues,
   insertDefaultAgeGroupValues,
   insertDefaultBarangayValues,
   insertDefaultHealthFacilityValues,
@@ -18,110 +20,46 @@ const disableForeignKeyChecksCmd = `SET FOREIGN_KEY_CHECKS=0`;
 const enableForeignKeyChecksCmd = `SET FOREIGN_KEY_CHECKS=1`;
 
 const identifyTableName = (index: number) => {
-  let tableName = "";
-  switch (index) {
-    case 0:
-      tableName = TableNames.BARANGAY_TABLE;
-      break;
-    case 1:
-      tableName = TableNames.MUNCITY_TABLE;
-      break;
-    case 2:
-      tableName = TableNames.PROVINCE_TABLE;
-      break;
-    case 3:
-      tableName = TableNames.AGE_GROUP_TABLE;
-      break;
-    case 4:
-      tableName = TableNames.HEALTH_FACILITY_INFO_TABLE;
-      break;
-    case 5:
-      tableName = TableNames.SUPERADMIN_INFO_TABLE;
-      break;
-    case 6:
-      tableName = TableNames.SUPERVISOR_INFO_TABLE;
-      break;
-    case 7:
-      tableName = TableNames.OFFICER_INFO_TABLE;
-      break;
-    case 8:
-      tableName = TableNames.PATIENT_INFO_TABLE;
-      break;
-    case 9:
-      tableName = TableNames.ASSESS_RED_FLAG_TABLE;
-      break;
-    case 10:
-      tableName = TableNames.ASSESS_RED_FLAG_SUMMARY_TABLE;
-      break;
-    case 11:
-      tableName = TableNames.PAST_MEDICAL_HISTORY_TABLE;
-      break;
-    case 12:
-      tableName = TableNames.FAMILY_HISTORY_TABLE;
-      break;
-    case 13:
-      tableName = TableNames.NCD_RISK_FACTORS_TABLE;
-      break;
-    case 14:
-      tableName = TableNames.RISK_SCREENING_TABLE;
-      break;
-    case 15:
-      tableName = TableNames.MANAGEMENT_TABLE;
-      break;
-    case 16:
-      tableName = TableNames.REFERRAL_TABLE;
-      break;
-    case 17:
-      tableName = TableNames.CONSULTATION_LOGS_TABLE;
-      break;
-    case 18:
-      tableName = TableNames.AGE_BRACKET;
-      break;
-    case 19:
-      tableName = TableNames.AVAILABLE_SERVICES;
-      break;
-    case 20:
-      tableName = TableNames.BRACKET_SERVICES;
-      break;
-    case 21:
-      tableName = TableNames.CASES;
-      break;
-    case 22:
-      tableName = TableNames.FEEDBACK;
-      break;
-    case 23:
-      tableName = TableNames.GENERAL_INFORMATION;
-      break;
-    case 24:
-      tableName = TableNames.IMMUSTAT;
-      break;
-    case 25:
-      tableName = TableNames.MEDICATION;
-      break;
-    case 26:
-      tableName = TableNames.PHIC_MEMBERSHIP;
-      break;
-    case 27:
-      tableName = TableNames.PROFILE;
-      break;
-    case 28:
-      tableName = TableNames.SERVICES;
-      break;
-    case 29:
-      tableName = TableNames.TUBERCULOSIS;
-      break;
-    default:
-      tableName = "N/A";
-      break;
-  }
+  const tableNamesMap: { [key: number]: string } = {
+    0: TableNames.RELIGION_TABLE,
+    1: TableNames.ETHNICITY_TABLE,
+    2: TableNames.BARANGAY_TABLE,
+    3: TableNames.MUNCITY_TABLE,
+    4: TableNames.PROVINCE_TABLE,
+    5: TableNames.AGE_GROUP_TABLE,
+    6: TableNames.HEALTH_FACILITY_INFO_TABLE,
+    7: TableNames.SUPERADMIN_INFO_TABLE,
+    8: TableNames.SUPERVISOR_INFO_TABLE,
+    9: TableNames.OFFICER_INFO_TABLE,
+    10: TableNames.PATIENT_INFO_TABLE,
+    11: TableNames.ASSESS_RED_FLAG_TABLE,
+    12: TableNames.ASSESS_RED_FLAG_SUMMARY_TABLE,
+    13: TableNames.PAST_MEDICAL_HISTORY_TABLE,
+    14: TableNames.FAMILY_HISTORY_TABLE,
+    15: TableNames.NCD_RISK_FACTORS_TABLE,
+    16: TableNames.RISK_SCREENING_TABLE,
+    17: TableNames.MANAGEMENT_TABLE,
+    18: TableNames.REFERRAL_TABLE,
+    19: TableNames.CONSULTATION_LOGS_TABLE,
+    20: TableNames.AGE_BRACKET,
+    21: TableNames.AVAILABLE_SERVICES,
+    22: TableNames.BRACKET_SERVICES,
+    23: TableNames.CASES,
+    24: TableNames.FEEDBACK,
+    25: TableNames.GENERAL_INFORMATION,
+    26: TableNames.IMMUSTAT,
+    27: TableNames.MEDICATION,
+    28: TableNames.PHIC_MEMBERSHIP,
+    29: TableNames.PROFILE,
+    30: TableNames.SERVICES,
+    31: TableNames.TUBERCULOSIS,
+  };
 
-  return tableName;
+  return tableNamesMap[index] || "N/A";
 };
 
 const initializeDatabase = async (): Promise<void> => {
   const connection = await connectToDatabase();
-  const isProduction: boolean =
-    process.env.IS_PRODUCTION?.toLowerCase() === "true";
 
   console.log(`\n${calculateCurrentDateTime()} >> Initializing System...`);
   try {
@@ -152,10 +90,17 @@ const initializeDatabase = async (): Promise<void> => {
     // Check if any of the tables exist
     const tableNames = Object.values(TableNames);
     const existingTables = await Promise.all(
-      tableNames.map(async (tableName) => {
+      tableNames.map(async (tableName, index) => {
         const [rows] = await connection.query(`SHOW TABLES LIKE ?`, [
           tableName,
         ]);
+        if (rows.length > 0) {
+          console.log(
+            `${calculateCurrentDateTime()} >> Table ${identifyTableName(
+              index
+            )} already exists.`
+          );
+        }
         return rows.length > 0;
       })
     );
@@ -166,18 +111,16 @@ const initializeDatabase = async (): Promise<void> => {
         `${calculateCurrentDateTime()} >> One or more required tables already exist. Skipping table creation.`
       );
     } else {
-      let iteration: number = 0;
       // Create tables directly
       await Promise.all(
-        createTablesScripts.map(async (script) => {
+        createTablesScripts.map(async (script, index) => {
           try {
             await connection.query(script);
             console.log(
               `${calculateCurrentDateTime()} >> Table created successfully: ${identifyTableName(
-                iteration
+                index
               )}`
             );
-            iteration++;
           } catch (error: any) {
             console.error(
               `${calculateCurrentDateTime()} >> Critical error creating table: ${
@@ -191,6 +134,8 @@ const initializeDatabase = async (): Promise<void> => {
 
     // Insert default values directly
     await insertDefaultValues([
+      insertDefaultEthnicityValues,
+      insertDefaultReligionValues,
       insertDefaultProvinceValues,
       insertDefaultMuncityValues,
       insertDefaultBarangayValues,
@@ -273,7 +218,7 @@ const connectToDatabase = async (): Promise<any> => {
       password: process.env.PROD_SUPERADMIN_PASS,
       database: process.env.DATABASE_NAME,
       port: Number(process.env.REMOTE_MYSQL_PORT),
-      // ssl: { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) },
+      ssl: { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) },
     });
   }
 
