@@ -19,6 +19,7 @@ enum TableNames {
   RISK_SCREENING_TABLE = "a_risk_screening",
   MANAGEMENT_TABLE = "a_management",
   REFERRAL_TABLE = "a_referral",
+  CONSULTATION_TYPE_TABLE = "a_consultation_type",
   CONSULTATION_LOGS_TABLE = "a_consultation_logs",
 
   // Default tables

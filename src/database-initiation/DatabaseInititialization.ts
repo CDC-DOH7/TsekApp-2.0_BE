@@ -9,6 +9,7 @@ import {
   insertDefaultHealthFacilityValues,
   insertDefaultMuncityValues,
   insertDefaultProvinceValues,
+  insertDefaultConsultationTypeValues,
 } from "./initialization-scripts/DatabaseTableDefaultValueInsertion";
 import calculateCurrentDateTime from "../common/calc/CalcDateTime";
 import TableNames from "../common/constants/TableNames";
@@ -137,6 +138,7 @@ const initializeDatabase = async (): Promise<void> => {
       insertDefaultEthnicityValues,
       insertDefaultReligionValues,
       insertDefaultProvinceValues,
+      insertDefaultConsultationTypeValues,
       insertDefaultMuncityValues,
       insertDefaultBarangayValues,
       insertDefaultAgeGroupValues,
@@ -218,7 +220,10 @@ const connectToDatabase = async (): Promise<any> => {
       password: process.env.PROD_SUPERADMIN_PASS,
       database: process.env.DATABASE_NAME,
       port: Number(process.env.REMOTE_MYSQL_PORT),
-      ssl: { ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)) },
+      ssl: {
+        ca: fs.readFileSync(String(process.env.CA_CERTIFICATE_PATH)),
+        rejectUnauthorized: false,
+      },
     });
   }
 

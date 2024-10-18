@@ -270,14 +270,26 @@ export const createTablesScripts = [
       FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id),
       FOREIGN KEY (ref_destination) REFERENCES a_health_facility_info(hf_id)
     )`,
+
+  `CREATE TABLE IF NOT EXISTS ${TableNames.CONSULTATION_TYPE_TABLE} (
+      cl_type_id INT PRIMARY KEY,
+      cl_type_description TEXT
+    )`,
+
   `CREATE TABLE IF NOT EXISTS ${TableNames.CONSULTATION_LOGS_TABLE} (
       cl_id VARCHAR(75) PRIMARY KEY,
-      cl_description TEXT,
+      cl_type_id INT NOT NULL,
       cl_date DATE NOT NULL,
-      patient_id VARCHAR(50),
-      officer_id VARCHAR(50),
-      hf_id VARCHAR(50),
-      ref_id VARCHAR(75)
+      patient_id VARCHAR(75) NOT NULL,
+      officer_id VARCHAR(50) NOT NULL,
+      hf_id VARCHAR(50) NOT NULL,
+      ref_id VARCHAR(75),
+
+      FOREIGN KEY (cl_type_id) REFERENCES a_consultation_type(cl_type_id),
+      FOREIGN KEY (patient_id) REFERENCES a_patient_info(patient_id),
+      FOREIGN KEY (officer_id) REFERENCES a_officer_info(officer_id),
+      FOREIGN KEY (hf_id) REFERENCES a_health_facility_info(hf_id),
+      FOREIGN KEY (ref_id) REFERENCES a_referral(ref_id)
     )`,
 
   // generate default tables for the previous data records

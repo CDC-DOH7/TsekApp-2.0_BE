@@ -1,6 +1,6 @@
 export default interface ConsultationParamsInterface {
   cl_id: string | null;
-  cl_description: string;
+  cl_type_id: number;
   cl_date: Date | null;
   patient_id: string;
   officer_id: string;
