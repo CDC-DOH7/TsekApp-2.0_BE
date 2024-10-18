@@ -19,7 +19,7 @@ const officerSearchReferral = async (
     officer_id,
     physician_name,
     ref_reason,
-    ref_destination,
+    ref_destination_id,
     hf_id,
   } = searchFilter;
 
@@ -55,9 +55,9 @@ const officerSearchReferral = async (
     query += " AND ref_reason like ?";
     queryParams.push(ref_reason);
   }
-  if (ref_destination) {
-    query += " AND ref_destination like ?";
-    queryParams.push(ref_destination);
+  if (ref_destination_id) {
+    query += " AND ref_destination_id like ?";
+    queryParams.push(ref_destination_id);
   }
 
   // sort the results from latest
@@ -81,7 +81,7 @@ const officerCreateReferral = async (referral: ReferralParamsInterface) => {
   physician_name,
   ref_date,
   ref_reason,
-  ref_destination, 
+  ref_destination_id, 
   hf_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
   // officer-specific
@@ -95,7 +95,7 @@ const officerCreateReferral = async (referral: ReferralParamsInterface) => {
       referral.physician_name,
       referral.ref_date,
       referral.ref_reason,
-      referral.ref_destination,
+      referral.ref_destination_id,
       referral.hf_id,
     ]);
     return result;
@@ -117,7 +117,7 @@ const supervisorSearchReferral = async (
     officer_id,
     physician_name,
     ref_reason,
-    ref_destination,
+    ref_destination_id,
     hf_id,
   } = searchFilter;
 
@@ -153,9 +153,9 @@ const supervisorSearchReferral = async (
     query += " AND ref_reason like ?";
     queryParams.push(ref_reason);
   }
-  if (ref_destination) {
-    query += " AND ref_destination like ?";
-    queryParams.push(ref_destination);
+  if (ref_destination_id) {
+    query += " AND ref_destination_id like ?";
+    queryParams.push(ref_destination_id);
   }
 
   // sort the results from latest
@@ -176,7 +176,7 @@ const supervisorUpdateReferral = async (referral: ReferralParamsInterface) => {
   officer_id = ?,
   ref_date = ?, 
   ref_reason = ?, 
-  ref_destination = ?,
+  ref_destination_id = ?,
   physician_name = ?, 
   WHERE patient_id = ? AND ref_id = ? AND hf_id = ?`;
 
@@ -188,7 +188,7 @@ const supervisorUpdateReferral = async (referral: ReferralParamsInterface) => {
       referral.officer_id,
       referral.ref_date,
       referral.ref_reason,
-      referral.ref_destination,
+      referral.ref_destination_id,
       referral.physician_name,
       referral.patient_id,
       referral.ref_id,
