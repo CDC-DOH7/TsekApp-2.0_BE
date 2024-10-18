@@ -337,6 +337,13 @@ export const insertDefaultAgeGroupValues = [
     (5, '60+ years old', 'Senior Citizen')`,
 ];
 
+// default age groups values
+export const insertDefaultConsultationTypeValues = [
+  `INSERT INTO ${TableNames.CONSULTATION_TYPE_TABLE} 
+  (cl_type_id, cl_type_description) VALUES
+    (0, 'Risk Assessment for Adults (PHILPEN RISK ASSESSMENT FORM (REVISED 2022))')`,
+];
+
 // default muncity values
 export const insertDefaultMuncityValues = [
   `INSERT INTO ${TableNames.MUNCITY_TABLE} (muncity_id,province_id,muncity_name) VALUES
