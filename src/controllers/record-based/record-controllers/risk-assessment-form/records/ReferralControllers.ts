@@ -18,7 +18,7 @@ export const officerCreateReferral = [
       physician_name,
       ref_date,
       ref_reason,
-      ref_destination,
+      ref_destination_id,
       hf_id,
     } = req.body;
 
@@ -42,7 +42,7 @@ export const officerCreateReferral = [
         hf_id,
         ref_date,
         ref_reason,
-        ref_destination,
+        ref_destination_id,
       });
       res.status(201).json({
         ref_id: ref_id,
@@ -67,7 +67,7 @@ export const officerSearchReferral = [
       officer_id,
       physician_name,
       ref_reason,
-      ref_destination,
+      ref_destination_id,
       hf_id,
     } = req.body;
 
@@ -86,7 +86,7 @@ export const officerSearchReferral = [
         physician_name,
         hf_id,
         ref_reason,
-        ref_destination,
+        ref_destination_id,
       });
       res.status(200).json({ message: "Found Results!", results });
     } catch (err) {
@@ -107,7 +107,7 @@ export const supervisorSearchReferral = [
       officer_id,
       physician_name,
       ref_reason,
-      ref_destination,
+      ref_destination_id,
       supervisor_id,
       hf_id,
     } = req.body;
@@ -127,7 +127,7 @@ export const supervisorSearchReferral = [
         physician_name,
         hf_id,
         ref_reason,
-        ref_destination,
+        ref_destination_id,
       });
       res.status(200).json({ message: "Found Results!", results });
     } catch (err) {
@@ -146,7 +146,7 @@ export const supervisorUpdateReferral = [
       ref_date,
       ref_reason,
       physician_name,
-      ref_destination,
+      ref_destination_id,
       ref_id,
       supervisor_id,
       hf_id,
@@ -165,7 +165,7 @@ export const supervisorUpdateReferral = [
         physician_name,
         ref_date,
         ref_reason,
-        ref_destination,
+        ref_destination_id,
         ref_id,
       });
       res.status(200).json({ message: "Updated definitions.", results });
