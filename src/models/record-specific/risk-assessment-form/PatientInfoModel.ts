@@ -84,10 +84,11 @@ const officerCreatePatientInfo = async (
       patientInfo.patient_fname,
       patientInfo.patient_mname,
       patientInfo.patient_lname,
-      patientInfo.patient_suffix,
       patientInfo.patient_dob, // Include birthdate in the check
-      patientInfo.hf_id, // Check against hf_id
+      patientInfo.hf_id // Check against hf_id
     ]);
+
+		console.log(checkResult);
 
     // Check if a record exists
     const recordExists = checkResult[0].count > 0;
