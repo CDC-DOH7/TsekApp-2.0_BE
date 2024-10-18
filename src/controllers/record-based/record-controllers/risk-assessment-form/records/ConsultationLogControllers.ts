@@ -13,7 +13,7 @@ import ConsultationLogDeletionInterface from "../../../../../interfaces/deletion
 export const officerCreateConsultation = [
   authenticateOfficer, // Use the middleware to authenticate the officer
   async (req: Request, res: Response) => {
-    const { cl_description, cl_date, patient_id, officer_id, hf_id, ref_id } =
+    const { cl_type_id, cl_date, patient_id, officer_id, hf_id, ref_id } =
       req.body;
 
     // Ensure the officer_id in the body matches the authenticated officer
@@ -29,7 +29,7 @@ export const officerCreateConsultation = [
 
     const newConsultation: ConsultationParamsInterface = {
       cl_id,
-      cl_description,
+      cl_type_id,
       cl_date,
       patient_id,
       officer_id,
@@ -60,6 +60,7 @@ export const officerSearchConsultation = [
       cl_date_endDate,
       hf_id,
       cl_id,
+      cl_type_id,
       patient_id,
       officer_id,
       ref_id,
@@ -76,6 +77,7 @@ export const officerSearchConsultation = [
         cl_date_endDate,
         hf_id,
         cl_id,
+        cl_type_id,
         patient_id,
         officer_id,
         ref_id,
@@ -96,6 +98,7 @@ export const supervisorSearchConsultation = [
       cl_date_endDate,
       hf_id,
       cl_id,
+      cl_type_id,
       patient_id,
       supervisor_id,
       officer_id,
@@ -113,6 +116,7 @@ export const supervisorSearchConsultation = [
         cl_date_endDate,
         hf_id,
         cl_id,
+        cl_type_id,
         patient_id,
         officer_id,
         ref_id,
@@ -129,7 +133,7 @@ export const supervisorUpdateConsultation = [
   authenticateSupervisor, // Use the middleware to authenticate the officer
   async (req: Request, res: Response) => {
     const {
-      cl_description,
+      cl_type_id,
       cl_date,
       officer_id,
       ref_id,
@@ -146,7 +150,7 @@ export const supervisorUpdateConsultation = [
 
     try {
       const results = await ConsultationModel.supervisorUpdateConsultationLog({
-        cl_description,
+        cl_type_id,
         cl_date,
         officer_id,
         ref_id,
