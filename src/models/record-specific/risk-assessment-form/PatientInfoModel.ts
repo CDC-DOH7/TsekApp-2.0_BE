@@ -74,7 +74,7 @@ const officerCreatePatientInfo = async (
 ) => {
   // Query to check if the patient already exists with the same name and birthdate and hf_id
   const checkQuery = `SELECT COUNT(*) as count FROM ${TableNames.PATIENT_INFO_TABLE}
-    WHERE patient_fname = ? AND patient_mname = ? AND patient_lname = ? AND patient_suffix = ? AND patient_dob = ? AND hf_id = ?`;
+    WHERE patient_fname = ? AND patient_mname = ? AND patient_lname = ? AND patient_dob = ? AND hf_id = ?`;
 
   // officer-specific
   try {
@@ -86,8 +86,10 @@ const officerCreatePatientInfo = async (
       patientInfo.patient_lname,
       patientInfo.patient_suffix,
       patientInfo.patient_dob, // Include birthdate in the check
-      patientInfo.hf_id, // Check against hf_id
+      patientInfo.hf_id // Check against hf_id
     ]);
+
+		console.log(checkResult);
 
     // Check if a record exists
     const recordExists = checkResult[0].count > 0;
