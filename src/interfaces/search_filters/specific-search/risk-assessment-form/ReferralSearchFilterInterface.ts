@@ -8,5 +8,5 @@ export default interface ReferralSearchFilterInterface {
   physician_name: string | null;
   // ref_date: Date | null;
   ref_reason: string | null;
-  ref_destination: string | null;
+  ref_destination_id: string | null;
 }

@@ -338,8 +338,8 @@ export const insertDefaultAgeGroupValues = [
 ];
 
 // default age groups values
-export const insertDefaultConsultationTypeValues = [
-  `INSERT INTO ${TableNames.CONSULTATION_TYPE_TABLE} 
+export const insertDefaultConsultationTypesValues = [
+  `INSERT INTO ${TableNames.CONSULTATION_TYPES_TABLE} 
   (cl_type_id, cl_type_description) VALUES
     (0, 'Risk Assessment for Adults (PHILPEN RISK ASSESSMENT FORM (REVISED 2022))')`,
 ];

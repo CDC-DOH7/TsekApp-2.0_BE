@@ -6,5 +6,5 @@ export default interface ReferralParamsInterface {
   hf_id: string | null;
   ref_date: Date | null;
   ref_reason: string | null;
-  ref_destination: string | null;
+  ref_destination_id: string | null;
 }
